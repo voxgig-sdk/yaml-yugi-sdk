@@ -1,0 +1,39 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://github.com/DawnbrandBots/yaml-yugi"
+      }
+      description: "API providing a comprehensive, machine-readable database of Yu-Gi-Oh! Trading Card Game, Official Card Game, Master Duel, Rush Duel, and Speed Duel. It supports fetching individual cards in JSON or YAML format, and integrates with Discord bot Bastion. Aggregations and card data are published on GitHub Pages."
+      license: {
+        name: "AGPL-3.0"
+        url: "https://github.com/DawnbrandBots/yaml-yugi/blob/master/COPYING"
+      }
+      servers: [
+        {
+          description: "GitHub Pages - Aggregations"
+          url: "https://dawnbrandbots.github.io/yaml-yugi"
+        }
+        {
+          description: "jsDelivr CDN - Individual cards"
+          url: "https://cdn.jsdelivr.net/gh/DawnbrandBots/yaml-yugi"
+        }
+        {
+          description: "Statically CDN - Individual cards"
+          url: "https://cdn.statically.io/gh/DawnbrandBots/yaml-yugi/master"
+        }
+        {
+          description: "GitHub Raw - Individual cards"
+          url: "https://github.com/DawnbrandBots/yaml-yugi/raw/master"
+        }
+      ]
+      title: "YAML Yugi"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,84 @@
+# Entity: skill_card
+
+main: kit: entity: skill_card: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "card_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "character"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "text"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "yugipedia_id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "skill_card"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "yugipedia585581"
+                kind: "param"
+                name: "yugipedia_id"
+                orig: "yugipedia_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/data/tcg-speed-skill/{yugipediaId}.json"
+          parts: [
+            "data"
+            "tcg-speed-skill"
+            "{yugipediaId}.json"
+          ]
+          select: {
+            exist: [
+              "yugipedia_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "tcg_speed_skill"
+      ]
+    ]
+  }
+
+
+
+}

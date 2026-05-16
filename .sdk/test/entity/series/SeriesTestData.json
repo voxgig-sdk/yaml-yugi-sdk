@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "series": {
+      "SERIES00": {
+        "card": [],
+        "name": {}
+      },
+      "SERIES01": {
+        "card": [],
+        "name": {}
+      },
+      "SERIES02": {
+        "card": [],
+        "name": {}
+      }
+    }
+  },
+  "new": {
+    "series": {
+      "series_ref01": {
+        "card": [],
+        "name": {}
+      }
+    }
+  }
+}

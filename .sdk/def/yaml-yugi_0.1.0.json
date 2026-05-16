@@ -1,0 +1,787 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "YAML Yugi",
+    "description": "API providing a comprehensive, machine-readable database of Yu-Gi-Oh! Trading Card Game, Official Card Game, Master Duel, Rush Duel, and Speed Duel. It supports fetching individual cards in JSON or YAML format, and integrates with Discord bot Bastion. Aggregations and card data are published on GitHub Pages.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://github.com/DawnbrandBots/yaml-yugi"
+    },
+    "license": {
+      "name": "AGPL-3.0",
+      "url": "https://github.com/DawnbrandBots/yaml-yugi/blob/master/COPYING"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://dawnbrandbots.github.io/yaml-yugi",
+      "description": "GitHub Pages - Aggregations"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/DawnbrandBots/yaml-yugi",
+      "description": "jsDelivr CDN - Individual cards"
+    },
+    {
+      "url": "https://cdn.statically.io/gh/DawnbrandBots/yaml-yugi/master",
+      "description": "Statically CDN - Individual cards"
+    },
+    {
+      "url": "https://github.com/DawnbrandBots/yaml-yugi/raw/master",
+      "description": "GitHub Raw - Individual cards"
+    }
+  ],
+  "paths": {
+    "/cards.json": {
+      "get": {
+        "summary": "Get all OCG/TCG cards",
+        "description": "Returns all Yu-Gi-Oh! Official Card Game and Trading Card Game cards, including prereleases, in JSON format.",
+        "operationId": "getAllOcgTcgCards",
+        "tags": [
+          "Aggregations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing all OCG/TCG cards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cards.yaml": {
+      "get": {
+        "summary": "Get all OCG/TCG cards (YAML)",
+        "description": "Returns all Yu-Gi-Oh! Official Card Game and Trading Card Game cards, including prereleases, in YAML format.",
+        "operationId": "getAllOcgTcgCardsYaml",
+        "tags": [
+          "Aggregations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing all OCG/TCG cards in YAML format",
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rush.json": {
+      "get": {
+        "summary": "Get all Rush Duel cards",
+        "description": "Returns all Yu-Gi-Oh! Rush Duel cards in JSON format.",
+        "operationId": "getAllRushDuelCards",
+        "tags": [
+          "Aggregations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing all Rush Duel cards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rush.yaml": {
+      "get": {
+        "summary": "Get all Rush Duel cards (YAML)",
+        "description": "Returns all Yu-Gi-Oh! Rush Duel cards in YAML format.",
+        "operationId": "getAllRushDuelCardsYaml",
+        "tags": [
+          "Aggregations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing all Rush Duel cards in YAML format",
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/master-duel-raw.json": {
+      "get": {
+        "summary": "Get all Master Duel cards",
+        "description": "Returns all Yu-Gi-Oh! Master Duel video game cards in JSON format.",
+        "operationId": "getAllMasterDuelCards",
+        "tags": [
+          "Aggregations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing all Master Duel cards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skill.json": {
+      "get": {
+        "summary": "Get all TCG Speed Duel Skill Cards",
+        "description": "Returns all Yu-Gi-Oh! TCG Speed Duel Skill Cards in JSON format.",
+        "operationId": "getAllSpeedDuelSkillCards",
+        "tags": [
+          "Aggregations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing all TCG Speed Duel Skill Cards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SkillCard"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/cards/{cardId}.json": {
+      "get": {
+        "summary": "Get OCG/TCG card by password or Konami ID",
+        "description": "Returns a single OCG/TCG card by its password (8-digit number) or Konami database ID (e.g., 'kdb5000') in JSON format.",
+        "operationId": "getOcgTcgCardById",
+        "tags": [
+          "Individual Cards"
+        ],
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "description": "Card password (e.g., '00010000') or Konami ID (e.g., 'kdb5000') or Yugipedia page ID (e.g., 'yugipedia123456')",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^(\\d{8}|kdb\\d+|yugipedia\\d+)$"
+            },
+            "example": "00010000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the card data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        }
+      }
+    },
+    "/data/cards/{cardId}.yaml": {
+      "get": {
+        "summary": "Get OCG/TCG card by password or Konami ID (YAML)",
+        "description": "Returns a single OCG/TCG card by its password (8-digit number) or Konami database ID (e.g., 'kdb5000') in YAML format.",
+        "operationId": "getOcgTcgCardByIdYaml",
+        "tags": [
+          "Individual Cards"
+        ],
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "description": "Card password (e.g., '00010000') or Konami ID (e.g., 'kdb5000') or Yugipedia page ID (e.g., 'yugipedia123456')",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^(\\d{8}|kdb\\d+|yugipedia\\d+)$"
+            },
+            "example": "00010000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the card data in YAML format",
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        }
+      }
+    },
+    "/data/rush/{konamiId}.json": {
+      "get": {
+        "summary": "Get Rush Duel card by Konami ID",
+        "description": "Returns a single Rush Duel card by its Konami ID in JSON format.",
+        "operationId": "getRushDuelCardById",
+        "tags": [
+          "Individual Cards"
+        ],
+        "parameters": [
+          {
+            "name": "konamiId",
+            "in": "path",
+            "description": "Konami ID for the Rush Duel card",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "15150"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the Rush Duel card data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        }
+      }
+    },
+    "/data/rush/{konamiId}.yaml": {
+      "get": {
+        "summary": "Get Rush Duel card by Konami ID (YAML)",
+        "description": "Returns a single Rush Duel card by its Konami ID in YAML format.",
+        "operationId": "getRushDuelCardByIdYaml",
+        "tags": [
+          "Individual Cards"
+        ],
+        "parameters": [
+          {
+            "name": "konamiId",
+            "in": "path",
+            "description": "Konami ID for the Rush Duel card",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "15150"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the Rush Duel card data in YAML format",
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        }
+      }
+    },
+    "/data/tcg-speed-skill/{yugipediaId}.json": {
+      "get": {
+        "summary": "Get TCG Speed Duel Skill Card",
+        "description": "Returns a single TCG Speed Duel Skill Card by its Yugipedia page ID in JSON format.",
+        "operationId": "getSpeedDuelSkillCardById",
+        "tags": [
+          "Individual Cards"
+        ],
+        "parameters": [
+          {
+            "name": "yugipediaId",
+            "in": "path",
+            "description": "Yugipedia page ID for the Speed Duel Skill Card (e.g., 'yugipedia585581')",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^yugipedia\\d+$"
+            },
+            "example": "yugipedia585581"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the Speed Duel Skill Card data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillCard"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        }
+      }
+    },
+    "/data/tcg-speed-skill/{yugipediaId}.yaml": {
+      "get": {
+        "summary": "Get TCG Speed Duel Skill Card (YAML)",
+        "description": "Returns a single TCG Speed Duel Skill Card by its Yugipedia page ID in YAML format.",
+        "operationId": "getSpeedDuelSkillCardByIdYaml",
+        "tags": [
+          "Individual Cards"
+        ],
+        "parameters": [
+          {
+            "name": "yugipediaId",
+            "in": "path",
+            "description": "Yugipedia page ID for the Speed Duel Skill Card (e.g., 'yugipedia585581')",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^yugipedia\\d+$"
+            },
+            "example": "yugipedia585581"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing the Speed Duel Skill Card data in YAML format",
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        }
+      }
+    },
+    "/data/series/list.json": {
+      "get": {
+        "summary": "Get series and archetypes as list",
+        "description": "Returns all series and archetypes as a list in JSON format.",
+        "operationId": "getSeriesList",
+        "tags": [
+          "Series and Archetypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing series and archetypes as a list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Series"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/series/list.yaml": {
+      "get": {
+        "summary": "Get series and archetypes as list (YAML)",
+        "description": "Returns all series and archetypes as a list in YAML format.",
+        "operationId": "getSeriesListYaml",
+        "tags": [
+          "Series and Archetypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing series and archetypes as a list in YAML format",
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/series/map.json": {
+      "get": {
+        "summary": "Get series and archetypes as mapping",
+        "description": "Returns all series and archetypes as a mapping from English name in JSON format.",
+        "operationId": "getSeriesMap",
+        "tags": [
+          "Series and Archetypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing series and archetypes as a mapping",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/Series"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/series/map.yaml": {
+      "get": {
+        "summary": "Get series and archetypes as mapping (YAML)",
+        "description": "Returns all series and archetypes as a mapping from English name in YAML format.",
+        "operationId": "getSeriesMapYaml",
+        "tags": [
+          "Series and Archetypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response containing series and archetypes as a mapping in YAML format",
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Card": {
+        "type": "object",
+        "description": "Represents a Yu-Gi-Oh! card with comprehensive metadata and text in multiple languages.",
+        "properties": {
+          "password": {
+            "type": "string",
+            "description": "8-digit card password/ID",
+            "example": "00010000"
+          },
+          "konamiId": {
+            "type": "string",
+            "description": "Konami database ID",
+            "example": "kdb5000"
+          },
+          "name": {
+            "type": "object",
+            "description": "Card name in multiple languages",
+            "properties": {
+              "en": {
+                "type": "string",
+                "description": "English name"
+              },
+              "ja": {
+                "type": "string",
+                "description": "Japanese name"
+              },
+              "de": {
+                "type": "string",
+                "description": "German name"
+              },
+              "es": {
+                "type": "string",
+                "description": "Spanish name"
+              },
+              "fr": {
+                "type": "string",
+                "description": "French name"
+              },
+              "it": {
+                "type": "string",
+                "description": "Italian name"
+              },
+              "pt": {
+                "type": "string",
+                "description": "Portuguese name"
+              },
+              "ko": {
+                "type": "string",
+                "description": "Korean name"
+              },
+              "zh": {
+                "type": "string",
+                "description": "Chinese name"
+              }
+            }
+          },
+          "text": {
+            "type": "object",
+            "description": "Card text in multiple languages",
+            "properties": {
+              "en": {
+                "type": "string",
+                "description": "English card text"
+              },
+              "ja": {
+                "type": "string",
+                "description": "Japanese card text"
+              },
+              "de": {
+                "type": "string",
+                "description": "German card text"
+              },
+              "es": {
+                "type": "string",
+                "description": "Spanish card text"
+              },
+              "fr": {
+                "type": "string",
+                "description": "French card text"
+              },
+              "it": {
+                "type": "string",
+                "description": "Italian card text"
+              },
+              "pt": {
+                "type": "string",
+                "description": "Portuguese card text"
+              },
+              "ko": {
+                "type": "string",
+                "description": "Korean card text"
+              },
+              "zh": {
+                "type": "string",
+                "description": "Chinese card text"
+              }
+            }
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type of card (Monster, Spell, Trap, etc.)",
+            "enum": [
+              "Monster",
+              "Spell",
+              "Trap"
+            ]
+          },
+          "attribute": {
+            "type": "string",
+            "description": "Card attribute (for monsters)",
+            "enum": [
+              "DARK",
+              "LIGHT",
+              "EARTH",
+              "WATER",
+              "FIRE",
+              "WIND",
+              "DIVINE"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "description": "Monster type or spell/trap subtype"
+          },
+          "level": {
+            "type": "integer",
+            "description": "Level of the monster card"
+          },
+          "rank": {
+            "type": "integer",
+            "description": "Rank of XYZ monster"
+          },
+          "linkRating": {
+            "type": "integer",
+            "description": "Link rating for Link monsters"
+          },
+          "atk": {
+            "type": "integer",
+            "description": "Attack points",
+            "nullable": true
+          },
+          "def": {
+            "type": "integer",
+            "description": "Defense points",
+            "nullable": true
+          },
+          "archetype": {
+            "type": "array",
+            "description": "Archetypes the card belongs to",
+            "items": {
+              "type": "string"
+            }
+          },
+          "format": {
+            "type": "array",
+            "description": "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
+            "items": {
+              "type": "string",
+              "enum": [
+                "OCG",
+                "TCG",
+                "Master Duel",
+                "Rush Duel",
+                "Speed Duel"
+              ]
+            }
+          }
+        }
+      },
+      "SkillCard": {
+        "type": "object",
+        "description": "Represents a TCG Speed Duel Skill Card.",
+        "properties": {
+          "yugipediaId": {
+            "type": "string",
+            "description": "Yugipedia page ID",
+            "example": "yugipedia585581"
+          },
+          "name": {
+            "type": "object",
+            "description": "Skill card name in multiple languages",
+            "properties": {
+              "en": {
+                "type": "string",
+                "description": "English name"
+              }
+            }
+          },
+          "text": {
+            "type": "object",
+            "description": "Skill card text in multiple languages",
+            "properties": {
+              "en": {
+                "type": "string",
+                "description": "English skill text"
+              }
+            }
+          },
+          "character": {
+            "type": "string",
+            "description": "Character associated with the skill"
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type identifier for skill cards",
+            "enum": [
+              "Skill"
+            ]
+          }
+        }
+      },
+      "Series": {
+        "type": "object",
+        "description": "Represents a card series or archetype.",
+        "properties": {
+          "name": {
+            "type": "object",
+            "description": "Series/archetype name in multiple languages",
+            "properties": {
+              "en": {
+                "type": "string",
+                "description": "English name"
+              },
+              "ja": {
+                "type": "string",
+                "description": "Japanese name"
+              },
+              "de": {
+                "type": "string",
+                "description": "German name"
+              },
+              "es": {
+                "type": "string",
+                "description": "Spanish name"
+              },
+              "fr": {
+                "type": "string",
+                "description": "French name"
+              },
+              "it": {
+                "type": "string",
+                "description": "Italian name"
+              },
+              "pt": {
+                "type": "string",
+                "description": "Portuguese name"
+              },
+              "ko": {
+                "type": "string",
+                "description": "Korean name"
+              },
+              "zh": {
+                "type": "string",
+                "description": "Chinese name"
+              }
+            }
+          },
+          "cards": {
+            "type": "array",
+            "description": "List of card IDs belonging to this series/archetype",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Aggregations",
+      "description": "Endpoints for retrieving aggregated collections of cards"
+    },
+    {
+      "name": "Individual Cards",
+      "description": "Endpoints for retrieving individual card data"
+    },
+    {
+      "name": "Series and Archetypes",
+      "description": "Endpoints for retrieving series and archetype information"
+    }
+  ],
+  "externalDocs": {
+    "description": "YAML Yugi GitHub Repository",
+    "url": "https://github.com/DawnbrandBots/yaml-yugi"
+  }
+}

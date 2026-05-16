@@ -1,0 +1,32 @@
+# BasicIndividualCardFlow
+
+main: kit: flow: BasicIndividualCardFlow:
+{
+  entity: "individual_card",
+  kind: "basic",
+  name: "BasicIndividualCardFlow",
+  step: [
+    {
+      input: {
+        ref: "individual_card_ref01",
+        srcdatavar: "individual_card_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        yugipedia_id: "yugipedia01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-individual_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIndividualCardFlow"
+}

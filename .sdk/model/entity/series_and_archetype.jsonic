@@ -1,0 +1,70 @@
+# Entity: series_and_archetype
+
+main: kit: entity: series_and_archetype: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "card"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "series_and_archetype"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/data/series/list.yaml"
+          parts: [
+            "data"
+            "series"
+            "list.yaml"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/data/series/map.json"
+          parts: [
+            "data"
+            "series"
+            "map.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/data/series/map.yaml"
+          parts: [
+            "data"
+            "series"
+            "map.yaml"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

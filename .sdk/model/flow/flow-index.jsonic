@@ -1,0 +1,9 @@
+# Flows
+
+@"BasicAggregationFlow.jsonic"
+@"BasicCardFlow.jsonic"
+@"BasicIndividualCardFlow.jsonic"
+@"BasicSeriesAndArchetypeFlow.jsonic"
+@"BasicSeriesFlow.jsonic"
+@"BasicSkillCardFlow.jsonic"
+@"BasicSkillFlow.jsonic"

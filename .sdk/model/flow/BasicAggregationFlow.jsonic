@@ -1,0 +1,28 @@
+# BasicAggregationFlow
+
+main: kit: flow: BasicAggregationFlow:
+{
+  entity: "aggregation",
+  kind: "basic",
+  name: "BasicAggregationFlow",
+  step: [
+    {
+      input: {
+        ref: "aggregation_ref01",
+        srcdatavar: "aggregation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-aggregation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAggregationFlow"
+}

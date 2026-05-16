@@ -1,0 +1,32 @@
+# BasicSkillCardFlow
+
+main: kit: flow: BasicSkillCardFlow:
+{
+  entity: "skill_card",
+  kind: "basic",
+  name: "BasicSkillCardFlow",
+  step: [
+    {
+      input: {
+        ref: "skill_card_ref01",
+        srcdatavar: "skill_card_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        yugipedia_id: "yugipedia01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-skill_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSkillCardFlow"
+}

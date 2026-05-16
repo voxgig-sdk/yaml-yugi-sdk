@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "individual_card": {
+      "INDIVIDUAL_CARD00": {
+        "card_id": "CARD01",
+        "konami_id": "KONAMI01",
+        "yugipedia_id": "YUGIPEDIA01"
+      },
+      "INDIVIDUAL_CARD01": {
+        "card_id": "CARD01",
+        "konami_id": "KONAMI01",
+        "yugipedia_id": "YUGIPEDIA01"
+      },
+      "INDIVIDUAL_CARD02": {
+        "card_id": "CARD01",
+        "konami_id": "KONAMI01",
+        "yugipedia_id": "YUGIPEDIA01"
+      }
+    }
+  },
+  "new": {
+    "individual_card": {
+      "individual_card_ref01": {}
+    }
+  }
+}

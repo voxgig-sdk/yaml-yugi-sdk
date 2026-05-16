@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "skill": {
+      "SKILL00": {
+        "card_type": "s32",
+        "character": "s33",
+        "name": {},
+        "text": {},
+        "yugipedia_id": "YUGIPEDIA01"
+      },
+      "SKILL01": {
+        "card_type": "s64",
+        "character": "s65",
+        "name": {},
+        "text": {},
+        "yugipedia_id": "YUGIPEDIA01"
+      },
+      "SKILL02": {
+        "card_type": "s96",
+        "character": "s97",
+        "name": {},
+        "text": {},
+        "yugipedia_id": "YUGIPEDIA01"
+      }
+    }
+  },
+  "new": {
+    "skill": {
+      "skill_ref01": {
+        "card_type": "sc8",
+        "character": "sc9",
+        "name": {},
+        "text": {},
+        "yugipedia_id": "YUGIPEDIA01"
+      }
+    }
+  }
+}

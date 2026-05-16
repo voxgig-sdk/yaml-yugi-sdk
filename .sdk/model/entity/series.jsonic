@@ -1,0 +1,47 @@
+# Entity: series
+
+main: kit: entity: series: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "card"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "series"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/data/series/list.json"
+          parts: [
+            "data"
+            "series"
+            "list.json"
+          ]
+          select: {
+            "$action": "list"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

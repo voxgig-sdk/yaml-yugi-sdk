@@ -1,0 +1,79 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 7
+  metrics: count: path: 16
+  metrics: count: method: 16
+
+  entity: aggregation: {
+    path: "/cards.yaml": {
+      op: load: method: *GET
+    }
+    path: "/rush.yaml": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: card: {
+    path: "/cards.json": {
+      op: list: method: *GET
+    }
+    path: "/data/cards/{cardId}.json": {
+      action: "card_id": {}
+      op: list: method: *GET
+    }
+    path: "/data/rush/{konamiId}.json": {
+      op: list: method: *GET
+    }
+    path: "/master-duel-raw.json": {
+      op: list: method: *GET
+    }
+    path: "/rush.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: individual_card: {
+    path: "/data/cards/{cardId}.yaml": {
+      op: load: method: *GET
+    }
+    path: "/data/rush/{konamiId}.yaml": {
+      op: load: method: *GET
+    }
+    path: "/data/tcg-speed-skill/{yugipediaId}.yaml": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: series: {
+    path: "/data/series/list.json": {
+      action: "list": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: series_and_archetype: {
+    path: "/data/series/list.yaml": {
+      op: load: method: *GET
+    }
+    path: "/data/series/map.json": {
+      op: load: method: *GET
+    }
+    path: "/data/series/map.yaml": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: skill: {
+    path: "/skill.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: skill_card: {
+    path: "/data/tcg-speed-skill/{yugipediaId}.json": {
+      op: load: method: *GET
+    }
+  }
+
+}

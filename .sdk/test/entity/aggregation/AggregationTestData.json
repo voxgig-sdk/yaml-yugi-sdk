@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "aggregation": {
+      "AGGREGATION00": {},
+      "AGGREGATION01": {},
+      "AGGREGATION02": {}
+    }
+  },
+  "new": {
+    "aggregation": {
+      "aggregation_ref01": {}
+    }
+  }
+}

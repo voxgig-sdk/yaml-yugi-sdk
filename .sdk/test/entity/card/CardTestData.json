@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "card": {
+      "CARD00": {
+        "archetype": [],
+        "atk": "s8d",
+        "attribute": "s8e",
+        "card_type": "s8f",
+        "def": "s90",
+        "format": [],
+        "konami_id": "KONAMI01",
+        "level": "s93",
+        "link_rating": "s94",
+        "name": {},
+        "password": "s96",
+        "rank": "s97",
+        "text": {},
+        "type": "s99",
+        "card_id": "CARD01"
+      },
+      "CARD01": {
+        "archetype": [],
+        "atk": "s119",
+        "attribute": "s11a",
+        "card_type": "s11b",
+        "def": "s11c",
+        "format": [],
+        "konami_id": "KONAMI01",
+        "level": "s11f",
+        "link_rating": "s120",
+        "name": {},
+        "password": "s122",
+        "rank": "s123",
+        "text": {},
+        "type": "s125",
+        "card_id": "CARD01"
+      },
+      "CARD02": {
+        "archetype": [],
+        "atk": "s1a5",
+        "attribute": "s1a6",
+        "card_type": "s1a7",
+        "def": "s1a8",
+        "format": [],
+        "konami_id": "KONAMI01",
+        "level": "s1ab",
+        "link_rating": "s1ac",
+        "name": {},
+        "password": "s1ae",
+        "rank": "s1af",
+        "text": {},
+        "type": "s1b1",
+        "card_id": "CARD01"
+      }
+    }
+  },
+  "new": {
+    "card": {
+      "card_ref01": {
+        "archetype": [],
+        "atk": "s231",
+        "attribute": "s232",
+        "card_type": "s233",
+        "def": "s234",
+        "format": [],
+        "konami_id": "KONAMI01",
+        "level": "s237",
+        "link_rating": "s238",
+        "name": {},
+        "password": "s23a",
+        "rank": "s23b",
+        "text": {},
+        "type": "s23d"
+      }
+    }
+  }
+}

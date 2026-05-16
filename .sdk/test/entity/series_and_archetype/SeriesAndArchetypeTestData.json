@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "series_and_archetype": {
+      "SERIES_AND_ARCHETYPE00": {
+        "card": [],
+        "name": {}
+      },
+      "SERIES_AND_ARCHETYPE01": {
+        "card": [],
+        "name": {}
+      },
+      "SERIES_AND_ARCHETYPE02": {
+        "card": [],
+        "name": {}
+      }
+    }
+  },
+  "new": {
+    "series_and_archetype": {
+      "series_and_archetype_ref01": {
+        "card": [],
+        "name": {}
+      }
+    }
+  }
+}

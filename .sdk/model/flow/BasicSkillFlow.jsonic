@@ -1,0 +1,22 @@
+# BasicSkillFlow
+
+main: kit: flow: BasicSkillFlow:
+{
+  entity: "skill",
+  kind: "basic",
+  name: "BasicSkillFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "skill_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSkillFlow"
+}

@@ -1,0 +1,196 @@
+# Entity: card
+
+main: kit: entity: card: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "archetype"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "atk"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "attribute"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "card_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "def"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "format"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "konami_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "level"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "link_rating"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "password"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rank"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "text"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "card"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "00010000"
+                kind: "param"
+                name: "card_id"
+                orig: "card_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/data/cards/{cardId}.json"
+          parts: [
+            "data"
+            "cards"
+            "{cardId}.json"
+          ]
+          select: {
+            "$action": "card_id"
+            exist: [
+              "card_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "15150"
+                kind: "param"
+                name: "konami_id"
+                orig: "konami_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/data/rush/{konamiId}.json"
+          parts: [
+            "data"
+            "rush"
+            "{konamiId}.json"
+          ]
+          select: {
+            exist: [
+              "konami_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/cards.json"
+          parts: [
+            "cards.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/master-duel-raw.json"
+          parts: [
+            "master-duel-raw.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/rush.json"
+          parts: [
+            "rush.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "card"
+      ]
+      [
+        "rush"
+      ]
+    ]
+  }
+
+
+
+}
