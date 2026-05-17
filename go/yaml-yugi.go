@@ -1,10 +1,10 @@
 package voxgigyamlyugisdk
 
 import (
-	"github.com/voxgig-sdk/yaml-yugi-sdk/core"
-	"github.com/voxgig-sdk/yaml-yugi-sdk/entity"
-	"github.com/voxgig-sdk/yaml-yugi-sdk/feature"
-	_ "github.com/voxgig-sdk/yaml-yugi-sdk/utility"
+	"github.com/voxgig-sdk/yaml-yugi-sdk/go/core"
+	"github.com/voxgig-sdk/yaml-yugi-sdk/go/entity"
+	"github.com/voxgig-sdk/yaml-yugi-sdk/go/feature"
+	_ "github.com/voxgig-sdk/yaml-yugi-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

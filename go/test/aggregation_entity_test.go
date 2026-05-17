@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/yaml-yugi-sdk"
-	"github.com/voxgig-sdk/yaml-yugi-sdk/core"
+	sdk "github.com/voxgig-sdk/yaml-yugi-sdk/go"
+	"github.com/voxgig-sdk/yaml-yugi-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/yaml-yugi-sdk/go/utility/struct"
 )
 
 func TestAggregationEntity(t *testing.T) {

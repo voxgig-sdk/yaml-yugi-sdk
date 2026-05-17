@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/yaml-yugi-sdk/core"
+	"github.com/voxgig-sdk/yaml-yugi-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/yaml-yugi-sdk/go/utility/struct"
 )
 
 type IndividualCardEntity struct {

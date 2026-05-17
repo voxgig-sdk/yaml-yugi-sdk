@@ -1,9 +1,15 @@
 {
   "existing": {
     "aggregation": {
-      "AGGREGATION00": {},
-      "AGGREGATION01": {},
-      "AGGREGATION02": {}
+      "AGGREGATION00": {
+        "id": "AGGREGATION00"
+      },
+      "AGGREGATION01": {
+        "id": "AGGREGATION01"
+      },
+      "AGGREGATION02": {
+        "id": "AGGREGATION02"
+      }
     }
   },
   "new": {

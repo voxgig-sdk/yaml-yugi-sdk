@@ -3,15 +3,18 @@
     "series_and_archetype": {
       "SERIES_AND_ARCHETYPE00": {
         "card": [],
-        "name": {}
+        "name": {},
+        "id": "SERIES_AND_ARCHETYPE00"
       },
       "SERIES_AND_ARCHETYPE01": {
         "card": [],
-        "name": {}
+        "name": {},
+        "id": "SERIES_AND_ARCHETYPE01"
       },
       "SERIES_AND_ARCHETYPE02": {
         "card": [],
-        "name": {}
+        "name": {},
+        "id": "SERIES_AND_ARCHETYPE02"
       }
     }
   },

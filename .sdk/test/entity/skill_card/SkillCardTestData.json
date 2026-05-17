@@ -6,21 +6,24 @@
         "character": "s33",
         "name": {},
         "text": {},
-        "yugipedia_id": "YUGIPEDIA01"
+        "yugipedia_id": "YUGIPEDIA01",
+        "id": "SKILL_CARD00"
       },
       "SKILL_CARD01": {
         "card_type": "s64",
         "character": "s65",
         "name": {},
         "text": {},
-        "yugipedia_id": "YUGIPEDIA01"
+        "yugipedia_id": "YUGIPEDIA01",
+        "id": "SKILL_CARD01"
       },
       "SKILL_CARD02": {
         "card_type": "s96",
         "character": "s97",
         "name": {},
         "text": {},
-        "yugipedia_id": "YUGIPEDIA01"
+        "yugipedia_id": "YUGIPEDIA01",
+        "id": "SKILL_CARD02"
       }
     }
   },

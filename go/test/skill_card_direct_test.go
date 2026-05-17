@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/yaml-yugi-sdk"
-	"github.com/voxgig-sdk/yaml-yugi-sdk/core"
+	sdk "github.com/voxgig-sdk/yaml-yugi-sdk/go"
+	"github.com/voxgig-sdk/yaml-yugi-sdk/go/core"
 )
 
 func TestSkillCardDirect(t *testing.T) {
