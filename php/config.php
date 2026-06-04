@@ -20,9 +20,6 @@ class YamlYugiConfig
             ],
             "options" => [
                 "base" => "https://dawnbrandbots.github.io/yaml-yugi",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

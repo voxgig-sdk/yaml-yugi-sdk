@@ -32,8 +32,34 @@ main: {
       ]
       title: "YAML Yugi"
       version: "1.0.0"
+      tagline: "Machine-readable, human-editable Yu-Gi-Oh! card database covering TCG, OCG, Master Duel, Rush Duel and Speed Duel"
+      homepage: "https://github.com/DawnbrandBots/yaml-yugi"
+      docs_url: "https://github.com/DawnbrandBots/yaml-yugi#readme"
+      license_short: "AGPL-3.0-or-later (source); card text remains (c) Studio Dice/SHUEISHA, TV TOKYO, KONAMI"
+      license_md: `- Source code and data pipeline are licensed under the GNU Affero General Public License v3.0 or later.
+- Card names, text and artwork remain the property of Studio Dice/SHUEISHA, TV TOKYO and KONAMI.
+- Aggregated card data is published on GitHub Pages for community and tooling use; check the upstream repo for current terms before redistribution.
+- This SDK is an unaffiliated convenience wrapper and not endorsed by Konami.`
+      about_md: `[YAML Yugi](https://github.com/DawnbrandBots/yaml-yugi) is a community-maintained, machine-readable Yu-Gi-Oh! card database run by [DawnbrandBots](https://github.com/DawnbrandBots). It covers the Trading Card Game (TCG), Official Card Game (OCG), the Master Duel video game, Rush Duel and Speed Duel formats, and is the data source behind the Bastion Discord bot.
+
+What you get from the API:
+
+- Aggregated dumps of every OCG/TCG card (\`cards.json\` / \`cards.yaml\`) and every Rush Duel card (\`rush.json\` / \`rush.yaml\`).
+- A raw Master Duel snapshot (\`master-duel-raw.json\`) and a Speed Duel skill-card dump (\`skill.json\`).
+- Individual card files keyed by password (\`/data/cards/<password>.json\`), Konami ID (\`/data/cards/kdb<id>.json\`) or Yugipedia page id (\`/data/cards/yugipedia<id>.json\`).
+- Series and archetype indexes under \`/data/series/list.json\` and \`/data/series/map.json\`.
+
+Operational notes: the data is served as static files from GitHub Pages at \`https://dawnbrandbots.github.io/yaml-yugi\`, so there is no authentication or per-call rate limit beyond GitHub's CDN policy. CORS is enabled. Files are regenerated continuously from upstream sources, with both JSON and YAML representations available for most aggregations.`
+      entity_desc: {
+        aggregation: "Bulk dumps of every card or skill in a given format, e.g. `cards.json`, `cards.yaml`, `rush.json`, `master-duel-raw.json` and `skill.json` under the site root."
+        card: "An OCG/TCG card record as it appears inside the aggregated `cards.json` / `cards.yaml` dump."
+        individual_card: "A single card fetched from its own file at `/data/cards/<password>.json`, `/data/cards/kdb<konami_id>.json` or `/data/cards/yugipedia<page_id>.json`."
+        series: "A Yu-Gi-Oh! series or archetype entry listed in `/data/series/list.json`."
+        series_and_archetype: "The combined series/archetype lookup map exposed at `/data/series/map.json`, linking cards to the series and archetypes they belong to."
+        skill: "A Speed Duel skill entry from the aggregated `skill.json` dump."
+        skill_card: "An individual Speed Duel skill card file under `/data/tcg-speed-skill/yugipedia<page_id>.json`."
+      }
+      auth: false
     }
   }
-}
-
 }

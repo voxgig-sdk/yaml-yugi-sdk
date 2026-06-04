@@ -61,14 +61,12 @@ def _skill_direct_setup(mockres):
     env = runner.env_override({
         "YAMLYUGI_TEST_SKILL_ENTID": {},
         "YAMLYUGI_TEST_LIVE": "FALSE",
-        "YAMLYUGI_APIKEY": "NONE",
     })
 
     live = env.get("YAMLYUGI_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("YAMLYUGI_APIKEY"),
         }
         client = YamlYugiSDK(merged_opts)
         return {
