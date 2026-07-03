@@ -10,7 +10,7 @@ The PHP SDK for the YamlYugi API — an entity-oriented client using PHP convent
 
 ## Install
 ```bash
-composer require voxgig/yaml-yugi-sdk
+composer require voxgig-sdk/yaml-yugi
 ```
 
 

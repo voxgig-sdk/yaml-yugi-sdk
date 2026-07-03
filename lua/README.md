@@ -10,7 +10,7 @@ The Lua SDK for the YamlYugi API — an entity-oriented client using Lua convent
 
 ## Install
 ```bash
-luarocks install yaml-yugi-sdk
+luarocks install voxgig-sdk-yaml-yugi
 ```
 
 If the module is not yet published, add the source directory to

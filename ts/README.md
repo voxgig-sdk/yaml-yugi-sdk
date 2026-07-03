@@ -10,7 +10,7 @@ The TypeScript SDK for the YamlYugi API — a type-safe, entity-oriented client 
 
 ## Install
 ```bash
-npm install yaml-yugi
+npm install @voxgig-sdk/yaml-yugi
 ```
 ## Tutorial: your first API call
 

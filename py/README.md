@@ -10,7 +10,7 @@ The Python SDK for the YamlYugi API — an entity-oriented client following Pyth
 
 ## Install
 ```bash
-pip install yaml-yugi-sdk
+pip install voxgig-sdk-yaml-yugi
 ```
 
 Or install from source:

@@ -10,13 +10,13 @@ The Ruby SDK for the YamlYugi API — an entity-oriented client using idiomatic 
 
 ## Install
 ```bash
-gem install yaml-yugi-sdk
+gem install voxgig-sdk-yaml-yugi
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "yaml-yugi-sdk"
+gem "voxgig-sdk-yaml-yugi"
 ```
 
 Then run:
