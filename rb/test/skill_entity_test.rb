@@ -83,6 +83,7 @@ def skill_basic_setup(extra)
     "YAMLYUGI_TEST_SKILL_ENTID" => idmap,
     "YAMLYUGI_TEST_LIVE" => "FALSE",
     "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
+    "YAMLYUGI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,6 +95,7 @@ def skill_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["YAMLYUGI_APIKEY"],
       },
       extra || {},
     ])

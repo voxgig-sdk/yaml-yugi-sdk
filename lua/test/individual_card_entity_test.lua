@@ -91,6 +91,7 @@ function individual_card_basic_setup(extra)
     ["YAMLYUGI_TEST_INDIVIDUAL_CARD_ENTID"] = idmap,
     ["YAMLYUGI_TEST_LIVE"] = "FALSE",
     ["YAMLYUGI_TEST_EXPLAIN"] = "FALSE",
+    ["YAMLYUGI_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function individual_card_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["YAMLYUGI_APIKEY"],
       },
       extra or {},
     })

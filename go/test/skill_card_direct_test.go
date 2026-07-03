@@ -99,12 +99,14 @@ func skill_cardDirectSetup(mockres any) *skill_cardDirectSetupResult {
 	env := envOverride(map[string]any{
 		"YAMLYUGI_TEST_SKILL_CARD_ENTID": map[string]any{},
 		"YAMLYUGI_TEST_LIVE":    "FALSE",
+		"YAMLYUGI_APIKEY":       "NONE",
 	})
 
 	live := env["YAMLYUGI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["YAMLYUGI_APIKEY"],
 		}
 		client := sdk.NewYamlYugiSDK(mergedOpts)
 

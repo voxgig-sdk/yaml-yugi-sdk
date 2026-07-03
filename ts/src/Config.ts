@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://dawnbrandbots.github.io/yaml-yugi',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -75,40 +79,40 @@ class Config {
       "name": "aggregation",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/cards.yaml",
               "parts": [
                 "cards.yaml"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/rush.yaml",
               "parts": [
                 "rush.yaml"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 1
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -119,120 +123,122 @@ class Config {
     "card": {
       "fields": [
         {
+          "active": true,
           "name": "archetype",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "atk",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "attribute",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "card_type",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "def",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "format",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "konami_id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "level",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "link_rating",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 8
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 9
         },
         {
+          "active": true,
           "name": "password",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 10
         },
         {
+          "active": true,
           "name": "rank",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 11
         },
         {
+          "active": true,
           "name": "text",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 12
         },
         {
+          "active": true,
           "name": "type",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 13
         }
       ],
       "name": "card",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "00010000",
                     "kind": "param",
                     "name": "card_id",
                     "orig": "card_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -253,20 +259,20 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "15150",
                     "kind": "param",
                     "name": "konami_id",
                     "orig": "konami_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -286,56 +292,54 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 1
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/cards.json",
               "parts": [
                 "cards.json"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 2
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/master-duel-raw.json",
               "parts": [
                 "master-duel-raw.json"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 3
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/rush.json",
               "parts": [
                 "rush.json"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 4
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -355,19 +359,21 @@ class Config {
       "name": "individual_card",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "00010000",
                     "kind": "param",
                     "name": "card_id",
                     "orig": "card_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -387,20 +393,20 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "15150",
                     "kind": "param",
                     "name": "konami_id",
                     "orig": "konami_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -420,20 +426,20 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 1
             },
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "yugipedia585581",
                     "kind": "param",
                     "name": "yugipedia_id",
                     "orig": "yugipedia_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -453,11 +459,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 2
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -478,26 +482,29 @@ class Config {
     "series": {
       "fields": [
         {
+          "active": true,
           "name": "card",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 1
         }
       ],
       "name": "series",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/data/series/list.json",
               "parts": [
@@ -512,12 +519,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -528,26 +532,29 @@ class Config {
     "series_and_archetype": {
       "fields": [
         {
+          "active": true,
           "name": "card",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 1
         }
       ],
       "name": "series_and_archetype",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/data/series/list.yaml",
               "parts": [
@@ -555,16 +562,16 @@ class Config {
                 "series",
                 "list.yaml"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/data/series/map.json",
               "parts": [
@@ -572,16 +579,16 @@ class Config {
                 "series",
                 "map.json"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 1
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/data/series/map.yaml",
               "parts": [
@@ -589,17 +596,14 @@ class Config {
                 "series",
                 "map.yaml"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 2
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -610,63 +614,63 @@ class Config {
     "skill": {
       "fields": [
         {
+          "active": true,
           "name": "card_type",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "character",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "text",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "yugipedia_id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         }
       ],
       "name": "skill",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/skill.json",
               "parts": [
                 "skill.json"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -677,57 +681,59 @@ class Config {
     "skill_card": {
       "fields": [
         {
+          "active": true,
           "name": "card_type",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "character",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "text",
           "req": false,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "yugipedia_id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         }
       ],
       "name": "skill_card",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "yugipedia585581",
                     "kind": "param",
                     "name": "yugipedia_id",
                     "orig": "yugipedia_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -747,11 +753,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

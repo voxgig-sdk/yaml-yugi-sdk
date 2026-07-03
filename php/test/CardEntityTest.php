@@ -86,6 +86,7 @@ function card_basic_setup($extra)
         "YAMLYUGI_TEST_CARD_ENTID" => $idmap,
         "YAMLYUGI_TEST_LIVE" => "FALSE",
         "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
+        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function card_basic_setup($extra)
     if ($env["YAMLYUGI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["YAMLYUGI_APIKEY"],
             ],
             $extra ?? [],
         ]);

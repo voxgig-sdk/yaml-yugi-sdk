@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://dawnbrandbots.github.io/yaml-yugi",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -34,40 +37,40 @@ def make_config():
         "name": "aggregation",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/cards.yaml",
                 "parts": [
                   "cards.yaml",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/rush.yaml",
                 "parts": [
                   "rush.yaml",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 1,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -78,120 +81,122 @@ def make_config():
       "card": {
         "fields": [
           {
+            "active": True,
             "name": "archetype",
             "req": False,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "atk",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "attribute",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "card_type",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "def",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 4,
           },
           {
+            "active": True,
             "name": "format",
             "req": False,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 5,
           },
           {
+            "active": True,
             "name": "konami_id",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 6,
           },
           {
+            "active": True,
             "name": "level",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 7,
           },
           {
+            "active": True,
             "name": "link_rating",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 8,
           },
           {
+            "active": True,
             "name": "name",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 9,
           },
           {
+            "active": True,
             "name": "password",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 10,
           },
           {
+            "active": True,
             "name": "rank",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 11,
           },
           {
+            "active": True,
             "name": "text",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 12,
           },
           {
+            "active": True,
             "name": "type",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 13,
           },
         ],
         "name": "card",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "00010000",
                       "kind": "param",
                       "name": "card_id",
                       "orig": "card_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -212,20 +217,20 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "15150",
                       "kind": "param",
                       "name": "konami_id",
                       "orig": "konami_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -245,56 +250,54 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 1,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/cards.json",
                 "parts": [
                   "cards.json",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 2,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/master-duel-raw.json",
                 "parts": [
                   "master-duel-raw.json",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 3,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/rush.json",
                 "parts": [
                   "rush.json",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 4,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -314,19 +317,21 @@ def make_config():
         "name": "individual_card",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "00010000",
                       "kind": "param",
                       "name": "card_id",
                       "orig": "card_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -346,20 +351,20 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "15150",
                       "kind": "param",
                       "name": "konami_id",
                       "orig": "konami_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -379,20 +384,20 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 1,
               },
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "yugipedia585581",
                       "kind": "param",
                       "name": "yugipedia_id",
                       "orig": "yugipedia_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -412,11 +417,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 2,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -437,26 +440,29 @@ def make_config():
       "series": {
         "fields": [
           {
+            "active": True,
             "name": "card",
             "req": False,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "name",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 1,
           },
         ],
         "name": "series",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/data/series/list.json",
                 "parts": [
@@ -471,12 +477,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -487,26 +490,29 @@ def make_config():
       "series_and_archetype": {
         "fields": [
           {
+            "active": True,
             "name": "card",
             "req": False,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "name",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 1,
           },
         ],
         "name": "series_and_archetype",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/data/series/list.yaml",
                 "parts": [
@@ -514,16 +520,16 @@ def make_config():
                   "series",
                   "list.yaml",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/data/series/map.json",
                 "parts": [
@@ -531,16 +537,16 @@ def make_config():
                   "series",
                   "map.json",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 1,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/data/series/map.yaml",
                 "parts": [
@@ -548,17 +554,14 @@ def make_config():
                   "series",
                   "map.yaml",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 2,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -569,63 +572,63 @@ def make_config():
       "skill": {
         "fields": [
           {
+            "active": True,
             "name": "card_type",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "character",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "name",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "text",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "yugipedia_id",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 4,
           },
         ],
         "name": "skill",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/skill.json",
                 "parts": [
                   "skill.json",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -636,57 +639,59 @@ def make_config():
       "skill_card": {
         "fields": [
           {
+            "active": True,
             "name": "card_type",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "character",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "name",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "text",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "yugipedia_id",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 4,
           },
         ],
         "name": "skill_card",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "yugipedia585581",
                       "kind": "param",
                       "name": "yugipedia_id",
                       "orig": "yugipedia_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -706,11 +711,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

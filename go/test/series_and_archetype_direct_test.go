@@ -99,12 +99,14 @@ func series_and_archetypeDirectSetup(mockres any) *series_and_archetypeDirectSet
 	env := envOverride(map[string]any{
 		"YAMLYUGI_TEST_SERIES_AND_ARCHETYPE_ENTID": map[string]any{},
 		"YAMLYUGI_TEST_LIVE":    "FALSE",
+		"YAMLYUGI_APIKEY":       "NONE",
 	})
 
 	live := env["YAMLYUGI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["YAMLYUGI_APIKEY"],
 		}
 		client := sdk.NewYamlYugiSDK(mergedOpts)
 

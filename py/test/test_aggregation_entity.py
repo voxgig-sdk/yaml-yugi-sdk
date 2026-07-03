@@ -91,6 +91,7 @@ def _aggregation_basic_setup(extra):
         "YAMLYUGI_TEST_AGGREGATION_ENTID": idmap,
         "YAMLYUGI_TEST_LIVE": "FALSE",
         "YAMLYUGI_TEST_EXPLAIN": "FALSE",
+        "YAMLYUGI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _aggregation_basic_setup(extra):
     if env.get("YAMLYUGI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("YAMLYUGI_APIKEY"),
             },
             extra or {},
         ])

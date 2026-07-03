@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'YAMLYUGI_TEST_AGGREGATION_ENTID': {},
     'YAMLYUGI_TEST_LIVE': 'FALSE',
+    'YAMLYUGI_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.YAMLYUGI_TEST_LIVE
 
   if (live) {
     const client = new YamlYugiSDK({
+      apikey: env.YAMLYUGI_APIKEY,
     })
 
     let idmap: any = env['YAMLYUGI_TEST_AGGREGATION_ENTID']

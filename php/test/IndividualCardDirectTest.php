@@ -67,12 +67,14 @@ function individual_card_direct_setup($mockres)
     $env = Runner::env_override([
         "YAMLYUGI_TEST_INDIVIDUAL_CARD_ENTID" => [],
         "YAMLYUGI_TEST_LIVE" => "FALSE",
+        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $live = $env["YAMLYUGI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["YAMLYUGI_APIKEY"],
         ];
         $client = new YamlYugiSDK($merged_opts);
         return [

@@ -111,6 +111,7 @@ function basicSetup(extra?: any) {
     'YAML_YUGI_TEST_SKILL_CARD_ENTID': idmap,
     'YAML_YUGI_TEST_LIVE': 'FALSE',
     'YAML_YUGI_TEST_EXPLAIN': 'FALSE',
+    'YAML_YUGI_APIKEY': 'NONE',
   })
 
   idmap = env['YAML_YUGI_TEST_SKILL_CARD_ENTID']
@@ -120,6 +121,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new YamlYugiSDK(merge([
       {
+        apikey: env.YAML_YUGI_APIKEY,
       },
       extra
     ]))

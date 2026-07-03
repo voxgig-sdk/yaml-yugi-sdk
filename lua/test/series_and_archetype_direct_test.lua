@@ -62,12 +62,14 @@ function series_and_archetype_direct_setup(mockres)
   local env = runner.env_override({
     ["YAMLYUGI_TEST_SERIES_AND_ARCHETYPE_ENTID"] = {},
     ["YAMLYUGI_TEST_LIVE"] = "FALSE",
+    ["YAMLYUGI_APIKEY"] = "NONE",
   })
 
   local live = env["YAMLYUGI_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["YAMLYUGI_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

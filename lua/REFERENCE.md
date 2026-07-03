@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -118,7 +118,7 @@ local aggregation = client:Aggregation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Aggregation(nil):load({ id = "aggregation_id" }, nil)
+local result, err = client:Aggregation():load({ id = "aggregation_id" })
 ```
 
 ### Common Methods
@@ -183,7 +183,7 @@ local card = client:Card(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Card(nil):list(nil, nil)
+local results, err = client:Card():list()
 ```
 
 ### Common Methods
@@ -229,7 +229,7 @@ local individual_card = client:IndividualCard(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:IndividualCard(nil):load({ id = "individual_card_id" }, nil)
+local result, err = client:IndividualCard():load({ id = "individual_card_id" })
 ```
 
 ### Common Methods
@@ -282,7 +282,7 @@ local series = client:Series(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Series(nil):list(nil, nil)
+local results, err = client:Series():list()
 ```
 
 ### Common Methods
@@ -335,7 +335,7 @@ local series_and_archetype = client:SeriesAndArchetype(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:SeriesAndArchetype(nil):load({ id = "series_and_archetype_id" }, nil)
+local result, err = client:SeriesAndArchetype():load({ id = "series_and_archetype_id" })
 ```
 
 ### Common Methods
@@ -391,7 +391,7 @@ local skill = client:Skill(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Skill(nil):list(nil, nil)
+local results, err = client:Skill():list()
 ```
 
 ### Common Methods
@@ -447,7 +447,7 @@ local skill_card = client:SkillCard(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:SkillCard(nil):load({ id = "skill_card_id" }, nil)
+local result, err = client:SkillCard():load({ id = "skill_card_id" })
 ```
 
 ### Common Methods

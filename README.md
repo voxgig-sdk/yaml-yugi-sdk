@@ -1,21 +1,8 @@
 # YamlYugi SDK
 
-Machine-readable, human-editable Yu-Gi-Oh! card database covering TCG, OCG, Master Duel, Rush Duel and Speed Duel
+YAML Yugi client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About YAML Yugi
-
-[YAML Yugi](https://github.com/DawnbrandBots/yaml-yugi) is a community-maintained, machine-readable Yu-Gi-Oh! card database run by [DawnbrandBots](https://github.com/DawnbrandBots). It covers the Trading Card Game (TCG), Official Card Game (OCG), the Master Duel video game, Rush Duel and Speed Duel formats, and is the data source behind the Bastion Discord bot.
-
-What you get from the API:
-
-- Aggregated dumps of every OCG/TCG card (`cards.json` / `cards.yaml`) and every Rush Duel card (`rush.json` / `rush.yaml`).
-- A raw Master Duel snapshot (`master-duel-raw.json`) and a Speed Duel skill-card dump (`skill.json`).
-- Individual card files keyed by password (`/data/cards/<password>.json`), Konami ID (`/data/cards/kdb<id>.json`) or Yugipedia page id (`/data/cards/yugipedia<id>.json`).
-- Series and archetype indexes under `/data/series/list.json` and `/data/series/map.json`.
-
-Operational notes: the data is served as static files from GitHub Pages at `https://dawnbrandbots.github.io/yaml-yugi`, so there is no authentication or per-call rate limit beyond GitHub's CDN policy. CORS is enabled. Files are regenerated continuously from upstream sources, with both JSON and YAML representations available for most aggregations.
 
 ## Try it
 
@@ -49,27 +36,31 @@ gem install yaml-yugi-sdk
 luarocks install yaml-yugi-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { YamlYugiSDK } from 'yaml-yugi'
 
-const client = new YamlYugiSDK({})
+const client = new YamlYugiSDK({
+  apikey: process.env.YAML-YUGI_APIKEY,
+})
 
+// Load aggregation data
+const aggregation = await client.Aggregation().load({})
+console.log(aggregation.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,13 +90,13 @@ The API exposes 7 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Aggregation** | Bulk dumps of every card or skill in a given format, e.g. `cards.json`, `cards.yaml`, `rush.json`, `master-duel-raw.json` and `skill.json` under the site root. | `/cards.yaml` |
-| **Card** | An OCG/TCG card record as it appears inside the aggregated `cards.json` / `cards.yaml` dump. | `/data/cards/{cardId}.json` |
-| **IndividualCard** | A single card fetched from its own file at `/data/cards/<password>.json`, `/data/cards/kdb<konami_id>.json` or `/data/cards/yugipedia<page_id>.json`. | `/data/cards/{cardId}.yaml` |
-| **Series** | A Yu-Gi-Oh! series or archetype entry listed in `/data/series/list.json`. | `/data/series/list.json` |
-| **SeriesAndArchetype** | The combined series/archetype lookup map exposed at `/data/series/map.json`, linking cards to the series and archetypes they belong to. | `/data/series/list.yaml` |
-| **Skill** | A Speed Duel skill entry from the aggregated `skill.json` dump. | `/skill.json` |
-| **SkillCard** | An individual Speed Duel skill card file under `/data/tcg-speed-skill/yugipedia<page_id>.json`. | `/data/tcg-speed-skill/{yugipediaId}.json` |
+| **Aggregation** |  | `/cards.yaml` |
+| **Card** |  | `/data/cards/{cardId}.json` |
+| **IndividualCard** |  | `/data/cards/{cardId}.yaml` |
+| **Series** |  | `/data/series/list.json` |
+| **SeriesAndArchetype** |  | `/data/series/list.yaml` |
+| **Skill** |  | `/skill.json` |
+| **SkillCard** |  | `/data/tcg-speed-skill/{yugipediaId}.json` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -115,15 +106,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from yamlyugi_sdk import YamlYugiSDK
 
-client = YamlYugiSDK({})
+client = YamlYugiSDK({
+    "apikey": os.environ.get("YAML-YUGI_APIKEY"),
+})
 
 
 # Load a specific aggregation
-aggregation, err = client.Aggregation(None).load(
-    {"id": "example_id"}, None
-)
+aggregation, err = client.Aggregation().load({"id": "example_id"})
+print(aggregation)
 ```
 
 ### PHP
@@ -132,13 +125,14 @@ aggregation, err = client.Aggregation(None).load(
 <?php
 require_once 'yamlyugi_sdk.php';
 
-$client = new YamlYugiSDK([]);
+$client = new YamlYugiSDK([
+    "apikey" => getenv("YAML-YUGI_APIKEY"),
+]);
 
 
 // Load a specific aggregation
-[$aggregation, $err] = $client->Aggregation(null)->load(
-    ["id" => "example_id"], null
-);
+[$aggregation, $err] = $client->Aggregation()->load(["id" => "example_id"]);
+print_r($aggregation);
 ```
 
 ### Golang
@@ -146,8 +140,13 @@ $client = new YamlYugiSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/yaml-yugi-sdk/go"
 
-client := sdk.NewYamlYugiSDK(map[string]any{})
+client := sdk.NewYamlYugiSDK(map[string]any{
+    "apikey": os.Getenv("YAML-YUGI_APIKEY"),
+})
 
+// Load aggregation data
+aggregation, err := client.Aggregation(nil).Load(map[string]any{}, nil)
+fmt.Println(aggregation)
 ```
 
 ### Ruby
@@ -155,13 +154,14 @@ client := sdk.NewYamlYugiSDK(map[string]any{})
 ```ruby
 require_relative "YamlYugi_sdk"
 
-client = YamlYugiSDK.new({})
+client = YamlYugiSDK.new({
+  "apikey" => ENV["YAML-YUGI_APIKEY"],
+})
 
 
 # Load a specific aggregation
-aggregation, err = client.Aggregation(nil).load(
-  { "id" => "example_id" }, nil
-)
+aggregation, err = client.Aggregation().load({ "id" => "example_id" })
+puts aggregation
 ```
 
 ### Lua
@@ -169,13 +169,14 @@ aggregation, err = client.Aggregation(nil).load(
 ```lua
 local sdk = require("yaml-yugi_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("YAML-YUGI_APIKEY"),
+})
 
 
 -- Load a specific aggregation
-local aggregation, err = client:Aggregation(nil):load(
-  { id = "example_id" }, nil
-)
+local aggregation, err = client:Aggregation():load({ id = "example_id" })
+print(aggregation)
 ```
 
 ## Unit testing in offline mode
@@ -194,25 +195,21 @@ const result = await client.Aggregation().load({ id: 'test01' })
 ### Python
 
 ```python
-client = YamlYugiSDK.test(None, None)
-result, err = client.Aggregation(None).load(
-    {"id": "test01"}, None
-)
+client = YamlYugiSDK.test()
+result, err = client.Aggregation().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = YamlYugiSDK::test(null, null);
-[$result, $err] = $client->Aggregation(null)->load(
-    ["id" => "test01"], null
-);
+$client = YamlYugiSDK::test();
+[$result, $err] = $client->Aggregation()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Aggregation(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -221,19 +218,15 @@ result, err := client.Aggregation(nil).Load(
 ### Ruby
 
 ```ruby
-client = YamlYugiSDK.test(nil, nil)
-result, err = client.Aggregation(nil).load(
-  { "id" => "test01" }, nil
-)
+client = YamlYugiSDK.test
+result, err = client.Aggregation().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Aggregation(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Aggregation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -337,16 +330,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the YAML Yugi
-
-- Upstream: [https://github.com/DawnbrandBots/yaml-yugi](https://github.com/DawnbrandBots/yaml-yugi)
-- API docs: [https://github.com/DawnbrandBots/yaml-yugi#readme](https://github.com/DawnbrandBots/yaml-yugi#readme)
-
-- Source code and data pipeline are licensed under the GNU Affero General Public License v3.0 or later.
-- Card names, text and artwork remain the property of Studio Dice/SHUEISHA, TV TOKYO and KONAMI.
-- Aggregated card data is published on GitHub Pages for community and tooling use; check the upstream repo for current terms before redistribution.
-- This SDK is an unaffiliated convenience wrapper and not endorsed by Konami.
 
 ---
 

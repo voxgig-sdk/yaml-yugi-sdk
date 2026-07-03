@@ -1,9 +1,995 @@
 {
-  "name": "yaml-yugi",
-  "origin": "voxgig-sdk",
   "def": "yaml-yugi_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "aggregation": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [],
+          "name": "aggregation",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/cards.yaml",
+                  "parts": [
+                    "cards.yaml"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/rush.yaml",
+                  "parts": [
+                    "rush.yaml"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "card": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "active": true,
+              "name": "archetype",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "atk",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "attribute",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "card_type",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "def",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "format",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "konami_id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "level",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "link_rating",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "name",
+              "req": false,
+              "type": "`$OBJECT`"
+            },
+            {
+              "active": true,
+              "name": "password",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "rank",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "text",
+              "req": false,
+              "type": "`$OBJECT`"
+            },
+            {
+              "active": true,
+              "name": "type",
+              "req": false,
+              "type": "`$STRING`"
+            }
+          ],
+          "name": "card",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "active": true,
+                  "args": {
+                    "params": [
+                      {
+                        "active": true,
+                        "example": "00010000",
+                        "kind": "param",
+                        "name": "card_id",
+                        "orig": "card_id",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/data/cards/{cardId}.json",
+                  "parts": [
+                    "data",
+                    "cards",
+                    "{cardId}.json"
+                  ],
+                  "select": {
+                    "$action": "card_id",
+                    "exist": [
+                      "card_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {
+                    "params": [
+                      {
+                        "active": true,
+                        "example": "15150",
+                        "kind": "param",
+                        "name": "konami_id",
+                        "orig": "konami_id",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/data/rush/{konamiId}.json",
+                  "parts": [
+                    "data",
+                    "rush",
+                    "{konamiId}.json"
+                  ],
+                  "select": {
+                    "exist": [
+                      "konami_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/cards.json",
+                  "parts": [
+                    "cards.json"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/master-duel-raw.json",
+                  "parts": [
+                    "master-duel-raw.json"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/rush.json",
+                  "parts": [
+                    "rush.json"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "card"
+              ],
+              [
+                "rush"
+              ]
+            ]
+          }
+        },
+        "individual_card": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [],
+          "name": "individual_card",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "active": true,
+                  "args": {
+                    "params": [
+                      {
+                        "active": true,
+                        "example": "00010000",
+                        "kind": "param",
+                        "name": "card_id",
+                        "orig": "card_id",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/data/cards/{cardId}.yaml",
+                  "parts": [
+                    "data",
+                    "cards",
+                    "{cardId}.yaml"
+                  ],
+                  "select": {
+                    "exist": [
+                      "card_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {
+                    "params": [
+                      {
+                        "active": true,
+                        "example": "15150",
+                        "kind": "param",
+                        "name": "konami_id",
+                        "orig": "konami_id",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/data/rush/{konamiId}.yaml",
+                  "parts": [
+                    "data",
+                    "rush",
+                    "{konamiId}.yaml"
+                  ],
+                  "select": {
+                    "exist": [
+                      "konami_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {
+                    "params": [
+                      {
+                        "active": true,
+                        "example": "yugipedia585581",
+                        "kind": "param",
+                        "name": "yugipedia_id",
+                        "orig": "yugipedia_id",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
+                  "parts": [
+                    "data",
+                    "tcg-speed-skill",
+                    "{yugipediaId}.yaml"
+                  ],
+                  "select": {
+                    "exist": [
+                      "yugipedia_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "card"
+              ],
+              [
+                "rush"
+              ],
+              [
+                "tcg_speed_skill"
+              ]
+            ]
+          }
+        },
+        "series": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "active": true,
+              "name": "card",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "name",
+              "req": false,
+              "type": "`$OBJECT`"
+            }
+          ],
+          "name": "series",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/data/series/list.json",
+                  "parts": [
+                    "data",
+                    "series",
+                    "list.json"
+                  ],
+                  "select": {
+                    "$action": "list"
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "series_and_archetype": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "active": true,
+              "name": "card",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "name",
+              "req": false,
+              "type": "`$OBJECT`"
+            }
+          ],
+          "name": "series_and_archetype",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/data/series/list.yaml",
+                  "parts": [
+                    "data",
+                    "series",
+                    "list.yaml"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/data/series/map.json",
+                  "parts": [
+                    "data",
+                    "series",
+                    "map.json"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/data/series/map.yaml",
+                  "parts": [
+                    "data",
+                    "series",
+                    "map.yaml"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "skill": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "active": true,
+              "name": "card_type",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "character",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "name",
+              "req": false,
+              "type": "`$OBJECT`"
+            },
+            {
+              "active": true,
+              "name": "text",
+              "req": false,
+              "type": "`$OBJECT`"
+            },
+            {
+              "active": true,
+              "name": "yugipedia_id",
+              "req": false,
+              "type": "`$STRING`"
+            }
+          ],
+          "name": "skill",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "active": true,
+                  "args": {},
+                  "method": "GET",
+                  "orig": "/skill.json",
+                  "parts": [
+                    "skill.json"
+                  ],
+                  "select": {},
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "skill_card": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "active": true,
+              "name": "card_type",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "character",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "name",
+              "req": false,
+              "type": "`$OBJECT`"
+            },
+            {
+              "active": true,
+              "name": "text",
+              "req": false,
+              "type": "`$OBJECT`"
+            },
+            {
+              "active": true,
+              "name": "yugipedia_id",
+              "req": false,
+              "type": "`$STRING`"
+            }
+          ],
+          "name": "skill_card",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "active": true,
+                  "args": {
+                    "params": [
+                      {
+                        "active": true,
+                        "example": "yugipedia585581",
+                        "kind": "param",
+                        "name": "yugipedia_id",
+                        "orig": "yugipedia_id",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/data/tcg-speed-skill/{yugipediaId}.json",
+                  "parts": [
+                    "data",
+                    "tcg-speed-skill",
+                    "{yugipediaId}.json"
+                  ],
+                  "select": {
+                    "exist": [
+                      "yugipedia_id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "tcg_speed_skill"
+              ]
+            ]
+          }
+        }
+      },
+      "feature": {
+        "test": {
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
+              "await": false
+            }
+          },
+          "name": "test",
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
+        }
+      },
+      "flow": {
+        "BasicAggregationFlow": {
+          "active": true,
+          "entity": "aggregation",
+          "key$": "BasicAggregationFlow",
+          "kind": "basic",
+          "name": "BasicAggregationFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "aggregation_ref01",
+                "srcdatavar": "aggregation_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {},
+              "op": "load",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-aggregation_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicCardFlow": {
+          "active": true,
+          "entity": "card",
+          "key$": "BasicCardFlow",
+          "kind": "basic",
+          "name": "BasicCardFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {},
+              "match": {},
+              "op": "list",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "card_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicIndividualCardFlow": {
+          "active": true,
+          "entity": "individual_card",
+          "key$": "BasicIndividualCardFlow",
+          "kind": "basic",
+          "name": "BasicIndividualCardFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "individual_card_ref01",
+                "srcdatavar": "individual_card_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "yugipedia_id": "yugipedia01"
+              },
+              "op": "load",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-individual_card_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicSeriesAndArchetypeFlow": {
+          "active": true,
+          "entity": "series_and_archetype",
+          "key$": "BasicSeriesAndArchetypeFlow",
+          "kind": "basic",
+          "name": "BasicSeriesAndArchetypeFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "series_and_archetype_ref01",
+                "srcdatavar": "series_and_archetype_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {},
+              "op": "load",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-series_and_archetype_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicSeriesFlow": {
+          "active": true,
+          "entity": "series",
+          "key$": "BasicSeriesFlow",
+          "kind": "basic",
+          "name": "BasicSeriesFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {},
+              "match": {},
+              "op": "list",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "series_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicSkillCardFlow": {
+          "active": true,
+          "entity": "skill_card",
+          "key$": "BasicSkillCardFlow",
+          "kind": "basic",
+          "name": "BasicSkillCardFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "skill_card_ref01",
+                "srcdatavar": "skill_card_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "yugipedia_id": "yugipedia01"
+              },
+              "op": "load",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-skill_card_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicSkillFlow": {
+          "active": true,
+          "entity": "skill",
+          "key$": "BasicSkillFlow",
+          "kind": "basic",
+          "name": "BasicSkillFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {},
+              "match": {},
+              "op": "list",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "skill_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
       "info": {
         "contact": {
           "url": "https://github.com/DawnbrandBots/yaml-yugi"
@@ -32,1017 +1018,35 @@
           }
         ],
         "title": "YAML Yugi",
-        "version": "1.0.0",
-        "tagline": "Machine-readable, human-editable Yu-Gi-Oh! card database covering TCG, OCG, Master Duel, Rush Duel and Speed Duel",
-        "homepage": "https://github.com/DawnbrandBots/yaml-yugi",
-        "docs_url": "https://github.com/DawnbrandBots/yaml-yugi#readme",
-        "license_short": "AGPL-3.0-or-later (source); card text remains (c) Studio Dice/SHUEISHA, TV TOKYO, KONAMI",
-        "license_md": "- Source code and data pipeline are licensed under the GNU Affero General Public License v3.0 or later.\n- Card names, text and artwork remain the property of Studio Dice/SHUEISHA, TV TOKYO and KONAMI.\n- Aggregated card data is published on GitHub Pages for community and tooling use; check the upstream repo for current terms before redistribution.\n- This SDK is an unaffiliated convenience wrapper and not endorsed by Konami.",
-        "about_md": "[YAML Yugi](https://github.com/DawnbrandBots/yaml-yugi) is a community-maintained, machine-readable Yu-Gi-Oh! card database run by [DawnbrandBots](https://github.com/DawnbrandBots). It covers the Trading Card Game (TCG), Official Card Game (OCG), the Master Duel video game, Rush Duel and Speed Duel formats, and is the data source behind the Bastion Discord bot.\n\nWhat you get from the API:\n\n- Aggregated dumps of every OCG/TCG card (`cards.json` / `cards.yaml`) and every Rush Duel card (`rush.json` / `rush.yaml`).\n- A raw Master Duel snapshot (`master-duel-raw.json`) and a Speed Duel skill-card dump (`skill.json`).\n- Individual card files keyed by password (`/data/cards/<password>.json`), Konami ID (`/data/cards/kdb<id>.json`) or Yugipedia page id (`/data/cards/yugipedia<id>.json`).\n- Series and archetype indexes under `/data/series/list.json` and `/data/series/map.json`.\n\nOperational notes: the data is served as static files from GitHub Pages at `https://dawnbrandbots.github.io/yaml-yugi`, so there is no authentication or per-call rate limit beyond GitHub's CDN policy. CORS is enabled. Files are regenerated continuously from upstream sources, with both JSON and YAML representations available for most aggregations.",
-        "entity_desc": {
-          "aggregation": "Bulk dumps of every card or skill in a given format, e.g. `cards.json`, `cards.yaml`, `rush.json`, `master-duel-raw.json` and `skill.json` under the site root.",
-          "card": "An OCG/TCG card record as it appears inside the aggregated `cards.json` / `cards.yaml` dump.",
-          "individual_card": "A single card fetched from its own file at `/data/cards/<password>.json`, `/data/cards/kdb<konami_id>.json` or `/data/cards/yugipedia<page_id>.json`.",
-          "series": "A Yu-Gi-Oh! series or archetype entry listed in `/data/series/list.json`.",
-          "series_and_archetype": "The combined series/archetype lookup map exposed at `/data/series/map.json`, linking cards to the series and archetypes they belong to.",
-          "skill": "A Speed Duel skill entry from the aggregated `skill.json` dump.",
-          "skill_card": "An individual Speed Duel skill card file under `/data/tcg-speed-skill/yugipedia<page_id>.json`."
-        },
-        "auth": false
+        "version": "1.0.0"
       },
-      "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
-        },
-        "docs_order": [
-          "ts",
-          "py",
-          "php",
-          "go",
-          "rb",
-          "lua"
-        ]
-      },
-      "entity": {
-        "aggregation": {
-          "alias": {
-            "field": {}
-          },
-          "name": "aggregation",
-          "op": {
-            "load": {
-              "name": "load",
-              "points": [
-                {
-                  "method": "GET",
-                  "orig": "/cards.yaml",
-                  "parts": [
-                    "cards.yaml"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                },
-                {
-                  "method": "GET",
-                  "orig": "/rush.yaml",
-                  "parts": [
-                    "rush.yaml"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "fields": [],
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "card": {
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "name": "archetype",
-              "req": false,
-              "type": "`$ARRAY`",
-              "active": true
-            },
-            {
-              "name": "atk",
-              "req": false,
-              "type": "`$INTEGER`",
-              "active": true
-            },
-            {
-              "name": "attribute",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "card_type",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "def",
-              "req": false,
-              "type": "`$INTEGER`",
-              "active": true
-            },
-            {
-              "name": "format",
-              "req": false,
-              "type": "`$ARRAY`",
-              "active": true
-            },
-            {
-              "name": "konami_id",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "level",
-              "req": false,
-              "type": "`$INTEGER`",
-              "active": true
-            },
-            {
-              "name": "link_rating",
-              "req": false,
-              "type": "`$INTEGER`",
-              "active": true
-            },
-            {
-              "name": "name",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            },
-            {
-              "name": "password",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "rank",
-              "req": false,
-              "type": "`$INTEGER`",
-              "active": true
-            },
-            {
-              "name": "text",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            },
-            {
-              "name": "type",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            }
-          ],
-          "name": "card",
-          "op": {
-            "list": {
-              "name": "list",
-              "points": [
-                {
-                  "args": {
-                    "params": [
-                      {
-                        "example": "00010000",
-                        "kind": "param",
-                        "name": "card_id",
-                        "orig": "card_id",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/data/cards/{cardId}.json",
-                  "parts": [
-                    "data",
-                    "cards",
-                    "{cardId}.json"
-                  ],
-                  "select": {
-                    "$action": "card_id",
-                    "exist": [
-                      "card_id"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                },
-                {
-                  "args": {
-                    "params": [
-                      {
-                        "example": "15150",
-                        "kind": "param",
-                        "name": "konami_id",
-                        "orig": "konami_id",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/data/rush/{konamiId}.json",
-                  "parts": [
-                    "data",
-                    "rush",
-                    "{konamiId}.json"
-                  ],
-                  "select": {
-                    "exist": [
-                      "konami_id"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                },
-                {
-                  "method": "GET",
-                  "orig": "/cards.json",
-                  "parts": [
-                    "cards.json"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                },
-                {
-                  "method": "GET",
-                  "orig": "/master-duel-raw.json",
-                  "parts": [
-                    "master-duel-raw.json"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                },
-                {
-                  "method": "GET",
-                  "orig": "/rush.json",
-                  "parts": [
-                    "rush.json"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "relations": {
-            "ancestors": [
-              [
-                "card"
-              ],
-              [
-                "rush"
-              ]
-            ]
-          },
-          "active": true
-        },
-        "individual_card": {
-          "alias": {
-            "field": {}
-          },
-          "name": "individual_card",
-          "op": {
-            "load": {
-              "name": "load",
-              "points": [
-                {
-                  "args": {
-                    "params": [
-                      {
-                        "example": "00010000",
-                        "kind": "param",
-                        "name": "card_id",
-                        "orig": "card_id",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/data/cards/{cardId}.yaml",
-                  "parts": [
-                    "data",
-                    "cards",
-                    "{cardId}.yaml"
-                  ],
-                  "select": {
-                    "exist": [
-                      "card_id"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                },
-                {
-                  "args": {
-                    "params": [
-                      {
-                        "example": "15150",
-                        "kind": "param",
-                        "name": "konami_id",
-                        "orig": "konami_id",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/data/rush/{konamiId}.yaml",
-                  "parts": [
-                    "data",
-                    "rush",
-                    "{konamiId}.yaml"
-                  ],
-                  "select": {
-                    "exist": [
-                      "konami_id"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                },
-                {
-                  "args": {
-                    "params": [
-                      {
-                        "example": "yugipedia585581",
-                        "kind": "param",
-                        "name": "yugipedia_id",
-                        "orig": "yugipedia_id",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
-                  "parts": [
-                    "data",
-                    "tcg-speed-skill",
-                    "{yugipediaId}.yaml"
-                  ],
-                  "select": {
-                    "exist": [
-                      "yugipedia_id"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "relations": {
-            "ancestors": [
-              [
-                "card"
-              ],
-              [
-                "rush"
-              ],
-              [
-                "tcg_speed_skill"
-              ]
-            ]
-          },
-          "active": true,
-          "fields": []
-        },
-        "series": {
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "name": "card",
-              "req": false,
-              "type": "`$ARRAY`",
-              "active": true
-            },
-            {
-              "name": "name",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            }
-          ],
-          "name": "series",
-          "op": {
-            "list": {
-              "name": "list",
-              "points": [
-                {
-                  "method": "GET",
-                  "orig": "/data/series/list.json",
-                  "parts": [
-                    "data",
-                    "series",
-                    "list.json"
-                  ],
-                  "select": {
-                    "$action": "list"
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {}
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "series_and_archetype": {
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "name": "card",
-              "req": false,
-              "type": "`$ARRAY`",
-              "active": true
-            },
-            {
-              "name": "name",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            }
-          ],
-          "name": "series_and_archetype",
-          "op": {
-            "load": {
-              "name": "load",
-              "points": [
-                {
-                  "method": "GET",
-                  "orig": "/data/series/list.yaml",
-                  "parts": [
-                    "data",
-                    "series",
-                    "list.yaml"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                },
-                {
-                  "method": "GET",
-                  "orig": "/data/series/map.json",
-                  "parts": [
-                    "data",
-                    "series",
-                    "map.json"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                },
-                {
-                  "method": "GET",
-                  "orig": "/data/series/map.yaml",
-                  "parts": [
-                    "data",
-                    "series",
-                    "map.yaml"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "skill": {
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "name": "card_type",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "character",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "name",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            },
-            {
-              "name": "text",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            },
-            {
-              "name": "yugipedia_id",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            }
-          ],
-          "name": "skill",
-          "op": {
-            "list": {
-              "name": "list",
-              "points": [
-                {
-                  "method": "GET",
-                  "orig": "/skill.json",
-                  "parts": [
-                    "skill.json"
-                  ],
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "skill_card": {
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "name": "card_type",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "character",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            },
-            {
-              "name": "name",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            },
-            {
-              "name": "text",
-              "req": false,
-              "type": "`$OBJECT`",
-              "active": true
-            },
-            {
-              "name": "yugipedia_id",
-              "req": false,
-              "type": "`$STRING`",
-              "active": true
-            }
-          ],
-          "name": "skill_card",
-          "op": {
-            "load": {
-              "name": "load",
-              "points": [
-                {
-                  "args": {
-                    "params": [
-                      {
-                        "example": "yugipedia585581",
-                        "kind": "param",
-                        "name": "yugipedia_id",
-                        "orig": "yugipedia_id",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/data/tcg-speed-skill/{yugipediaId}.json",
-                  "parts": [
-                    "data",
-                    "tcg-speed-skill",
-                    "{yugipediaId}.json"
-                  ],
-                  "select": {
-                    "exist": [
-                      "yugipedia_id"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "relations": {
-            "ancestors": [
-              [
-                "tcg_speed_skill"
-              ]
-            ]
-          },
-          "active": true
-        }
-      },
-      "feature": {
-        "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
-          "active": true,
-          "config": {
-            "options": {
-              "active": false
-            }
-          },
-          "hook": {
-            "PostConstruct": {
-              "active": true,
-              "await": false
-            },
-            "PostConstructEntity": {
-              "active": true,
-              "await": false
-            },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
-              "await": false
-            },
-            "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
-              "active": true,
-              "await": false
-            },
-            "PreRequest": {
-              "active": true,
-              "await": false
-            },
-            "PreResponse": {
-              "active": true,
-              "await": false
-            },
-            "PreResult": {
-              "active": true,
-              "await": false
-            },
-            "PreTarget": {
-              "active": false,
-              "await": false
-            },
-            "PostOperation": {
-              "active": false,
-              "await": false
-            }
-          },
-          "target": {
-            "ts": {
-              "deps": {}
-            },
-            "go": {
-              "deps": {}
-            },
-            "lua": {
-              "deps": {}
-            },
-            "php": {
-              "deps": {}
-            },
-            "py": {
-              "deps": {}
-            },
-            "rb": {
-              "deps": {}
-            },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
-              "deps": {}
-            }
-          }
-        }
-      },
-      "flow": {
-        "BasicAggregationFlow": {
-          "entity": "aggregation",
-          "kind": "basic",
-          "name": "BasicAggregationFlow",
-          "step": [
-            {
-              "input": {
-                "ref": "aggregation_ref01",
-                "srcdatavar": "aggregation_ref01_data",
-                "suffix": "_dt0"
-              },
-              "op": "load",
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-aggregation_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicAggregationFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicCardFlow": {
-          "entity": "card",
-          "kind": "basic",
-          "name": "BasicCardFlow",
-          "step": [
-            {
-              "op": "list",
-              "valid": [
-                {
-                  "apply": "ItemExists",
-                  "def": {
-                    "ref": "card_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "input": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicCardFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicIndividualCardFlow": {
-          "entity": "individual_card",
-          "kind": "basic",
-          "name": "BasicIndividualCardFlow",
-          "step": [
-            {
-              "input": {
-                "ref": "individual_card_ref01",
-                "srcdatavar": "individual_card_ref01_data",
-                "suffix": "_dt0"
-              },
-              "match": {
-                "yugipedia_id": "yugipedia01"
-              },
-              "op": "load",
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-individual_card_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicIndividualCardFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicSeriesAndArchetypeFlow": {
-          "entity": "series_and_archetype",
-          "kind": "basic",
-          "name": "BasicSeriesAndArchetypeFlow",
-          "step": [
-            {
-              "input": {
-                "ref": "series_and_archetype_ref01",
-                "srcdatavar": "series_and_archetype_ref01_data",
-                "suffix": "_dt0"
-              },
-              "op": "load",
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-series_and_archetype_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicSeriesAndArchetypeFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicSeriesFlow": {
-          "entity": "series",
-          "kind": "basic",
-          "name": "BasicSeriesFlow",
-          "step": [
-            {
-              "op": "list",
-              "valid": [
-                {
-                  "apply": "ItemExists",
-                  "def": {
-                    "ref": "series_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "input": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicSeriesFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicSkillCardFlow": {
-          "entity": "skill_card",
-          "kind": "basic",
-          "name": "BasicSkillCardFlow",
-          "step": [
-            {
-              "input": {
-                "ref": "skill_card_ref01",
-                "srcdatavar": "skill_card_ref01_data",
-                "suffix": "_dt0"
-              },
-              "match": {
-                "yugipedia_id": "yugipedia01"
-              },
-              "op": "load",
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-skill_card_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicSkillCardFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicSkillFlow": {
-          "entity": "skill",
-          "kind": "basic",
-          "name": "BasicSkillFlow",
-          "step": [
-            {
-              "op": "list",
-              "valid": [
-                {
-                  "apply": "ItemExists",
-                  "def": {
-                    "ref": "skill_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "input": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicSkillFlow",
-          "active": true,
-          "param": {}
-        }
-      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "yaml-yugi"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "yaml-yugi"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -1057,19 +1061,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "yaml-yugi"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -1084,138 +1088,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "yaml-yugi"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "yaml-yugi"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "yaml-yugi"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "yaml-yugi"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "yaml-yugi"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "yaml-yugi"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "yaml-yugi"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "yaml-yugi"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "yaml-yugi"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "yaml-yugi",
+  "origin": "voxgig-sdk"
 }

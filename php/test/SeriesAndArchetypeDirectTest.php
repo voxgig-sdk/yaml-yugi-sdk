@@ -67,12 +67,14 @@ function series_and_archetype_direct_setup($mockres)
     $env = Runner::env_override([
         "YAMLYUGI_TEST_SERIES_AND_ARCHETYPE_ENTID" => [],
         "YAMLYUGI_TEST_LIVE" => "FALSE",
+        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $live = $env["YAMLYUGI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["YAMLYUGI_APIKEY"],
         ];
         $client = new YamlYugiSDK($merged_opts);
         return [
