@@ -42,8 +42,7 @@ class IndividualCardEntityTest < Minitest::Test
     # LOAD
     individual_card_ref01_ent = client.IndividualCard(nil)
     individual_card_ref01_match_dt0 = {}
-    individual_card_ref01_data_dt0_loaded, err = individual_card_ref01_ent.load(individual_card_ref01_match_dt0, nil)
-    assert_nil err
+    individual_card_ref01_data_dt0_loaded = individual_card_ref01_ent.load(individual_card_ref01_match_dt0, nil)
     assert !individual_card_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def individual_card_basic_setup(extra)
     "YAMLYUGI_TEST_INDIVIDUAL_CARD_ENTID" => idmap,
     "YAMLYUGI_TEST_LIVE" => "FALSE",
     "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-    "YAMLYUGI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def individual_card_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["YAMLYUGI_APIKEY"],
       },
       extra || {},
     ])

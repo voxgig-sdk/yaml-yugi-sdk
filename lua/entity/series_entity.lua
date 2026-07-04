@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SeriesListMatch
+---@param ctrl? table
+---@return Series[]
+---@return string? err
 function SeriesEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

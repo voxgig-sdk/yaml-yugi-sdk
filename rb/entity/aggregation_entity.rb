@@ -45,6 +45,7 @@ class AggregationEntity
     end
   end
 
+  # @return [Aggregation, Hash] the current Aggregation data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class AggregationEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Aggregation fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Aggregation.
+  #
+  # @param reqmatch [AggregationLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Aggregation, Hash] the loaded Aggregation; raises YamlYugiError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

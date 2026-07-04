@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  IndividualCard,
+  IndividualCardLoadMatch,
+} from '../YamlYugiTypes'
 
 // TODO: needs Entity superclass
-class IndividualCardEntity extends YamlYugiEntityBase {
+class IndividualCardEntity extends YamlYugiEntityBase<IndividualCard> {
 
   constructor(client: YamlYugiSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class IndividualCardEntity extends YamlYugiEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: IndividualCardLoadMatch, ctrl?: Control): Promise<IndividualCard> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class IndividualCardEntity extends YamlYugiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<IndividualCard> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

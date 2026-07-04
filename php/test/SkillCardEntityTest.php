@@ -49,8 +49,7 @@ class SkillCardEntityTest extends TestCase
         // LOAD
         $skill_card_ref01_ent = $client->SkillCard(null);
         $skill_card_ref01_match_dt0 = [];
-        [$skill_card_ref01_data_dt0_loaded, $err] = $skill_card_ref01_ent->load($skill_card_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $skill_card_ref01_data_dt0_loaded = $skill_card_ref01_ent->load($skill_card_ref01_match_dt0, null);
         $this->assertNotNull($skill_card_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function skill_card_basic_setup($extra)
         "YAMLYUGI_TEST_SKILL_CARD_ENTID" => $idmap,
         "YAMLYUGI_TEST_LIVE" => "FALSE",
         "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function skill_card_basic_setup($extra)
     if ($env["YAMLYUGI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["YAMLYUGI_APIKEY"],
             ],
             $extra ?? [],
         ]);

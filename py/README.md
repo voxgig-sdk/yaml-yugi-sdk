@@ -9,11 +9,9 @@ The Python SDK for the YamlYugi API — an entity-oriented client following Pyth
 
 
 ## Install
-```bash
-pip install voxgig-sdk-yaml-yugi
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/yaml-yugi-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,21 +26,19 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from yamlyugi_sdk import YamlYugiSDK
 
-client = YamlYugiSDK({
-    "apikey": os.environ.get("YAML-YUGI_APIKEY"),
-})
+client = YamlYugiSDK()
 ```
 
-### 3. Load a aggregation
+### 3. Load an aggregation
 
 ```python
-result, err = client.Aggregation().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.aggregation.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -53,29 +49,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -89,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = YamlYugiSDK.test()
 
-result, err = client.YamlYugi().load({"id": "test01"})
+result = client.aggregation.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -119,8 +114,7 @@ client = YamlYugiSDK({
 Create a `.env.local` file at the project root:
 
 ```
-YAML-YUGI_TEST_LIVE=TRUE
-YAML-YUGI_APIKEY=<your-key>
+YAML_YUGI_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -166,8 +159,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Aggregation` | `(data) -> AggregationEntity` | Create a Aggregation entity instance. |
 | `Card` | `(data) -> CardEntity` | Create a Card entity instance. |
 | `IndividualCard` | `(data) -> IndividualCardEntity` | Create a IndividualCard entity instance. |
@@ -182,11 +175,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -196,8 +189,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -308,7 +305,7 @@ API path: `/data/tcg-speed-skill/{yugipediaId}.json`
 
 ### Aggregation
 
-Create an instance: `const aggregation = client.Aggregation()`
+Create an instance: `const aggregation = client.aggregation`
 
 #### Operations
 
@@ -319,13 +316,13 @@ Create an instance: `const aggregation = client.Aggregation()`
 #### Example: Load
 
 ```ts
-const aggregation = await client.Aggregation().load({ id: 'aggregation_id' })
+const aggregation = await client.aggregation.load({ id: 'aggregation_id' })
 ```
 
 
 ### Card
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const card = client.card`
 
 #### Operations
 
@@ -355,13 +352,13 @@ Create an instance: `const card = client.Card()`
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.card.list()
 ```
 
 
 ### IndividualCard
 
-Create an instance: `const individual_card = client.IndividualCard()`
+Create an instance: `const individual_card = client.individual_card`
 
 #### Operations
 
@@ -372,13 +369,13 @@ Create an instance: `const individual_card = client.IndividualCard()`
 #### Example: Load
 
 ```ts
-const individual_card = await client.IndividualCard().load({ id: 'individual_card_id' })
+const individual_card = await client.individual_card.load({ id: 'individual_card_id' })
 ```
 
 
 ### Series
 
-Create an instance: `const series = client.Series()`
+Create an instance: `const series = client.series`
 
 #### Operations
 
@@ -396,13 +393,13 @@ Create an instance: `const series = client.Series()`
 #### Example: List
 
 ```ts
-const seriess = await client.Series().list()
+const seriess = await client.series.list()
 ```
 
 
 ### SeriesAndArchetype
 
-Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
+Create an instance: `const series_and_archetype = client.series_and_archetype`
 
 #### Operations
 
@@ -420,13 +417,13 @@ Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
 #### Example: Load
 
 ```ts
-const series_and_archetype = await client.SeriesAndArchetype().load({ id: 'series_and_archetype_id' })
+const series_and_archetype = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.Skill()`
+Create an instance: `const skill = client.skill`
 
 #### Operations
 
@@ -447,13 +444,13 @@ Create an instance: `const skill = client.Skill()`
 #### Example: List
 
 ```ts
-const skills = await client.Skill().list()
+const skills = await client.skill.list()
 ```
 
 
 ### SkillCard
 
-Create an instance: `const skill_card = client.SkillCard()`
+Create an instance: `const skill_card = client.skill_card`
 
 #### Operations
 
@@ -474,7 +471,7 @@ Create an instance: `const skill_card = client.SkillCard()`
 #### Example: Load
 
 ```ts
-const skill_card = await client.SkillCard().load({ id: 'skill_card_id' })
+const skill_card = await client.skill_card.load({ id: 'skill_card_id' })
 ```
 
 
@@ -548,11 +545,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+aggregation = client.aggregation
+aggregation.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# aggregation.data_get() now returns the loaded aggregation data
+# aggregation.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

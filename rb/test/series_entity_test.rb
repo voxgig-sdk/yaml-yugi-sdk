@@ -43,8 +43,7 @@ class SeriesEntityTest < Minitest::Test
     series_ref01_ent = client.Series(nil)
     series_ref01_match = {}
 
-    series_ref01_list_result, err = series_ref01_ent.list(series_ref01_match, nil)
-    assert_nil err
+    series_ref01_list_result = series_ref01_ent.list(series_ref01_match, nil)
     assert series_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def series_basic_setup(extra)
     "YAMLYUGI_TEST_SERIES_ENTID" => idmap,
     "YAMLYUGI_TEST_LIVE" => "FALSE",
     "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-    "YAMLYUGI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def series_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["YAMLYUGI_APIKEY"],
       },
       extra || {},
     ])

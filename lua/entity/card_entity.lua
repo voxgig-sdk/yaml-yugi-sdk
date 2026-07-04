@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CardListMatch
+---@param ctrl? table
+---@return Card[]
+---@return string? err
 function CardEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

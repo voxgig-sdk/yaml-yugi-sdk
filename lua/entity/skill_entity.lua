@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SkillListMatch
+---@param ctrl? table
+---@return Skill[]
+---@return string? err
 function SkillEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

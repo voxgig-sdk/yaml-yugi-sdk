@@ -42,8 +42,7 @@ class SkillCardEntityTest < Minitest::Test
     # LOAD
     skill_card_ref01_ent = client.SkillCard(nil)
     skill_card_ref01_match_dt0 = {}
-    skill_card_ref01_data_dt0_loaded, err = skill_card_ref01_ent.load(skill_card_ref01_match_dt0, nil)
-    assert_nil err
+    skill_card_ref01_data_dt0_loaded = skill_card_ref01_ent.load(skill_card_ref01_match_dt0, nil)
     assert !skill_card_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def skill_card_basic_setup(extra)
     "YAMLYUGI_TEST_SKILL_CARD_ENTID" => idmap,
     "YAMLYUGI_TEST_LIVE" => "FALSE",
     "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-    "YAMLYUGI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def skill_card_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["YAMLYUGI_APIKEY"],
       },
       extra || {},
     ])

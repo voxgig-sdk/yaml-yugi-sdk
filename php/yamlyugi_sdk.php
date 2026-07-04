@@ -103,7 +103,7 @@ class YamlYugiSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class YamlYugiSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class YamlYugiSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,66 +216,143 @@ class YamlYugiSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Aggregation($data = null)
+    private $_aggregation = null;
+
+    // Idiomatic facade: $client->aggregation()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Aggregation() (PHP method
+    // names are case-insensitive).
+    public function aggregation($data = null)
     {
         require_once __DIR__ . '/entity/aggregation_entity.php';
+        if ($data === null) {
+            if ($this->_aggregation === null) {
+                $this->_aggregation = new AggregationEntity($this, null);
+            }
+            return $this->_aggregation;
+        }
         return new AggregationEntity($this, $data);
     }
 
 
-    public function Card($data = null)
+    private $_card = null;
+
+    // Idiomatic facade: $client->card()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Card() (PHP method
+    // names are case-insensitive).
+    public function card($data = null)
     {
         require_once __DIR__ . '/entity/card_entity.php';
+        if ($data === null) {
+            if ($this->_card === null) {
+                $this->_card = new CardEntity($this, null);
+            }
+            return $this->_card;
+        }
         return new CardEntity($this, $data);
     }
 
 
-    public function IndividualCard($data = null)
+    private $_individual_card = null;
+
+    // Idiomatic facade: $client->individual_card()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias IndividualCard() (PHP method
+    // names are case-insensitive).
+    public function individual_card($data = null)
     {
         require_once __DIR__ . '/entity/individual_card_entity.php';
+        if ($data === null) {
+            if ($this->_individual_card === null) {
+                $this->_individual_card = new IndividualCardEntity($this, null);
+            }
+            return $this->_individual_card;
+        }
         return new IndividualCardEntity($this, $data);
     }
 
 
-    public function Series($data = null)
+    private $_series = null;
+
+    // Idiomatic facade: $client->series()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Series() (PHP method
+    // names are case-insensitive).
+    public function series($data = null)
     {
         require_once __DIR__ . '/entity/series_entity.php';
+        if ($data === null) {
+            if ($this->_series === null) {
+                $this->_series = new SeriesEntity($this, null);
+            }
+            return $this->_series;
+        }
         return new SeriesEntity($this, $data);
     }
 
 
-    public function SeriesAndArchetype($data = null)
+    private $_series_and_archetype = null;
+
+    // Idiomatic facade: $client->series_and_archetype()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias SeriesAndArchetype() (PHP method
+    // names are case-insensitive).
+    public function series_and_archetype($data = null)
     {
         require_once __DIR__ . '/entity/series_and_archetype_entity.php';
+        if ($data === null) {
+            if ($this->_series_and_archetype === null) {
+                $this->_series_and_archetype = new SeriesAndArchetypeEntity($this, null);
+            }
+            return $this->_series_and_archetype;
+        }
         return new SeriesAndArchetypeEntity($this, $data);
     }
 
 
-    public function Skill($data = null)
+    private $_skill = null;
+
+    // Idiomatic facade: $client->skill()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Skill() (PHP method
+    // names are case-insensitive).
+    public function skill($data = null)
     {
         require_once __DIR__ . '/entity/skill_entity.php';
+        if ($data === null) {
+            if ($this->_skill === null) {
+                $this->_skill = new SkillEntity($this, null);
+            }
+            return $this->_skill;
+        }
         return new SkillEntity($this, $data);
     }
 
 
-    public function SkillCard($data = null)
+    private $_skill_card = null;
+
+    // Idiomatic facade: $client->skill_card()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias SkillCard() (PHP method
+    // names are case-insensitive).
+    public function skill_card($data = null)
     {
         require_once __DIR__ . '/entity/skill_card_entity.php';
+        if ($data === null) {
+            if ($this->_skill_card === null) {
+                $this->_skill_card = new SkillCardEntity($this, null);
+            }
+            return $this->_skill_card;
+        }
         return new SkillCardEntity($this, $data);
     }
 

@@ -245,36 +245,57 @@ func (sdk *YamlYugiSDK) Direct(fetchargs map[string]any) (map[string]any, error)
 }
 
 
+// Aggregation returns a Aggregation entity bound to this client.
+// Idiomatic usage: client.Aggregation(nil).List(nil, nil) or
+// client.Aggregation(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *YamlYugiSDK) Aggregation(data map[string]any) YamlYugiEntity {
 	return NewAggregationEntityFunc(sdk, data)
 }
 
 
+// Card returns a Card entity bound to this client.
+// Idiomatic usage: client.Card(nil).List(nil, nil) or
+// client.Card(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *YamlYugiSDK) Card(data map[string]any) YamlYugiEntity {
 	return NewCardEntityFunc(sdk, data)
 }
 
 
+// IndividualCard returns a IndividualCard entity bound to this client.
+// Idiomatic usage: client.IndividualCard(nil).List(nil, nil) or
+// client.IndividualCard(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *YamlYugiSDK) IndividualCard(data map[string]any) YamlYugiEntity {
 	return NewIndividualCardEntityFunc(sdk, data)
 }
 
 
+// Series returns a Series entity bound to this client.
+// Idiomatic usage: client.Series(nil).List(nil, nil) or
+// client.Series(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *YamlYugiSDK) Series(data map[string]any) YamlYugiEntity {
 	return NewSeriesEntityFunc(sdk, data)
 }
 
 
+// SeriesAndArchetype returns a SeriesAndArchetype entity bound to this client.
+// Idiomatic usage: client.SeriesAndArchetype(nil).List(nil, nil) or
+// client.SeriesAndArchetype(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *YamlYugiSDK) SeriesAndArchetype(data map[string]any) YamlYugiEntity {
 	return NewSeriesAndArchetypeEntityFunc(sdk, data)
 }
 
 
+// Skill returns a Skill entity bound to this client.
+// Idiomatic usage: client.Skill(nil).List(nil, nil) or
+// client.Skill(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *YamlYugiSDK) Skill(data map[string]any) YamlYugiEntity {
 	return NewSkillEntityFunc(sdk, data)
 }
 
 
+// SkillCard returns a SkillCard entity bound to this client.
+// Idiomatic usage: client.SkillCard(nil).List(nil, nil) or
+// client.SkillCard(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *YamlYugiSDK) SkillCard(data map[string]any) YamlYugiEntity {
 	return NewSkillCardEntityFunc(sdk, data)
 }

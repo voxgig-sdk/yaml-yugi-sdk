@@ -43,8 +43,7 @@ class SkillEntityTest < Minitest::Test
     skill_ref01_ent = client.Skill(nil)
     skill_ref01_match = {}
 
-    skill_ref01_list_result, err = skill_ref01_ent.list(skill_ref01_match, nil)
-    assert_nil err
+    skill_ref01_list_result = skill_ref01_ent.list(skill_ref01_match, nil)
     assert skill_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def skill_basic_setup(extra)
     "YAMLYUGI_TEST_SKILL_ENTID" => idmap,
     "YAMLYUGI_TEST_LIVE" => "FALSE",
     "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-    "YAMLYUGI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def skill_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["YAMLYUGI_APIKEY"],
       },
       extra || {},
     ])

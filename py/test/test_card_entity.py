@@ -50,8 +50,7 @@ class TestCardEntity:
         card_ref01_ent = client.Card(None)
         card_ref01_match = {}
 
-        card_ref01_list_result, err = card_ref01_ent.list(card_ref01_match, None)
-        assert err is None
+        card_ref01_list_result = card_ref01_ent.list(card_ref01_match, None)
         assert isinstance(card_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _card_basic_setup(extra):
         "YAMLYUGI_TEST_CARD_ENTID": idmap,
         "YAMLYUGI_TEST_LIVE": "FALSE",
         "YAMLYUGI_TEST_EXPLAIN": "FALSE",
-        "YAMLYUGI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _card_basic_setup(extra):
     if env.get("YAMLYUGI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("YAMLYUGI_APIKEY"),
             },
             extra or {},
         ])

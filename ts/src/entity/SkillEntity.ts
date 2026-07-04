@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Skill,
+  SkillListMatch,
+} from '../YamlYugiTypes'
 
 // TODO: needs Entity superclass
-class SkillEntity extends YamlYugiEntityBase {
+class SkillEntity extends YamlYugiEntityBase<Skill> {
 
   constructor(client: YamlYugiSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class SkillEntity extends YamlYugiEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: SkillListMatch, ctrl?: Control): Promise<Skill[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class SkillEntity extends YamlYugiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Skill[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

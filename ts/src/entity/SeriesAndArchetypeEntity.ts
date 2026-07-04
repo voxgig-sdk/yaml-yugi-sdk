@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  SeriesAndArchetype,
+  SeriesAndArchetypeLoadMatch,
+} from '../YamlYugiTypes'
 
 // TODO: needs Entity superclass
-class SeriesAndArchetypeEntity extends YamlYugiEntityBase {
+class SeriesAndArchetypeEntity extends YamlYugiEntityBase<SeriesAndArchetype> {
 
   constructor(client: YamlYugiSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class SeriesAndArchetypeEntity extends YamlYugiEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: SeriesAndArchetypeLoadMatch, ctrl?: Control): Promise<SeriesAndArchetype> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class SeriesAndArchetypeEntity extends YamlYugiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<SeriesAndArchetype> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

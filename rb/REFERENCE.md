@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -78,9 +77,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -94,14 +95,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -109,17 +110,17 @@ same parameters as `direct()`.
 ## AggregationEntity
 
 ```ruby
-aggregation = client.Aggregation
+aggregation = client.aggregation
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Aggregation.load({ "id" => "aggregation_id" })
+result = client.aggregation.load({ "id" => "aggregation_id" })
 ```
 
 ### Common Methods
@@ -155,7 +156,7 @@ Return the entity name.
 ## CardEntity
 
 ```ruby
-card = client.Card
+card = client.card
 ```
 
 ### Fields
@@ -179,12 +180,12 @@ card = client.Card
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Card.list(nil)
+results = client.card.list(nil)
 ```
 
 ### Common Methods
@@ -220,17 +221,17 @@ Return the entity name.
 ## IndividualCardEntity
 
 ```ruby
-individual_card = client.IndividualCard
+individual_card = client.individual_card
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.IndividualCard.load({ "id" => "individual_card_id" })
+result = client.individual_card.load({ "id" => "individual_card_id" })
 ```
 
 ### Common Methods
@@ -266,7 +267,7 @@ Return the entity name.
 ## SeriesEntity
 
 ```ruby
-series = client.Series
+series = client.series
 ```
 
 ### Fields
@@ -278,12 +279,12 @@ series = client.Series
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Series.list(nil)
+results = client.series.list(nil)
 ```
 
 ### Common Methods
@@ -319,7 +320,7 @@ Return the entity name.
 ## SeriesAndArchetypeEntity
 
 ```ruby
-series_and_archetype = client.SeriesAndArchetype
+series_and_archetype = client.series_and_archetype
 ```
 
 ### Fields
@@ -331,12 +332,12 @@ series_and_archetype = client.SeriesAndArchetype
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.SeriesAndArchetype.load({ "id" => "series_and_archetype_id" })
+result = client.series_and_archetype.load({ "id" => "series_and_archetype_id" })
 ```
 
 ### Common Methods
@@ -372,7 +373,7 @@ Return the entity name.
 ## SkillEntity
 
 ```ruby
-skill = client.Skill
+skill = client.skill
 ```
 
 ### Fields
@@ -387,12 +388,12 @@ skill = client.Skill
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Skill.list(nil)
+results = client.skill.list(nil)
 ```
 
 ### Common Methods
@@ -428,7 +429,7 @@ Return the entity name.
 ## SkillCardEntity
 
 ```ruby
-skill_card = client.SkillCard
+skill_card = client.skill_card
 ```
 
 ### Fields
@@ -443,12 +444,12 @@ skill_card = client.SkillCard
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.SkillCard.load({ "id" => "skill_card_id" })
+result = client.skill_card.load({ "id" => "skill_card_id" })
 ```
 
 ### Common Methods

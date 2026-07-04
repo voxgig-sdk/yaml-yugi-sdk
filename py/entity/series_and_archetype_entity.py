@@ -1,7 +1,13 @@
 # YamlYugi SDK SeriesAndArchetype entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from yamlyugi_types import (
+    SeriesAndArchetype,
+    SeriesAndArchetypeLoadMatch,
+)
 
 
 class SeriesAndArchetypeEntity:
@@ -44,7 +50,7 @@ class SeriesAndArchetypeEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> SeriesAndArchetype:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +59,12 @@ class SeriesAndArchetypeEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> SeriesAndArchetype:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: SeriesAndArchetypeLoadMatch, ctrl=None) -> SeriesAndArchetype:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",

@@ -50,8 +50,7 @@ class SkillEntityTest extends TestCase
         $skill_ref01_ent = $client->Skill(null);
         $skill_ref01_match = [];
 
-        [$skill_ref01_list_result, $err] = $skill_ref01_ent->list($skill_ref01_match, null);
-        $this->assertNull($err);
+        $skill_ref01_list_result = $skill_ref01_ent->list($skill_ref01_match, null);
         $this->assertIsArray($skill_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function skill_basic_setup($extra)
         "YAMLYUGI_TEST_SKILL_ENTID" => $idmap,
         "YAMLYUGI_TEST_LIVE" => "FALSE",
         "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function skill_basic_setup($extra)
     if ($env["YAMLYUGI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["YAMLYUGI_APIKEY"],
             ],
             $extra ?? [],
         ]);

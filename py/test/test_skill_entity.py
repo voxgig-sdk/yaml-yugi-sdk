@@ -50,8 +50,7 @@ class TestSkillEntity:
         skill_ref01_ent = client.Skill(None)
         skill_ref01_match = {}
 
-        skill_ref01_list_result, err = skill_ref01_ent.list(skill_ref01_match, None)
-        assert err is None
+        skill_ref01_list_result = skill_ref01_ent.list(skill_ref01_match, None)
         assert isinstance(skill_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _skill_basic_setup(extra):
         "YAMLYUGI_TEST_SKILL_ENTID": idmap,
         "YAMLYUGI_TEST_LIVE": "FALSE",
         "YAMLYUGI_TEST_EXPLAIN": "FALSE",
-        "YAMLYUGI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _skill_basic_setup(extra):
     if env.get("YAMLYUGI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("YAMLYUGI_APIKEY"),
             },
             extra or {},
         ])

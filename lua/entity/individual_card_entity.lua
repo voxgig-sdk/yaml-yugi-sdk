@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch IndividualCardLoadMatch
+---@param ctrl? table
+---@return IndividualCard
+---@return string? err
 function IndividualCardEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

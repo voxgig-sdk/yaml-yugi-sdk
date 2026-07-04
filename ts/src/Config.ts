@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://dawnbrandbots.github.io/yaml-yugi',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -238,7 +234,8 @@ class Config {
                     "name": "card_id",
                     "orig": "card_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -272,7 +269,8 @@ class Config {
                     "name": "konami_id",
                     "orig": "konami_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -373,7 +371,8 @@ class Config {
                     "name": "card_id",
                     "orig": "card_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -406,7 +405,8 @@ class Config {
                     "name": "konami_id",
                     "orig": "konami_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -439,7 +439,8 @@ class Config {
                     "name": "yugipedia_id",
                     "orig": "yugipedia_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -733,7 +734,8 @@ class Config {
                     "name": "yugipedia_id",
                     "orig": "yugipedia_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

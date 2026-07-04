@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch SeriesAndArchetypeLoadMatch
+---@param ctrl? table
+---@return SeriesAndArchetype
+---@return string? err
 function SeriesAndArchetypeEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

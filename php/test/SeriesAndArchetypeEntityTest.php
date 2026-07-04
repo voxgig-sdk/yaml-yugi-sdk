@@ -49,8 +49,7 @@ class SeriesAndArchetypeEntityTest extends TestCase
         // LOAD
         $series_and_archetype_ref01_ent = $client->SeriesAndArchetype(null);
         $series_and_archetype_ref01_match_dt0 = [];
-        [$series_and_archetype_ref01_data_dt0_loaded, $err] = $series_and_archetype_ref01_ent->load($series_and_archetype_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $series_and_archetype_ref01_data_dt0_loaded = $series_and_archetype_ref01_ent->load($series_and_archetype_ref01_match_dt0, null);
         $this->assertNotNull($series_and_archetype_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function series_and_archetype_basic_setup($extra)
         "YAMLYUGI_TEST_SERIES_AND_ARCHETYPE_ENTID" => $idmap,
         "YAMLYUGI_TEST_LIVE" => "FALSE",
         "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function series_and_archetype_basic_setup($extra)
     if ($env["YAMLYUGI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["YAMLYUGI_APIKEY"],
             ],
             $extra ?? [],
         ]);

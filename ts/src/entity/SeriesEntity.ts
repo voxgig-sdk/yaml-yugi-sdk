@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Series,
+  SeriesListMatch,
+} from '../YamlYugiTypes'
 
 // TODO: needs Entity superclass
-class SeriesEntity extends YamlYugiEntityBase {
+class SeriesEntity extends YamlYugiEntityBase<Series> {
 
   constructor(client: YamlYugiSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class SeriesEntity extends YamlYugiEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: SeriesListMatch, ctrl?: Control): Promise<Series[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class SeriesEntity extends YamlYugiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Series[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

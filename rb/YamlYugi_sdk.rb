@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'YamlYugi_types'
+
 
 class YamlYugiSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class YamlYugiSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class YamlYugiSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue YamlYugiError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = YamlYugiHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class YamlYugiSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,52 +198,101 @@ class YamlYugiSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.aggregation.list / client.aggregation.load({ "id" => ... })
+  def aggregation
+    require_relative 'entity/aggregation_entity'
+    @aggregation ||= AggregationEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.aggregation instead.
   def Aggregation(data = nil)
     require_relative 'entity/aggregation_entity'
     AggregationEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.card.list / client.card.load({ "id" => ... })
+  def card
+    require_relative 'entity/card_entity'
+    @card ||= CardEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.card instead.
   def Card(data = nil)
     require_relative 'entity/card_entity'
     CardEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.individual_card.list / client.individual_card.load({ "id" => ... })
+  def individual_card
+    require_relative 'entity/individual_card_entity'
+    @individual_card ||= IndividualCardEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.individual_card instead.
   def IndividualCard(data = nil)
     require_relative 'entity/individual_card_entity'
     IndividualCardEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.series.list / client.series.load({ "id" => ... })
+  def series
+    require_relative 'entity/series_entity'
+    @series ||= SeriesEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.series instead.
   def Series(data = nil)
     require_relative 'entity/series_entity'
     SeriesEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.series_and_archetype.list / client.series_and_archetype.load({ "id" => ... })
+  def series_and_archetype
+    require_relative 'entity/series_and_archetype_entity'
+    @series_and_archetype ||= SeriesAndArchetypeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.series_and_archetype instead.
   def SeriesAndArchetype(data = nil)
     require_relative 'entity/series_and_archetype_entity'
     SeriesAndArchetypeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.skill.list / client.skill.load({ "id" => ... })
+  def skill
+    require_relative 'entity/skill_entity'
+    @skill ||= SkillEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.skill instead.
   def Skill(data = nil)
     require_relative 'entity/skill_entity'
     SkillEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.skill_card.list / client.skill_card.load({ "id" => ... })
+  def skill_card
+    require_relative 'entity/skill_card_entity'
+    @skill_card ||= SkillCardEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.skill_card instead.
   def SkillCard(data = nil)
     require_relative 'entity/skill_card_entity'
     SkillCardEntity.new(self, data)

@@ -49,8 +49,7 @@ class IndividualCardEntityTest extends TestCase
         // LOAD
         $individual_card_ref01_ent = $client->IndividualCard(null);
         $individual_card_ref01_match_dt0 = [];
-        [$individual_card_ref01_data_dt0_loaded, $err] = $individual_card_ref01_ent->load($individual_card_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $individual_card_ref01_data_dt0_loaded = $individual_card_ref01_ent->load($individual_card_ref01_match_dt0, null);
         $this->assertNotNull($individual_card_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function individual_card_basic_setup($extra)
         "YAMLYUGI_TEST_INDIVIDUAL_CARD_ENTID" => $idmap,
         "YAMLYUGI_TEST_LIVE" => "FALSE",
         "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function individual_card_basic_setup($extra)
     if ($env["YAMLYUGI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["YAMLYUGI_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -9,9 +9,12 @@ The TypeScript SDK for the YamlYugi API — a type-safe, entity-oriented client 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/yaml-yugi
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/yaml-yugi-sdk/releases](https://github.com/voxgig-sdk/yaml-yugi-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { YamlYugiSDK } from 'yaml-yugi'
+import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 
-const client = new YamlYugiSDK({
-  apikey: process.env.YAML-YUGI_APIKEY,
-})
+const client = new YamlYugiSDK()
 ```
 
-### 3. Load a aggregation
+### 3. Load an aggregation
 
 ```ts
-const result = await client.Aggregation().load({ id: 'example_id' })
+const result = await client.aggregation.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = YamlYugiSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.aggregation.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new YamlYugiSDK({ apikey: '...' })
+const client = new YamlYugiSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.aggregation
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new YamlYugiSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new YamlYugiSDK({
 Create a `.env.local` file at the project root:
 
 ```
-YAML-YUGI_TEST_LIVE=TRUE
-YAML-YUGI_APIKEY=<your-key>
+YAML_YUGI_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new YamlYugiSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new YamlYugiSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -353,7 +350,7 @@ API path: `/data/tcg-speed-skill/{yugipediaId}.json`
 
 ### Aggregation
 
-Create an instance: `const aggregation = client.Aggregation()`
+Create an instance: `const aggregation = client.aggregation`
 
 #### Operations
 
@@ -364,13 +361,13 @@ Create an instance: `const aggregation = client.Aggregation()`
 #### Example: Load
 
 ```ts
-const aggregation = await client.Aggregation().load({ id: 'aggregation_id' })
+const aggregation = await client.aggregation.load({ id: 'aggregation_id' })
 ```
 
 
 ### Card
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const card = client.card`
 
 #### Operations
 
@@ -400,13 +397,13 @@ Create an instance: `const card = client.Card()`
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.card.list()
 ```
 
 
 ### IndividualCard
 
-Create an instance: `const individual_card = client.IndividualCard()`
+Create an instance: `const individual_card = client.individual_card`
 
 #### Operations
 
@@ -417,13 +414,13 @@ Create an instance: `const individual_card = client.IndividualCard()`
 #### Example: Load
 
 ```ts
-const individual_card = await client.IndividualCard().load({ id: 'individual_card_id' })
+const individual_card = await client.individual_card.load({ id: 'individual_card_id' })
 ```
 
 
 ### Series
 
-Create an instance: `const series = client.Series()`
+Create an instance: `const series = client.series`
 
 #### Operations
 
@@ -441,13 +438,13 @@ Create an instance: `const series = client.Series()`
 #### Example: List
 
 ```ts
-const seriess = await client.Series().list()
+const seriess = await client.series.list()
 ```
 
 
 ### SeriesAndArchetype
 
-Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
+Create an instance: `const series_and_archetype = client.series_and_archetype`
 
 #### Operations
 
@@ -465,13 +462,13 @@ Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
 #### Example: Load
 
 ```ts
-const series_and_archetype = await client.SeriesAndArchetype().load({ id: 'series_and_archetype_id' })
+const series_and_archetype = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.Skill()`
+Create an instance: `const skill = client.skill`
 
 #### Operations
 
@@ -492,13 +489,13 @@ Create an instance: `const skill = client.Skill()`
 #### Example: List
 
 ```ts
-const skills = await client.Skill().list()
+const skills = await client.skill.list()
 ```
 
 
 ### SkillCard
 
-Create an instance: `const skill_card = client.SkillCard()`
+Create an instance: `const skill_card = client.skill_card`
 
 #### Operations
 
@@ -519,7 +516,7 @@ Create an instance: `const skill_card = client.SkillCard()`
 #### Example: Load
 
 ```ts
-const skill_card = await client.SkillCard().load({ id: 'skill_card_id' })
+const skill_card = await client.skill_card.load({ id: 'skill_card_id' })
 ```
 
 
@@ -580,7 +577,7 @@ yaml-yugi/
 Import the SDK from the package root:
 
 ```ts
-import { YamlYugiSDK } from 'yaml-yugi'
+import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 ```
 
 ### Entity state
@@ -590,11 +587,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const aggregation = client.aggregation
+await aggregation.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// aggregation.data() now returns the loaded aggregation data
+// aggregation.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

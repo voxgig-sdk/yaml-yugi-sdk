@@ -42,8 +42,7 @@ class SeriesAndArchetypeEntityTest < Minitest::Test
     # LOAD
     series_and_archetype_ref01_ent = client.SeriesAndArchetype(nil)
     series_and_archetype_ref01_match_dt0 = {}
-    series_and_archetype_ref01_data_dt0_loaded, err = series_and_archetype_ref01_ent.load(series_and_archetype_ref01_match_dt0, nil)
-    assert_nil err
+    series_and_archetype_ref01_data_dt0_loaded = series_and_archetype_ref01_ent.load(series_and_archetype_ref01_match_dt0, nil)
     assert !series_and_archetype_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def series_and_archetype_basic_setup(extra)
     "YAMLYUGI_TEST_SERIES_AND_ARCHETYPE_ENTID" => idmap,
     "YAMLYUGI_TEST_LIVE" => "FALSE",
     "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-    "YAMLYUGI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def series_and_archetype_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["YAMLYUGI_APIKEY"],
       },
       extra || {},
     ])

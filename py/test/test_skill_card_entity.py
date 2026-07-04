@@ -49,8 +49,7 @@ class TestSkillCardEntity:
         # LOAD
         skill_card_ref01_ent = client.SkillCard(None)
         skill_card_ref01_match_dt0 = {}
-        skill_card_ref01_data_dt0_loaded, err = skill_card_ref01_ent.load(skill_card_ref01_match_dt0, None)
-        assert err is None
+        skill_card_ref01_data_dt0_loaded = skill_card_ref01_ent.load(skill_card_ref01_match_dt0, None)
         assert skill_card_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _skill_card_basic_setup(extra):
         "YAMLYUGI_TEST_SKILL_CARD_ENTID": idmap,
         "YAMLYUGI_TEST_LIVE": "FALSE",
         "YAMLYUGI_TEST_EXPLAIN": "FALSE",
-        "YAMLYUGI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _skill_card_basic_setup(extra):
     if env.get("YAMLYUGI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("YAMLYUGI_APIKEY"),
             },
             extra or {},
         ])

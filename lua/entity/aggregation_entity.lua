@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AggregationLoadMatch
+---@param ctrl? table
+---@return Aggregation
+---@return string? err
 function AggregationEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

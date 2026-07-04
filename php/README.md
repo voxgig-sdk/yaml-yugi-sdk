@@ -9,9 +9,10 @@ The PHP SDK for the YamlYugi API — an entity-oriented client using PHP convent
 
 
 ## Install
-```bash
-composer require voxgig-sdk/yaml-yugi
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/yaml-yugi-sdk/releases](https://github.com/voxgig-sdk/yaml-yugi-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,17 +26,18 @@ loading a specific record.
 <?php
 require_once 'yamlyugi_sdk.php';
 
-$client = new YamlYugiSDK([
-    "apikey" => getenv("YAML-YUGI_APIKEY"),
-]);
+$client = new YamlYugiSDK();
 ```
 
-### 3. Load a aggregation
+### 3. Load an aggregation
 
 ```php
-[$result, $err] = $client->Aggregation()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->aggregation()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -46,28 +48,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +86,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = YamlYugiSDK::test();
 
-[$result, $err] = $client->YamlYugi()->load(["id" => "test01"]);
+$result = $client->aggregation()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +120,7 @@ $client = new YamlYugiSDK([
 Create a `.env.local` file at the project root:
 
 ```
-YAML-YUGI_TEST_LIVE=TRUE
-YAML-YUGI_APIKEY=<your-key>
+YAML_YUGI_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -139,7 +143,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -191,8 +194,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -303,7 +310,7 @@ API path: `/data/tcg-speed-skill/{yugipediaId}.json`
 
 ### Aggregation
 
-Create an instance: `const aggregation = client.Aggregation()`
+Create an instance: `const aggregation = client.aggregation`
 
 #### Operations
 
@@ -314,13 +321,13 @@ Create an instance: `const aggregation = client.Aggregation()`
 #### Example: Load
 
 ```ts
-const aggregation = await client.Aggregation().load({ id: 'aggregation_id' })
+const aggregation = await client.aggregation.load({ id: 'aggregation_id' })
 ```
 
 
 ### Card
 
-Create an instance: `const card = client.Card()`
+Create an instance: `const card = client.card`
 
 #### Operations
 
@@ -350,13 +357,13 @@ Create an instance: `const card = client.Card()`
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.card.list()
 ```
 
 
 ### IndividualCard
 
-Create an instance: `const individual_card = client.IndividualCard()`
+Create an instance: `const individual_card = client.individual_card`
 
 #### Operations
 
@@ -367,13 +374,13 @@ Create an instance: `const individual_card = client.IndividualCard()`
 #### Example: Load
 
 ```ts
-const individual_card = await client.IndividualCard().load({ id: 'individual_card_id' })
+const individual_card = await client.individual_card.load({ id: 'individual_card_id' })
 ```
 
 
 ### Series
 
-Create an instance: `const series = client.Series()`
+Create an instance: `const series = client.series`
 
 #### Operations
 
@@ -391,13 +398,13 @@ Create an instance: `const series = client.Series()`
 #### Example: List
 
 ```ts
-const seriess = await client.Series().list()
+const seriess = await client.series.list()
 ```
 
 
 ### SeriesAndArchetype
 
-Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
+Create an instance: `const series_and_archetype = client.series_and_archetype`
 
 #### Operations
 
@@ -415,13 +422,13 @@ Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
 #### Example: Load
 
 ```ts
-const series_and_archetype = await client.SeriesAndArchetype().load({ id: 'series_and_archetype_id' })
+const series_and_archetype = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.Skill()`
+Create an instance: `const skill = client.skill`
 
 #### Operations
 
@@ -442,13 +449,13 @@ Create an instance: `const skill = client.Skill()`
 #### Example: List
 
 ```ts
-const skills = await client.Skill().list()
+const skills = await client.skill.list()
 ```
 
 
 ### SkillCard
 
-Create an instance: `const skill_card = client.SkillCard()`
+Create an instance: `const skill_card = client.skill_card`
 
 #### Operations
 
@@ -469,7 +476,7 @@ Create an instance: `const skill_card = client.SkillCard()`
 #### Example: Load
 
 ```ts
-const skill_card = await client.SkillCard().load({ id: 'skill_card_id' })
+const skill_card = await client.skill_card.load({ id: 'skill_card_id' })
 ```
 
 
@@ -544,11 +551,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$aggregation = $client->aggregation();
+$aggregation->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $aggregation->dataGet() now returns the loaded aggregation data
+// $aggregation->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

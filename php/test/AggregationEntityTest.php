@@ -49,8 +49,7 @@ class AggregationEntityTest extends TestCase
         // LOAD
         $aggregation_ref01_ent = $client->Aggregation(null);
         $aggregation_ref01_match_dt0 = [];
-        [$aggregation_ref01_data_dt0_loaded, $err] = $aggregation_ref01_ent->load($aggregation_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $aggregation_ref01_data_dt0_loaded = $aggregation_ref01_ent->load($aggregation_ref01_match_dt0, null);
         $this->assertNotNull($aggregation_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function aggregation_basic_setup($extra)
         "YAMLYUGI_TEST_AGGREGATION_ENTID" => $idmap,
         "YAMLYUGI_TEST_LIVE" => "FALSE",
         "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-        "YAMLYUGI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function aggregation_basic_setup($extra)
     if ($env["YAMLYUGI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["YAMLYUGI_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -117,7 +117,6 @@ func individual_cardBasicSetup(extra map[string]any) *entityTestSetup {
 		"YAMLYUGI_TEST_INDIVIDUAL_CARD_ENTID": idmap,
 		"YAMLYUGI_TEST_LIVE":      "FALSE",
 		"YAMLYUGI_TEST_EXPLAIN":   "FALSE",
-		"YAMLYUGI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["YAMLYUGI_TEST_INDIVIDUAL_CARD_ENTID"])
@@ -128,7 +127,6 @@ func individual_cardBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["YAMLYUGI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["YAMLYUGI_APIKEY"],
 			},
 			extra,
 		})

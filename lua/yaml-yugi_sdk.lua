@@ -244,42 +244,133 @@ end
 
 
 
+-- Idiomatic facade: client:aggregation():list() / client:aggregation():load({ id = ... })
+function YamlYugiSDK:aggregation(data)
+  local EntityMod = require("entity.aggregation_entity")
+  if data == nil then
+    if self._aggregation == nil then
+      self._aggregation = EntityMod.new(self, nil)
+    end
+    return self._aggregation
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:aggregation() instead.
 function YamlYugiSDK:Aggregation(data)
   local EntityMod = require("entity.aggregation_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:card():list() / client:card():load({ id = ... })
+function YamlYugiSDK:card(data)
+  local EntityMod = require("entity.card_entity")
+  if data == nil then
+    if self._card == nil then
+      self._card = EntityMod.new(self, nil)
+    end
+    return self._card
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:card() instead.
 function YamlYugiSDK:Card(data)
   local EntityMod = require("entity.card_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:individual_card():list() / client:individual_card():load({ id = ... })
+function YamlYugiSDK:individual_card(data)
+  local EntityMod = require("entity.individual_card_entity")
+  if data == nil then
+    if self._individual_card == nil then
+      self._individual_card = EntityMod.new(self, nil)
+    end
+    return self._individual_card
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:individual_card() instead.
 function YamlYugiSDK:IndividualCard(data)
   local EntityMod = require("entity.individual_card_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:series():list() / client:series():load({ id = ... })
+function YamlYugiSDK:series(data)
+  local EntityMod = require("entity.series_entity")
+  if data == nil then
+    if self._series == nil then
+      self._series = EntityMod.new(self, nil)
+    end
+    return self._series
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:series() instead.
 function YamlYugiSDK:Series(data)
   local EntityMod = require("entity.series_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:series_and_archetype():list() / client:series_and_archetype():load({ id = ... })
+function YamlYugiSDK:series_and_archetype(data)
+  local EntityMod = require("entity.series_and_archetype_entity")
+  if data == nil then
+    if self._series_and_archetype == nil then
+      self._series_and_archetype = EntityMod.new(self, nil)
+    end
+    return self._series_and_archetype
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:series_and_archetype() instead.
 function YamlYugiSDK:SeriesAndArchetype(data)
   local EntityMod = require("entity.series_and_archetype_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:skill():list() / client:skill():load({ id = ... })
+function YamlYugiSDK:skill(data)
+  local EntityMod = require("entity.skill_entity")
+  if data == nil then
+    if self._skill == nil then
+      self._skill = EntityMod.new(self, nil)
+    end
+    return self._skill
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:skill() instead.
 function YamlYugiSDK:Skill(data)
   local EntityMod = require("entity.skill_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:skill_card():list() / client:skill_card():load({ id = ... })
+function YamlYugiSDK:skill_card(data)
+  local EntityMod = require("entity.skill_card_entity")
+  if data == nil then
+    if self._skill_card == nil then
+      self._skill_card = EntityMod.new(self, nil)
+    end
+    return self._skill_card
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:skill_card() instead.
 function YamlYugiSDK:SkillCard(data)
   local EntityMod = require("entity.skill_card_entity")
   return EntityMod.new(self, data)

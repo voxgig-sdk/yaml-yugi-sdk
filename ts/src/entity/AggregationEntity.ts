@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Aggregation,
+  AggregationLoadMatch,
+} from '../YamlYugiTypes'
 
 // TODO: needs Entity superclass
-class AggregationEntity extends YamlYugiEntityBase {
+class AggregationEntity extends YamlYugiEntityBase<Aggregation> {
 
   constructor(client: YamlYugiSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class AggregationEntity extends YamlYugiEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AggregationLoadMatch, ctrl?: Control): Promise<Aggregation> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class AggregationEntity extends YamlYugiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Aggregation> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

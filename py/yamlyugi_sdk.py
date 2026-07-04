@@ -144,16 +144,23 @@ class YamlYugiSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class YamlYugiSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,45 +212,122 @@ class YamlYugiSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def aggregation(self):
+        """Idiomatic facade: client.aggregation.list() / client.aggregation.load({"id": ...})."""
+        from entity.aggregation_entity import AggregationEntity
+        cached = getattr(self, "_aggregation", None)
+        if cached is None:
+            cached = AggregationEntity(self, None)
+            self._aggregation = cached
+        return cached
 
     def Aggregation(self, data=None):
+        # Deprecated: use client.aggregation instead.
         from entity.aggregation_entity import AggregationEntity
         return AggregationEntity(self, data)
 
 
+    @property
+    def card(self):
+        """Idiomatic facade: client.card.list() / client.card.load({"id": ...})."""
+        from entity.card_entity import CardEntity
+        cached = getattr(self, "_card", None)
+        if cached is None:
+            cached = CardEntity(self, None)
+            self._card = cached
+        return cached
+
     def Card(self, data=None):
+        # Deprecated: use client.card instead.
         from entity.card_entity import CardEntity
         return CardEntity(self, data)
 
 
+    @property
+    def individual_card(self):
+        """Idiomatic facade: client.individual_card.list() / client.individual_card.load({"id": ...})."""
+        from entity.individual_card_entity import IndividualCardEntity
+        cached = getattr(self, "_individual_card", None)
+        if cached is None:
+            cached = IndividualCardEntity(self, None)
+            self._individual_card = cached
+        return cached
+
     def IndividualCard(self, data=None):
+        # Deprecated: use client.individual_card instead.
         from entity.individual_card_entity import IndividualCardEntity
         return IndividualCardEntity(self, data)
 
 
+    @property
+    def series(self):
+        """Idiomatic facade: client.series.list() / client.series.load({"id": ...})."""
+        from entity.series_entity import SeriesEntity
+        cached = getattr(self, "_series", None)
+        if cached is None:
+            cached = SeriesEntity(self, None)
+            self._series = cached
+        return cached
+
     def Series(self, data=None):
+        # Deprecated: use client.series instead.
         from entity.series_entity import SeriesEntity
         return SeriesEntity(self, data)
 
 
+    @property
+    def series_and_archetype(self):
+        """Idiomatic facade: client.series_and_archetype.list() / client.series_and_archetype.load({"id": ...})."""
+        from entity.series_and_archetype_entity import SeriesAndArchetypeEntity
+        cached = getattr(self, "_series_and_archetype", None)
+        if cached is None:
+            cached = SeriesAndArchetypeEntity(self, None)
+            self._series_and_archetype = cached
+        return cached
+
     def SeriesAndArchetype(self, data=None):
+        # Deprecated: use client.series_and_archetype instead.
         from entity.series_and_archetype_entity import SeriesAndArchetypeEntity
         return SeriesAndArchetypeEntity(self, data)
 
 
+    @property
+    def skill(self):
+        """Idiomatic facade: client.skill.list() / client.skill.load({"id": ...})."""
+        from entity.skill_entity import SkillEntity
+        cached = getattr(self, "_skill", None)
+        if cached is None:
+            cached = SkillEntity(self, None)
+            self._skill = cached
+        return cached
+
     def Skill(self, data=None):
+        # Deprecated: use client.skill instead.
         from entity.skill_entity import SkillEntity
         return SkillEntity(self, data)
 
 
+    @property
+    def skill_card(self):
+        """Idiomatic facade: client.skill_card.list() / client.skill_card.load({"id": ...})."""
+        from entity.skill_card_entity import SkillCardEntity
+        cached = getattr(self, "_skill_card", None)
+        if cached is None:
+            cached = SkillCardEntity(self, None)
+            self._skill_card = cached
+        return cached
+
     def SkillCard(self, data=None):
+        # Deprecated: use client.skill_card instead.
         from entity.skill_card_entity import SkillCardEntity
         return SkillCardEntity(self, data)
 

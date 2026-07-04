@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch SkillCardLoadMatch
+---@param ctrl? table
+---@return SkillCard
+---@return string? err
 function SkillCardEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

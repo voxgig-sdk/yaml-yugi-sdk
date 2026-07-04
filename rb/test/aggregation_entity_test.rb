@@ -42,8 +42,7 @@ class AggregationEntityTest < Minitest::Test
     # LOAD
     aggregation_ref01_ent = client.Aggregation(nil)
     aggregation_ref01_match_dt0 = {}
-    aggregation_ref01_data_dt0_loaded, err = aggregation_ref01_ent.load(aggregation_ref01_match_dt0, nil)
-    assert_nil err
+    aggregation_ref01_data_dt0_loaded = aggregation_ref01_ent.load(aggregation_ref01_match_dt0, nil)
     assert !aggregation_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def aggregation_basic_setup(extra)
     "YAMLYUGI_TEST_AGGREGATION_ENTID" => idmap,
     "YAMLYUGI_TEST_LIVE" => "FALSE",
     "YAMLYUGI_TEST_EXPLAIN" => "FALSE",
-    "YAMLYUGI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def aggregation_basic_setup(extra)
   if env["YAMLYUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["YAMLYUGI_APIKEY"],
       },
       extra || {},
     ])

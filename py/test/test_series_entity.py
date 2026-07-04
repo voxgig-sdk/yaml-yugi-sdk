@@ -50,8 +50,7 @@ class TestSeriesEntity:
         series_ref01_ent = client.Series(None)
         series_ref01_match = {}
 
-        series_ref01_list_result, err = series_ref01_ent.list(series_ref01_match, None)
-        assert err is None
+        series_ref01_list_result = series_ref01_ent.list(series_ref01_match, None)
         assert isinstance(series_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _series_basic_setup(extra):
         "YAMLYUGI_TEST_SERIES_ENTID": idmap,
         "YAMLYUGI_TEST_LIVE": "FALSE",
         "YAMLYUGI_TEST_EXPLAIN": "FALSE",
-        "YAMLYUGI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _series_basic_setup(extra):
     if env.get("YAMLYUGI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("YAMLYUGI_APIKEY"),
             },
             extra or {},
         ])
