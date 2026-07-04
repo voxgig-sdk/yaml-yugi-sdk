@@ -107,7 +107,7 @@ same parameters as `direct()`.
 ## AggregationEntity
 
 ```lua
-local aggregation = client:aggregation(nil)
+local aggregation = client:Aggregation(nil)
 ```
 
 ### Operations
@@ -117,7 +117,7 @@ local aggregation = client:aggregation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:aggregation():load({ id = "aggregation_id" })
+local result, err = client:Aggregation():load({ id = "aggregation_id" })
 ```
 
 ### Common Methods
@@ -153,7 +153,7 @@ Return the entity name.
 ## CardEntity
 
 ```lua
-local card = client:card(nil)
+local card = client:Card(nil)
 ```
 
 ### Fields
@@ -182,7 +182,7 @@ local card = client:card(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:card():list()
+local results, err = client:Card():list()
 ```
 
 ### Common Methods
@@ -218,7 +218,7 @@ Return the entity name.
 ## IndividualCardEntity
 
 ```lua
-local individual_card = client:individual_card(nil)
+local individual_card = client:IndividualCard(nil)
 ```
 
 ### Operations
@@ -228,7 +228,7 @@ local individual_card = client:individual_card(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:individual_card():load({ id = "individual_card_id" })
+local result, err = client:IndividualCard():load({ id = "individual_card_id" })
 ```
 
 ### Common Methods
@@ -264,7 +264,7 @@ Return the entity name.
 ## SeriesEntity
 
 ```lua
-local series = client:series(nil)
+local series = client:Series(nil)
 ```
 
 ### Fields
@@ -281,7 +281,7 @@ local series = client:series(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:series():list()
+local results, err = client:Series():list()
 ```
 
 ### Common Methods
@@ -317,7 +317,7 @@ Return the entity name.
 ## SeriesAndArchetypeEntity
 
 ```lua
-local series_and_archetype = client:series_and_archetype(nil)
+local series_and_archetype = client:SeriesAndArchetype(nil)
 ```
 
 ### Fields
@@ -334,7 +334,7 @@ local series_and_archetype = client:series_and_archetype(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:series_and_archetype():load({ id = "series_and_archetype_id" })
+local result, err = client:SeriesAndArchetype():load({ id = "series_and_archetype_id" })
 ```
 
 ### Common Methods
@@ -370,7 +370,7 @@ Return the entity name.
 ## SkillEntity
 
 ```lua
-local skill = client:skill(nil)
+local skill = client:Skill(nil)
 ```
 
 ### Fields
@@ -390,7 +390,7 @@ local skill = client:skill(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:skill():list()
+local results, err = client:Skill():list()
 ```
 
 ### Common Methods
@@ -426,7 +426,7 @@ Return the entity name.
 ## SkillCardEntity
 
 ```lua
-local skill_card = client:skill_card(nil)
+local skill_card = client:SkillCard(nil)
 ```
 
 ### Fields
@@ -446,7 +446,7 @@ local skill_card = client:skill_card(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:skill_card():load({ id = "skill_card_id" })
+local result, err = client:SkillCard():load({ id = "skill_card_id" })
 ```
 
 ### Common Methods

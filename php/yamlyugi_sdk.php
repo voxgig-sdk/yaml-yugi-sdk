@@ -233,10 +233,10 @@ class YamlYugiSDK
 
     private $_aggregation = null;
 
-    // Idiomatic facade: $client->aggregation()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Aggregation() (PHP method
-    // names are case-insensitive).
-    public function aggregation($data = null)
+    // Canonical facade: $client->Aggregation()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->aggregation()
+    // resolves here too.
+    public function Aggregation($data = null)
     {
         require_once __DIR__ . '/entity/aggregation_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class YamlYugiSDK
 
     private $_card = null;
 
-    // Idiomatic facade: $client->card()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Card() (PHP method
-    // names are case-insensitive).
-    public function card($data = null)
+    // Canonical facade: $client->Card()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->card()
+    // resolves here too.
+    public function Card($data = null)
     {
         require_once __DIR__ . '/entity/card_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class YamlYugiSDK
 
     private $_individual_card = null;
 
-    // Idiomatic facade: $client->individual_card()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias IndividualCard() (PHP method
-    // names are case-insensitive).
-    public function individual_card($data = null)
+    // Canonical facade: $client->IndividualCard()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->individual_card()
+    // resolves here too.
+    public function IndividualCard($data = null)
     {
         require_once __DIR__ . '/entity/individual_card_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class YamlYugiSDK
 
     private $_series = null;
 
-    // Idiomatic facade: $client->series()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Series() (PHP method
-    // names are case-insensitive).
-    public function series($data = null)
+    // Canonical facade: $client->Series()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->series()
+    // resolves here too.
+    public function Series($data = null)
     {
         require_once __DIR__ . '/entity/series_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class YamlYugiSDK
 
     private $_series_and_archetype = null;
 
-    // Idiomatic facade: $client->series_and_archetype()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias SeriesAndArchetype() (PHP method
-    // names are case-insensitive).
-    public function series_and_archetype($data = null)
+    // Canonical facade: $client->SeriesAndArchetype()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->series_and_archetype()
+    // resolves here too.
+    public function SeriesAndArchetype($data = null)
     {
         require_once __DIR__ . '/entity/series_and_archetype_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class YamlYugiSDK
 
     private $_skill = null;
 
-    // Idiomatic facade: $client->skill()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Skill() (PHP method
-    // names are case-insensitive).
-    public function skill($data = null)
+    // Canonical facade: $client->Skill()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->skill()
+    // resolves here too.
+    public function Skill($data = null)
     {
         require_once __DIR__ . '/entity/skill_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class YamlYugiSDK
 
     private $_skill_card = null;
 
-    // Idiomatic facade: $client->skill_card()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias SkillCard() (PHP method
-    // names are case-insensitive).
-    public function skill_card($data = null)
+    // Canonical facade: $client->SkillCard()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->skill_card()
+    // resolves here too.
+    public function SkillCard($data = null)
     {
         require_once __DIR__ . '/entity/skill_card_entity.php';
         if ($data === null) {

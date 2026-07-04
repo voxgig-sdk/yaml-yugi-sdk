@@ -33,10 +33,12 @@ client = YamlYugiSDK()
 
 ### 3. Load an aggregation
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.aggregation.load({"id": "example_id"})
-    print(result)
+    aggregation = client.Aggregation().load({"id": "example_id"})
+    print(aggregation)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = YamlYugiSDK.test()
 
-result = client.aggregation.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+aggregation = client.Aggregation().load({"id": "test01"})
+# aggregation contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,9 +164,9 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Aggregation` | `(data) -> AggregationEntity` | Create a Aggregation entity instance. |
+| `Aggregation` | `(data) -> AggregationEntity` | Create an Aggregation entity instance. |
 | `Card` | `(data) -> CardEntity` | Create a Card entity instance. |
-| `IndividualCard` | `(data) -> IndividualCardEntity` | Create a IndividualCard entity instance. |
+| `IndividualCard` | `(data) -> IndividualCardEntity` | Create an IndividualCard entity instance. |
 | `Series` | `(data) -> SeriesEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype` | `(data) -> SeriesAndArchetypeEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill` | `(data) -> SkillEntity` | Create a Skill entity instance. |
@@ -305,7 +308,7 @@ API path: `/data/tcg-speed-skill/{yugipediaId}.json`
 
 ### Aggregation
 
-Create an instance: `const aggregation = client.aggregation`
+Create an instance: `aggregation = client.Aggregation()`
 
 #### Operations
 
@@ -315,14 +318,14 @@ Create an instance: `const aggregation = client.aggregation`
 
 #### Example: Load
 
-```ts
-const aggregation = await client.aggregation.load({ id: 'aggregation_id' })
+```python
+aggregation = client.Aggregation().load({"id": "aggregation_id"})
 ```
 
 
 ### Card
 
-Create an instance: `const card = client.card`
+Create an instance: `card = client.Card()`
 
 #### Operations
 
@@ -351,14 +354,14 @@ Create an instance: `const card = client.card`
 
 #### Example: List
 
-```ts
-const cards = await client.card.list()
+```python
+cards = client.Card().list({})
 ```
 
 
 ### IndividualCard
 
-Create an instance: `const individual_card = client.individual_card`
+Create an instance: `individual_card = client.IndividualCard()`
 
 #### Operations
 
@@ -368,14 +371,14 @@ Create an instance: `const individual_card = client.individual_card`
 
 #### Example: Load
 
-```ts
-const individual_card = await client.individual_card.load({ id: 'individual_card_id' })
+```python
+individual_card = client.IndividualCard().load({"id": "individual_card_id"})
 ```
 
 
 ### Series
 
-Create an instance: `const series = client.series`
+Create an instance: `series = client.Series()`
 
 #### Operations
 
@@ -392,14 +395,14 @@ Create an instance: `const series = client.series`
 
 #### Example: List
 
-```ts
-const seriess = await client.series.list()
+```python
+seriess = client.Series().list({})
 ```
 
 
 ### SeriesAndArchetype
 
-Create an instance: `const series_and_archetype = client.series_and_archetype`
+Create an instance: `series_and_archetype = client.SeriesAndArchetype()`
 
 #### Operations
 
@@ -416,14 +419,14 @@ Create an instance: `const series_and_archetype = client.series_and_archetype`
 
 #### Example: Load
 
-```ts
-const series_and_archetype = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
+```python
+series_and_archetype = client.SeriesAndArchetype().load({"id": "series_and_archetype_id"})
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.skill`
+Create an instance: `skill = client.Skill()`
 
 #### Operations
 
@@ -443,14 +446,14 @@ Create an instance: `const skill = client.skill`
 
 #### Example: List
 
-```ts
-const skills = await client.skill.list()
+```python
+skills = client.Skill().list({})
 ```
 
 
 ### SkillCard
 
-Create an instance: `const skill_card = client.skill_card`
+Create an instance: `skill_card = client.SkillCard()`
 
 #### Operations
 
@@ -470,8 +473,8 @@ Create an instance: `const skill_card = client.skill_card`
 
 #### Example: Load
 
-```ts
-const skill_card = await client.skill_card.load({ id: 'skill_card_id' })
+```python
+skill_card = client.SkillCard().load({"id": "skill_card_id"})
 ```
 
 
@@ -545,7 +548,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-aggregation = client.aggregation
+aggregation = client.Aggregation()
 aggregation.load({"id": "example_id"})
 
 # aggregation.data_get() now returns the loaded aggregation data

@@ -208,91 +208,49 @@ class YamlYugiSDK
   end
 
 
-  # Idiomatic facade: client.aggregation.list / client.aggregation.load({ "id" => ... })
-  def aggregation
-    require_relative 'entity/aggregation_entity'
-    @aggregation ||= AggregationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.aggregation instead.
+  # Canonical facade: client.Aggregation.list / client.Aggregation.load({ "id" => ... })
   def Aggregation(data = nil)
     require_relative 'entity/aggregation_entity'
     AggregationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.card.list / client.card.load({ "id" => ... })
-  def card
-    require_relative 'entity/card_entity'
-    @card ||= CardEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.card instead.
+  # Canonical facade: client.Card.list / client.Card.load({ "id" => ... })
   def Card(data = nil)
     require_relative 'entity/card_entity'
     CardEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.individual_card.list / client.individual_card.load({ "id" => ... })
-  def individual_card
-    require_relative 'entity/individual_card_entity'
-    @individual_card ||= IndividualCardEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.individual_card instead.
+  # Canonical facade: client.IndividualCard.list / client.IndividualCard.load({ "id" => ... })
   def IndividualCard(data = nil)
     require_relative 'entity/individual_card_entity'
     IndividualCardEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.series.list / client.series.load({ "id" => ... })
-  def series
-    require_relative 'entity/series_entity'
-    @series ||= SeriesEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.series instead.
+  # Canonical facade: client.Series.list / client.Series.load({ "id" => ... })
   def Series(data = nil)
     require_relative 'entity/series_entity'
     SeriesEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.series_and_archetype.list / client.series_and_archetype.load({ "id" => ... })
-  def series_and_archetype
-    require_relative 'entity/series_and_archetype_entity'
-    @series_and_archetype ||= SeriesAndArchetypeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.series_and_archetype instead.
+  # Canonical facade: client.SeriesAndArchetype.list / client.SeriesAndArchetype.load({ "id" => ... })
   def SeriesAndArchetype(data = nil)
     require_relative 'entity/series_and_archetype_entity'
     SeriesAndArchetypeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.skill.list / client.skill.load({ "id" => ... })
-  def skill
-    require_relative 'entity/skill_entity'
-    @skill ||= SkillEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.skill instead.
+  # Canonical facade: client.Skill.list / client.Skill.load({ "id" => ... })
   def Skill(data = nil)
     require_relative 'entity/skill_entity'
     SkillEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.skill_card.list / client.skill_card.load({ "id" => ... })
-  def skill_card
-    require_relative 'entity/skill_card_entity'
-    @skill_card ||= SkillCardEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.skill_card instead.
+  # Canonical facade: client.SkillCard.list / client.SkillCard.load({ "id" => ... })
   def SkillCard(data = nil)
     require_relative 'entity/skill_card_entity'
     SkillCardEntity.new(self, data)

@@ -181,7 +181,7 @@ Alias for `YamlYugiSDK.test()`.
 ## AggregationEntity
 
 ```ts
-const aggregation = client.aggregation
+const aggregation = client.Aggregation()
 ```
 
 ### Operations
@@ -191,7 +191,7 @@ const aggregation = client.aggregation
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.aggregation.load({ id: 'aggregation_id' })
+const result = await client.Aggregation().load({ id: 'aggregation_id' })
 ```
 
 ### Common Methods
@@ -225,7 +225,7 @@ Return a copy of the entity options.
 ## CardEntity
 
 ```ts
-const card = client.card
+const card = client.Card()
 ```
 
 ### Fields
@@ -254,7 +254,7 @@ const card = client.card
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.card.list()
+const results = await client.Card().list()
 ```
 
 ### Common Methods
@@ -288,7 +288,7 @@ Return a copy of the entity options.
 ## IndividualCardEntity
 
 ```ts
-const individual_card = client.individual_card
+const individual_card = client.IndividualCard()
 ```
 
 ### Operations
@@ -298,7 +298,7 @@ const individual_card = client.individual_card
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.individual_card.load({ id: 'individual_card_id' })
+const result = await client.IndividualCard().load({ id: 'individual_card_id' })
 ```
 
 ### Common Methods
@@ -332,7 +332,7 @@ Return a copy of the entity options.
 ## SeriesEntity
 
 ```ts
-const series = client.series
+const series = client.Series()
 ```
 
 ### Fields
@@ -349,7 +349,7 @@ const series = client.series
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.series.list()
+const results = await client.Series().list()
 ```
 
 ### Common Methods
@@ -383,7 +383,7 @@ Return a copy of the entity options.
 ## SeriesAndArchetypeEntity
 
 ```ts
-const series_and_archetype = client.series_and_archetype
+const series_and_archetype = client.SeriesAndArchetype()
 ```
 
 ### Fields
@@ -400,7 +400,7 @@ const series_and_archetype = client.series_and_archetype
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
+const result = await client.SeriesAndArchetype().load({ id: 'series_and_archetype_id' })
 ```
 
 ### Common Methods
@@ -434,7 +434,7 @@ Return a copy of the entity options.
 ## SkillEntity
 
 ```ts
-const skill = client.skill
+const skill = client.Skill()
 ```
 
 ### Fields
@@ -454,7 +454,7 @@ const skill = client.skill
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.skill.list()
+const results = await client.Skill().list()
 ```
 
 ### Common Methods
@@ -488,7 +488,7 @@ Return a copy of the entity options.
 ## SkillCardEntity
 
 ```ts
-const skill_card = client.skill_card
+const skill_card = client.SkillCard()
 ```
 
 ### Fields
@@ -508,7 +508,7 @@ const skill_card = client.skill_card
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.skill_card.load({ id: 'skill_card_id' })
+const result = await client.SkillCard().load({ id: 'skill_card_id' })
 ```
 
 ### Common Methods

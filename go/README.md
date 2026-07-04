@@ -30,36 +30,30 @@ go mod edit -replace github.com/voxgig-sdk/yaml-yugi-sdk/go=../yaml-yugi-sdk/go
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/yaml-yugi-sdk/go"
-    "github.com/voxgig-sdk/yaml-yugi-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 3. Load an aggregation
-
-```go
-    result, err = client.Aggregation(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single aggregation — the value is the loaded record.
+    aggregation, err := client.Aggregation(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(aggregation)
 }
 ```
 
@@ -110,10 +104,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Aggregation(nil).Load(
+aggregation, err := client.Aggregation(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(aggregation) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -190,9 +187,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Aggregation` | `(data map[string]any) YamlYugiEntity` | Create a Aggregation entity instance. |
+| `Aggregation` | `(data map[string]any) YamlYugiEntity` | Create an Aggregation entity instance. |
 | `Card` | `(data map[string]any) YamlYugiEntity` | Create a Card entity instance. |
-| `IndividualCard` | `(data map[string]any) YamlYugiEntity` | Create a IndividualCard entity instance. |
+| `IndividualCard` | `(data map[string]any) YamlYugiEntity` | Create an IndividualCard entity instance. |
 | `Series` | `(data map[string]any) YamlYugiEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype` | `(data map[string]any) YamlYugiEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill` | `(data map[string]any) YamlYugiEntity` | Create a Skill entity instance. |
@@ -216,17 +213,24 @@ All entities implement the `YamlYugiEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    aggregation, err := client.Aggregation(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // aggregation is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -339,7 +343,11 @@ Create an instance: `aggregation := client.Aggregation(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Aggregation(nil).Load(map[string]any{"id": "aggregation_id"}, nil)
+aggregation, err := client.Aggregation(nil).Load(map[string]any{"id": "aggregation_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(aggregation) // the loaded record
 ```
 
 
@@ -375,7 +383,11 @@ Create an instance: `card := client.Card(nil)`
 #### Example: List
 
 ```go
-results, err := client.Card(nil).List(nil, nil)
+cards, err := client.Card(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(cards) // the array of records
 ```
 
 
@@ -392,7 +404,11 @@ Create an instance: `individual_card := client.IndividualCard(nil)`
 #### Example: Load
 
 ```go
-result, err := client.IndividualCard(nil).Load(map[string]any{"id": "individual_card_id"}, nil)
+individual_card, err := client.IndividualCard(nil).Load(map[string]any{"id": "individual_card_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(individual_card) // the loaded record
 ```
 
 
@@ -416,7 +432,11 @@ Create an instance: `series := client.Series(nil)`
 #### Example: List
 
 ```go
-results, err := client.Series(nil).List(nil, nil)
+seriess, err := client.Series(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(seriess) // the array of records
 ```
 
 
@@ -440,7 +460,11 @@ Create an instance: `series_and_archetype := client.SeriesAndArchetype(nil)`
 #### Example: Load
 
 ```go
-result, err := client.SeriesAndArchetype(nil).Load(map[string]any{"id": "series_and_archetype_id"}, nil)
+series_and_archetype, err := client.SeriesAndArchetype(nil).Load(map[string]any{"id": "series_and_archetype_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(series_and_archetype) // the loaded record
 ```
 
 
@@ -467,7 +491,11 @@ Create an instance: `skill := client.Skill(nil)`
 #### Example: List
 
 ```go
-results, err := client.Skill(nil).List(nil, nil)
+skills, err := client.Skill(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(skills) // the array of records
 ```
 
 
@@ -494,7 +522,11 @@ Create an instance: `skill_card := client.SkillCard(nil)`
 #### Example: Load
 
 ```go
-result, err := client.SkillCard(nil).Load(map[string]any{"id": "skill_card_id"}, nil)
+skill_card, err := client.SkillCard(nil).Load(map[string]any{"id": "skill_card_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(skill_card) // the loaded record
 ```
 
 

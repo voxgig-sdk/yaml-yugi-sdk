@@ -109,7 +109,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AggregationEntity
 
 ```php
-$aggregation = $client->aggregation();
+$aggregation = $client->Aggregation();
 ```
 
 ### Operations
@@ -119,7 +119,7 @@ $aggregation = $client->aggregation();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->aggregation()->load(["id" => "aggregation_id"]);
+$result = $client->Aggregation()->load(["id" => "aggregation_id"]);
 ```
 
 ### Common Methods
@@ -155,7 +155,7 @@ Return the entity name.
 ## CardEntity
 
 ```php
-$card = $client->card();
+$card = $client->Card();
 ```
 
 ### Fields
@@ -184,7 +184,7 @@ $card = $client->card();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->card()->list([]);
+$results = $client->Card()->list([]);
 ```
 
 ### Common Methods
@@ -220,7 +220,7 @@ Return the entity name.
 ## IndividualCardEntity
 
 ```php
-$individual_card = $client->individual_card();
+$individual_card = $client->IndividualCard();
 ```
 
 ### Operations
@@ -230,7 +230,7 @@ $individual_card = $client->individual_card();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->individual_card()->load(["id" => "individual_card_id"]);
+$result = $client->IndividualCard()->load(["id" => "individual_card_id"]);
 ```
 
 ### Common Methods
@@ -266,7 +266,7 @@ Return the entity name.
 ## SeriesEntity
 
 ```php
-$series = $client->series();
+$series = $client->Series();
 ```
 
 ### Fields
@@ -283,7 +283,7 @@ $series = $client->series();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->series()->list([]);
+$results = $client->Series()->list([]);
 ```
 
 ### Common Methods
@@ -319,7 +319,7 @@ Return the entity name.
 ## SeriesAndArchetypeEntity
 
 ```php
-$series_and_archetype = $client->series_and_archetype();
+$series_and_archetype = $client->SeriesAndArchetype();
 ```
 
 ### Fields
@@ -336,7 +336,7 @@ $series_and_archetype = $client->series_and_archetype();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->series_and_archetype()->load(["id" => "series_and_archetype_id"]);
+$result = $client->SeriesAndArchetype()->load(["id" => "series_and_archetype_id"]);
 ```
 
 ### Common Methods
@@ -372,7 +372,7 @@ Return the entity name.
 ## SkillEntity
 
 ```php
-$skill = $client->skill();
+$skill = $client->Skill();
 ```
 
 ### Fields
@@ -392,7 +392,7 @@ $skill = $client->skill();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->skill()->list([]);
+$results = $client->Skill()->list([]);
 ```
 
 ### Common Methods
@@ -428,7 +428,7 @@ Return the entity name.
 ## SkillCardEntity
 
 ```php
-$skill_card = $client->skill_card();
+$skill_card = $client->SkillCard();
 ```
 
 ### Fields
@@ -448,7 +448,7 @@ $skill_card = $client->skill_card();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->skill_card()->load(["id" => "skill_card_id"]);
+$result = $client->SkillCard()->load(["id" => "skill_card_id"]);
 ```
 
 ### Common Methods

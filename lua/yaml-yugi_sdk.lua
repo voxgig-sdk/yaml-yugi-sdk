@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:aggregation():list() / client:aggregation():load({ id = ... })
-function YamlYugiSDK:aggregation(data)
+-- Idiomatic facade: client:Aggregation():list() / client:Aggregation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function YamlYugiSDK:Aggregation(data)
   local EntityMod = require("entity.aggregation_entity")
   if data == nil then
     if self._aggregation == nil then
@@ -256,15 +257,10 @@ function YamlYugiSDK:aggregation(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:aggregation() instead.
-function YamlYugiSDK:Aggregation(data)
-  local EntityMod = require("entity.aggregation_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:card():list() / client:card():load({ id = ... })
-function YamlYugiSDK:card(data)
+-- Idiomatic facade: client:Card():list() / client:Card():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function YamlYugiSDK:Card(data)
   local EntityMod = require("entity.card_entity")
   if data == nil then
     if self._card == nil then
@@ -275,15 +271,10 @@ function YamlYugiSDK:card(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:card() instead.
-function YamlYugiSDK:Card(data)
-  local EntityMod = require("entity.card_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:individual_card():list() / client:individual_card():load({ id = ... })
-function YamlYugiSDK:individual_card(data)
+-- Idiomatic facade: client:IndividualCard():list() / client:IndividualCard():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function YamlYugiSDK:IndividualCard(data)
   local EntityMod = require("entity.individual_card_entity")
   if data == nil then
     if self._individual_card == nil then
@@ -294,15 +285,10 @@ function YamlYugiSDK:individual_card(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:individual_card() instead.
-function YamlYugiSDK:IndividualCard(data)
-  local EntityMod = require("entity.individual_card_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:series():list() / client:series():load({ id = ... })
-function YamlYugiSDK:series(data)
+-- Idiomatic facade: client:Series():list() / client:Series():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function YamlYugiSDK:Series(data)
   local EntityMod = require("entity.series_entity")
   if data == nil then
     if self._series == nil then
@@ -313,15 +299,10 @@ function YamlYugiSDK:series(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:series() instead.
-function YamlYugiSDK:Series(data)
-  local EntityMod = require("entity.series_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:series_and_archetype():list() / client:series_and_archetype():load({ id = ... })
-function YamlYugiSDK:series_and_archetype(data)
+-- Idiomatic facade: client:SeriesAndArchetype():list() / client:SeriesAndArchetype():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function YamlYugiSDK:SeriesAndArchetype(data)
   local EntityMod = require("entity.series_and_archetype_entity")
   if data == nil then
     if self._series_and_archetype == nil then
@@ -332,15 +313,10 @@ function YamlYugiSDK:series_and_archetype(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:series_and_archetype() instead.
-function YamlYugiSDK:SeriesAndArchetype(data)
-  local EntityMod = require("entity.series_and_archetype_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:skill():list() / client:skill():load({ id = ... })
-function YamlYugiSDK:skill(data)
+-- Idiomatic facade: client:Skill():list() / client:Skill():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function YamlYugiSDK:Skill(data)
   local EntityMod = require("entity.skill_entity")
   if data == nil then
     if self._skill == nil then
@@ -351,15 +327,10 @@ function YamlYugiSDK:skill(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:skill() instead.
-function YamlYugiSDK:Skill(data)
-  local EntityMod = require("entity.skill_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:skill_card():list() / client:skill_card():load({ id = ... })
-function YamlYugiSDK:skill_card(data)
+-- Idiomatic facade: client:SkillCard():list() / client:SkillCard():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function YamlYugiSDK:SkillCard(data)
   local EntityMod = require("entity.skill_card_entity")
   if data == nil then
     if self._skill_card == nil then
@@ -367,12 +338,6 @@ function YamlYugiSDK:skill_card(data)
     end
     return self._skill_card
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:skill_card() instead.
-function YamlYugiSDK:SkillCard(data)
-  local EntityMod = require("entity.skill_card_entity")
   return EntityMod.new(self, data)
 end
 

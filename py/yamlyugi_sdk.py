@@ -220,121 +220,51 @@ class YamlYugiSDK:
         }
 
 
-    @property
-    def aggregation(self):
-        """Idiomatic facade: client.aggregation.list() / client.aggregation.load({"id": ...})."""
-        from entity.aggregation_entity import AggregationEntity
-        cached = getattr(self, "_aggregation", None)
-        if cached is None:
-            cached = AggregationEntity(self, None)
-            self._aggregation = cached
-        return cached
-
-    def Aggregation(self, data=None):
-        # Deprecated: use client.aggregation instead.
+    def Aggregation(self, data=None) -> "AggregationEntity":
+        """Entity factory: client.Aggregation().list({}) / client.Aggregation().load({"id": ...})."""
         from entity.aggregation_entity import AggregationEntity
         return AggregationEntity(self, data)
 
 
-    @property
-    def card(self):
-        """Idiomatic facade: client.card.list() / client.card.load({"id": ...})."""
-        from entity.card_entity import CardEntity
-        cached = getattr(self, "_card", None)
-        if cached is None:
-            cached = CardEntity(self, None)
-            self._card = cached
-        return cached
-
-    def Card(self, data=None):
-        # Deprecated: use client.card instead.
+    def Card(self, data=None) -> "CardEntity":
+        """Entity factory: client.Card().list({}) / client.Card().load({"id": ...})."""
         from entity.card_entity import CardEntity
         return CardEntity(self, data)
 
 
-    @property
-    def individual_card(self):
-        """Idiomatic facade: client.individual_card.list() / client.individual_card.load({"id": ...})."""
-        from entity.individual_card_entity import IndividualCardEntity
-        cached = getattr(self, "_individual_card", None)
-        if cached is None:
-            cached = IndividualCardEntity(self, None)
-            self._individual_card = cached
-        return cached
-
-    def IndividualCard(self, data=None):
-        # Deprecated: use client.individual_card instead.
+    def IndividualCard(self, data=None) -> "IndividualCardEntity":
+        """Entity factory: client.IndividualCard().list({}) / client.IndividualCard().load({"id": ...})."""
         from entity.individual_card_entity import IndividualCardEntity
         return IndividualCardEntity(self, data)
 
 
-    @property
-    def series(self):
-        """Idiomatic facade: client.series.list() / client.series.load({"id": ...})."""
-        from entity.series_entity import SeriesEntity
-        cached = getattr(self, "_series", None)
-        if cached is None:
-            cached = SeriesEntity(self, None)
-            self._series = cached
-        return cached
-
-    def Series(self, data=None):
-        # Deprecated: use client.series instead.
+    def Series(self, data=None) -> "SeriesEntity":
+        """Entity factory: client.Series().list({}) / client.Series().load({"id": ...})."""
         from entity.series_entity import SeriesEntity
         return SeriesEntity(self, data)
 
 
-    @property
-    def series_and_archetype(self):
-        """Idiomatic facade: client.series_and_archetype.list() / client.series_and_archetype.load({"id": ...})."""
-        from entity.series_and_archetype_entity import SeriesAndArchetypeEntity
-        cached = getattr(self, "_series_and_archetype", None)
-        if cached is None:
-            cached = SeriesAndArchetypeEntity(self, None)
-            self._series_and_archetype = cached
-        return cached
-
-    def SeriesAndArchetype(self, data=None):
-        # Deprecated: use client.series_and_archetype instead.
+    def SeriesAndArchetype(self, data=None) -> "SeriesAndArchetypeEntity":
+        """Entity factory: client.SeriesAndArchetype().list({}) / client.SeriesAndArchetype().load({"id": ...})."""
         from entity.series_and_archetype_entity import SeriesAndArchetypeEntity
         return SeriesAndArchetypeEntity(self, data)
 
 
-    @property
-    def skill(self):
-        """Idiomatic facade: client.skill.list() / client.skill.load({"id": ...})."""
-        from entity.skill_entity import SkillEntity
-        cached = getattr(self, "_skill", None)
-        if cached is None:
-            cached = SkillEntity(self, None)
-            self._skill = cached
-        return cached
-
-    def Skill(self, data=None):
-        # Deprecated: use client.skill instead.
+    def Skill(self, data=None) -> "SkillEntity":
+        """Entity factory: client.Skill().list({}) / client.Skill().load({"id": ...})."""
         from entity.skill_entity import SkillEntity
         return SkillEntity(self, data)
 
 
-    @property
-    def skill_card(self):
-        """Idiomatic facade: client.skill_card.list() / client.skill_card.load({"id": ...})."""
-        from entity.skill_card_entity import SkillCardEntity
-        cached = getattr(self, "_skill_card", None)
-        if cached is None:
-            cached = SkillCardEntity(self, None)
-            self._skill_card = cached
-        return cached
-
-    def SkillCard(self, data=None):
-        # Deprecated: use client.skill_card instead.
+    def SkillCard(self, data=None) -> "SkillCardEntity":
+        """Entity factory: client.SkillCard().list({}) / client.SkillCard().load({"id": ...})."""
         from entity.skill_card_entity import SkillCardEntity
         return SkillCardEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "YamlYugiSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -354,3 +284,15 @@ class YamlYugiSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.aggregation_entity import AggregationEntity
+    from entity.card_entity import CardEntity
+    from entity.individual_card_entity import IndividualCardEntity
+    from entity.series_entity import SeriesEntity
+    from entity.series_and_archetype_entity import SeriesAndArchetypeEntity
+    from entity.skill_entity import SkillEntity
+    from entity.skill_card_entity import SkillCardEntity

@@ -30,11 +30,14 @@ const client = new YamlYugiSDK()
 
 ### 3. Load an aggregation
 
-```ts
-const result = await client.aggregation.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const aggregation = await client.Aggregation().load({ id: 'example_id' })
+  console.log(aggregation)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -52,6 +55,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -80,9 +86,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = YamlYugiSDK.test()
 
-const result = await client.aggregation.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const aggregation = await client.Aggregation().load({ id: 'test01' })
+// aggregation is a bare entity populated with mock response data
+console.log(aggregation)
 ```
 
 You can also use the instance method:
@@ -97,7 +103,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.aggregation
+const entity = client.Aggregation()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -175,9 +181,9 @@ new YamlYugiSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `Aggregation(data?)` | `AggregationEntity` | Create a Aggregation entity instance. |
+| `Aggregation(data?)` | `AggregationEntity` | Create an Aggregation entity instance. |
 | `Card(data?)` | `CardEntity` | Create a Card entity instance. |
-| `IndividualCard(data?)` | `IndividualCardEntity` | Create a IndividualCard entity instance. |
+| `IndividualCard(data?)` | `IndividualCardEntity` | Create an IndividualCard entity instance. |
 | `Series(data?)` | `SeriesEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype(data?)` | `SeriesAndArchetypeEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill(data?)` | `SkillEntity` | Create a Skill entity instance. |
@@ -198,29 +204,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): YamlYugiSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -350,7 +357,7 @@ API path: `/data/tcg-speed-skill/{yugipediaId}.json`
 
 ### Aggregation
 
-Create an instance: `const aggregation = client.aggregation`
+Create an instance: `const aggregation = client.Aggregation()`
 
 #### Operations
 
@@ -361,13 +368,13 @@ Create an instance: `const aggregation = client.aggregation`
 #### Example: Load
 
 ```ts
-const aggregation = await client.aggregation.load({ id: 'aggregation_id' })
+const aggregation = await client.Aggregation().load({ id: 'aggregation_id' })
 ```
 
 
 ### Card
 
-Create an instance: `const card = client.card`
+Create an instance: `const card = client.Card()`
 
 #### Operations
 
@@ -397,13 +404,13 @@ Create an instance: `const card = client.card`
 #### Example: List
 
 ```ts
-const cards = await client.card.list()
+const cards = await client.Card().list()
 ```
 
 
 ### IndividualCard
 
-Create an instance: `const individual_card = client.individual_card`
+Create an instance: `const individual_card = client.IndividualCard()`
 
 #### Operations
 
@@ -414,13 +421,13 @@ Create an instance: `const individual_card = client.individual_card`
 #### Example: Load
 
 ```ts
-const individual_card = await client.individual_card.load({ id: 'individual_card_id' })
+const individual_card = await client.IndividualCard().load({ id: 'individual_card_id' })
 ```
 
 
 ### Series
 
-Create an instance: `const series = client.series`
+Create an instance: `const series = client.Series()`
 
 #### Operations
 
@@ -438,13 +445,13 @@ Create an instance: `const series = client.series`
 #### Example: List
 
 ```ts
-const seriess = await client.series.list()
+const seriess = await client.Series().list()
 ```
 
 
 ### SeriesAndArchetype
 
-Create an instance: `const series_and_archetype = client.series_and_archetype`
+Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
 
 #### Operations
 
@@ -462,13 +469,13 @@ Create an instance: `const series_and_archetype = client.series_and_archetype`
 #### Example: Load
 
 ```ts
-const series_and_archetype = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
+const series_and_archetype = await client.SeriesAndArchetype().load({ id: 'series_and_archetype_id' })
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.skill`
+Create an instance: `const skill = client.Skill()`
 
 #### Operations
 
@@ -489,13 +496,13 @@ Create an instance: `const skill = client.skill`
 #### Example: List
 
 ```ts
-const skills = await client.skill.list()
+const skills = await client.Skill().list()
 ```
 
 
 ### SkillCard
 
-Create an instance: `const skill_card = client.skill_card`
+Create an instance: `const skill_card = client.SkillCard()`
 
 #### Operations
 
@@ -516,7 +523,7 @@ Create an instance: `const skill_card = client.skill_card`
 #### Example: Load
 
 ```ts
-const skill_card = await client.skill_card.load({ id: 'skill_card_id' })
+const skill_card = await client.SkillCard().load({ id: 'skill_card_id' })
 ```
 
 
@@ -587,7 +594,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const aggregation = client.aggregation
+const aggregation = client.Aggregation()
 await aggregation.load({ id: "example_id" })
 
 // aggregation.data() now returns the loaded aggregation data

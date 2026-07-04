@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load an aggregation
 
 ```lua
-local result, err = client:aggregation():load({ id = "example_id" })
+local aggregation, err = client:Aggregation():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(aggregation)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:aggregation():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Aggregation():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -161,9 +161,9 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Aggregation` | `(data) -> AggregationEntity` | Create a Aggregation entity instance. |
+| `Aggregation` | `(data) -> AggregationEntity` | Create an Aggregation entity instance. |
 | `Card` | `(data) -> CardEntity` | Create a Card entity instance. |
-| `IndividualCard` | `(data) -> IndividualCardEntity` | Create a IndividualCard entity instance. |
+| `IndividualCard` | `(data) -> IndividualCardEntity` | Create an IndividualCard entity instance. |
 | `Series` | `(data) -> SeriesEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype` | `(data) -> SeriesAndArchetypeEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill` | `(data) -> SkillEntity` | Create a Skill entity instance. |
@@ -189,17 +189,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local aggregation, err = client:Aggregation():load({ id = "example_id" })
+    if err then error(err) end
+    -- aggregation is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -301,7 +306,7 @@ API path: `/data/tcg-speed-skill/{yugipediaId}.json`
 
 ### Aggregation
 
-Create an instance: `const aggregation = client.aggregation`
+Create an instance: `local aggregation = client:Aggregation(nil)`
 
 #### Operations
 
@@ -311,14 +316,14 @@ Create an instance: `const aggregation = client.aggregation`
 
 #### Example: Load
 
-```ts
-const aggregation = await client.aggregation.load({ id: 'aggregation_id' })
+```lua
+local aggregation, err = client:Aggregation():load({ id = "aggregation_id" })
 ```
 
 
 ### Card
 
-Create an instance: `const card = client.card`
+Create an instance: `local card = client:Card(nil)`
 
 #### Operations
 
@@ -347,14 +352,14 @@ Create an instance: `const card = client.card`
 
 #### Example: List
 
-```ts
-const cards = await client.card.list()
+```lua
+local cards, err = client:Card():list()
 ```
 
 
 ### IndividualCard
 
-Create an instance: `const individual_card = client.individual_card`
+Create an instance: `local individual_card = client:IndividualCard(nil)`
 
 #### Operations
 
@@ -364,14 +369,14 @@ Create an instance: `const individual_card = client.individual_card`
 
 #### Example: Load
 
-```ts
-const individual_card = await client.individual_card.load({ id: 'individual_card_id' })
+```lua
+local individual_card, err = client:IndividualCard():load({ id = "individual_card_id" })
 ```
 
 
 ### Series
 
-Create an instance: `const series = client.series`
+Create an instance: `local series = client:Series(nil)`
 
 #### Operations
 
@@ -388,14 +393,14 @@ Create an instance: `const series = client.series`
 
 #### Example: List
 
-```ts
-const seriess = await client.series.list()
+```lua
+local seriess, err = client:Series():list()
 ```
 
 
 ### SeriesAndArchetype
 
-Create an instance: `const series_and_archetype = client.series_and_archetype`
+Create an instance: `local series_and_archetype = client:SeriesAndArchetype(nil)`
 
 #### Operations
 
@@ -412,14 +417,14 @@ Create an instance: `const series_and_archetype = client.series_and_archetype`
 
 #### Example: Load
 
-```ts
-const series_and_archetype = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
+```lua
+local series_and_archetype, err = client:SeriesAndArchetype():load({ id = "series_and_archetype_id" })
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.skill`
+Create an instance: `local skill = client:Skill(nil)`
 
 #### Operations
 
@@ -439,14 +444,14 @@ Create an instance: `const skill = client.skill`
 
 #### Example: List
 
-```ts
-const skills = await client.skill.list()
+```lua
+local skills, err = client:Skill():list()
 ```
 
 
 ### SkillCard
 
-Create an instance: `const skill_card = client.skill_card`
+Create an instance: `local skill_card = client:SkillCard(nil)`
 
 #### Operations
 
@@ -466,8 +471,8 @@ Create an instance: `const skill_card = client.skill_card`
 
 #### Example: Load
 
-```ts
-const skill_card = await client.skill_card.load({ id: 'skill_card_id' })
+```lua
+local skill_card, err = client:SkillCard():load({ id = "skill_card_id" })
 ```
 
 
@@ -542,7 +547,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local aggregation = client:aggregation()
+local aggregation = client:Aggregation()
 aggregation:load({ id = "example_id" })
 
 -- aggregation:data_get() now returns the loaded aggregation data

@@ -33,9 +33,10 @@ $client = new YamlYugiSDK();
 
 ```php
 try {
-    $result = $client->aggregation()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Aggregation record (throws on error).
+    $aggregation = $client->Aggregation()->load(["id" => "example_id"]);
+    print_r($aggregation);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = YamlYugiSDK::test();
+$client = YamlYugiSDK::test([
+    "entity" => ["aggregation" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->aggregation()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$aggregation = $client->Aggregation()->load(["id" => "test01"]);
+print_r($aggregation);
 ```
 
 ### Use a custom fetch function
@@ -166,9 +171,9 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Aggregation` | `($data): AggregationEntity` | Create a Aggregation entity instance. |
+| `Aggregation` | `($data): AggregationEntity` | Create an Aggregation entity instance. |
 | `Card` | `($data): CardEntity` | Create a Card entity instance. |
-| `IndividualCard` | `($data): IndividualCardEntity` | Create a IndividualCard entity instance. |
+| `IndividualCard` | `($data): IndividualCardEntity` | Create an IndividualCard entity instance. |
 | `Series` | `($data): SeriesEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype` | `($data): SeriesAndArchetypeEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill` | `($data): SkillEntity` | Create a Skill entity instance. |
@@ -310,7 +315,7 @@ API path: `/data/tcg-speed-skill/{yugipediaId}.json`
 
 ### Aggregation
 
-Create an instance: `const aggregation = client.aggregation`
+Create an instance: `$aggregation = $client->Aggregation();`
 
 #### Operations
 
@@ -320,14 +325,15 @@ Create an instance: `const aggregation = client.aggregation`
 
 #### Example: Load
 
-```ts
-const aggregation = await client.aggregation.load({ id: 'aggregation_id' })
+```php
+// load() returns the bare Aggregation record (throws on error).
+$aggregation = $client->Aggregation()->load(["id" => "aggregation_id"]);
 ```
 
 
 ### Card
 
-Create an instance: `const card = client.card`
+Create an instance: `$card = $client->Card();`
 
 #### Operations
 
@@ -356,14 +362,15 @@ Create an instance: `const card = client.card`
 
 #### Example: List
 
-```ts
-const cards = await client.card.list()
+```php
+// list() returns an array of Card records (throws on error).
+$cards = $client->Card()->list();
 ```
 
 
 ### IndividualCard
 
-Create an instance: `const individual_card = client.individual_card`
+Create an instance: `$individual_card = $client->IndividualCard();`
 
 #### Operations
 
@@ -373,14 +380,15 @@ Create an instance: `const individual_card = client.individual_card`
 
 #### Example: Load
 
-```ts
-const individual_card = await client.individual_card.load({ id: 'individual_card_id' })
+```php
+// load() returns the bare IndividualCard record (throws on error).
+$individual_card = $client->IndividualCard()->load(["id" => "individual_card_id"]);
 ```
 
 
 ### Series
 
-Create an instance: `const series = client.series`
+Create an instance: `$series = $client->Series();`
 
 #### Operations
 
@@ -397,14 +405,15 @@ Create an instance: `const series = client.series`
 
 #### Example: List
 
-```ts
-const seriess = await client.series.list()
+```php
+// list() returns an array of Series records (throws on error).
+$seriess = $client->Series()->list();
 ```
 
 
 ### SeriesAndArchetype
 
-Create an instance: `const series_and_archetype = client.series_and_archetype`
+Create an instance: `$series_and_archetype = $client->SeriesAndArchetype();`
 
 #### Operations
 
@@ -421,14 +430,15 @@ Create an instance: `const series_and_archetype = client.series_and_archetype`
 
 #### Example: Load
 
-```ts
-const series_and_archetype = await client.series_and_archetype.load({ id: 'series_and_archetype_id' })
+```php
+// load() returns the bare SeriesAndArchetype record (throws on error).
+$series_and_archetype = $client->SeriesAndArchetype()->load(["id" => "series_and_archetype_id"]);
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.skill`
+Create an instance: `$skill = $client->Skill();`
 
 #### Operations
 
@@ -448,14 +458,15 @@ Create an instance: `const skill = client.skill`
 
 #### Example: List
 
-```ts
-const skills = await client.skill.list()
+```php
+// list() returns an array of Skill records (throws on error).
+$skills = $client->Skill()->list();
 ```
 
 
 ### SkillCard
 
-Create an instance: `const skill_card = client.skill_card`
+Create an instance: `$skill_card = $client->SkillCard();`
 
 #### Operations
 
@@ -475,8 +486,9 @@ Create an instance: `const skill_card = client.skill_card`
 
 #### Example: Load
 
-```ts
-const skill_card = await client.skill_card.load({ id: 'skill_card_id' })
+```php
+// load() returns the bare SkillCard record (throws on error).
+$skill_card = $client->SkillCard()->load(["id" => "skill_card_id"]);
 ```
 
 
@@ -551,7 +563,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$aggregation = $client->aggregation();
+$aggregation = $client->Aggregation();
 $aggregation->load(["id" => "example_id"]);
 
 // $aggregation->dataGet() now returns the loaded aggregation data

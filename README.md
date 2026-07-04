@@ -26,9 +26,9 @@ import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 
 const client = new YamlYugiSDK()
 
-// Load aggregation data
-const aggregation = await client.aggregation.load({})
-console.log(aggregation.data)
+// Load aggregation data (returns a Aggregation)
+const aggregation = await client.Aggregation().load()
+console.log(aggregation)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -90,8 +90,8 @@ from yamlyugi_sdk import YamlYugiSDK
 client = YamlYugiSDK()
 
 
-# Load a specific aggregation
-aggregation = client.aggregation.load({"id": "example_id"})
+# Load a specific aggregation (returns the record, raises on error)
+aggregation = client.Aggregation().load({"id": "example_id"})
 print(aggregation)
 ```
 
@@ -104,8 +104,8 @@ require_once 'yamlyugi_sdk.php';
 $client = new YamlYugiSDK();
 
 
-// Load a specific aggregation
-$aggregation = $client->aggregation()->load(["id" => "example_id"]);
+// Load a specific aggregation (returns the bare record; throws on error)
+$aggregation = $client->Aggregation()->load(["id" => "example_id"]);
 print_r($aggregation);
 ```
 
@@ -129,8 +129,8 @@ require_relative "YamlYugi_sdk"
 client = YamlYugiSDK.new
 
 
-# Load a specific aggregation
-aggregation = client.aggregation.load({ "id" => "example_id" })
+# Load a specific aggregation (returns the bare record; raises on error)
+aggregation = client.Aggregation.load({ "id" => "example_id" })
 puts aggregation
 ```
 
@@ -143,7 +143,7 @@ local client = sdk.new()
 
 
 -- Load a specific aggregation
-local aggregation, err = client:aggregation():load({ id = "example_id" })
+local aggregation, err = client:Aggregation():load({ id = "example_id" })
 print(aggregation)
 ```
 
@@ -156,22 +156,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = YamlYugiSDK.test()
-const result = await client.aggregation.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const aggregation = await client.Aggregation().load({ id: 'test01' })
+// aggregation is a bare Aggregation populated with mock data
+console.log(aggregation)
 ```
 
 ### Python
 
 ```python
 client = YamlYugiSDK.test()
-result = client.aggregation.load({"id": "test01"})
+aggregation = client.Aggregation().load({"id": "test01"})
+print(aggregation)
 ```
 
 ### PHP
 
 ```php
-$client = YamlYugiSDK::test();
-$result = $client->aggregation()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = YamlYugiSDK::test([
+    "entity" => ["aggregation" => ["test01" => ["id" => "test01"]]],
+]);
+$aggregation = $client->Aggregation()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -186,15 +191,18 @@ result, err := client.Aggregation(nil).Load(
 ### Ruby
 
 ```ruby
-client = YamlYugiSDK.test
-result = client.aggregation.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = YamlYugiSDK.test({
+  "entity" => { "aggregation" => { "test01" => { "id" => "test01" } } },
+})
+aggregation = client.Aggregation.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:aggregation():load({ id = "test01" })
+local result, err = client:Aggregation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -242,6 +250,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

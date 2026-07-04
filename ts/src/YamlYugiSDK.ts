@@ -210,98 +210,49 @@ class YamlYugiSDK {
 
 
 
-  _aggregation?: AggregationEntity
-
-  // Idiomatic facade: `client.aggregation.list()` / `client.aggregation.load({ id })`.
-  get aggregation(): AggregationEntity {
-    return (this._aggregation ??= new AggregationEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.aggregation` instead. */
+  // Entity access: `client.Aggregation().list()` / `client.Aggregation().load({ id })`.
   Aggregation(data?: any) {
     const self = this
     return new AggregationEntity(self,data)
   }
 
 
-  _card?: CardEntity
-
-  // Idiomatic facade: `client.card.list()` / `client.card.load({ id })`.
-  get card(): CardEntity {
-    return (this._card ??= new CardEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.card` instead. */
+  // Entity access: `client.Card().list()` / `client.Card().load({ id })`.
   Card(data?: any) {
     const self = this
     return new CardEntity(self,data)
   }
 
 
-  _individual_card?: IndividualCardEntity
-
-  // Idiomatic facade: `client.individual_card.list()` / `client.individual_card.load({ id })`.
-  get individual_card(): IndividualCardEntity {
-    return (this._individual_card ??= new IndividualCardEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.individual_card` instead. */
+  // Entity access: `client.IndividualCard().list()` / `client.IndividualCard().load({ id })`.
   IndividualCard(data?: any) {
     const self = this
     return new IndividualCardEntity(self,data)
   }
 
 
-  _series?: SeriesEntity
-
-  // Idiomatic facade: `client.series.list()` / `client.series.load({ id })`.
-  get series(): SeriesEntity {
-    return (this._series ??= new SeriesEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.series` instead. */
+  // Entity access: `client.Series().list()` / `client.Series().load({ id })`.
   Series(data?: any) {
     const self = this
     return new SeriesEntity(self,data)
   }
 
 
-  _series_and_archetype?: SeriesAndArchetypeEntity
-
-  // Idiomatic facade: `client.series_and_archetype.list()` / `client.series_and_archetype.load({ id })`.
-  get series_and_archetype(): SeriesAndArchetypeEntity {
-    return (this._series_and_archetype ??= new SeriesAndArchetypeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.series_and_archetype` instead. */
+  // Entity access: `client.SeriesAndArchetype().list()` / `client.SeriesAndArchetype().load({ id })`.
   SeriesAndArchetype(data?: any) {
     const self = this
     return new SeriesAndArchetypeEntity(self,data)
   }
 
 
-  _skill?: SkillEntity
-
-  // Idiomatic facade: `client.skill.list()` / `client.skill.load({ id })`.
-  get skill(): SkillEntity {
-    return (this._skill ??= new SkillEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.skill` instead. */
+  // Entity access: `client.Skill().list()` / `client.Skill().load({ id })`.
   Skill(data?: any) {
     const self = this
     return new SkillEntity(self,data)
   }
 
 
-  _skill_card?: SkillCardEntity
-
-  // Idiomatic facade: `client.skill_card.list()` / `client.skill_card.load({ id })`.
-  get skill_card(): SkillCardEntity {
-    return (this._skill_card ??= new SkillCardEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.skill_card` instead. */
+  // Entity access: `client.SkillCard().list()` / `client.SkillCard().load({ id })`.
   SkillCard(data?: any) {
     const self = this
     return new SkillCardEntity(self,data)
