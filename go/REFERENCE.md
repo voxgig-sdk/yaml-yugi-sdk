@@ -124,7 +124,7 @@ aggregation := client.Aggregation(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Aggregation(nil).Load(map[string]any{"id": "aggregation_id"}, nil)
+result, err := client.Aggregation(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -161,20 +161,20 @@ card := client.Card(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | ``$ARRAY`` | No |  |
-| `atk` | ``$INTEGER`` | No |  |
-| `attribute` | ``$STRING`` | No |  |
-| `card_type` | ``$STRING`` | No |  |
-| `def` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `konami_id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `link_rating` | ``$INTEGER`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `password` | ``$STRING`` | No |  |
-| `rank` | ``$INTEGER`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `archetype` | `[]any` | No |  |
+| `atk` | `int` | No |  |
+| `attribute` | `string` | No |  |
+| `card_type` | `string` | No |  |
+| `def` | `int` | No |  |
+| `format` | `[]any` | No |  |
+| `konami_id` | `string` | No |  |
+| `level` | `int` | No |  |
+| `link_rating` | `int` | No |  |
+| `name` | `map[string]any` | No |  |
+| `password` | `string` | No |  |
+| `rank` | `int` | No |  |
+| `text` | `map[string]any` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -223,7 +223,7 @@ individual_card := client.IndividualCard(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.IndividualCard(nil).Load(map[string]any{"id": "individual_card_id"}, nil)
+result, err := client.IndividualCard(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -260,8 +260,8 @@ series := client.Series(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `[]any` | No |  |
+| `name` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -307,8 +307,8 @@ series_and_archetype := client.SeriesAndArchetype(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `[]any` | No |  |
+| `name` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -317,7 +317,7 @@ series_and_archetype := client.SeriesAndArchetype(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.SeriesAndArchetype(nil).Load(map[string]any{"id": "series_and_archetype_id"}, nil)
+result, err := client.SeriesAndArchetype(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -354,11 +354,11 @@ skill := client.Skill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `map[string]any` | No |  |
+| `text` | `map[string]any` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
@@ -404,11 +404,11 @@ skill_card := client.SkillCard(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `map[string]any` | No |  |
+| `text` | `map[string]any` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
@@ -417,7 +417,7 @@ skill_card := client.SkillCard(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.SkillCard(nil).Load(map[string]any{"id": "skill_card_id"}, nil)
+result, err := client.SkillCard(nil).Load(nil, nil)
 ```
 
 ### Common Methods

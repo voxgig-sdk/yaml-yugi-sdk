@@ -191,7 +191,7 @@ const aggregation = client.Aggregation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Aggregation().load({ id: 'aggregation_id' })
+const result = await client.Aggregation().load()
 ```
 
 ### Common Methods
@@ -232,20 +232,20 @@ const card = client.Card()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | ``$ARRAY`` | No |  |
-| `atk` | ``$INTEGER`` | No |  |
-| `attribute` | ``$STRING`` | No |  |
-| `card_type` | ``$STRING`` | No |  |
-| `def` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `konami_id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `link_rating` | ``$INTEGER`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `password` | ``$STRING`` | No |  |
-| `rank` | ``$INTEGER`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `archetype` | `any[]` | No |  |
+| `atk` | `number` | No |  |
+| `attribute` | `string` | No |  |
+| `card_type` | `string` | No |  |
+| `def` | `number` | No |  |
+| `format` | `any[]` | No |  |
+| `konami_id` | `string` | No |  |
+| `level` | `number` | No |  |
+| `link_rating` | `number` | No |  |
+| `name` | `Record<string, any>` | No |  |
+| `password` | `string` | No |  |
+| `rank` | `number` | No |  |
+| `text` | `Record<string, any>` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -298,7 +298,7 @@ const individual_card = client.IndividualCard()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.IndividualCard().load({ id: 'individual_card_id' })
+const result = await client.IndividualCard().load()
 ```
 
 ### Common Methods
@@ -339,8 +339,8 @@ const series = client.Series()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `any[]` | No |  |
+| `name` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -390,8 +390,8 @@ const series_and_archetype = client.SeriesAndArchetype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `any[]` | No |  |
+| `name` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -400,7 +400,7 @@ const series_and_archetype = client.SeriesAndArchetype()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.SeriesAndArchetype().load({ id: 'series_and_archetype_id' })
+const result = await client.SeriesAndArchetype().load()
 ```
 
 ### Common Methods
@@ -441,11 +441,11 @@ const skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `Record<string, any>` | No |  |
+| `text` | `Record<string, any>` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
@@ -495,11 +495,11 @@ const skill_card = client.SkillCard()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `Record<string, any>` | No |  |
+| `text` | `Record<string, any>` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
@@ -508,7 +508,7 @@ const skill_card = client.SkillCard()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.SkillCard().load({ id: 'skill_card_id' })
+const result = await client.SkillCard().load()
 ```
 
 ### Common Methods

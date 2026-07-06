@@ -42,12 +42,16 @@
 ---@field name? table
 
 ---@class SeriesListMatch
+---@field card? table
+---@field name? table
 
 ---@class SeriesAndArchetype
 ---@field card? table
 ---@field name? table
 
 ---@class SeriesAndArchetypeLoadMatch
+---@field card? table
+---@field name? table
 
 ---@class Skill
 ---@field card_type? string
@@ -57,6 +61,11 @@
 ---@field yugipedia_id? string
 
 ---@class SkillListMatch
+---@field card_type? string
+---@field character? string
+---@field name? table
+---@field text? table
+---@field yugipedia_id? string
 
 ---@class SkillCard
 ---@field card_type? string

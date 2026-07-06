@@ -17,7 +17,7 @@ class Aggregation
 {
 }
 
-/** Match filter for Aggregation#load (any subset of Aggregation fields). */
+/** Request payload for Aggregation#load. */
 class AggregationLoadMatch
 {
 }
@@ -68,7 +68,7 @@ class Series
     public ?array $name = null;
 }
 
-/** Match filter for Series#list (any subset of Series fields). */
+/** Request payload for Series#list. */
 class SeriesListMatch
 {
     public ?array $card = null;
@@ -82,7 +82,7 @@ class SeriesAndArchetype
     public ?array $name = null;
 }
 
-/** Match filter for SeriesAndArchetype#load (any subset of SeriesAndArchetype fields). */
+/** Request payload for SeriesAndArchetype#load. */
 class SeriesAndArchetypeLoadMatch
 {
     public ?array $card = null;
@@ -99,7 +99,7 @@ class Skill
     public ?string $yugipedia_id = null;
 }
 
-/** Match filter for Skill#list (any subset of Skill fields). */
+/** Request payload for Skill#list. */
 class SkillListMatch
 {
     public ?string $card_type = null;

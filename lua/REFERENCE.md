@@ -117,7 +117,7 @@ local aggregation = client:Aggregation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Aggregation():load({ id = "aggregation_id" })
+local result, err = client:Aggregation():load()
 ```
 
 ### Common Methods
@@ -160,20 +160,20 @@ local card = client:Card(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | ``$ARRAY`` | No |  |
-| `atk` | ``$INTEGER`` | No |  |
-| `attribute` | ``$STRING`` | No |  |
-| `card_type` | ``$STRING`` | No |  |
-| `def` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `konami_id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `link_rating` | ``$INTEGER`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `password` | ``$STRING`` | No |  |
-| `rank` | ``$INTEGER`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `archetype` | `table` | No |  |
+| `atk` | `number` | No |  |
+| `attribute` | `string` | No |  |
+| `card_type` | `string` | No |  |
+| `def` | `number` | No |  |
+| `format` | `table` | No |  |
+| `konami_id` | `string` | No |  |
+| `level` | `number` | No |  |
+| `link_rating` | `number` | No |  |
+| `name` | `table` | No |  |
+| `password` | `string` | No |  |
+| `rank` | `number` | No |  |
+| `text` | `table` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -228,7 +228,7 @@ local individual_card = client:IndividualCard(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:IndividualCard():load({ id = "individual_card_id" })
+local result, err = client:IndividualCard():load()
 ```
 
 ### Common Methods
@@ -271,8 +271,8 @@ local series = client:Series(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `table` | No |  |
+| `name` | `table` | No |  |
 
 ### Operations
 
@@ -324,8 +324,8 @@ local series_and_archetype = client:SeriesAndArchetype(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `table` | No |  |
+| `name` | `table` | No |  |
 
 ### Operations
 
@@ -334,7 +334,7 @@ local series_and_archetype = client:SeriesAndArchetype(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:SeriesAndArchetype():load({ id = "series_and_archetype_id" })
+local result, err = client:SeriesAndArchetype():load()
 ```
 
 ### Common Methods
@@ -377,11 +377,11 @@ local skill = client:Skill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `table` | No |  |
+| `text` | `table` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
@@ -433,11 +433,11 @@ local skill_card = client:SkillCard(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `table` | No |  |
+| `text` | `table` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
@@ -446,7 +446,7 @@ local skill_card = client:SkillCard(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:SkillCard():load({ id = "skill_card_id" })
+local result, err = client:SkillCard():load()
 ```
 
 ### Common Methods

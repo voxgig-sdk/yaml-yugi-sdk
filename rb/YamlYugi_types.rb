@@ -12,7 +12,7 @@
 class Aggregation
 end
 
-# Match filter for Aggregation#load (any subset of Aggregation fields).
+# Request payload for Aggregation#load.
 class AggregationLoadMatch
 end
 
@@ -124,7 +124,7 @@ Series = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Series#list (any subset of Series fields).
+# Request payload for Series#list.
 #
 # @!attribute [rw] card
 #   @return [Array, nil]
@@ -150,7 +150,7 @@ SeriesAndArchetype = Struct.new(
   keyword_init: true
 )
 
-# Match filter for SeriesAndArchetype#load (any subset of SeriesAndArchetype fields).
+# Request payload for SeriesAndArchetype#load.
 #
 # @!attribute [rw] card
 #   @return [Array, nil]
@@ -188,7 +188,7 @@ Skill = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Skill#list (any subset of Skill fields).
+# Request payload for Skill#list.
 #
 # @!attribute [rw] card_type
 #   @return [String, nil]

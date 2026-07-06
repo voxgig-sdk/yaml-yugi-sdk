@@ -8,7 +8,8 @@
 export interface Aggregation {
 }
 
-export type AggregationLoadMatch = Partial<Aggregation>
+export interface AggregationLoadMatch {
+}
 
 export interface Card {
   archetype?: any[]
@@ -46,14 +47,20 @@ export interface Series {
   name?: Record<string, any>
 }
 
-export type SeriesListMatch = Partial<Series>
+export interface SeriesListMatch {
+  card?: any[]
+  name?: Record<string, any>
+}
 
 export interface SeriesAndArchetype {
   card?: any[]
   name?: Record<string, any>
 }
 
-export type SeriesAndArchetypeLoadMatch = Partial<SeriesAndArchetype>
+export interface SeriesAndArchetypeLoadMatch {
+  card?: any[]
+  name?: Record<string, any>
+}
 
 export interface Skill {
   card_type?: string
@@ -63,7 +70,13 @@ export interface Skill {
   yugipedia_id?: string
 }
 
-export type SkillListMatch = Partial<Skill>
+export interface SkillListMatch {
+  card_type?: string
+  character?: string
+  name?: Record<string, any>
+  text?: Record<string, any>
+  yugipedia_id?: string
+}
 
 export interface SkillCard {
   card_type?: string

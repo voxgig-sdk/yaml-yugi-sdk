@@ -4,6 +4,11 @@
 
 The Python SDK for the YamlYugi API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Aggregation()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -37,10 +42,38 @@ client = YamlYugiSDK()
 
 ```python
 try:
-    aggregation = client.Aggregation().load({"id": "example_id"})
+    aggregation = client.Aggregation().load()
     print(aggregation)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    aggregation = client.Aggregation().load()
+    print(aggregation)
+except Exception as err:
+    print(f"load failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -61,7 +94,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -87,7 +123,7 @@ Create a mock client for unit testing — no server required:
 client = YamlYugiSDK.test()
 
 # Entity ops return the bare record and raise on error.
-aggregation = client.Aggregation().load({"id": "test01"})
+aggregation = client.Aggregation().load()
 # aggregation contains the mock response record
 ```
 
@@ -180,9 +216,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -319,7 +352,7 @@ Create an instance: `aggregation = client.Aggregation()`
 #### Example: Load
 
 ```python
-aggregation = client.Aggregation().load({"id": "aggregation_id"})
+aggregation = client.Aggregation().load()
 ```
 
 
@@ -331,31 +364,31 @@ Create an instance: `card = client.Card()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archetype` | ``$ARRAY`` |  |
-| `atk` | ``$INTEGER`` |  |
-| `attribute` | ``$STRING`` |  |
-| `card_type` | ``$STRING`` |  |
-| `def` | ``$INTEGER`` |  |
-| `format` | ``$ARRAY`` |  |
-| `konami_id` | ``$STRING`` |  |
-| `level` | ``$INTEGER`` |  |
-| `link_rating` | ``$INTEGER`` |  |
-| `name` | ``$OBJECT`` |  |
-| `password` | ``$STRING`` |  |
-| `rank` | ``$INTEGER`` |  |
-| `text` | ``$OBJECT`` |  |
-| `type` | ``$STRING`` |  |
+| `archetype` | `list` |  |
+| `atk` | `int` |  |
+| `attribute` | `str` |  |
+| `card_type` | `str` |  |
+| `def` | `int` |  |
+| `format` | `list` |  |
+| `konami_id` | `str` |  |
+| `level` | `int` |  |
+| `link_rating` | `int` |  |
+| `name` | `dict` |  |
+| `password` | `str` |  |
+| `rank` | `int` |  |
+| `text` | `dict` |  |
+| `type` | `str` |  |
 
 #### Example: List
 
 ```python
-cards = client.Card().list({})
+cards = client.Card().list()
 ```
 
 
@@ -372,7 +405,7 @@ Create an instance: `individual_card = client.IndividualCard()`
 #### Example: Load
 
 ```python
-individual_card = client.IndividualCard().load({"id": "individual_card_id"})
+individual_card = client.IndividualCard().load()
 ```
 
 
@@ -384,19 +417,19 @@ Create an instance: `series = client.Series()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | ``$ARRAY`` |  |
-| `name` | ``$OBJECT`` |  |
+| `card` | `list` |  |
+| `name` | `dict` |  |
 
 #### Example: List
 
 ```python
-seriess = client.Series().list({})
+seriess = client.Series().list()
 ```
 
 
@@ -414,13 +447,13 @@ Create an instance: `series_and_archetype = client.SeriesAndArchetype()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | ``$ARRAY`` |  |
-| `name` | ``$OBJECT`` |  |
+| `card` | `list` |  |
+| `name` | `dict` |  |
 
 #### Example: Load
 
 ```python
-series_and_archetype = client.SeriesAndArchetype().load({"id": "series_and_archetype_id"})
+series_and_archetype = client.SeriesAndArchetype().load()
 ```
 
 
@@ -432,22 +465,22 @@ Create an instance: `skill = client.Skill()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | ``$STRING`` |  |
-| `character` | ``$STRING`` |  |
-| `name` | ``$OBJECT`` |  |
-| `text` | ``$OBJECT`` |  |
-| `yugipedia_id` | ``$STRING`` |  |
+| `card_type` | `str` |  |
+| `character` | `str` |  |
+| `name` | `dict` |  |
+| `text` | `dict` |  |
+| `yugipedia_id` | `str` |  |
 
 #### Example: List
 
 ```python
-skills = client.Skill().list({})
+skills = client.Skill().list()
 ```
 
 
@@ -465,25 +498,29 @@ Create an instance: `skill_card = client.SkillCard()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | ``$STRING`` |  |
-| `character` | ``$STRING`` |  |
-| `name` | ``$OBJECT`` |  |
-| `text` | ``$OBJECT`` |  |
-| `yugipedia_id` | ``$STRING`` |  |
+| `card_type` | `str` |  |
+| `character` | `str` |  |
+| `name` | `dict` |  |
+| `text` | `dict` |  |
+| `yugipedia_id` | `str` |  |
 
 #### Example: Load
 
 ```python
-skill_card = client.SkillCard().load({"id": "skill_card_id"})
+skill_card = client.SkillCard().load()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -500,8 +537,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -549,9 +587,9 @@ stores the returned data and match criteria internally.
 
 ```python
 aggregation = client.Aggregation()
-aggregation.load({"id": "example_id"})
+aggregation.load()
 
-# aggregation.data_get() now returns the loaded aggregation data
+# aggregation.data_get() now returns the aggregation data from the last load
 # aggregation.match_get() returns the last match criteria
 ```
 

@@ -8,7 +8,7 @@ Complete API reference for the YamlYugi PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/yaml-yugi_sdk.php';
+require_once __DIR__ . '/yamlyugi_sdk.php';
 
 $client = new YamlYugiSDK($options);
 ```
@@ -69,11 +69,11 @@ Create a new `SkillEntity` instance. Pass `null` for no initial data.
 
 Create a new `SkillCardEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): YamlYugiUtility`
 
 Return a copy of the SDK utility object.
 
@@ -119,24 +119,24 @@ $aggregation = $client->Aggregation();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Aggregation()->load(["id" => "aggregation_id"]);
+$result = $client->Aggregation()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -145,7 +145,7 @@ Set the entity match criteria.
 Create a new `AggregationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -162,46 +162,46 @@ $card = $client->Card();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | ``$ARRAY`` | No |  |
-| `atk` | ``$INTEGER`` | No |  |
-| `attribute` | ``$STRING`` | No |  |
-| `card_type` | ``$STRING`` | No |  |
-| `def` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `konami_id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `link_rating` | ``$INTEGER`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `password` | ``$STRING`` | No |  |
-| `rank` | ``$INTEGER`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `archetype` | `array` | No |  |
+| `atk` | `int` | No |  |
+| `attribute` | `string` | No |  |
+| `card_type` | `string` | No |  |
+| `def` | `int` | No |  |
+| `format` | `array` | No |  |
+| `konami_id` | `string` | No |  |
+| `level` | `int` | No |  |
+| `link_rating` | `int` | No |  |
+| `name` | `array` | No |  |
+| `password` | `string` | No |  |
+| `rank` | `int` | No |  |
+| `text` | `array` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Card()->list([]);
+$results = $client->Card()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -210,7 +210,7 @@ Set the entity match criteria.
 Create a new `CardEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -230,24 +230,24 @@ $individual_card = $client->IndividualCard();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->IndividualCard()->load(["id" => "individual_card_id"]);
+$result = $client->IndividualCard()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -256,7 +256,7 @@ Set the entity match criteria.
 Create a new `IndividualCardEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -273,34 +273,34 @@ $series = $client->Series();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `array` | No |  |
+| `name` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Series()->list([]);
+$results = $client->Series()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -309,7 +309,7 @@ Set the entity match criteria.
 Create a new `SeriesEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -326,8 +326,8 @@ $series_and_archetype = $client->SeriesAndArchetype();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `array` | No |  |
+| `name` | `array` | No |  |
 
 ### Operations
 
@@ -336,24 +336,24 @@ $series_and_archetype = $client->SeriesAndArchetype();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->SeriesAndArchetype()->load(["id" => "series_and_archetype_id"]);
+$result = $client->SeriesAndArchetype()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -362,7 +362,7 @@ Set the entity match criteria.
 Create a new `SeriesAndArchetypeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -379,37 +379,37 @@ $skill = $client->Skill();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `array` | No |  |
+| `text` | `array` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Skill()->list([]);
+$results = $client->Skill()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -418,7 +418,7 @@ Set the entity match criteria.
 Create a new `SkillEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -435,11 +435,11 @@ $skill_card = $client->SkillCard();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `string` | No |  |
+| `character` | `string` | No |  |
+| `name` | `array` | No |  |
+| `text` | `array` | No |  |
+| `yugipedia_id` | `string` | No |  |
 
 ### Operations
 
@@ -448,24 +448,24 @@ $skill_card = $client->SkillCard();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->SkillCard()->load(["id" => "skill_card_id"]);
+$result = $client->SkillCard()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -474,7 +474,7 @@ Set the entity match criteria.
 Create a new `SkillCardEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -12,8 +12,7 @@ import "encoding/json"
 type Aggregation struct {
 }
 
-// AggregationLoadMatch mirrors the aggregation fields as an all-optional match
-// filter (Go analog of Partial<Aggregation>).
+// AggregationLoadMatch is the typed request payload for Aggregation.LoadTyped.
 type AggregationLoadMatch struct {
 }
 
@@ -58,8 +57,7 @@ type Series struct {
 	Name *map[string]any `json:"name,omitempty"`
 }
 
-// SeriesListMatch mirrors the series fields as an all-optional match
-// filter (Go analog of Partial<Series>).
+// SeriesListMatch is the typed request payload for Series.ListTyped.
 type SeriesListMatch struct {
 	Card *[]any `json:"card,omitempty"`
 	Name *map[string]any `json:"name,omitempty"`
@@ -71,8 +69,7 @@ type SeriesAndArchetype struct {
 	Name *map[string]any `json:"name,omitempty"`
 }
 
-// SeriesAndArchetypeLoadMatch mirrors the series_and_archetype fields as an all-optional match
-// filter (Go analog of Partial<SeriesAndArchetype>).
+// SeriesAndArchetypeLoadMatch is the typed request payload for SeriesAndArchetype.LoadTyped.
 type SeriesAndArchetypeLoadMatch struct {
 	Card *[]any `json:"card,omitempty"`
 	Name *map[string]any `json:"name,omitempty"`
@@ -87,8 +84,7 @@ type Skill struct {
 	YugipediaId *string `json:"yugipedia_id,omitempty"`
 }
 
-// SkillListMatch mirrors the skill fields as an all-optional match
-// filter (Go analog of Partial<Skill>).
+// SkillListMatch is the typed request payload for Skill.ListTyped.
 type SkillListMatch struct {
 	CardType *string `json:"card_type,omitempty"`
 	Character *string `json:"character,omitempty"`

@@ -8,7 +8,7 @@ Complete API reference for the YamlYugi Python SDK.
 ### Constructor
 
 ```python
-from yaml-yugi_sdk import YamlYugiSDK
+from yamlyugi_sdk import YamlYugiSDK
 
 client = YamlYugiSDK(options)
 ```
@@ -114,7 +114,7 @@ aggregation = client.Aggregation()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Aggregation().load({"id": "aggregation_id"})
+result = client.Aggregation().load()
 ```
 
 ### Common Methods
@@ -156,29 +156,29 @@ card = client.Card()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | ``$ARRAY`` | No |  |
-| `atk` | ``$INTEGER`` | No |  |
-| `attribute` | ``$STRING`` | No |  |
-| `card_type` | ``$STRING`` | No |  |
-| `def` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `konami_id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `link_rating` | ``$INTEGER`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `password` | ``$STRING`` | No |  |
-| `rank` | ``$INTEGER`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `archetype` | `list` | No |  |
+| `atk` | `int` | No |  |
+| `attribute` | `str` | No |  |
+| `card_type` | `str` | No |  |
+| `def` | `int` | No |  |
+| `format` | `list` | No |  |
+| `konami_id` | `str` | No |  |
+| `level` | `int` | No |  |
+| `link_rating` | `int` | No |  |
+| `name` | `dict` | No |  |
+| `password` | `str` | No |  |
+| `rank` | `int` | No |  |
+| `text` | `dict` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Card().list({})
+results = client.Card().list()
 for card in results:
     print(card)
 ```
@@ -225,7 +225,7 @@ individual_card = client.IndividualCard()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.IndividualCard().load({"id": "individual_card_id"})
+result = client.IndividualCard().load()
 ```
 
 ### Common Methods
@@ -267,17 +267,17 @@ series = client.Series()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `list` | No |  |
+| `name` | `dict` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Series().list({})
+results = client.Series().list()
 for series in results:
     print(series)
 ```
@@ -321,8 +321,8 @@ series_and_archetype = client.SeriesAndArchetype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `list` | No |  |
+| `name` | `dict` | No |  |
 
 ### Operations
 
@@ -331,7 +331,7 @@ series_and_archetype = client.SeriesAndArchetype()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.SeriesAndArchetype().load({"id": "series_and_archetype_id"})
+result = client.SeriesAndArchetype().load()
 ```
 
 ### Common Methods
@@ -373,20 +373,20 @@ skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `str` | No |  |
+| `character` | `str` | No |  |
+| `name` | `dict` | No |  |
+| `text` | `dict` | No |  |
+| `yugipedia_id` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Skill().list({})
+results = client.Skill().list()
 for skill in results:
     print(skill)
 ```
@@ -430,11 +430,11 @@ skill_card = client.SkillCard()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `str` | No |  |
+| `character` | `str` | No |  |
+| `name` | `dict` | No |  |
+| `text` | `dict` | No |  |
+| `yugipedia_id` | `str` | No |  |
 
 ### Operations
 
@@ -443,7 +443,7 @@ skill_card = client.SkillCard()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.SkillCard().load({"id": "skill_card_id"})
+result = client.SkillCard().load()
 ```
 
 ### Common Methods

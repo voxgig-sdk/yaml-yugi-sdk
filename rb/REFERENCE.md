@@ -8,7 +8,7 @@ Complete API reference for the YamlYugi Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'yaml-yugi_sdk'
+require_relative 'YamlYugi_sdk'
 
 client = YamlYugiSDK.new(options)
 ```
@@ -120,7 +120,7 @@ aggregation = client.Aggregation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Aggregation.load({ "id" => "aggregation_id" })
+result = client.Aggregation.load()
 ```
 
 ### Common Methods
@@ -163,29 +163,29 @@ card = client.Card
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | ``$ARRAY`` | No |  |
-| `atk` | ``$INTEGER`` | No |  |
-| `attribute` | ``$STRING`` | No |  |
-| `card_type` | ``$STRING`` | No |  |
-| `def` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `konami_id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `link_rating` | ``$INTEGER`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `password` | ``$STRING`` | No |  |
-| `rank` | ``$INTEGER`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `archetype` | `Array` | No |  |
+| `atk` | `Integer` | No |  |
+| `attribute` | `String` | No |  |
+| `card_type` | `String` | No |  |
+| `def` | `Integer` | No |  |
+| `format` | `Array` | No |  |
+| `konami_id` | `String` | No |  |
+| `level` | `Integer` | No |  |
+| `link_rating` | `Integer` | No |  |
+| `name` | `Hash` | No |  |
+| `password` | `String` | No |  |
+| `rank` | `Integer` | No |  |
+| `text` | `Hash` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Card.list(nil)
+results = client.Card.list
 ```
 
 ### Common Methods
@@ -231,7 +231,7 @@ individual_card = client.IndividualCard
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.IndividualCard.load({ "id" => "individual_card_id" })
+result = client.IndividualCard.load()
 ```
 
 ### Common Methods
@@ -274,17 +274,17 @@ series = client.Series
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `Array` | No |  |
+| `name` | `Hash` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Series.list(nil)
+results = client.Series.list
 ```
 
 ### Common Methods
@@ -327,8 +327,8 @@ series_and_archetype = client.SeriesAndArchetype
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | ``$ARRAY`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
+| `card` | `Array` | No |  |
+| `name` | `Hash` | No |  |
 
 ### Operations
 
@@ -337,7 +337,7 @@ series_and_archetype = client.SeriesAndArchetype
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.SeriesAndArchetype.load({ "id" => "series_and_archetype_id" })
+result = client.SeriesAndArchetype.load()
 ```
 
 ### Common Methods
@@ -380,20 +380,20 @@ skill = client.Skill
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `String` | No |  |
+| `character` | `String` | No |  |
+| `name` | `Hash` | No |  |
+| `text` | `Hash` | No |  |
+| `yugipedia_id` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Skill.list(nil)
+results = client.Skill.list
 ```
 
 ### Common Methods
@@ -436,11 +436,11 @@ skill_card = client.SkillCard
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | ``$STRING`` | No |  |
-| `character` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `text` | ``$OBJECT`` | No |  |
-| `yugipedia_id` | ``$STRING`` | No |  |
+| `card_type` | `String` | No |  |
+| `character` | `String` | No |  |
+| `name` | `Hash` | No |  |
+| `text` | `Hash` | No |  |
+| `yugipedia_id` | `String` | No |  |
 
 ### Operations
 
@@ -449,7 +449,7 @@ skill_card = client.SkillCard
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.SkillCard.load({ "id" => "skill_card_id" })
+result = client.SkillCard.load()
 ```
 
 ### Common Methods

@@ -221,43 +221,43 @@ class YamlYugiSDK:
 
 
     def Aggregation(self, data=None) -> "AggregationEntity":
-        """Entity factory: client.Aggregation().list({}) / client.Aggregation().load({"id": ...})."""
+        """Entity factory: client.Aggregation().list() / client.Aggregation().load({"id": ...})."""
         from entity.aggregation_entity import AggregationEntity
         return AggregationEntity(self, data)
 
 
     def Card(self, data=None) -> "CardEntity":
-        """Entity factory: client.Card().list({}) / client.Card().load({"id": ...})."""
+        """Entity factory: client.Card().list() / client.Card().load({"id": ...})."""
         from entity.card_entity import CardEntity
         return CardEntity(self, data)
 
 
     def IndividualCard(self, data=None) -> "IndividualCardEntity":
-        """Entity factory: client.IndividualCard().list({}) / client.IndividualCard().load({"id": ...})."""
+        """Entity factory: client.IndividualCard().list() / client.IndividualCard().load({"id": ...})."""
         from entity.individual_card_entity import IndividualCardEntity
         return IndividualCardEntity(self, data)
 
 
     def Series(self, data=None) -> "SeriesEntity":
-        """Entity factory: client.Series().list({}) / client.Series().load({"id": ...})."""
+        """Entity factory: client.Series().list() / client.Series().load({"id": ...})."""
         from entity.series_entity import SeriesEntity
         return SeriesEntity(self, data)
 
 
     def SeriesAndArchetype(self, data=None) -> "SeriesAndArchetypeEntity":
-        """Entity factory: client.SeriesAndArchetype().list({}) / client.SeriesAndArchetype().load({"id": ...})."""
+        """Entity factory: client.SeriesAndArchetype().list() / client.SeriesAndArchetype().load({"id": ...})."""
         from entity.series_and_archetype_entity import SeriesAndArchetypeEntity
         return SeriesAndArchetypeEntity(self, data)
 
 
     def Skill(self, data=None) -> "SkillEntity":
-        """Entity factory: client.Skill().list({}) / client.Skill().load({"id": ...})."""
+        """Entity factory: client.Skill().list() / client.Skill().load({"id": ...})."""
         from entity.skill_entity import SkillEntity
         return SkillEntity(self, data)
 
 
     def SkillCard(self, data=None) -> "SkillCardEntity":
-        """Entity factory: client.SkillCard().list({}) / client.SkillCard().load({"id": ...})."""
+        """Entity factory: client.SkillCard().list() / client.SkillCard().load({"id": ...})."""
         from entity.skill_card_entity import SkillCardEntity
         return SkillCardEntity(self, data)
 
