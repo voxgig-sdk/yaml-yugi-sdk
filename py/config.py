@@ -194,7 +194,6 @@ def make_config():
                       "orig": "card_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },

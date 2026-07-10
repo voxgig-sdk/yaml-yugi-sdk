@@ -443,7 +443,7 @@ skill_card = client.SkillCard()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.SkillCard().load()
+result = client.SkillCard().load({"yugipedia_id": "yugipedia_id"})
 ```
 
 ### Common Methods

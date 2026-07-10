@@ -508,7 +508,7 @@ const skill_card = client.SkillCard()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.SkillCard().load()
+const result = await client.SkillCard().load({ yugipedia_id: 'yugipedia_id' })
 ```
 
 ### Common Methods

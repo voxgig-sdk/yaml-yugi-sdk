@@ -194,7 +194,6 @@ module YamlYugiConfig
                         "orig" => "card_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },

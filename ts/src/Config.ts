@@ -234,8 +234,7 @@ class Config {
                     "name": "card_id",
                     "orig": "card_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },

@@ -1,0 +1,9 @@
+# Entity Models
+
+@"aggregation.aontu"
+@"card.aontu"
+@"individual_card.aontu"
+@"series.aontu"
+@"series_and_archetype.aontu"
+@"skill.aontu"
+@"skill_card.aontu"

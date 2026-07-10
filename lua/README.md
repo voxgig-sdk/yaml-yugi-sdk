@@ -33,12 +33,14 @@ local sdk = require("yaml-yugi_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load an aggregation
+### 3. Load a skillcard
+
+SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
 
 ```lua
-local aggregation, err = client:Aggregation():load()
+local skillcard, err = client:SkillCard():load({ yugipedia_id = "example_yugipedia_id" })
 if err then error(err) end
-print(aggregation)
+print(skillcard)
 ```
 
 
@@ -493,7 +495,7 @@ Create an instance: `local skill_card = client:SkillCard(nil)`
 #### Example: Load
 
 ```lua
-local skill_card, err = client:SkillCard():load()
+local skill_card, err = client:SkillCard():load({ yugipedia_id = "yugipedia_id" })
 ```
 
 

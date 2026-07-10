@@ -30,13 +30,15 @@ require_relative "YamlYugi_sdk"
 client = YamlYugiSDK.new
 ```
 
-### 3. Load an aggregation
+### 3. Load a skillcard
+
+SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
 
 ```ruby
 begin
-  # load returns the bare Aggregation record (raises on error).
-  aggregation = client.Aggregation.load()
-  puts aggregation
+  # load returns the bare SkillCard record (raises on error).
+  skillcard = client.SkillCard.load({ "yugipedia_id" => "example_yugipedia_id" })
+  puts skillcard
 rescue => err
   warn "load failed: #{err}"
 end
@@ -508,7 +510,7 @@ Create an instance: `skill_card = client.SkillCard`
 
 ```ruby
 # load returns the bare SkillCard record (raises on error).
-skill_card = client.SkillCard.load()
+skill_card = client.SkillCard.load({ "yugipedia_id" => "yugipedia_id" })
 ```
 
 

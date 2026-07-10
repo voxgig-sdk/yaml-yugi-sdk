@@ -40,8 +40,7 @@ class Card(TypedDict, total=False):
     type: str
 
 
-class CardListMatch(TypedDict):
-    card_id: str
+class CardListMatch(TypedDict, total=False):
     konami_id: str
 
 
@@ -49,7 +48,7 @@ class IndividualCard(TypedDict):
     pass
 
 
-class IndividualCardLoadMatch(TypedDict):
+class IndividualCardLoadMatch(TypedDict, total=False):
     card_id: str
     konami_id: str
     yugipedia_id: str

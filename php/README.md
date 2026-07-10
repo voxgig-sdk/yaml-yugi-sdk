@@ -31,13 +31,15 @@ require_once 'yamlyugi_sdk.php';
 $client = new YamlYugiSDK();
 ```
 
-### 3. Load an aggregation
+### 3. Load a skillcard
+
+SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
 
 ```php
 try {
-    // load() returns the bare Aggregation record (throws on error).
-    $aggregation = $client->Aggregation()->load();
-    print_r($aggregation);
+    // load() returns the bare SkillCard record (throws on error).
+    $skillcard = $client->SkillCard()->load(["yugipedia_id" => "example_yugipedia_id"]);
+    print_r($skillcard);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -518,7 +520,7 @@ Create an instance: `$skill_card = $client->SkillCard();`
 
 ```php
 // load() returns the bare SkillCard record (throws on error).
-$skill_card = $client->SkillCard()->load();
+$skill_card = $client->SkillCard()->load(["yugipedia_id" => "yugipedia_id"]);
 ```
 
 

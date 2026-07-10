@@ -31,9 +31,9 @@ main: {
           url: "https://github.com/DawnbrandBots/yaml-yugi/raw/master"
         }
       ]
+      summary: "API providing a comprehensive, machine-readable database of Yu-Gi-Oh!"
       title: "YAML Yugi"
       version: "1.0.0"
+      website: "https://github.com/DawnbrandBots/yaml-yugi"
     }
   }
-}
-

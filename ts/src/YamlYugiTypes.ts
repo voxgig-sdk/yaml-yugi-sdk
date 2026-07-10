@@ -29,17 +29,16 @@ export interface Card {
 }
 
 export interface CardListMatch {
-  card_id: string
-  konami_id: string
+  konami_id?: string
 }
 
 export interface IndividualCard {
 }
 
 export interface IndividualCardLoadMatch {
-  card_id: string
-  konami_id: string
-  yugipedia_id: string
+  card_id?: string
+  konami_id?: string
+  yugipedia_id?: string
 }
 
 export interface Series {

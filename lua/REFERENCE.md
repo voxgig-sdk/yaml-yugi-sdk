@@ -446,7 +446,7 @@ local skill_card = client:SkillCard(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:SkillCard():load()
+local result, err = client:SkillCard():load({ yugipedia_id = "yugipedia_id" })
 ```
 
 ### Common Methods

@@ -421,7 +421,7 @@ fmt.Println(cards) // the array of records
 
 ### IndividualCard
 
-Create an instance: `individual_card := client.IndividualCard(nil)`
+Create an instance: `individualCard := client.IndividualCard(nil)`
 
 #### Operations
 
@@ -432,11 +432,11 @@ Create an instance: `individual_card := client.IndividualCard(nil)`
 #### Example: Load
 
 ```go
-individual_card, err := client.IndividualCard(nil).Load(nil, nil)
+individualCard, err := client.IndividualCard(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(individual_card) // the loaded record
+fmt.Println(individualCard) // the loaded record
 ```
 
 
@@ -470,7 +470,7 @@ fmt.Println(seriess) // the array of records
 
 ### SeriesAndArchetype
 
-Create an instance: `series_and_archetype := client.SeriesAndArchetype(nil)`
+Create an instance: `seriesAndArchetype := client.SeriesAndArchetype(nil)`
 
 #### Operations
 
@@ -488,11 +488,11 @@ Create an instance: `series_and_archetype := client.SeriesAndArchetype(nil)`
 #### Example: Load
 
 ```go
-series_and_archetype, err := client.SeriesAndArchetype(nil).Load(nil, nil)
+seriesAndArchetype, err := client.SeriesAndArchetype(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(series_and_archetype) // the loaded record
+fmt.Println(seriesAndArchetype) // the loaded record
 ```
 
 
@@ -529,7 +529,7 @@ fmt.Println(skills) // the array of records
 
 ### SkillCard
 
-Create an instance: `skill_card := client.SkillCard(nil)`
+Create an instance: `skillCard := client.SkillCard(nil)`
 
 #### Operations
 
@@ -550,11 +550,11 @@ Create an instance: `skill_card := client.SkillCard(nil)`
 #### Example: Load
 
 ```go
-skill_card, err := client.SkillCard(nil).Load(nil, nil)
+skillCard, err := client.SkillCard(nil).Load(map[string]any{"yugipedia_id": "yugipedia_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(skill_card) // the loaded record
+fmt.Println(skillCard) // the loaded record
 ```
 
 

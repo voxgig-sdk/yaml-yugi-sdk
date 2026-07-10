@@ -115,6 +115,7 @@ same parameters as `Direct()`.
 
 ```go
 aggregation := client.Aggregation(nil)
+fmt.Println(aggregation.GetName()) // "aggregation"
 ```
 
 ### Operations
@@ -125,6 +126,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Aggregation(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -155,6 +160,7 @@ Return the entity name.
 
 ```go
 card := client.Card(nil)
+fmt.Println(card.GetName()) // "card"
 ```
 
 ### Fields
@@ -184,6 +190,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Card(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -213,7 +223,8 @@ Return the entity name.
 ## IndividualCardEntity
 
 ```go
-individual_card := client.IndividualCard(nil)
+individualCard := client.IndividualCard(nil)
+fmt.Println(individualCard.GetName()) // "individual_card"
 ```
 
 ### Operations
@@ -224,6 +235,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.IndividualCard(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -254,6 +269,7 @@ Return the entity name.
 
 ```go
 series := client.Series(nil)
+fmt.Println(series.GetName()) // "series"
 ```
 
 ### Fields
@@ -271,6 +287,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Series(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -300,7 +320,8 @@ Return the entity name.
 ## SeriesAndArchetypeEntity
 
 ```go
-series_and_archetype := client.SeriesAndArchetype(nil)
+seriesAndArchetype := client.SeriesAndArchetype(nil)
+fmt.Println(seriesAndArchetype.GetName()) // "series_and_archetype"
 ```
 
 ### Fields
@@ -318,6 +339,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.SeriesAndArchetype(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -348,6 +373,7 @@ Return the entity name.
 
 ```go
 skill := client.Skill(nil)
+fmt.Println(skill.GetName()) // "skill"
 ```
 
 ### Fields
@@ -368,6 +394,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Skill(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -397,7 +427,8 @@ Return the entity name.
 ## SkillCardEntity
 
 ```go
-skill_card := client.SkillCard(nil)
+skillCard := client.SkillCard(nil)
+fmt.Println(skillCard.GetName()) // "skill_card"
 ```
 
 ### Fields
@@ -417,7 +448,11 @@ skill_card := client.SkillCard(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.SkillCard(nil).Load(nil, nil)
+result, err := client.SkillCard(nil).Load(map[string]any{"yugipedia_id": "yugipedia_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

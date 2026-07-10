@@ -1,9 +1,0 @@
-# Entity Models
-
-@"aggregation.jsonic"
-@"card.jsonic"
-@"individual_card.jsonic"
-@"series.jsonic"
-@"series_and_archetype.jsonic"
-@"skill.jsonic"
-@"skill_card.jsonic"

@@ -33,14 +33,17 @@ import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 const client = new YamlYugiSDK()
 ```
 
-### 3. Load an aggregation
+### 3. Load a skillcard
 
+SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const aggregation = await client.Aggregation().load()
-  console.log(aggregation)
+  const skillcard = await client.SkillCard().load({
+    yugipedia_id: 'example_yugipedia_id',
+  })
+  console.log(skillcard)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -553,7 +556,7 @@ Create an instance: `const skill_card = client.SkillCard()`
 #### Example: Load
 
 ```ts
-const skill_card = await client.SkillCard().load()
+const skill_card = await client.SkillCard().load({ yugipedia_id: 'yugipedia_id' })
 ```
 
 

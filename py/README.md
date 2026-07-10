@@ -36,14 +36,15 @@ from yamlyugi_sdk import YamlYugiSDK
 client = YamlYugiSDK()
 ```
 
-### 3. Load an aggregation
+### 3. Load a skillcard
 
+SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    aggregation = client.Aggregation().load()
-    print(aggregation)
+    skillcard = client.SkillCard().load({"yugipedia_id": "example_yugipedia_id"})
+    print(skillcard)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -507,7 +508,7 @@ Create an instance: `skill_card = client.SkillCard()`
 #### Example: Load
 
 ```python
-skill_card = client.SkillCard().load()
+skill_card = client.SkillCard().load({"yugipedia_id": "yugipedia_id"})
 ```
 
 
