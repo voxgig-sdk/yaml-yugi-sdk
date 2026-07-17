@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- YamlYugi SDK exists test
 
 local sdk = require("yaml-yugi_sdk")
 
