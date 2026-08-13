@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# YamlYugi SDK exists test
 
 import pytest
 from yamlyugi_sdk import YamlYugiSDK

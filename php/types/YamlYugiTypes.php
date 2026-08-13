@@ -28,12 +28,12 @@ class Card
     public ?array $archetype = null;
     public ?int $atk = null;
     public ?string $attribute = null;
-    public ?string $card_type = null;
+    public ?string $cardType = null;
     public ?int $def = null;
     public ?array $format = null;
-    public ?string $konami_id = null;
+    public ?string $konamiId = null;
     public ?int $level = null;
-    public ?int $link_rating = null;
+    public ?int $linkRating = null;
     public ?array $name = null;
     public ?string $password = null;
     public ?int $rank = null;
@@ -63,59 +63,59 @@ class IndividualCardLoadMatch
 /** Series entity data model. */
 class Series
 {
-    public ?array $card = null;
+    public ?array $cards = null;
     public ?array $name = null;
 }
 
 /** Request payload for Series#list. */
 class SeriesListMatch
 {
-    public ?array $card = null;
+    public ?array $cards = null;
     public ?array $name = null;
 }
 
 /** SeriesAndArchetype entity data model. */
 class SeriesAndArchetype
 {
-    public ?array $card = null;
+    public ?array $cards = null;
     public ?array $name = null;
 }
 
 /** Request payload for SeriesAndArchetype#load. */
 class SeriesAndArchetypeLoadMatch
 {
-    public ?array $card = null;
+    public ?array $cards = null;
     public ?array $name = null;
 }
 
 /** Skill entity data model. */
 class Skill
 {
-    public ?string $card_type = null;
+    public ?string $cardType = null;
     public ?string $character = null;
     public ?array $name = null;
     public ?array $text = null;
-    public ?string $yugipedia_id = null;
+    public ?string $yugipediaId = null;
 }
 
 /** Request payload for Skill#list. */
 class SkillListMatch
 {
-    public ?string $card_type = null;
+    public ?string $cardType = null;
     public ?string $character = null;
     public ?array $name = null;
     public ?array $text = null;
-    public ?string $yugipedia_id = null;
+    public ?string $yugipediaId = null;
 }
 
 /** SkillCard entity data model. */
 class SkillCard
 {
-    public ?string $card_type = null;
+    public ?string $cardType = null;
     public ?string $character = null;
     public ?array $name = null;
     public ?array $text = null;
-    public ?string $yugipedia_id = null;
+    public ?string $yugipediaId = null;
 }
 
 /** Request payload for SkillCard#load. */

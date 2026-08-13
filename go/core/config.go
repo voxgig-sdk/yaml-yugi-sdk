@@ -39,6 +39,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/cards.yaml",
 								"parts": []any{
@@ -54,6 +55,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/rush.yaml",
 								"parts": []any{
@@ -67,7 +69,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -99,7 +100,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "card_type",
+						"name": "cardType",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -120,7 +121,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "konami_id",
+						"name": "konamiId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
@@ -134,7 +135,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "link_rating",
+						"name": "linkRating",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 8,
@@ -196,6 +197,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/cards/{cardId}.json",
 								"parts": []any{
@@ -231,6 +233,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/rush/{konamiId}.json",
 								"parts": []any{
@@ -252,6 +255,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/cards.json",
 								"parts": []any{
@@ -267,6 +271,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/master-duel-raw.json",
 								"parts": []any{
@@ -282,6 +287,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/rush.json",
 								"parts": []any{
@@ -295,7 +301,6 @@ func MakeConfig() map[string]any {
 								"index$": 4,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -333,6 +338,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/cards/{cardId}.yaml",
 								"parts": []any{
@@ -367,6 +373,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/rush/{konamiId}.yaml",
 								"parts": []any{
@@ -401,6 +408,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
 								"parts": []any{
@@ -420,7 +428,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -441,7 +448,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "card",
+						"name": "cards",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -463,6 +470,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/list.json",
 								"parts": []any{
@@ -480,7 +488,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -491,7 +498,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "card",
+						"name": "cards",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -513,6 +520,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/list.yaml",
 								"parts": []any{
@@ -530,6 +538,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/map.json",
 								"parts": []any{
@@ -547,6 +556,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/map.yaml",
 								"parts": []any{
@@ -562,7 +572,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -573,7 +582,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "card_type",
+						"name": "cardType",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
@@ -601,7 +610,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "yugipedia_id",
+						"name": "yugipediaId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -616,6 +625,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/skill.json",
 								"parts": []any{
@@ -629,7 +639,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -640,7 +649,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "card_type",
+						"name": "cardType",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
@@ -668,7 +677,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "yugipedia_id",
+						"name": "yugipediaId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -696,6 +705,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/data/tcg-speed-skill/{yugipediaId}.json",
 								"parts": []any{
@@ -715,7 +725,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

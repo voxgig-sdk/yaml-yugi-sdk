@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = YamlYugiSDK.test()
-const aggregation = await client.Aggregation().load()
-// aggregation is a bare Aggregation populated with mock data
-console.log(aggregation)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = YamlYugiSDK.test({
+  entity: {
+    series: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const seriess = await client.Series().list()
+// seriess is an array of Series entities, populated with mock data
+// — call seriess[0].data() for the record itself
+console.log(seriess)
 ```
 
 ### Python
 
 ```python
 client = YamlYugiSDK.test()
-aggregation = client.Aggregation().load()
-print(aggregation)
+seriess = client.Series().list()
+print(seriess)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(aggregation)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = YamlYugiSDK::test([
-    "entity" => ["aggregation" => ["test01" => []]],
+    "entity" => ["series" => ["test01" => []]],
 ]);
-$aggregation = $client->Aggregation()->load();
+$seriess = $client->Series()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Aggregation(nil).Load(
+result, err := client.Series(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Aggregation(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = YamlYugiSDK.test({
-  "entity" => { "aggregation" => { "test01" => {} } },
+  "entity" => { "series" => { "test01" => {} } },
 })
-aggregation = client.Aggregation.load()
+seriess = client.Series.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Aggregation():load()
+local results, err = client:Series():list()
 ```
 
 ## Packages
@@ -157,7 +166,7 @@ The API exposes 7 entities:
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Aggregation** | The Aggregation entity (load). | `/cards.yaml` |
-| **Card** | The Card entity (list). | `/data/cards/{cardId}.json` |
+| **Card** | The Card entity (list). | `/data/rush/{konamiId}.json` |
 | **IndividualCard** | The IndividualCard entity (load). | `/data/cards/{cardId}.yaml` |
 | **Series** | The Series entity (list). | `/data/series/list.json` |
 | **SeriesAndArchetype** | The SeriesAndArchetype entity (load). | `/data/series/list.yaml` |
@@ -191,7 +200,7 @@ require_once 'yamlyugi_sdk.php';
 $client = new YamlYugiSDK();
 
 
-// Load a specific aggregation (returns the bare record; throws on error)
+// Load a specific aggregation (returns the ENTITY; call data_get() for the record; throws on error)
 $aggregation = $client->Aggregation()->load();
 print_r($aggregation);
 ```
@@ -222,7 +231,7 @@ require_relative "YamlYugi_sdk"
 client = YamlYugiSDK.new
 
 
-# Load a specific aggregation (returns the bare record; raises on error)
+# Load a specific aggregation (returns the ENTITY; call data_get for the record)
 aggregation = client.Aggregation.load()
 puts aggregation
 ```
@@ -356,6 +365,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/DawnbrandBots/yaml-yugi](https://github.com/DawnbrandBots/yaml-yugi)
 

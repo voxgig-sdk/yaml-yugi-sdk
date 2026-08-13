@@ -170,12 +170,12 @@ fmt.Println(card.GetName()) // "card"
 | `archetype` | `[]any` | No |  |
 | `atk` | `int` | No |  |
 | `attribute` | `string` | No |  |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `def` | `int` | No |  |
 | `format` | `[]any` | No |  |
-| `konami_id` | `string` | No |  |
+| `konamiId` | `string` | No |  |
 | `level` | `int` | No |  |
-| `link_rating` | `int` | No |  |
+| `linkRating` | `int` | No |  |
 | `name` | `map[string]any` | No |  |
 | `password` | `string` | No |  |
 | `rank` | `int` | No |  |
@@ -276,7 +276,7 @@ fmt.Println(series.GetName()) // "series"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `[]any` | No |  |
+| `cards` | `[]any` | No |  |
 | `name` | `map[string]any` | No |  |
 
 ### Operations
@@ -328,7 +328,7 @@ fmt.Println(seriesAndArchetype.GetName()) // "series_and_archetype"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `[]any` | No |  |
+| `cards` | `[]any` | No |  |
 | `name` | `map[string]any` | No |  |
 
 ### Operations
@@ -380,11 +380,11 @@ fmt.Println(skill.GetName()) // "skill"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `map[string]any` | No |  |
 | `text` | `map[string]any` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 
@@ -435,11 +435,11 @@ fmt.Println(skillCard.GetName()) // "skill_card"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `map[string]any` | No |  |
 | `text` | `map[string]any` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 

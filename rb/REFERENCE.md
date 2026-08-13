@@ -166,12 +166,12 @@ card = client.Card
 | `archetype` | `Array` | No |  |
 | `atk` | `Integer` | No |  |
 | `attribute` | `String` | No |  |
-| `card_type` | `String` | No |  |
+| `cardType` | `String` | No |  |
 | `def` | `Integer` | No |  |
 | `format` | `Array` | No |  |
-| `konami_id` | `String` | No |  |
+| `konamiId` | `String` | No |  |
 | `level` | `Integer` | No |  |
-| `link_rating` | `Integer` | No |  |
+| `linkRating` | `Integer` | No |  |
 | `name` | `Hash` | No |  |
 | `password` | `String` | No |  |
 | `rank` | `Integer` | No |  |
@@ -274,7 +274,7 @@ series = client.Series
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `Array` | No |  |
+| `cards` | `Array` | No |  |
 | `name` | `Hash` | No |  |
 
 ### Operations
@@ -327,7 +327,7 @@ series_and_archetype = client.SeriesAndArchetype
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `Array` | No |  |
+| `cards` | `Array` | No |  |
 | `name` | `Hash` | No |  |
 
 ### Operations
@@ -380,11 +380,11 @@ skill = client.Skill
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `String` | No |  |
+| `cardType` | `String` | No |  |
 | `character` | `String` | No |  |
 | `name` | `Hash` | No |  |
 | `text` | `Hash` | No |  |
-| `yugipedia_id` | `String` | No |  |
+| `yugipediaId` | `String` | No |  |
 
 ### Operations
 
@@ -436,11 +436,11 @@ skill_card = client.SkillCard
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `String` | No |  |
+| `cardType` | `String` | No |  |
 | `character` | `String` | No |  |
 | `name` | `Hash` | No |  |
 | `text` | `Hash` | No |  |
-| `yugipedia_id` | `String` | No |  |
+| `yugipediaId` | `String` | No |  |
 
 ### Operations
 

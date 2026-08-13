@@ -26,8 +26,8 @@ import {
 describe('SkillCardEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when YAMLYUGI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('YAMLYUGI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when YAML_YUGI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('YAML_YUGI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = YamlYugiSDK.test()

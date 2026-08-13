@@ -45,6 +45,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cards.yaml',
                   'parts' => [
@@ -60,6 +61,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/rush.yaml',
                   'parts' => [
@@ -105,7 +107,7 @@ class YamlYugiConfig
             ],
             [
               'active' => true,
-              'name' => 'card_type',
+              'name' => 'cardType',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
@@ -126,7 +128,7 @@ class YamlYugiConfig
             ],
             [
               'active' => true,
-              'name' => 'konami_id',
+              'name' => 'konamiId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 6,
@@ -140,7 +142,7 @@ class YamlYugiConfig
             ],
             [
               'active' => true,
-              'name' => 'link_rating',
+              'name' => 'linkRating',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 8,
@@ -202,6 +204,7 @@ class YamlYugiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/cards/{cardId}.json',
                   'parts' => [
@@ -237,6 +240,7 @@ class YamlYugiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/rush/{konamiId}.json',
                   'parts' => [
@@ -258,6 +262,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cards.json',
                   'parts' => [
@@ -273,6 +278,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/master-duel-raw.json',
                   'parts' => [
@@ -288,6 +294,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/rush.json',
                   'parts' => [
@@ -339,6 +346,7 @@ class YamlYugiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/cards/{cardId}.yaml',
                   'parts' => [
@@ -373,6 +381,7 @@ class YamlYugiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/rush/{konamiId}.yaml',
                   'parts' => [
@@ -407,6 +416,7 @@ class YamlYugiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/tcg-speed-skill/{yugipediaId}.yaml',
                   'parts' => [
@@ -447,7 +457,7 @@ class YamlYugiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'card',
+              'name' => 'cards',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -469,6 +479,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/series/list.json',
                   'parts' => [
@@ -497,7 +508,7 @@ class YamlYugiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'card',
+              'name' => 'cards',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -519,6 +530,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/series/list.yaml',
                   'parts' => [
@@ -536,6 +548,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/series/map.json',
                   'parts' => [
@@ -553,6 +566,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/series/map.yaml',
                   'parts' => [
@@ -579,7 +593,7 @@ class YamlYugiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'card_type',
+              'name' => 'cardType',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
@@ -607,7 +621,7 @@ class YamlYugiConfig
             ],
             [
               'active' => true,
-              'name' => 'yugipedia_id',
+              'name' => 'yugipediaId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
@@ -622,6 +636,7 @@ class YamlYugiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/skill.json',
                   'parts' => [
@@ -646,7 +661,7 @@ class YamlYugiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'card_type',
+              'name' => 'cardType',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
@@ -674,7 +689,7 @@ class YamlYugiConfig
             ],
             [
               'active' => true,
-              'name' => 'yugipedia_id',
+              'name' => 'yugipediaId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
@@ -702,6 +717,7 @@ class YamlYugiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data/tcg-speed-skill/{yugipediaId}.json',
                   'parts' => [

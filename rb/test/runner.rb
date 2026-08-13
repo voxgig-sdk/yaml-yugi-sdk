@@ -23,8 +23,8 @@ module YamlYugiTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("YAMLYUGI_TEST_LIVE")
-    override = getenv("YAMLYUGI_TEST_OVERRIDE")
+    live = getenv("YAML_YUGI_TEST_LIVE")
+    override = getenv("YAML_YUGI_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module YamlYugiTestRunner
       end
     end
 
-    explain = getenv("YAMLYUGI_TEST_EXPLAIN")
-    m["YAMLYUGI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("YAML_YUGI_TEST_EXPLAIN")
+    m["YAML_YUGI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

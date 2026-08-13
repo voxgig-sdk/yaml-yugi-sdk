@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from yamlyugi_sdk.utility.voxgig_struct import voxgig_struct as vs
 from yamlyugi_sdk import YamlYugiSDK
-from core import helpers
+from yamlyugi_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _skill_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "YAMLYUGI_TEST_SKILL_ENTID": {},
-        "YAMLYUGI_TEST_LIVE": "FALSE",
+        "YAML_YUGI_TEST_SKILL_ENTID": {},
+        "YAML_YUGI_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("YAMLYUGI_TEST_LIVE") == "TRUE"
+    live = env.get("YAML_YUGI_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

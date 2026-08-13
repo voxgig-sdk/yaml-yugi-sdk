@@ -152,8 +152,29 @@ class YamlYugiSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('YamlYugiSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -214,52 +235,120 @@ class YamlYugiSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('YamlYugiSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('YamlYugiSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Aggregation().list()` / `client.Aggregation().load({ id })`.
-  Aggregation(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Aggregation(entopts?: Record<string, any>) {
     const self = this
-    return new AggregationEntity(self,data)
+    return new AggregationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Card().list()` / `client.Card().load({ id })`.
-  Card(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Card(entopts?: Record<string, any>) {
     const self = this
-    return new CardEntity(self,data)
+    return new CardEntity(self, entopts)
   }
 
 
   // Entity access: `client.IndividualCard().list()` / `client.IndividualCard().load({ id })`.
-  IndividualCard(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  IndividualCard(entopts?: Record<string, any>) {
     const self = this
-    return new IndividualCardEntity(self,data)
+    return new IndividualCardEntity(self, entopts)
   }
 
 
   // Entity access: `client.Series().list()` / `client.Series().load({ id })`.
-  Series(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Series(entopts?: Record<string, any>) {
     const self = this
-    return new SeriesEntity(self,data)
+    return new SeriesEntity(self, entopts)
   }
 
 
   // Entity access: `client.SeriesAndArchetype().list()` / `client.SeriesAndArchetype().load({ id })`.
-  SeriesAndArchetype(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SeriesAndArchetype(entopts?: Record<string, any>) {
     const self = this
-    return new SeriesAndArchetypeEntity(self,data)
+    return new SeriesAndArchetypeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Skill().list()` / `client.Skill().load({ id })`.
-  Skill(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Skill(entopts?: Record<string, any>) {
     const self = this
-    return new SkillEntity(self,data)
+    return new SkillEntity(self, entopts)
   }
 
 
   // Entity access: `client.SkillCard().list()` / `client.SkillCard().load({ id })`.
-  SkillCard(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SkillCard(entopts?: Record<string, any>) {
     const self = this
-    return new SkillCardEntity(self,data)
+    return new SkillCardEntity(self, entopts)
   }
 
 

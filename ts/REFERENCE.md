@@ -235,17 +235,37 @@ const card = client.Card()
 | `archetype` | `any[]` | No |  |
 | `atk` | `number` | No |  |
 | `attribute` | `string` | No |  |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `def` | `number` | No |  |
 | `format` | `any[]` | No |  |
-| `konami_id` | `string` | No |  |
+| `konamiId` | `string` | No |  |
 | `level` | `number` | No |  |
-| `link_rating` | `number` | No |  |
+| `linkRating` | `number` | No |  |
 | `name` | `Record<string, any>` | No |  |
 | `password` | `string` | No |  |
 | `rank` | `number` | No |  |
 | `text` | `Record<string, any>` | No |  |
 | `type` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `card_id` | `/data/cards/{cardId}.json` | `client.Card().list({ $action: 'card_id', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Card record — check the API definition for its shape.
+
+```ts
+const result = await client.Card().list({
+  $action: 'card_id',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -339,8 +359,28 @@ const series = client.Series()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `any[]` | No |  |
+| `cards` | `any[]` | No |  |
 | `name` | `Record<string, any>` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `list` | `/data/series/list.json` | `client.Series().list({ $action: 'list', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Series record — check the API definition for its shape.
+
+```ts
+const result = await client.Series().list({
+  $action: 'list',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -390,7 +430,7 @@ const series_and_archetype = client.SeriesAndArchetype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `any[]` | No |  |
+| `cards` | `any[]` | No |  |
 | `name` | `Record<string, any>` | No |  |
 
 ### Operations
@@ -441,11 +481,11 @@ const skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `Record<string, any>` | No |  |
 | `text` | `Record<string, any>` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 
@@ -495,11 +535,11 @@ const skill_card = client.SkillCard()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `Record<string, any>` | No |  |
 | `text` | `Record<string, any>` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 

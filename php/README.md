@@ -37,7 +37,7 @@ SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
 
 ```php
 try {
-    // load() returns the bare SkillCard record (throws on error).
+    // load() returns the ENTITY — call data_get() for the SkillCard record (throws on error).
     $skillcard = $client->SkillCard()->load(["yugipedia_id" => "example_yugipedia_id"]);
     print_r($skillcard);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $aggregation = $client->Aggregation()->load();
+    $seriess = $client->Series()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = YamlYugiSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$aggregation = $client->Aggregation()->load();
-print_r($aggregation);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$series = $client->Series()->list();
+print_r($series);
 ```
 
 ### Use a custom fetch function
@@ -231,7 +232,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -265,12 +266,12 @@ API path: `/cards.yaml`
 | `archetype` |  |
 | `atk` |  |
 | `attribute` |  |
-| `card_type` |  |
+| `cardType` |  |
 | `def` |  |
 | `format` |  |
-| `konami_id` |  |
+| `konamiId` |  |
 | `level` |  |
-| `link_rating` |  |
+| `linkRating` |  |
 | `name` |  |
 | `password` |  |
 | `rank` |  |
@@ -294,7 +295,7 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: List.
@@ -305,7 +306,7 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: Load.
@@ -316,11 +317,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: List.
 
@@ -330,11 +331,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: Load.
 
@@ -358,7 +359,7 @@ Create an instance: `$aggregation = $client->Aggregation();`
 #### Example: Load
 
 ```php
-// load() returns the bare Aggregation record (throws on error).
+// load() returns the ENTITY — call data_get() for the Aggregation record (throws on error).
 $aggregation = $client->Aggregation()->load();
 ```
 
@@ -380,12 +381,12 @@ Create an instance: `$card = $client->Card();`
 | `archetype` | `array` |  |
 | `atk` | `int` |  |
 | `attribute` | `string` |  |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `def` | `int` |  |
 | `format` | `array` |  |
-| `konami_id` | `string` |  |
+| `konamiId` | `string` |  |
 | `level` | `int` |  |
-| `link_rating` | `int` |  |
+| `linkRating` | `int` |  |
 | `name` | `array` |  |
 | `password` | `string` |  |
 | `rank` | `int` |  |
@@ -413,7 +414,7 @@ Create an instance: `$individual_card = $client->IndividualCard();`
 #### Example: Load
 
 ```php
-// load() returns the bare IndividualCard record (throws on error).
+// load() returns the ENTITY — call data_get() for the IndividualCard record (throws on error).
 $individual_card = $client->IndividualCard()->load();
 ```
 
@@ -432,7 +433,7 @@ Create an instance: `$series = $client->Series();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `array` |  |
+| `cards` | `array` |  |
 | `name` | `array` |  |
 
 #### Example: List
@@ -457,13 +458,13 @@ Create an instance: `$series_and_archetype = $client->SeriesAndArchetype();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `array` |  |
+| `cards` | `array` |  |
 | `name` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare SeriesAndArchetype record (throws on error).
+// load() returns the ENTITY — call data_get() for the SeriesAndArchetype record (throws on error).
 $series_and_archetype = $client->SeriesAndArchetype()->load();
 ```
 
@@ -482,11 +483,11 @@ Create an instance: `$skill = $client->Skill();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `array` |  |
 | `text` | `array` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: List
 
@@ -510,16 +511,16 @@ Create an instance: `$skill_card = $client->SkillCard();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `array` |  |
 | `text` | `array` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare SkillCard record (throws on error).
+// load() returns the ENTITY — call data_get() for the SkillCard record (throws on error).
 $skill_card = $client->SkillCard()->load(["yugipedia_id" => "yugipedia_id"]);
 ```
 
@@ -596,15 +597,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$aggregation = $client->Aggregation();
-$aggregation->load();
+$series = $client->Series();
+$series->list();
 
-// $aggregation->data_get() now returns the aggregation data from the last load
-// $aggregation->match_get() returns the last match criteria
+// $series->data_get() now returns the series data from the last list
+// $series->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

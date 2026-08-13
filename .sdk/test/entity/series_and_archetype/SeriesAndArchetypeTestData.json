@@ -2,17 +2,17 @@
   "existing": {
     "series_and_archetype": {
       "SERIES_AND_ARCHETYPE00": {
-        "card": [],
+        "cards": [],
         "name": {},
         "id": "SERIES_AND_ARCHETYPE00"
       },
       "SERIES_AND_ARCHETYPE01": {
-        "card": [],
+        "cards": [],
         "name": {},
         "id": "SERIES_AND_ARCHETYPE01"
       },
       "SERIES_AND_ARCHETYPE02": {
-        "card": [],
+        "cards": [],
         "name": {},
         "id": "SERIES_AND_ARCHETYPE02"
       }
@@ -21,7 +21,7 @@
   "new": {
     "series_and_archetype": {
       "series_and_archetype_ref01": {
-        "card": [],
+        "cards": [],
         "name": {}
       }
     }

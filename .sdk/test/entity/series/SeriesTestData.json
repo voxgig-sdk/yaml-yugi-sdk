@@ -2,15 +2,15 @@
   "existing": {
     "series": {
       "SERIES00": {
-        "card": [],
+        "cards": [],
         "name": {}
       },
       "SERIES01": {
-        "card": [],
+        "cards": [],
         "name": {}
       },
       "SERIES02": {
-        "card": [],
+        "cards": [],
         "name": {}
       }
     }
@@ -18,7 +18,7 @@
   "new": {
     "series": {
       "series_ref01": {
-        "card": [],
+        "cards": [],
         "name": {}
       }
     }

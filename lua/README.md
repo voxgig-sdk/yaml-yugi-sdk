@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local aggregation, err = client:Aggregation():load()
+local seriess, err = client:Series():list()
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Aggregation():load()
+local result, err = client:Series():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -247,12 +247,12 @@ API path: `/cards.yaml`
 | `archetype` |  |
 | `atk` |  |
 | `attribute` |  |
-| `card_type` |  |
+| `cardType` |  |
 | `def` |  |
 | `format` |  |
-| `konami_id` |  |
+| `konamiId` |  |
 | `level` |  |
-| `link_rating` |  |
+| `linkRating` |  |
 | `name` |  |
 | `password` |  |
 | `rank` |  |
@@ -276,7 +276,7 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: List.
@@ -287,7 +287,7 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: Load.
@@ -298,11 +298,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: List.
 
@@ -312,11 +312,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: Load.
 
@@ -361,12 +361,12 @@ Create an instance: `local card = client:Card(nil)`
 | `archetype` | `table` |  |
 | `atk` | `number` |  |
 | `attribute` | `string` |  |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `def` | `number` |  |
 | `format` | `table` |  |
-| `konami_id` | `string` |  |
+| `konamiId` | `string` |  |
 | `level` | `number` |  |
-| `link_rating` | `number` |  |
+| `linkRating` | `number` |  |
 | `name` | `table` |  |
 | `password` | `string` |  |
 | `rank` | `number` |  |
@@ -411,7 +411,7 @@ Create an instance: `local series = client:Series(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `table` |  |
+| `cards` | `table` |  |
 | `name` | `table` |  |
 
 #### Example: List
@@ -435,7 +435,7 @@ Create an instance: `local series_and_archetype = client:SeriesAndArchetype(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `table` |  |
+| `cards` | `table` |  |
 | `name` | `table` |  |
 
 #### Example: Load
@@ -459,11 +459,11 @@ Create an instance: `local skill = client:Skill(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `table` |  |
 | `text` | `table` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: List
 
@@ -486,11 +486,11 @@ Create an instance: `local skill_card = client:SkillCard(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `table` |  |
 | `text` | `table` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: Load
 
@@ -571,15 +571,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local aggregation = client:Aggregation()
-aggregation:load()
+local series = client:Series()
+series:list()
 
--- aggregation:data_get() now returns the aggregation data from the last load
--- aggregation:match_get() returns the last match criteria
+-- series:data_get() now returns the series data from the last list
+-- series:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

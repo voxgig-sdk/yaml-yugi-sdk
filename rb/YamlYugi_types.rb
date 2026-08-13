@@ -27,7 +27,7 @@ end
 # @!attribute [rw] attribute
 #   @return [String, nil]
 #
-# @!attribute [rw] card_type
+# @!attribute [rw] cardType
 #   @return [String, nil]
 #
 # @!attribute [rw] def
@@ -36,13 +36,13 @@ end
 # @!attribute [rw] format
 #   @return [Array, nil]
 #
-# @!attribute [rw] konami_id
+# @!attribute [rw] konamiId
 #   @return [String, nil]
 #
 # @!attribute [rw] level
 #   @return [Integer, nil]
 #
-# @!attribute [rw] link_rating
+# @!attribute [rw] linkRating
 #   @return [Integer, nil]
 #
 # @!attribute [rw] name
@@ -63,12 +63,12 @@ Card = Struct.new(
   :archetype,
   :atk,
   :attribute,
-  :card_type,
+  :cardType,
   :def,
   :format,
-  :konami_id,
+  :konamiId,
   :level,
-  :link_rating,
+  :linkRating,
   :name,
   :password,
   :rank,
@@ -109,59 +109,59 @@ IndividualCardLoadMatch = Struct.new(
 
 # Series entity data model.
 #
-# @!attribute [rw] card
+# @!attribute [rw] cards
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [Hash, nil]
 Series = Struct.new(
-  :card,
+  :cards,
   :name,
   keyword_init: true
 )
 
 # Request payload for Series#list.
 #
-# @!attribute [rw] card
+# @!attribute [rw] cards
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [Hash, nil]
 SeriesListMatch = Struct.new(
-  :card,
+  :cards,
   :name,
   keyword_init: true
 )
 
 # SeriesAndArchetype entity data model.
 #
-# @!attribute [rw] card
+# @!attribute [rw] cards
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [Hash, nil]
 SeriesAndArchetype = Struct.new(
-  :card,
+  :cards,
   :name,
   keyword_init: true
 )
 
 # Request payload for SeriesAndArchetype#load.
 #
-# @!attribute [rw] card
+# @!attribute [rw] cards
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [Hash, nil]
 SeriesAndArchetypeLoadMatch = Struct.new(
-  :card,
+  :cards,
   :name,
   keyword_init: true
 )
 
 # Skill entity data model.
 #
-# @!attribute [rw] card_type
+# @!attribute [rw] cardType
 #   @return [String, nil]
 #
 # @!attribute [rw] character
@@ -173,20 +173,20 @@ SeriesAndArchetypeLoadMatch = Struct.new(
 # @!attribute [rw] text
 #   @return [Hash, nil]
 #
-# @!attribute [rw] yugipedia_id
+# @!attribute [rw] yugipediaId
 #   @return [String, nil]
 Skill = Struct.new(
-  :card_type,
+  :cardType,
   :character,
   :name,
   :text,
-  :yugipedia_id,
+  :yugipediaId,
   keyword_init: true
 )
 
 # Request payload for Skill#list.
 #
-# @!attribute [rw] card_type
+# @!attribute [rw] cardType
 #   @return [String, nil]
 #
 # @!attribute [rw] character
@@ -198,20 +198,20 @@ Skill = Struct.new(
 # @!attribute [rw] text
 #   @return [Hash, nil]
 #
-# @!attribute [rw] yugipedia_id
+# @!attribute [rw] yugipediaId
 #   @return [String, nil]
 SkillListMatch = Struct.new(
-  :card_type,
+  :cardType,
   :character,
   :name,
   :text,
-  :yugipedia_id,
+  :yugipediaId,
   keyword_init: true
 )
 
 # SkillCard entity data model.
 #
-# @!attribute [rw] card_type
+# @!attribute [rw] cardType
 #   @return [String, nil]
 #
 # @!attribute [rw] character
@@ -223,14 +223,14 @@ SkillListMatch = Struct.new(
 # @!attribute [rw] text
 #   @return [Hash, nil]
 #
-# @!attribute [rw] yugipedia_id
+# @!attribute [rw] yugipediaId
 #   @return [String, nil]
 SkillCard = Struct.new(
-  :card_type,
+  :cardType,
   :character,
   :name,
   :text,
-  :yugipedia_id,
+  :yugipediaId,
   keyword_init: true
 )
 

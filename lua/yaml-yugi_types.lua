@@ -14,12 +14,12 @@
 ---@field archetype? table
 ---@field atk? number
 ---@field attribute? string
----@field card_type? string
+---@field cardType? string
 ---@field def? number
 ---@field format? table
----@field konami_id? string
+---@field konamiId? string
 ---@field level? number
----@field link_rating? number
+---@field linkRating? number
 ---@field name? table
 ---@field password? string
 ---@field rank? number
@@ -37,41 +37,41 @@
 ---@field yugipedia_id? string
 
 ---@class Series
----@field card? table
+---@field cards? table
 ---@field name? table
 
 ---@class SeriesListMatch
----@field card? table
+---@field cards? table
 ---@field name? table
 
 ---@class SeriesAndArchetype
----@field card? table
+---@field cards? table
 ---@field name? table
 
 ---@class SeriesAndArchetypeLoadMatch
----@field card? table
+---@field cards? table
 ---@field name? table
 
 ---@class Skill
----@field card_type? string
+---@field cardType? string
 ---@field character? string
 ---@field name? table
 ---@field text? table
----@field yugipedia_id? string
+---@field yugipediaId? string
 
 ---@class SkillListMatch
----@field card_type? string
+---@field cardType? string
 ---@field character? string
 ---@field name? table
 ---@field text? table
----@field yugipedia_id? string
+---@field yugipediaId? string
 
 ---@class SkillCard
----@field card_type? string
+---@field cardType? string
 ---@field character? string
 ---@field name? table
 ---@field text? table
----@field yugipedia_id? string
+---@field yugipediaId? string
 
 ---@class SkillCardLoadMatch
 ---@field yugipedia_id string

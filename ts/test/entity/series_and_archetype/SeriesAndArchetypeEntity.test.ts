@@ -26,8 +26,8 @@ import {
 describe('SeriesAndArchetypeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when YAMLYUGI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('YAMLYUGI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when YAML_YUGI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('YAML_YUGI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = YamlYugiSDK.test()
@@ -62,7 +62,7 @@ describe('SeriesAndArchetypeEntity', async () => {
     // LOAD
     const series_and_archetype_ref01_ent = client.SeriesAndArchetype()
     const series_and_archetype_ref01_match_dt0: any = {}
-    const series_and_archetype_ref01_data_dt0 = await series_and_archetype_ref01_ent.load(series_and_archetype_ref01_match_dt0)
+    const series_and_archetype_ref01_data_dt0 = (await series_and_archetype_ref01_ent.load(series_and_archetype_ref01_match_dt0)).data()
     assert(null != series_and_archetype_ref01_data_dt0)
 
 

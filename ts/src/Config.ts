@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'YamlYugi',
   }
 
 
@@ -81,6 +81,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/cards.yaml",
               "parts": [
@@ -96,6 +97,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/rush.yaml",
               "parts": [
@@ -141,7 +143,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "card_type",
+          "name": "cardType",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -162,7 +164,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "konami_id",
+          "name": "konamiId",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
@@ -176,7 +178,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "link_rating",
+          "name": "linkRating",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 8
@@ -238,6 +240,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/data/cards/{cardId}.json",
               "parts": [
@@ -273,6 +276,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/data/rush/{konamiId}.json",
               "parts": [
@@ -294,6 +298,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/cards.json",
               "parts": [
@@ -309,6 +314,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/master-duel-raw.json",
               "parts": [
@@ -324,6 +330,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/rush.json",
               "parts": [
@@ -375,6 +382,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/data/cards/{cardId}.yaml",
               "parts": [
@@ -409,6 +417,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/data/rush/{konamiId}.yaml",
               "parts": [
@@ -443,6 +452,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
               "parts": [
@@ -483,7 +493,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "card",
+          "name": "cards",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -505,6 +515,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/data/series/list.json",
               "parts": [
@@ -533,7 +544,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "card",
+          "name": "cards",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -555,6 +566,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/data/series/list.yaml",
               "parts": [
@@ -572,6 +584,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/data/series/map.json",
               "parts": [
@@ -589,6 +602,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/data/series/map.yaml",
               "parts": [
@@ -615,7 +629,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "card_type",
+          "name": "cardType",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -643,7 +657,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "yugipedia_id",
+          "name": "yugipediaId",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
@@ -658,6 +672,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/skill.json",
               "parts": [
@@ -682,7 +697,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "card_type",
+          "name": "cardType",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -710,7 +725,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "yugipedia_id",
+          "name": "yugipediaId",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
@@ -738,6 +753,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/data/tcg-speed-skill/{yugipediaId}.json",
               "parts": [

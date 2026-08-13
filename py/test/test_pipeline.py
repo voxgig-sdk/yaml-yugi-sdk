@@ -16,11 +16,11 @@
 import pytest
 
 from yamlyugi_sdk import YamlYugiSDK
-from core.error import YamlYugiError
-from core.result import YamlYugiResult
-from core.response import YamlYugiResponse
-from core.spec import YamlYugiSpec
-from feature.base_feature import YamlYugiBaseFeature
+from yamlyugi_sdk.core.error import YamlYugiError
+from yamlyugi_sdk.core.result import YamlYugiResult
+from yamlyugi_sdk.core.response import YamlYugiResponse
+from yamlyugi_sdk.core.spec import YamlYugiSpec
+from yamlyugi_sdk.feature.base_feature import YamlYugiBaseFeature
 
 
 def _client():

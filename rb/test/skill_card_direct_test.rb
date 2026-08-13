@@ -59,11 +59,11 @@ def skill_card_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "YAMLYUGI_TEST_SKILL_CARD_ENTID" => {},
-    "YAMLYUGI_TEST_LIVE" => "FALSE",
+    "YAML_YUGI_TEST_SKILL_CARD_ENTID" => {},
+    "YAML_YUGI_TEST_LIVE" => "FALSE",
   })
 
-  live = env["YAMLYUGI_TEST_LIVE"] == "TRUE"
+  live = env["YAML_YUGI_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

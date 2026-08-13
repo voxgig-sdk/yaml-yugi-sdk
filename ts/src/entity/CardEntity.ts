@@ -37,7 +37,7 @@ class CardEntity extends YamlYugiEntityBase<Card> {
 
 
 
-  async list(this: any, reqmatch?: CardListMatch, ctrl?: Control): Promise<Card[]> {
+  async list(this: any, reqmatch?: CardListMatch, ctrl?: Control): Promise<CardEntity[]> {
 
     const utility = this._utility
 

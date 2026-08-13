@@ -43,8 +43,8 @@ class YamlYugiTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('YAMLYUGI_TEST_LIVE');
-        $override = self::getenv('YAMLYUGI_TEST_OVERRIDE');
+        $live = self::getenv('YAML_YUGI_TEST_LIVE');
+        $override = self::getenv('YAML_YUGI_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class YamlYugiTestRunner
             }
         }
 
-        $explain = self::getenv('YAMLYUGI_TEST_EXPLAIN');
+        $explain = self::getenv('YAML_YUGI_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['YAMLYUGI_TEST_EXPLAIN'] = $explain;
+            $m['YAML_YUGI_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

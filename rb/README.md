@@ -36,7 +36,7 @@ SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
 
 ```ruby
 begin
-  # load returns the bare SkillCard record (raises on error).
+  # load returns the ENTITY — call data_get for the SkillCard record (raises on error).
   skillcard = client.SkillCard.load({ "yugipedia_id" => "example_yugipedia_id" })
   puts skillcard
 rescue => err
@@ -51,9 +51,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  aggregation = client.Aggregation.load()
+  seriess = client.Series.list()
 rescue => err
-  warn "load failed: #{err}"
+  warn "list failed: #{err}"
 end
 ```
 
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = YamlYugiSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-aggregation = client.Aggregation.load()
-puts aggregation
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+series = client.Series.list()
+puts series
 ```
 
 ### Use a custom fetch function
@@ -255,12 +256,12 @@ API path: `/cards.yaml`
 | `archetype` |  |
 | `atk` |  |
 | `attribute` |  |
-| `card_type` |  |
+| `cardType` |  |
 | `def` |  |
 | `format` |  |
-| `konami_id` |  |
+| `konamiId` |  |
 | `level` |  |
-| `link_rating` |  |
+| `linkRating` |  |
 | `name` |  |
 | `password` |  |
 | `rank` |  |
@@ -284,7 +285,7 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: List.
@@ -295,7 +296,7 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: Load.
@@ -306,11 +307,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: List.
 
@@ -320,11 +321,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: Load.
 
@@ -348,7 +349,7 @@ Create an instance: `aggregation = client.Aggregation`
 #### Example: Load
 
 ```ruby
-# load returns the bare Aggregation record (raises on error).
+# load returns the ENTITY — call data_get for the Aggregation record (raises on error).
 aggregation = client.Aggregation.load()
 ```
 
@@ -370,12 +371,12 @@ Create an instance: `card = client.Card`
 | `archetype` | `Array` |  |
 | `atk` | `Integer` |  |
 | `attribute` | `String` |  |
-| `card_type` | `String` |  |
+| `cardType` | `String` |  |
 | `def` | `Integer` |  |
 | `format` | `Array` |  |
-| `konami_id` | `String` |  |
+| `konamiId` | `String` |  |
 | `level` | `Integer` |  |
-| `link_rating` | `Integer` |  |
+| `linkRating` | `Integer` |  |
 | `name` | `Hash` |  |
 | `password` | `String` |  |
 | `rank` | `Integer` |  |
@@ -403,7 +404,7 @@ Create an instance: `individual_card = client.IndividualCard`
 #### Example: Load
 
 ```ruby
-# load returns the bare IndividualCard record (raises on error).
+# load returns the ENTITY — call data_get for the IndividualCard record (raises on error).
 individual_card = client.IndividualCard.load()
 ```
 
@@ -422,7 +423,7 @@ Create an instance: `series = client.Series`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `Array` |  |
+| `cards` | `Array` |  |
 | `name` | `Hash` |  |
 
 #### Example: List
@@ -447,13 +448,13 @@ Create an instance: `series_and_archetype = client.SeriesAndArchetype`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `Array` |  |
+| `cards` | `Array` |  |
 | `name` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare SeriesAndArchetype record (raises on error).
+# load returns the ENTITY — call data_get for the SeriesAndArchetype record (raises on error).
 series_and_archetype = client.SeriesAndArchetype.load()
 ```
 
@@ -472,11 +473,11 @@ Create an instance: `skill = client.Skill`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `String` |  |
+| `cardType` | `String` |  |
 | `character` | `String` |  |
 | `name` | `Hash` |  |
 | `text` | `Hash` |  |
-| `yugipedia_id` | `String` |  |
+| `yugipediaId` | `String` |  |
 
 #### Example: List
 
@@ -500,16 +501,16 @@ Create an instance: `skill_card = client.SkillCard`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `String` |  |
+| `cardType` | `String` |  |
 | `character` | `String` |  |
 | `name` | `Hash` |  |
 | `text` | `Hash` |  |
-| `yugipedia_id` | `String` |  |
+| `yugipediaId` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare SkillCard record (raises on error).
+# load returns the ENTITY — call data_get for the SkillCard record (raises on error).
 skill_card = client.SkillCard.load({ "yugipedia_id" => "yugipedia_id" })
 ```
 
@@ -586,15 +587,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-aggregation = client.Aggregation
-aggregation.load()
+series = client.Series
+series.list()
 
-# aggregation.data_get now returns the aggregation data from the last load
-# aggregation.match_get returns the last match criteria
+# series.data_get now returns the series data from the last list
+# series.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

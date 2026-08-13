@@ -15,12 +15,12 @@ export interface Card {
   archetype?: any[]
   atk?: number
   attribute?: string
-  card_type?: string
+  cardType?: string
   def?: number
   format?: any[]
-  konami_id?: string
+  konamiId?: string
   level?: number
-  link_rating?: number
+  linkRating?: number
   name?: Record<string, any>
   password?: string
   rank?: number
@@ -30,6 +30,12 @@ export interface Card {
 
 export interface CardListMatch {
   konami_id?: string
+
+  // Selects a custom action instead of the plain list:
+  //   'card_id'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface IndividualCard {
@@ -42,47 +48,53 @@ export interface IndividualCardLoadMatch {
 }
 
 export interface Series {
-  card?: any[]
+  cards?: any[]
   name?: Record<string, any>
 }
 
 export interface SeriesListMatch {
-  card?: any[]
+  cards?: any[]
   name?: Record<string, any>
+
+  // Selects a custom action instead of the plain list:
+  //   'list'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface SeriesAndArchetype {
-  card?: any[]
+  cards?: any[]
   name?: Record<string, any>
 }
 
 export interface SeriesAndArchetypeLoadMatch {
-  card?: any[]
+  cards?: any[]
   name?: Record<string, any>
 }
 
 export interface Skill {
-  card_type?: string
+  cardType?: string
   character?: string
   name?: Record<string, any>
   text?: Record<string, any>
-  yugipedia_id?: string
+  yugipediaId?: string
 }
 
 export interface SkillListMatch {
-  card_type?: string
+  cardType?: string
   character?: string
   name?: Record<string, any>
   text?: Record<string, any>
-  yugipedia_id?: string
+  yugipediaId?: string
 }
 
 export interface SkillCard {
-  card_type?: string
+  cardType?: string
   character?: string
   name?: Record<string, any>
   text?: Record<string, any>
-  yugipedia_id?: string
+  yugipediaId?: string
 }
 
 export interface SkillCardLoadMatch {

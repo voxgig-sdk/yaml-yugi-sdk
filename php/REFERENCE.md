@@ -165,12 +165,12 @@ $card = $client->Card();
 | `archetype` | `array` | No |  |
 | `atk` | `int` | No |  |
 | `attribute` | `string` | No |  |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `def` | `int` | No |  |
 | `format` | `array` | No |  |
-| `konami_id` | `string` | No |  |
+| `konamiId` | `string` | No |  |
 | `level` | `int` | No |  |
-| `link_rating` | `int` | No |  |
+| `linkRating` | `int` | No |  |
 | `name` | `array` | No |  |
 | `password` | `string` | No |  |
 | `rank` | `int` | No |  |
@@ -273,7 +273,7 @@ $series = $client->Series();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `array` | No |  |
+| `cards` | `array` | No |  |
 | `name` | `array` | No |  |
 
 ### Operations
@@ -326,7 +326,7 @@ $series_and_archetype = $client->SeriesAndArchetype();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `array` | No |  |
+| `cards` | `array` | No |  |
 | `name` | `array` | No |  |
 
 ### Operations
@@ -379,11 +379,11 @@ $skill = $client->Skill();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `array` | No |  |
 | `text` | `array` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 
@@ -435,11 +435,11 @@ $skill_card = $client->SkillCard();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `array` | No |  |
 | `text` | `array` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 

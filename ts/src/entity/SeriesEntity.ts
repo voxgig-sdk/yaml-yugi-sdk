@@ -37,7 +37,7 @@ class SeriesEntity extends YamlYugiEntityBase<Series> {
 
 
 
-  async list(this: any, reqmatch?: SeriesListMatch, ctrl?: Control): Promise<Series[]> {
+  async list(this: any, reqmatch?: SeriesListMatch, ctrl?: Control): Promise<SeriesEntity[]> {
 
     const utility = this._utility
 

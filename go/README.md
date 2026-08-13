@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-aggregation, err := client.Aggregation(nil).Load(nil, nil)
+seriess, err := client.Series(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = aggregation
+_ = seriess
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-aggregation, err := client.Aggregation(nil).Load(
+series, err := client.Series(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(aggregation) // the returned mock data
+fmt.Println(series) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -278,12 +278,12 @@ API path: `/cards.yaml`
 | `"archetype"` |  |
 | `"atk"` |  |
 | `"attribute"` |  |
-| `"card_type"` |  |
+| `"cardType"` |  |
 | `"def"` |  |
 | `"format"` |  |
-| `"konami_id"` |  |
+| `"konamiId"` |  |
 | `"level"` |  |
-| `"link_rating"` |  |
+| `"linkRating"` |  |
 | `"name"` |  |
 | `"password"` |  |
 | `"rank"` |  |
@@ -307,7 +307,7 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `"card"` |  |
+| `"cards"` |  |
 | `"name"` |  |
 
 Operations: List.
@@ -318,7 +318,7 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `"card"` |  |
+| `"cards"` |  |
 | `"name"` |  |
 
 Operations: Load.
@@ -329,11 +329,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `"card_type"` |  |
+| `"cardType"` |  |
 | `"character"` |  |
 | `"name"` |  |
 | `"text"` |  |
-| `"yugipedia_id"` |  |
+| `"yugipediaId"` |  |
 
 Operations: List.
 
@@ -343,11 +343,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `"card_type"` |  |
+| `"cardType"` |  |
 | `"character"` |  |
 | `"name"` |  |
 | `"text"` |  |
-| `"yugipedia_id"` |  |
+| `"yugipediaId"` |  |
 
 Operations: Load.
 
@@ -396,12 +396,12 @@ Create an instance: `card := client.Card(nil)`
 | `archetype` | `[]any` |  |
 | `atk` | `int` |  |
 | `attribute` | `string` |  |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `def` | `int` |  |
 | `format` | `[]any` |  |
-| `konami_id` | `string` |  |
+| `konamiId` | `string` |  |
 | `level` | `int` |  |
-| `link_rating` | `int` |  |
+| `linkRating` | `int` |  |
 | `name` | `map[string]any` |  |
 | `password` | `string` |  |
 | `rank` | `int` |  |
@@ -454,7 +454,7 @@ Create an instance: `series := client.Series(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `[]any` |  |
+| `cards` | `[]any` |  |
 | `name` | `map[string]any` |  |
 
 #### Example: List
@@ -482,7 +482,7 @@ Create an instance: `seriesAndArchetype := client.SeriesAndArchetype(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `[]any` |  |
+| `cards` | `[]any` |  |
 | `name` | `map[string]any` |  |
 
 #### Example: Load
@@ -510,11 +510,11 @@ Create an instance: `skill := client.Skill(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `map[string]any` |  |
 | `text` | `map[string]any` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: List
 
@@ -541,11 +541,11 @@ Create an instance: `skillCard := client.SkillCard(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `map[string]any` |  |
 | `text` | `map[string]any` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: Load
 
@@ -627,15 +627,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-aggregation := client.Aggregation(nil)
-aggregation.Load(nil, nil)
+series := client.Series(nil)
+series.List(nil, nil)
 
-// aggregation.Data() now returns the aggregation data from the last load
-// aggregation.Match() returns the last match criteria
+// series.Data() now returns the series data from the last list
+// series.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

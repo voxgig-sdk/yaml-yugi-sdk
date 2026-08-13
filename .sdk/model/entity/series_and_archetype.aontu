@@ -6,7 +6,7 @@ main: kit: entity: series_and_archetype: {
 
   fields: [
     {
-      name: "card"
+      name: "cards"
       req: false
       type: "`$ARRAY`"
     }

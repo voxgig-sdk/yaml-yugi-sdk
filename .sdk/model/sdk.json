@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "aggregation": {
           "active": true,
@@ -34,6 +39,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/cards.yaml",
                   "parts": [
@@ -48,6 +54,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/rush.yaml",
                   "parts": [
@@ -92,7 +99,7 @@
             },
             {
               "active": true,
-              "name": "card_type",
+              "name": "cardType",
               "req": false,
               "type": "`$STRING`"
             },
@@ -110,7 +117,7 @@
             },
             {
               "active": true,
-              "name": "konami_id",
+              "name": "konamiId",
               "req": false,
               "type": "`$STRING`"
             },
@@ -122,7 +129,7 @@
             },
             {
               "active": true,
-              "name": "link_rating",
+              "name": "linkRating",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -178,6 +185,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/cards/{cardId}.json",
                   "parts": [
@@ -211,6 +219,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/rush/{konamiId}.json",
                   "parts": [
@@ -231,6 +240,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/cards.json",
                   "parts": [
@@ -245,6 +255,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/master-duel-raw.json",
                   "parts": [
@@ -259,6 +270,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/rush.json",
                   "parts": [
@@ -311,6 +323,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/cards/{cardId}.yaml",
                   "parts": [
@@ -343,6 +356,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/rush/{konamiId}.yaml",
                   "parts": [
@@ -375,6 +389,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
                   "parts": [
@@ -417,7 +432,7 @@
           "fields": [
             {
               "active": true,
-              "name": "card",
+              "name": "cards",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -437,6 +452,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/list.json",
                   "parts": [
@@ -467,7 +483,7 @@
           "fields": [
             {
               "active": true,
-              "name": "card",
+              "name": "cards",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -487,6 +503,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/list.yaml",
                   "parts": [
@@ -503,6 +520,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/map.json",
                   "parts": [
@@ -519,6 +537,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/map.yaml",
                   "parts": [
@@ -547,7 +566,7 @@
           "fields": [
             {
               "active": true,
-              "name": "card_type",
+              "name": "cardType",
               "req": false,
               "type": "`$STRING`"
             },
@@ -571,7 +590,7 @@
             },
             {
               "active": true,
-              "name": "yugipedia_id",
+              "name": "yugipediaId",
               "req": false,
               "type": "`$STRING`"
             }
@@ -585,6 +604,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/skill.json",
                   "parts": [
@@ -611,7 +631,7 @@
           "fields": [
             {
               "active": true,
-              "name": "card_type",
+              "name": "cardType",
               "req": false,
               "type": "`$STRING`"
             },
@@ -635,7 +655,7 @@
             },
             {
               "active": true,
-              "name": "yugipedia_id",
+              "name": "yugipediaId",
               "req": false,
               "type": "`$STRING`"
             }
@@ -661,6 +681,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/data/tcg-speed-skill/{yugipediaId}.json",
                   "parts": [
@@ -1022,18 +1043,41 @@
         "website": "https://github.com/DawnbrandBots/yaml-yugi"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1055,22 +1099,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1109,21 +1171,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1162,12 +1242,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1179,10 +1264,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1204,22 +1302,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1241,13 +1357,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1259,10 +1380,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1284,13 +1418,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1307,10 +1446,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1332,13 +1484,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1361,10 +1518,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "yaml-yugi"
+            "goversion": "",
+            "name": "yaml-yugi",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1386,9 +1556,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

@@ -2,26 +2,29 @@
   "existing": {
     "skill_card": {
       "SKILL_CARD00": {
-        "card_type": "s32",
+        "cardType": "s32",
         "character": "s33",
         "name": {},
         "text": {},
+        "yugipediaId": "s36",
         "yugipedia_id": "YUGIPEDIA01",
         "id": "SKILL_CARD00"
       },
       "SKILL_CARD01": {
-        "card_type": "s64",
+        "cardType": "s64",
         "character": "s65",
         "name": {},
         "text": {},
+        "yugipediaId": "s68",
         "yugipedia_id": "YUGIPEDIA01",
         "id": "SKILL_CARD01"
       },
       "SKILL_CARD02": {
-        "card_type": "s96",
+        "cardType": "s96",
         "character": "s97",
         "name": {},
         "text": {},
+        "yugipediaId": "s9a",
         "yugipedia_id": "YUGIPEDIA01",
         "id": "SKILL_CARD02"
       }
@@ -30,11 +33,11 @@
   "new": {
     "skill_card": {
       "skill_card_ref01": {
-        "card_type": "sc8",
+        "cardType": "sc8",
         "character": "sc9",
         "name": {},
         "text": {},
-        "yugipedia_id": "YUGIPEDIA01"
+        "yugipediaId": "scc"
       }
     }
   }

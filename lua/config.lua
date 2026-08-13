@@ -39,6 +39,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cards.yaml",
                 ["parts"] = {
@@ -54,6 +55,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/rush.yaml",
                 ["parts"] = {
@@ -99,7 +101,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "card_type",
+            ["name"] = "cardType",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -120,7 +122,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "konami_id",
+            ["name"] = "konamiId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -134,7 +136,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "link_rating",
+            ["name"] = "linkRating",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 8,
@@ -196,6 +198,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/cards/{cardId}.json",
                 ["parts"] = {
@@ -231,6 +234,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/rush/{konamiId}.json",
                 ["parts"] = {
@@ -252,6 +256,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cards.json",
                 ["parts"] = {
@@ -267,6 +272,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/master-duel-raw.json",
                 ["parts"] = {
@@ -282,6 +288,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/rush.json",
                 ["parts"] = {
@@ -333,6 +340,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/cards/{cardId}.yaml",
                 ["parts"] = {
@@ -367,6 +375,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/rush/{konamiId}.yaml",
                 ["parts"] = {
@@ -401,6 +410,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/tcg-speed-skill/{yugipediaId}.yaml",
                 ["parts"] = {
@@ -441,7 +451,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "card",
+            ["name"] = "cards",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -463,6 +473,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/list.json",
                 ["parts"] = {
@@ -491,7 +502,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "card",
+            ["name"] = "cards",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -513,6 +524,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/list.yaml",
                 ["parts"] = {
@@ -530,6 +542,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/map.json",
                 ["parts"] = {
@@ -547,6 +560,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/map.yaml",
                 ["parts"] = {
@@ -573,7 +587,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "card_type",
+            ["name"] = "cardType",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -601,7 +615,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "yugipedia_id",
+            ["name"] = "yugipediaId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -616,6 +630,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/skill.json",
                 ["parts"] = {
@@ -640,7 +655,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "card_type",
+            ["name"] = "cardType",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -668,7 +683,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "yugipedia_id",
+            ["name"] = "yugipediaId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -696,6 +711,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/tcg-speed-skill/{yugipediaId}.json",
                 ["parts"] = {

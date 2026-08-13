@@ -26,8 +26,8 @@ import {
 describe('CardEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when YAMLYUGI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('YAMLYUGI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when YAML_YUGI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('YAML_YUGI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = YamlYugiSDK.test()
@@ -63,7 +63,7 @@ describe('CardEntity', async () => {
     const card_ref01_ent = client.Card()
     const card_ref01_match: any = {}
 
-    const card_ref01_list = await card_ref01_ent.list(card_ref01_match)
+    const card_ref01_list = (await card_ref01_ent.list(card_ref01_match)).map((e: any) => e.data())
 
 
   })

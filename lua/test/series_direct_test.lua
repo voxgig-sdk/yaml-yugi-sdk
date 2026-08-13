@@ -61,11 +61,11 @@ function series_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["YAMLYUGI_TEST_SERIES_ENTID"] = {},
-    ["YAMLYUGI_TEST_LIVE"] = "FALSE",
+    ["YAML_YUGI_TEST_SERIES_ENTID"] = {},
+    ["YAML_YUGI_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["YAMLYUGI_TEST_LIVE"] == "TRUE"
+  local live = env["YAML_YUGI_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

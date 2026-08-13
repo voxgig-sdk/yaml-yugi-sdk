@@ -21,7 +21,7 @@ main: kit: entity: card: {
       type: "`$STRING`"
     }
     {
-      name: "card_type"
+      name: "cardType"
       req: false
       type: "`$STRING`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: card: {
       type: "`$ARRAY`"
     }
     {
-      name: "konami_id"
+      name: "konamiId"
       req: false
       type: "`$STRING`"
     }
@@ -46,7 +46,7 @@ main: kit: entity: card: {
       type: "`$INTEGER`"
     }
     {
-      name: "link_rating"
+      name: "linkRating"
       req: false
       type: "`$INTEGER`"
     }

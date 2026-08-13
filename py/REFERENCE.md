@@ -159,12 +159,12 @@ card = client.Card()
 | `archetype` | `list` | No |  |
 | `atk` | `int` | No |  |
 | `attribute` | `str` | No |  |
-| `card_type` | `str` | No |  |
+| `cardType` | `str` | No |  |
 | `def` | `int` | No |  |
 | `format` | `list` | No |  |
-| `konami_id` | `str` | No |  |
+| `konamiId` | `str` | No |  |
 | `level` | `int` | No |  |
-| `link_rating` | `int` | No |  |
+| `linkRating` | `int` | No |  |
 | `name` | `dict` | No |  |
 | `password` | `str` | No |  |
 | `rank` | `int` | No |  |
@@ -267,7 +267,7 @@ series = client.Series()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `list` | No |  |
+| `cards` | `list` | No |  |
 | `name` | `dict` | No |  |
 
 ### Operations
@@ -321,7 +321,7 @@ series_and_archetype = client.SeriesAndArchetype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `list` | No |  |
+| `cards` | `list` | No |  |
 | `name` | `dict` | No |  |
 
 ### Operations
@@ -373,11 +373,11 @@ skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `str` | No |  |
+| `cardType` | `str` | No |  |
 | `character` | `str` | No |  |
 | `name` | `dict` | No |  |
 | `text` | `dict` | No |  |
-| `yugipedia_id` | `str` | No |  |
+| `yugipediaId` | `str` | No |  |
 
 ### Operations
 
@@ -430,11 +430,11 @@ skill_card = client.SkillCard()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `str` | No |  |
+| `cardType` | `str` | No |  |
 | `character` | `str` | No |  |
 | `name` | `dict` | No |  |
 | `text` | `dict` | No |  |
-| `yugipedia_id` | `str` | No |  |
+| `yugipediaId` | `str` | No |  |
 
 ### Operations
 

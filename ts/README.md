@@ -56,10 +56,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const aggregation = await client.Aggregation().load()
-  console.log(aggregation)
+  const seriess = await client.Series().list()
+  console.log(seriess)
 } catch (err) {
-  console.error('load failed:', err)
+  console.error('list failed:', err)
 }
 ```
 
@@ -123,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = YamlYugiSDK.test()
 
-const aggregation = await client.Aggregation().load()
-// aggregation is a bare entity populated with mock response data
-console.log(aggregation)
+const series = await client.Series().list()
+// series is the entity, populated with mock response data
+// — call series.data() for the record itself
+console.log(series)
 ```
 
 You can also use the instance method:
@@ -140,10 +141,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Aggregation()
+const entity = client.Series()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -308,12 +309,12 @@ API path: `/cards.yaml`
 | `archetype` |  |
 | `atk` |  |
 | `attribute` |  |
-| `card_type` |  |
+| `cardType` |  |
 | `def` |  |
 | `format` |  |
-| `konami_id` |  |
+| `konamiId` |  |
 | `level` |  |
-| `link_rating` |  |
+| `linkRating` |  |
 | `name` |  |
 | `password` |  |
 | `rank` |  |
@@ -337,7 +338,7 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: list.
@@ -348,7 +349,7 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: load.
@@ -359,11 +360,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: list.
 
@@ -373,11 +374,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: load.
 
@@ -422,12 +423,12 @@ Create an instance: `const card = client.Card()`
 | `archetype` | `any[]` |  |
 | `atk` | `number` |  |
 | `attribute` | `string` |  |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `def` | `number` |  |
 | `format` | `any[]` |  |
-| `konami_id` | `string` |  |
+| `konamiId` | `string` |  |
 | `level` | `number` |  |
-| `link_rating` | `number` |  |
+| `linkRating` | `number` |  |
 | `name` | `Record<string, any>` |  |
 | `password` | `string` |  |
 | `rank` | `number` |  |
@@ -472,7 +473,7 @@ Create an instance: `const series = client.Series()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `any[]` |  |
+| `cards` | `any[]` |  |
 | `name` | `Record<string, any>` |  |
 
 #### Example: List
@@ -496,7 +497,7 @@ Create an instance: `const series_and_archetype = client.SeriesAndArchetype()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `any[]` |  |
+| `cards` | `any[]` |  |
 | `name` | `Record<string, any>` |  |
 
 #### Example: Load
@@ -520,11 +521,11 @@ Create an instance: `const skill = client.Skill()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `Record<string, any>` |  |
 | `text` | `Record<string, any>` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: List
 
@@ -547,11 +548,11 @@ Create an instance: `const skill_card = client.SkillCard()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `string` |  |
+| `cardType` | `string` |  |
 | `character` | `string` |  |
 | `name` | `Record<string, any>` |  |
 | `text` | `Record<string, any>` |  |
-| `yugipedia_id` | `string` |  |
+| `yugipediaId` | `string` |  |
 
 #### Example: Load
 
@@ -624,16 +625,16 @@ import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const aggregation = client.Aggregation()
-await aggregation.load()
+const series = client.Series()
+await series.list()
 
-// aggregation.data() now returns the aggregation data from the last `load`
-// aggregation.match() returns the last match criteria
+// series.data() now returns the series data from the last `list`
+// series.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

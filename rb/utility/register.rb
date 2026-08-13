@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ YamlYugiUtility.registrar = ->(u) {
   u.prepare_params = YamlYugiUtilities::PrepareParams
   u.prepare_path = YamlYugiUtilities::PreparePath
   u.prepare_query = YamlYugiUtilities::PrepareQuery
+  u.graphql_body = YamlYugiUtilities::GraphqlBody
+  u.graphql_errors = YamlYugiUtilities::GraphqlErrors
   u.result_basic = YamlYugiUtilities::ResultBasic
   u.result_body = YamlYugiUtilities::ResultBody
   u.result_headers = YamlYugiUtilities::ResultHeaders

@@ -19,11 +19,15 @@ import {
 describe('SeriesDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when YAMLYUGI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('YAMLYUGI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when YAML_YUGI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('YAML_YUGI_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new YamlYugiSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,17 +81,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'YAMLYUGI_TEST_SERIES_ENTID': {},
-    'YAMLYUGI_TEST_LIVE': 'FALSE',
+    'YAML_YUGI_TEST_SERIES_ENTID': {},
+    'YAML_YUGI_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.YAMLYUGI_TEST_LIVE
+  const live = 'TRUE' === env.YAML_YUGI_TEST_LIVE
 
   if (live) {
     const client = new YamlYugiSDK({
     })
 
-    let idmap: any = env['YAMLYUGI_TEST_SERIES_ENTID']
+    let idmap: any = env['YAML_YUGI_TEST_SERIES_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

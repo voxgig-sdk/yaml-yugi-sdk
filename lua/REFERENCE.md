@@ -163,12 +163,12 @@ local card = client:Card(nil)
 | `archetype` | `table` | No |  |
 | `atk` | `number` | No |  |
 | `attribute` | `string` | No |  |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `def` | `number` | No |  |
 | `format` | `table` | No |  |
-| `konami_id` | `string` | No |  |
+| `konamiId` | `string` | No |  |
 | `level` | `number` | No |  |
-| `link_rating` | `number` | No |  |
+| `linkRating` | `number` | No |  |
 | `name` | `table` | No |  |
 | `password` | `string` | No |  |
 | `rank` | `number` | No |  |
@@ -271,7 +271,7 @@ local series = client:Series(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `table` | No |  |
+| `cards` | `table` | No |  |
 | `name` | `table` | No |  |
 
 ### Operations
@@ -324,7 +324,7 @@ local series_and_archetype = client:SeriesAndArchetype(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card` | `table` | No |  |
+| `cards` | `table` | No |  |
 | `name` | `table` | No |  |
 
 ### Operations
@@ -377,11 +377,11 @@ local skill = client:Skill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `table` | No |  |
 | `text` | `table` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 
@@ -433,11 +433,11 @@ local skill_card = client:SkillCard(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `card_type` | `string` | No |  |
+| `cardType` | `string` | No |  |
 | `character` | `string` | No |  |
 | `name` | `table` | No |  |
 | `text` | `table` | No |  |
-| `yugipedia_id` | `string` | No |  |
+| `yugipediaId` | `string` | No |  |
 
 ### Operations
 

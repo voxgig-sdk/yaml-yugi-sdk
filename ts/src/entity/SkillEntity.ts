@@ -37,7 +37,7 @@ class SkillEntity extends YamlYugiEntityBase<Skill> {
 
 
 
-  async list(this: any, reqmatch?: SkillListMatch, ctrl?: Control): Promise<Skill[]> {
+  async list(this: any, reqmatch?: SkillListMatch, ctrl?: Control): Promise<SkillEntity[]> {
 
     const utility = this._utility
 

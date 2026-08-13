@@ -6,7 +6,7 @@ main: kit: entity: skill: {
 
   fields: [
     {
-      name: "card_type"
+      name: "cardType"
       req: false
       type: "`$STRING`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: skill: {
       type: "`$OBJECT`"
     }
     {
-      name: "yugipedia_id"
+      name: "yugipediaId"
       req: false
       type: "`$STRING`"
     }

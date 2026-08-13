@@ -39,7 +39,7 @@ client = YamlYugiSDK()
 ### 3. Load a skillcard
 
 SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -56,10 +56,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    aggregation = client.Aggregation().load()
-    print(aggregation)
+    seriess = client.Series().list()
+    print(seriess)
 except Exception as err:
-    print(f"load failed: {err}")
+    print(f"list failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -123,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = YamlYugiSDK.test()
 
-# Entity ops return the bare record and raise on error.
-aggregation = client.Aggregation().load()
-# aggregation contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+series = client.Series().list()
+# series contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -260,12 +261,12 @@ API path: `/cards.yaml`
 | `archetype` |  |
 | `atk` |  |
 | `attribute` |  |
-| `card_type` |  |
+| `cardType` |  |
 | `def` |  |
 | `format` |  |
-| `konami_id` |  |
+| `konamiId` |  |
 | `level` |  |
-| `link_rating` |  |
+| `linkRating` |  |
 | `name` |  |
 | `password` |  |
 | `rank` |  |
@@ -289,7 +290,7 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: List.
@@ -300,7 +301,7 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `card` |  |
+| `cards` |  |
 | `name` |  |
 
 Operations: Load.
@@ -311,11 +312,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: List.
 
@@ -325,11 +326,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `card_type` |  |
+| `cardType` |  |
 | `character` |  |
 | `name` |  |
 | `text` |  |
-| `yugipedia_id` |  |
+| `yugipediaId` |  |
 
 Operations: Load.
 
@@ -374,12 +375,12 @@ Create an instance: `card = client.Card()`
 | `archetype` | `list` |  |
 | `atk` | `int` |  |
 | `attribute` | `str` |  |
-| `card_type` | `str` |  |
+| `cardType` | `str` |  |
 | `def` | `int` |  |
 | `format` | `list` |  |
-| `konami_id` | `str` |  |
+| `konamiId` | `str` |  |
 | `level` | `int` |  |
-| `link_rating` | `int` |  |
+| `linkRating` | `int` |  |
 | `name` | `dict` |  |
 | `password` | `str` |  |
 | `rank` | `int` |  |
@@ -424,7 +425,7 @@ Create an instance: `series = client.Series()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `list` |  |
+| `cards` | `list` |  |
 | `name` | `dict` |  |
 
 #### Example: List
@@ -448,7 +449,7 @@ Create an instance: `series_and_archetype = client.SeriesAndArchetype()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card` | `list` |  |
+| `cards` | `list` |  |
 | `name` | `dict` |  |
 
 #### Example: Load
@@ -472,11 +473,11 @@ Create an instance: `skill = client.Skill()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `str` |  |
+| `cardType` | `str` |  |
 | `character` | `str` |  |
 | `name` | `dict` |  |
 | `text` | `dict` |  |
-| `yugipedia_id` | `str` |  |
+| `yugipediaId` | `str` |  |
 
 #### Example: List
 
@@ -499,11 +500,11 @@ Create an instance: `skill_card = client.SkillCard()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `card_type` | `str` |  |
+| `cardType` | `str` |  |
 | `character` | `str` |  |
 | `name` | `dict` |  |
 | `text` | `dict` |  |
-| `yugipedia_id` | `str` |  |
+| `yugipediaId` | `str` |  |
 
 #### Example: Load
 
@@ -583,15 +584,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-aggregation = client.Aggregation()
-aggregation.load()
+series = client.Series()
+series.list()
 
-# aggregation.data_get() now returns the aggregation data from the last load
-# aggregation.match_get() returns the last match criteria
+# series.data_get() now returns the series data from the last list
+# series.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
