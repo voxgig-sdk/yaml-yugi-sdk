@@ -230,7 +230,7 @@ $individual_card = $client->IndividualCard();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->IndividualCard()->load();
+$result = $client->IndividualCard()->load(["card_id" => "card_id"]);
 ```
 
 ### Common Methods

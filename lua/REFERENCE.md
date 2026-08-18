@@ -228,7 +228,7 @@ local individual_card = client:IndividualCard(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:IndividualCard():load()
+local result, err = client:IndividualCard():load({ card_id = "card_id" })
 ```
 
 ### Common Methods

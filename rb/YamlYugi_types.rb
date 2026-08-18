@@ -80,7 +80,7 @@ Card = Struct.new(
 # Request payload for Card#list.
 #
 # @!attribute [rw] konami_id
-#   @return [String, nil]
+#   @return [String]
 CardListMatch = Struct.new(
   :konami_id,
   keyword_init: true
@@ -93,17 +93,9 @@ end
 # Request payload for IndividualCard#load.
 #
 # @!attribute [rw] card_id
-#   @return [String, nil]
-#
-# @!attribute [rw] konami_id
-#   @return [String, nil]
-#
-# @!attribute [rw] yugipedia_id
-#   @return [String, nil]
+#   @return [String]
 IndividualCardLoadMatch = Struct.new(
   :card_id,
-  :konami_id,
-  :yugipedia_id,
   keyword_init: true
 )
 

@@ -15,7 +15,7 @@ require_relative "../YamlYugi_sdk"
 module YamlYugiFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = YamlYugiConfig.make_config["feature"]
+    f = YamlYugiConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

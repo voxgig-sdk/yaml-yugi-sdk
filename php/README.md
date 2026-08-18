@@ -31,15 +31,15 @@ require_once 'yamlyugi_sdk.php';
 $client = new YamlYugiSDK();
 ```
 
-### 3. Load a skillcard
+### 3. Load an individualcard
 
-SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
+IndividualCard is nested under card, so provide the `card_id`.
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the SkillCard record (throws on error).
-    $skillcard = $client->SkillCard()->load(["yugipedia_id" => "example_yugipedia_id"]);
-    print_r($skillcard);
+    // load() returns the ENTITY — call data_get() for the IndividualCard record (throws on error).
+    $individualcard = $client->IndividualCard()->load(["card_id" => "example_card_id"]);
+    print_r($individualcard);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -415,7 +415,7 @@ Create an instance: `$individual_card = $client->IndividualCard();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the IndividualCard record (throws on error).
-$individual_card = $client->IndividualCard()->load();
+$individual_card = $client->IndividualCard()->load(["card_id" => "card_id"]);
 ```
 
 

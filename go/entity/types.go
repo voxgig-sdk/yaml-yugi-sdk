@@ -40,7 +40,7 @@ type Card struct {
 
 // CardListMatch is the typed request payload for Card.ListTyped.
 type CardListMatch struct {
-	KonamiId *string `json:"konami_id,omitempty"`
+	KonamiId string `json:"konami_id"`
 }
 
 // IndividualCard is the typed data model for the individual_card entity.
@@ -49,9 +49,7 @@ type IndividualCard struct {
 
 // IndividualCardLoadMatch is the typed request payload for IndividualCard.LoadTyped.
 type IndividualCardLoadMatch struct {
-	CardId *string `json:"card_id,omitempty"`
-	KonamiId *string `json:"konami_id,omitempty"`
-	YugipediaId *string `json:"yugipedia_id,omitempty"`
+	CardId string `json:"card_id"`
 }
 
 // Series is the typed data model for the series entity.

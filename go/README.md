@@ -432,7 +432,7 @@ Create an instance: `individualCard := client.IndividualCard(nil)`
 #### Example: Load
 
 ```go
-individualCard, err := client.IndividualCard(nil).Load(nil, nil)
+individualCard, err := client.IndividualCard(nil).Load(map[string]any{"card_id": "card_id"}, nil)
 if err != nil {
     panic(err)
 }

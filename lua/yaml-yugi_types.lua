@@ -27,14 +27,12 @@
 ---@field type? string
 
 ---@class CardListMatch
----@field konami_id? string
+---@field konami_id string
 
 ---@class IndividualCard
 
 ---@class IndividualCardLoadMatch
----@field card_id? string
----@field konami_id? string
----@field yugipedia_id? string
+---@field card_id string
 
 ---@class Series
 ---@field cards? table

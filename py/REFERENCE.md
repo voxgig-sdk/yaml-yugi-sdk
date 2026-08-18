@@ -178,7 +178,7 @@ card = client.Card()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Card().list()
+results = client.Card().list({"konami_id": "example"})
 for card in results:
     print(card)
 ```
@@ -225,7 +225,7 @@ individual_card = client.IndividualCard()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.IndividualCard().load()
+result = client.IndividualCard().load({"card_id": "card_id"})
 ```
 
 ### Common Methods

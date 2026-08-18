@@ -29,7 +29,7 @@ export interface Card {
 }
 
 export interface CardListMatch {
-  konami_id?: string
+  konami_id: string
 
   // Selects a custom action instead of the plain list:
   //   'card_id'
@@ -42,9 +42,7 @@ export interface IndividualCard {
 }
 
 export interface IndividualCardLoadMatch {
-  card_id?: string
-  konami_id?: string
-  yugipedia_id?: string
+  card_id: string
 }
 
 export interface Series {

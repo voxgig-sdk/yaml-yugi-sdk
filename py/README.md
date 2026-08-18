@@ -36,15 +36,15 @@ from yamlyugi_sdk import YamlYugiSDK
 client = YamlYugiSDK()
 ```
 
-### 3. Load a skillcard
+### 3. Load an individualcard
 
-SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
+IndividualCard is nested under card, so provide the `card_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    skillcard = client.SkillCard().load({"yugipedia_id": "example_yugipedia_id"})
-    print(skillcard)
+    individualcard = client.IndividualCard().load({"card_id": "example_card_id"})
+    print(individualcard)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -390,7 +390,7 @@ Create an instance: `card = client.Card()`
 #### Example: List
 
 ```python
-cards = client.Card().list()
+cards = client.Card().list({"konami_id": "example"})
 ```
 
 
@@ -407,7 +407,7 @@ Create an instance: `individual_card = client.IndividualCard()`
 #### Example: Load
 
 ```python
-individual_card = client.IndividualCard().load()
+individual_card = client.IndividualCard().load({"card_id": "card_id"})
 ```
 
 

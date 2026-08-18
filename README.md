@@ -120,11 +120,11 @@ import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 const client = new YamlYugiSDK()
 
 
-// Load a specific skillcard (returns a SkillCard)
-const skillcard = await client.SkillCard().load({
-  yugipedia_id: 'example_yugipedia_id',
+// Load a specific individualcard (returns a IndividualCard)
+const individualcard = await client.IndividualCard().load({
+  card_id: 'example_card_id',
 })
-console.log(skillcard)
+console.log(individualcard)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -213,14 +213,14 @@ import sdk "github.com/voxgig-sdk/yaml-yugi-sdk/go"
 client := sdk.New()
 
 
-// Load a specific skillcard
-skillCard, err := client.SkillCard(nil).Load(
-    map[string]any{"yugipedia_id": "example_yugipedia_id"}, nil,
+// Load a specific individualcard
+individualCard, err := client.IndividualCard(nil).Load(
+    map[string]any{"card_id": "example_card_id"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(skillCard)
+fmt.Println(individualCard)
 ```
 
 ### Ruby

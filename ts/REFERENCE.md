@@ -274,7 +274,7 @@ const result = await client.Card().list({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Card().list()
+const results = await client.Card().list({ konami_id: "example" })
 ```
 
 ### Common Methods
@@ -318,7 +318,7 @@ const individual_card = client.IndividualCard()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.IndividualCard().load()
+const result = await client.IndividualCard().load({ card_id: 'card_id' })
 ```
 
 ### Common Methods

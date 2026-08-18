@@ -28,7 +28,7 @@ class YamlYugiSDK
     utility = YamlYugiUtility.new
     @_utility = utility
 
-    config = YamlYugiConfig.make_config
+    config = YamlYugiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

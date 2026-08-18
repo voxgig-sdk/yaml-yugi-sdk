@@ -44,7 +44,7 @@ class Card
 /** Request payload for Card#list. */
 class CardListMatch
 {
-    public ?string $konami_id = null;
+    public string $konami_id;
 }
 
 /** IndividualCard entity data model. */
@@ -55,9 +55,7 @@ class IndividualCard
 /** Request payload for IndividualCard#load. */
 class IndividualCardLoadMatch
 {
-    public ?string $card_id = null;
-    public ?string $konami_id = null;
-    public ?string $yugipedia_id = null;
+    public string $card_id;
 }
 
 /** Series entity data model. */

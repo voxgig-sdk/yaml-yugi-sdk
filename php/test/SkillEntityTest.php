@@ -40,7 +40,7 @@ class SkillEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = YamlYugiConfig::make_config();
+        $cfg = YamlYugiConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = YamlYugiSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

@@ -234,7 +234,7 @@ fmt.Println(individualCard.GetName()) // "individual_card"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.IndividualCard(nil).Load(nil, nil)
+result, err := client.IndividualCard(nil).Load(map[string]any{"card_id": "card_id"}, nil)
 if err != nil {
     panic(err)
 }

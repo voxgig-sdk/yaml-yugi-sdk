@@ -30,15 +30,15 @@ require_relative "YamlYugi_sdk"
 client = YamlYugiSDK.new
 ```
 
-### 3. Load a skillcard
+### 3. Load an individualcard
 
-SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
+IndividualCard is nested under card, so provide the `card_id`.
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the SkillCard record (raises on error).
-  skillcard = client.SkillCard.load({ "yugipedia_id" => "example_yugipedia_id" })
-  puts skillcard
+  # load returns the ENTITY — call data_get for the IndividualCard record (raises on error).
+  individualcard = client.IndividualCard.load({ "card_id" => "example_card_id" })
+  puts individualcard
 rescue => err
   warn "load failed: #{err}"
 end
@@ -405,7 +405,7 @@ Create an instance: `individual_card = client.IndividualCard`
 
 ```ruby
 # load returns the ENTITY — call data_get for the IndividualCard record (raises on error).
-individual_card = client.IndividualCard.load()
+individual_card = client.IndividualCard.load({ "card_id" => "card_id" })
 ```
 
 

@@ -33,17 +33,17 @@ import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 const client = new YamlYugiSDK()
 ```
 
-### 3. Load a skillcard
+### 3. Load an individualcard
 
-SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
+IndividualCard is nested under card, so provide the `card_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const skillcard = await client.SkillCard().load({
-    yugipedia_id: 'example_yugipedia_id',
+  const individualcard = await client.IndividualCard().load({
+    card_id: 'example_card_id',
   })
-  console.log(skillcard)
+  console.log(individualcard)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -438,7 +438,7 @@ Create an instance: `const card = client.Card()`
 #### Example: List
 
 ```ts
-const cards = await client.Card().list()
+const cards = await client.Card().list({ konami_id: "example" })
 ```
 
 
@@ -455,7 +455,7 @@ Create an instance: `const individual_card = client.IndividualCard()`
 #### Example: Load
 
 ```ts
-const individual_card = await client.IndividualCard().load()
+const individual_card = await client.IndividualCard().load({ card_id: 'card_id' })
 ```
 
 

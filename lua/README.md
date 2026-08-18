@@ -33,14 +33,14 @@ local sdk = require("yaml-yugi_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load a skillcard
+### 3. Load an individualcard
 
-SkillCard is nested under yugipedia, so provide the `yugipedia_id`.
+IndividualCard is nested under card, so provide the `card_id`.
 
 ```lua
-local skillcard, err = client:SkillCard():load({ yugipedia_id = "example_yugipedia_id" })
+local individualcard, err = client:IndividualCard():load({ card_id = "example_card_id" })
 if err then error(err) end
-print(skillcard)
+print(individualcard)
 ```
 
 
@@ -393,7 +393,7 @@ Create an instance: `local individual_card = client:IndividualCard(nil)`
 #### Example: Load
 
 ```lua
-local individual_card, err = client:IndividualCard():load()
+local individual_card, err = client:IndividualCard():load({ card_id = "card_id" })
 ```
 
 

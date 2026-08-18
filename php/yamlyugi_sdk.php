@@ -40,7 +40,7 @@ class YamlYugiSDK
         $utility = new YamlYugiUtility();
         $this->_utility = $utility;
 
-        $config = YamlYugiConfig::make_config();
+        $config = YamlYugiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
