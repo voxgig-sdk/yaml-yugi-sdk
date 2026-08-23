@@ -162,20 +162,20 @@ $card = $client->Card();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | `array` | No |  |
-| `atk` | `int` | No |  |
-| `attribute` | `string` | No |  |
-| `cardType` | `string` | No |  |
-| `def` | `int` | No |  |
-| `format` | `array` | No |  |
-| `konamiId` | `string` | No |  |
-| `level` | `int` | No |  |
-| `linkRating` | `int` | No |  |
-| `name` | `array` | No |  |
-| `password` | `string` | No |  |
-| `rank` | `int` | No |  |
-| `text` | `array` | No |  |
-| `type` | `string` | No |  |
+| `archetype` | `array` | No | Archetypes the card belongs to |
+| `atk` | `int` | No | Attack points |
+| `attribute` | `string` | No | Card attribute (for monsters) |
+| `cardType` | `string` | No | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | `int` | No | Defense points |
+| `format` | `array` | No | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | `string` | No | Konami database ID |
+| `level` | `int` | No | Level of the monster card |
+| `linkRating` | `int` | No | Link rating for Link monsters |
+| `name` | `array` | No | Card name in multiple languages |
+| `password` | `string` | No | 8-digit card password/ID |
+| `rank` | `int` | No | Rank of XYZ monster |
+| `text` | `array` | No | Card text in multiple languages |
+| `type` | `string` | No | Monster type or spell/trap subtype |
 
 ### Operations
 
@@ -273,8 +273,8 @@ $series = $client->Series();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `array` | No |  |
-| `name` | `array` | No |  |
+| `cards` | `array` | No | List of card IDs belonging to this series/archetype |
+| `name` | `array` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -326,8 +326,8 @@ $series_and_archetype = $client->SeriesAndArchetype();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `array` | No |  |
-| `name` | `array` | No |  |
+| `cards` | `array` | No | List of card IDs belonging to this series/archetype |
+| `name` | `array` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -379,11 +379,11 @@ $skill = $client->Skill();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `array` | No |  |
-| `text` | `array` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `array` | No | Skill card name in multiple languages |
+| `text` | `array` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 
@@ -435,11 +435,11 @@ $skill_card = $client->SkillCard();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `array` | No |  |
-| `text` | `array` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `array` | No | Skill card name in multiple languages |
+| `text` | `array` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 

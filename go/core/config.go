@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "YamlYugi",
+			"slug": "yaml-yugi",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -82,58 +85,72 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archetype",
+						"short": "Archetypes the card belongs to",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "atk",
+						"short": "Attack points",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "attribute",
+						"short": "Card attribute (for monsters)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "cardType",
+						"short": "Type of card (Monster, Spell, Trap, etc.)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "def",
+						"short": "Defense points",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "format",
+						"short": "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "konamiId",
+						"short": "Konami database ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "level",
+						"short": "Level of the monster card",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "linkRating",
+						"short": "Link rating for Link monsters",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Card name in multiple languages",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "password",
+						"short": "8-digit card password/ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rank",
+						"short": "Rank of XYZ monster",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "text",
+						"short": "Card text in multiple languages",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Monster type or spell/trap subtype",
 						"type": "`$STRING`",
 					},
 				},
@@ -384,10 +401,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cards",
+						"short": "List of card IDs belonging to this series/archetype",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Series/archetype name in multiple languages",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -426,10 +445,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cards",
+						"short": "List of card IDs belonging to this series/archetype",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Series/archetype name in multiple languages",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -498,22 +519,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cardType",
+						"short": "Type identifier for skill cards",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "character",
+						"short": "Character associated with the skill",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Skill card name in multiple languages",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "text",
+						"short": "Skill card text in multiple languages",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "yugipediaId",
+						"short": "Yugipedia page ID",
 						"type": "`$STRING`",
 					},
 				},
@@ -548,22 +574,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cardType",
+						"short": "Type identifier for skill cards",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "character",
+						"short": "Character associated with the skill",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Skill card name in multiple languages",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "text",
+						"short": "Skill card text in multiple languages",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "yugipediaId",
+						"short": "Yugipedia page ID",
 						"type": "`$STRING`",
 					},
 				},

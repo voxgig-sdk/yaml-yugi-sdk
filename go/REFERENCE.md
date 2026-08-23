@@ -167,20 +167,20 @@ fmt.Println(card.GetName()) // "card"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | `[]any` | No |  |
-| `atk` | `int` | No |  |
-| `attribute` | `string` | No |  |
-| `cardType` | `string` | No |  |
-| `def` | `int` | No |  |
-| `format` | `[]any` | No |  |
-| `konamiId` | `string` | No |  |
-| `level` | `int` | No |  |
-| `linkRating` | `int` | No |  |
-| `name` | `map[string]any` | No |  |
-| `password` | `string` | No |  |
-| `rank` | `int` | No |  |
-| `text` | `map[string]any` | No |  |
-| `type` | `string` | No |  |
+| `archetype` | `[]any` | No | Archetypes the card belongs to |
+| `atk` | `int` | No | Attack points |
+| `attribute` | `string` | No | Card attribute (for monsters) |
+| `cardType` | `string` | No | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | `int` | No | Defense points |
+| `format` | `[]any` | No | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | `string` | No | Konami database ID |
+| `level` | `int` | No | Level of the monster card |
+| `linkRating` | `int` | No | Link rating for Link monsters |
+| `name` | `map[string]any` | No | Card name in multiple languages |
+| `password` | `string` | No | 8-digit card password/ID |
+| `rank` | `int` | No | Rank of XYZ monster |
+| `text` | `map[string]any` | No | Card text in multiple languages |
+| `type` | `string` | No | Monster type or spell/trap subtype |
 
 ### Operations
 
@@ -276,8 +276,8 @@ fmt.Println(series.GetName()) // "series"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `[]any` | No |  |
-| `name` | `map[string]any` | No |  |
+| `cards` | `[]any` | No | List of card IDs belonging to this series/archetype |
+| `name` | `map[string]any` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -328,8 +328,8 @@ fmt.Println(seriesAndArchetype.GetName()) // "series_and_archetype"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `[]any` | No |  |
-| `name` | `map[string]any` | No |  |
+| `cards` | `[]any` | No | List of card IDs belonging to this series/archetype |
+| `name` | `map[string]any` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -380,11 +380,11 @@ fmt.Println(skill.GetName()) // "skill"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `map[string]any` | No |  |
-| `text` | `map[string]any` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `map[string]any` | No | Skill card name in multiple languages |
+| `text` | `map[string]any` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 
@@ -435,11 +435,11 @@ fmt.Println(skillCard.GetName()) // "skill_card"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `map[string]any` | No |  |
-| `text` | `map[string]any` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `map[string]any` | No | Skill card name in multiple languages |
+| `text` | `map[string]any` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 

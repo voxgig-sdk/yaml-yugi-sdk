@@ -6,7 +6,7 @@ The Golang SDK for the YamlYugi API — an entity-oriented client using standard
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Aggregation(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -275,20 +275,20 @@ API path: `/cards.yaml`
 
 | Field | Description |
 | --- | --- |
-| `"archetype"` |  |
-| `"atk"` |  |
-| `"attribute"` |  |
-| `"cardType"` |  |
-| `"def"` |  |
-| `"format"` |  |
-| `"konamiId"` |  |
-| `"level"` |  |
-| `"linkRating"` |  |
-| `"name"` |  |
-| `"password"` |  |
-| `"rank"` |  |
-| `"text"` |  |
-| `"type"` |  |
+| `"archetype"` | Archetypes the card belongs to |
+| `"atk"` | Attack points |
+| `"attribute"` | Card attribute (for monsters) |
+| `"cardType"` | Type of card (Monster, Spell, Trap, etc.) |
+| `"def"` | Defense points |
+| `"format"` | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `"konamiId"` | Konami database ID |
+| `"level"` | Level of the monster card |
+| `"linkRating"` | Link rating for Link monsters |
+| `"name"` | Card name in multiple languages |
+| `"password"` | 8-digit card password/ID |
+| `"rank"` | Rank of XYZ monster |
+| `"text"` | Card text in multiple languages |
+| `"type"` | Monster type or spell/trap subtype |
 
 Operations: List.
 
@@ -307,8 +307,8 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `"cards"` |  |
-| `"name"` |  |
+| `"cards"` | List of card IDs belonging to this series/archetype |
+| `"name"` | Series/archetype name in multiple languages |
 
 Operations: List.
 
@@ -318,8 +318,8 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `"cards"` |  |
-| `"name"` |  |
+| `"cards"` | List of card IDs belonging to this series/archetype |
+| `"name"` | Series/archetype name in multiple languages |
 
 Operations: Load.
 
@@ -329,11 +329,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `"cardType"` |  |
-| `"character"` |  |
-| `"name"` |  |
-| `"text"` |  |
-| `"yugipediaId"` |  |
+| `"cardType"` | Type identifier for skill cards |
+| `"character"` | Character associated with the skill |
+| `"name"` | Skill card name in multiple languages |
+| `"text"` | Skill card text in multiple languages |
+| `"yugipediaId"` | Yugipedia page ID |
 
 Operations: List.
 
@@ -343,11 +343,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `"cardType"` |  |
-| `"character"` |  |
-| `"name"` |  |
-| `"text"` |  |
-| `"yugipediaId"` |  |
+| `"cardType"` | Type identifier for skill cards |
+| `"character"` | Character associated with the skill |
+| `"name"` | Skill card name in multiple languages |
+| `"text"` | Skill card text in multiple languages |
+| `"yugipediaId"` | Yugipedia page ID |
 
 Operations: Load.
 
@@ -393,20 +393,20 @@ Create an instance: `card := client.Card(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archetype` | `[]any` |  |
-| `atk` | `int` |  |
-| `attribute` | `string` |  |
-| `cardType` | `string` |  |
-| `def` | `int` |  |
-| `format` | `[]any` |  |
-| `konamiId` | `string` |  |
-| `level` | `int` |  |
-| `linkRating` | `int` |  |
-| `name` | `map[string]any` |  |
-| `password` | `string` |  |
-| `rank` | `int` |  |
-| `text` | `map[string]any` |  |
-| `type` | `string` |  |
+| `archetype` | `[]any` | Archetypes the card belongs to |
+| `atk` | `int` | Attack points |
+| `attribute` | `string` | Card attribute (for monsters) |
+| `cardType` | `string` | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | `int` | Defense points |
+| `format` | `[]any` | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | `string` | Konami database ID |
+| `level` | `int` | Level of the monster card |
+| `linkRating` | `int` | Link rating for Link monsters |
+| `name` | `map[string]any` | Card name in multiple languages |
+| `password` | `string` | 8-digit card password/ID |
+| `rank` | `int` | Rank of XYZ monster |
+| `text` | `map[string]any` | Card text in multiple languages |
+| `type` | `string` | Monster type or spell/trap subtype |
 
 #### Example: List
 
@@ -454,8 +454,8 @@ Create an instance: `series := client.Series(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cards` | `[]any` |  |
-| `name` | `map[string]any` |  |
+| `cards` | `[]any` | List of card IDs belonging to this series/archetype |
+| `name` | `map[string]any` | Series/archetype name in multiple languages |
 
 #### Example: List
 
@@ -482,8 +482,8 @@ Create an instance: `seriesAndArchetype := client.SeriesAndArchetype(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cards` | `[]any` |  |
-| `name` | `map[string]any` |  |
+| `cards` | `[]any` | List of card IDs belonging to this series/archetype |
+| `name` | `map[string]any` | Series/archetype name in multiple languages |
 
 #### Example: Load
 
@@ -510,11 +510,11 @@ Create an instance: `skill := client.Skill(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cardType` | `string` |  |
-| `character` | `string` |  |
-| `name` | `map[string]any` |  |
-| `text` | `map[string]any` |  |
-| `yugipediaId` | `string` |  |
+| `cardType` | `string` | Type identifier for skill cards |
+| `character` | `string` | Character associated with the skill |
+| `name` | `map[string]any` | Skill card name in multiple languages |
+| `text` | `map[string]any` | Skill card text in multiple languages |
+| `yugipediaId` | `string` | Yugipedia page ID |
 
 #### Example: List
 
@@ -541,11 +541,11 @@ Create an instance: `skillCard := client.SkillCard(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cardType` | `string` |  |
-| `character` | `string` |  |
-| `name` | `map[string]any` |  |
-| `text` | `map[string]any` |  |
-| `yugipediaId` | `string` |  |
+| `cardType` | `string` | Type identifier for skill cards |
+| `character` | `string` | Character associated with the skill |
+| `name` | `map[string]any` | Skill card name in multiple languages |
+| `text` | `map[string]any` | Skill card text in multiple languages |
+| `yugipediaId` | `string` | Yugipedia page ID |
 
 #### Example: Load
 

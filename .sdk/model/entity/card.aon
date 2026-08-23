@@ -1,0 +1,210 @@
+# Entity: card
+
+main: kit: entity: card: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "archetype"
+      req: false
+      short: "Archetypes the card belongs to"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "atk"
+      req: false
+      short: "Attack points"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "attribute"
+      req: false
+      short: "Card attribute (for monsters)"
+      type: "`$STRING`"
+    }
+    {
+      name: "cardType"
+      req: false
+      short: "Type of card (Monster, Spell, Trap, etc.)"
+      type: "`$STRING`"
+    }
+    {
+      name: "def"
+      req: false
+      short: "Defense points"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "format"
+      req: false
+      short: "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "konamiId"
+      req: false
+      short: "Konami database ID"
+      type: "`$STRING`"
+    }
+    {
+      name: "level"
+      req: false
+      short: "Level of the monster card"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "linkRating"
+      req: false
+      short: "Link rating for Link monsters"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Card name in multiple languages"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "password"
+      req: false
+      short: "8-digit card password/ID"
+      type: "`$STRING`"
+    }
+    {
+      name: "rank"
+      req: false
+      short: "Rank of XYZ monster"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "text"
+      req: false
+      short: "Card text in multiple languages"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Monster type or spell/trap subtype"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "card"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "00010000"
+                kind: "param"
+                name: "card_id"
+                orig: "card_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/data/cards/{cardId}.json"
+          parts: [
+            "data"
+            "cards"
+            "{cardId}.json"
+          ]
+          select: {
+            "$action": "card_id"
+            exist: [
+              "card_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "15150"
+                kind: "param"
+                name: "konami_id"
+                orig: "konami_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/data/rush/{konamiId}.json"
+          parts: [
+            "data"
+            "rush"
+            "{konamiId}.json"
+          ]
+          select: {
+            exist: [
+              "konami_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/cards.json"
+          parts: [
+            "cards.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/master-duel-raw.json"
+          parts: [
+            "master-duel-raw.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/rush.json"
+          parts: [
+            "rush.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "card"
+      ]
+      [
+        "rush"
+      ]
+    ]
+  }
+
+
+
+}

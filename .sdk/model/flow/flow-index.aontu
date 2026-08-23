@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicAggregationFlow.aontu"
-@"BasicCardFlow.aontu"
-@"BasicIndividualCardFlow.aontu"
-@"BasicSeriesAndArchetypeFlow.aontu"
-@"BasicSeriesFlow.aontu"
-@"BasicSkillCardFlow.aontu"
-@"BasicSkillFlow.aontu"

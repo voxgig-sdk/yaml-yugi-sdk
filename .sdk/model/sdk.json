@@ -85,84 +85,98 @@
               "active": true,
               "name": "archetype",
               "req": false,
+              "short": "Archetypes the card belongs to",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "atk",
               "req": false,
+              "short": "Attack points",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "attribute",
               "req": false,
+              "short": "Card attribute (for monsters)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "cardType",
               "req": false,
+              "short": "Type of card (Monster, Spell, Trap, etc.)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "def",
               "req": false,
+              "short": "Defense points",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "format",
               "req": false,
+              "short": "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "konamiId",
               "req": false,
+              "short": "Konami database ID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "level",
               "req": false,
+              "short": "Level of the monster card",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "linkRating",
               "req": false,
+              "short": "Link rating for Link monsters",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Card name in multiple languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "password",
               "req": false,
+              "short": "8-digit card password/ID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rank",
               "req": false,
+              "short": "Rank of XYZ monster",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "text",
               "req": false,
+              "short": "Card text in multiple languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Monster type or spell/trap subtype",
               "type": "`$STRING`"
             }
           ],
@@ -436,12 +450,14 @@
               "active": true,
               "name": "cards",
               "req": false,
+              "short": "List of card IDs belonging to this series/archetype",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Series/archetype name in multiple languages",
               "type": "`$OBJECT`"
             }
           ],
@@ -487,12 +503,14 @@
               "active": true,
               "name": "cards",
               "req": false,
+              "short": "List of card IDs belonging to this series/archetype",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Series/archetype name in multiple languages",
               "type": "`$OBJECT`"
             }
           ],
@@ -570,30 +588,35 @@
               "active": true,
               "name": "cardType",
               "req": false,
+              "short": "Type identifier for skill cards",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "character",
               "req": false,
+              "short": "Character associated with the skill",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Skill card name in multiple languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "text",
               "req": false,
+              "short": "Skill card text in multiple languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "yugipediaId",
               "req": false,
+              "short": "Yugipedia page ID",
               "type": "`$STRING`"
             }
           ],
@@ -635,30 +658,35 @@
               "active": true,
               "name": "cardType",
               "req": false,
+              "short": "Type identifier for skill cards",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "character",
               "req": false,
+              "short": "Character associated with the skill",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Skill card name in multiple languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "text",
               "req": false,
+              "short": "Skill card text in multiple languages",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "yugipediaId",
               "req": false,
+              "short": "Yugipedia page ID",
               "type": "`$STRING`"
             }
           ],

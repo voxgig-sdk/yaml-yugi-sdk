@@ -160,20 +160,20 @@ local card = client:Card(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | `table` | No |  |
-| `atk` | `number` | No |  |
-| `attribute` | `string` | No |  |
-| `cardType` | `string` | No |  |
-| `def` | `number` | No |  |
-| `format` | `table` | No |  |
-| `konamiId` | `string` | No |  |
-| `level` | `number` | No |  |
-| `linkRating` | `number` | No |  |
-| `name` | `table` | No |  |
-| `password` | `string` | No |  |
-| `rank` | `number` | No |  |
-| `text` | `table` | No |  |
-| `type` | `string` | No |  |
+| `archetype` | `table` | No | Archetypes the card belongs to |
+| `atk` | `number` | No | Attack points |
+| `attribute` | `string` | No | Card attribute (for monsters) |
+| `cardType` | `string` | No | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | `number` | No | Defense points |
+| `format` | `table` | No | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | `string` | No | Konami database ID |
+| `level` | `number` | No | Level of the monster card |
+| `linkRating` | `number` | No | Link rating for Link monsters |
+| `name` | `table` | No | Card name in multiple languages |
+| `password` | `string` | No | 8-digit card password/ID |
+| `rank` | `number` | No | Rank of XYZ monster |
+| `text` | `table` | No | Card text in multiple languages |
+| `type` | `string` | No | Monster type or spell/trap subtype |
 
 ### Operations
 
@@ -271,8 +271,8 @@ local series = client:Series(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `table` | No |  |
-| `name` | `table` | No |  |
+| `cards` | `table` | No | List of card IDs belonging to this series/archetype |
+| `name` | `table` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -324,8 +324,8 @@ local series_and_archetype = client:SeriesAndArchetype(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `table` | No |  |
-| `name` | `table` | No |  |
+| `cards` | `table` | No | List of card IDs belonging to this series/archetype |
+| `name` | `table` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -377,11 +377,11 @@ local skill = client:Skill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `table` | No |  |
-| `text` | `table` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `table` | No | Skill card name in multiple languages |
+| `text` | `table` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 
@@ -433,11 +433,11 @@ local skill_card = client:SkillCard(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `table` | No |  |
-| `text` | `table` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `table` | No | Skill card name in multiple languages |
+| `text` | `table` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 

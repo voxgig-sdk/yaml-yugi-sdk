@@ -232,20 +232,20 @@ const card = client.Card()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | `any[]` | No |  |
-| `atk` | `number` | No |  |
-| `attribute` | `string` | No |  |
-| `cardType` | `string` | No |  |
-| `def` | `number` | No |  |
-| `format` | `any[]` | No |  |
-| `konamiId` | `string` | No |  |
-| `level` | `number` | No |  |
-| `linkRating` | `number` | No |  |
-| `name` | `Record<string, any>` | No |  |
-| `password` | `string` | No |  |
-| `rank` | `number` | No |  |
-| `text` | `Record<string, any>` | No |  |
-| `type` | `string` | No |  |
+| `archetype` | `any[]` | No | Archetypes the card belongs to |
+| `atk` | `number` | No | Attack points |
+| `attribute` | `string` | No | Card attribute (for monsters) |
+| `cardType` | `string` | No | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | `number` | No | Defense points |
+| `format` | `any[]` | No | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | `string` | No | Konami database ID |
+| `level` | `number` | No | Level of the monster card |
+| `linkRating` | `number` | No | Link rating for Link monsters |
+| `name` | `Record<string, any>` | No | Card name in multiple languages |
+| `password` | `string` | No | 8-digit card password/ID |
+| `rank` | `number` | No | Rank of XYZ monster |
+| `text` | `Record<string, any>` | No | Card text in multiple languages |
+| `type` | `string` | No | Monster type or spell/trap subtype |
 
 ### Actions
 
@@ -359,8 +359,8 @@ const series = client.Series()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `any[]` | No |  |
-| `name` | `Record<string, any>` | No |  |
+| `cards` | `any[]` | No | List of card IDs belonging to this series/archetype |
+| `name` | `Record<string, any>` | No | Series/archetype name in multiple languages |
 
 ### Actions
 
@@ -430,8 +430,8 @@ const series_and_archetype = client.SeriesAndArchetype()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `any[]` | No |  |
-| `name` | `Record<string, any>` | No |  |
+| `cards` | `any[]` | No | List of card IDs belonging to this series/archetype |
+| `name` | `Record<string, any>` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -481,11 +481,11 @@ const skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `Record<string, any>` | No |  |
-| `text` | `Record<string, any>` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `Record<string, any>` | No | Skill card name in multiple languages |
+| `text` | `Record<string, any>` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 
@@ -535,11 +535,11 @@ const skill_card = client.SkillCard()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `string` | No |  |
-| `character` | `string` | No |  |
-| `name` | `Record<string, any>` | No |  |
-| `text` | `Record<string, any>` | No |  |
-| `yugipediaId` | `string` | No |  |
+| `cardType` | `string` | No | Type identifier for skill cards |
+| `character` | `string` | No | Character associated with the skill |
+| `name` | `Record<string, any>` | No | Skill card name in multiple languages |
+| `text` | `Record<string, any>` | No | Skill card text in multiple languages |
+| `yugipediaId` | `string` | No | Yugipedia page ID |
 
 ### Operations
 

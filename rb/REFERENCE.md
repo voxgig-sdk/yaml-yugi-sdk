@@ -163,20 +163,20 @@ card = client.Card
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archetype` | `Array` | No |  |
-| `atk` | `Integer` | No |  |
-| `attribute` | `String` | No |  |
-| `cardType` | `String` | No |  |
-| `def` | `Integer` | No |  |
-| `format` | `Array` | No |  |
-| `konamiId` | `String` | No |  |
-| `level` | `Integer` | No |  |
-| `linkRating` | `Integer` | No |  |
-| `name` | `Hash` | No |  |
-| `password` | `String` | No |  |
-| `rank` | `Integer` | No |  |
-| `text` | `Hash` | No |  |
-| `type` | `String` | No |  |
+| `archetype` | `Array` | No | Archetypes the card belongs to |
+| `atk` | `Integer` | No | Attack points |
+| `attribute` | `String` | No | Card attribute (for monsters) |
+| `cardType` | `String` | No | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | `Integer` | No | Defense points |
+| `format` | `Array` | No | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | `String` | No | Konami database ID |
+| `level` | `Integer` | No | Level of the monster card |
+| `linkRating` | `Integer` | No | Link rating for Link monsters |
+| `name` | `Hash` | No | Card name in multiple languages |
+| `password` | `String` | No | 8-digit card password/ID |
+| `rank` | `Integer` | No | Rank of XYZ monster |
+| `text` | `Hash` | No | Card text in multiple languages |
+| `type` | `String` | No | Monster type or spell/trap subtype |
 
 ### Operations
 
@@ -274,8 +274,8 @@ series = client.Series
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `Array` | No |  |
-| `name` | `Hash` | No |  |
+| `cards` | `Array` | No | List of card IDs belonging to this series/archetype |
+| `name` | `Hash` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -327,8 +327,8 @@ series_and_archetype = client.SeriesAndArchetype
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cards` | `Array` | No |  |
-| `name` | `Hash` | No |  |
+| `cards` | `Array` | No | List of card IDs belonging to this series/archetype |
+| `name` | `Hash` | No | Series/archetype name in multiple languages |
 
 ### Operations
 
@@ -380,11 +380,11 @@ skill = client.Skill
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `String` | No |  |
-| `character` | `String` | No |  |
-| `name` | `Hash` | No |  |
-| `text` | `Hash` | No |  |
-| `yugipediaId` | `String` | No |  |
+| `cardType` | `String` | No | Type identifier for skill cards |
+| `character` | `String` | No | Character associated with the skill |
+| `name` | `Hash` | No | Skill card name in multiple languages |
+| `text` | `Hash` | No | Skill card text in multiple languages |
+| `yugipediaId` | `String` | No | Yugipedia page ID |
 
 ### Operations
 
@@ -436,11 +436,11 @@ skill_card = client.SkillCard
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cardType` | `String` | No |  |
-| `character` | `String` | No |  |
-| `name` | `Hash` | No |  |
-| `text` | `Hash` | No |  |
-| `yugipediaId` | `String` | No |  |
+| `cardType` | `String` | No | Type identifier for skill cards |
+| `character` | `String` | No | Character associated with the skill |
+| `name` | `Hash` | No | Skill card name in multiple languages |
+| `text` | `Hash` | No | Skill card text in multiple languages |
+| `yugipediaId` | `String` | No | Yugipedia page ID |
 
 ### Operations
 

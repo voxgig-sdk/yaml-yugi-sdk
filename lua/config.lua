@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "YamlYugi",
+      slug = "yaml-yugi",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -78,58 +81,72 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "archetype",
+            ["short"] = "Archetypes the card belongs to",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "atk",
+            ["short"] = "Attack points",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "attribute",
+            ["short"] = "Card attribute (for monsters)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "cardType",
+            ["short"] = "Type of card (Monster, Spell, Trap, etc.)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "def",
+            ["short"] = "Defense points",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "format",
+            ["short"] = "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "konamiId",
+            ["short"] = "Konami database ID",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "level",
+            ["short"] = "Level of the monster card",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "linkRating",
+            ["short"] = "Link rating for Link monsters",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Card name in multiple languages",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "password",
+            ["short"] = "8-digit card password/ID",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "rank",
+            ["short"] = "Rank of XYZ monster",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "text",
+            ["short"] = "Card text in multiple languages",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "type",
+            ["short"] = "Monster type or spell/trap subtype",
             ["type"] = "`$STRING`",
           },
         },
@@ -380,10 +397,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "cards",
+            ["short"] = "List of card IDs belonging to this series/archetype",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Series/archetype name in multiple languages",
             ["type"] = "`$OBJECT`",
           },
         },
@@ -422,10 +441,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "cards",
+            ["short"] = "List of card IDs belonging to this series/archetype",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Series/archetype name in multiple languages",
             ["type"] = "`$OBJECT`",
           },
         },
@@ -494,22 +515,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "cardType",
+            ["short"] = "Type identifier for skill cards",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "character",
+            ["short"] = "Character associated with the skill",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Skill card name in multiple languages",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "text",
+            ["short"] = "Skill card text in multiple languages",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "yugipediaId",
+            ["short"] = "Yugipedia page ID",
             ["type"] = "`$STRING`",
           },
         },
@@ -544,22 +570,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "cardType",
+            ["short"] = "Type identifier for skill cards",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "character",
+            ["short"] = "Character associated with the skill",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Skill card name in multiple languages",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "text",
+            ["short"] = "Skill card text in multiple languages",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "yugipediaId",
+            ["short"] = "Yugipedia page ID",
             ["type"] = "`$STRING`",
           },
         },

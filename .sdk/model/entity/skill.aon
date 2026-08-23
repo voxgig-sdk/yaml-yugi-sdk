@@ -1,0 +1,62 @@
+# Entity: skill
+
+main: kit: entity: skill: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "cardType"
+      req: false
+      short: "Type identifier for skill cards"
+      type: "`$STRING`"
+    }
+    {
+      name: "character"
+      req: false
+      short: "Character associated with the skill"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Skill card name in multiple languages"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "text"
+      req: false
+      short: "Skill card text in multiple languages"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "yugipediaId"
+      req: false
+      short: "Yugipedia page ID"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "skill"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/skill.json"
+          parts: [
+            "skill.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

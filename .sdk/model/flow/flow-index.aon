@@ -1,0 +1,9 @@
+# Flows
+
+@"BasicAggregationFlow.aon"
+@"BasicCardFlow.aon"
+@"BasicIndividualCardFlow.aon"
+@"BasicSeriesAndArchetypeFlow.aon"
+@"BasicSeriesFlow.aon"
+@"BasicSkillCardFlow.aon"
+@"BasicSkillFlow.aon"

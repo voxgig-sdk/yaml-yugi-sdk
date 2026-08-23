@@ -253,20 +253,20 @@ API path: `/cards.yaml`
 
 | Field | Description |
 | --- | --- |
-| `archetype` |  |
-| `atk` |  |
-| `attribute` |  |
-| `cardType` |  |
-| `def` |  |
-| `format` |  |
-| `konamiId` |  |
-| `level` |  |
-| `linkRating` |  |
-| `name` |  |
-| `password` |  |
-| `rank` |  |
-| `text` |  |
-| `type` |  |
+| `archetype` | Archetypes the card belongs to |
+| `atk` | Attack points |
+| `attribute` | Card attribute (for monsters) |
+| `cardType` | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | Defense points |
+| `format` | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | Konami database ID |
+| `level` | Level of the monster card |
+| `linkRating` | Link rating for Link monsters |
+| `name` | Card name in multiple languages |
+| `password` | 8-digit card password/ID |
+| `rank` | Rank of XYZ monster |
+| `text` | Card text in multiple languages |
+| `type` | Monster type or spell/trap subtype |
 
 Operations: List.
 
@@ -285,8 +285,8 @@ API path: `/data/cards/{cardId}.yaml`
 
 | Field | Description |
 | --- | --- |
-| `cards` |  |
-| `name` |  |
+| `cards` | List of card IDs belonging to this series/archetype |
+| `name` | Series/archetype name in multiple languages |
 
 Operations: List.
 
@@ -296,8 +296,8 @@ API path: `/data/series/list.json`
 
 | Field | Description |
 | --- | --- |
-| `cards` |  |
-| `name` |  |
+| `cards` | List of card IDs belonging to this series/archetype |
+| `name` | Series/archetype name in multiple languages |
 
 Operations: Load.
 
@@ -307,11 +307,11 @@ API path: `/data/series/list.yaml`
 
 | Field | Description |
 | --- | --- |
-| `cardType` |  |
-| `character` |  |
-| `name` |  |
-| `text` |  |
-| `yugipediaId` |  |
+| `cardType` | Type identifier for skill cards |
+| `character` | Character associated with the skill |
+| `name` | Skill card name in multiple languages |
+| `text` | Skill card text in multiple languages |
+| `yugipediaId` | Yugipedia page ID |
 
 Operations: List.
 
@@ -321,11 +321,11 @@ API path: `/skill.json`
 
 | Field | Description |
 | --- | --- |
-| `cardType` |  |
-| `character` |  |
-| `name` |  |
-| `text` |  |
-| `yugipediaId` |  |
+| `cardType` | Type identifier for skill cards |
+| `character` | Character associated with the skill |
+| `name` | Skill card name in multiple languages |
+| `text` | Skill card text in multiple languages |
+| `yugipediaId` | Yugipedia page ID |
 
 Operations: Load.
 
@@ -368,20 +368,20 @@ Create an instance: `card = client.Card`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archetype` | `Array` |  |
-| `atk` | `Integer` |  |
-| `attribute` | `String` |  |
-| `cardType` | `String` |  |
-| `def` | `Integer` |  |
-| `format` | `Array` |  |
-| `konamiId` | `String` |  |
-| `level` | `Integer` |  |
-| `linkRating` | `Integer` |  |
-| `name` | `Hash` |  |
-| `password` | `String` |  |
-| `rank` | `Integer` |  |
-| `text` | `Hash` |  |
-| `type` | `String` |  |
+| `archetype` | `Array` | Archetypes the card belongs to |
+| `atk` | `Integer` | Attack points |
+| `attribute` | `String` | Card attribute (for monsters) |
+| `cardType` | `String` | Type of card (Monster, Spell, Trap, etc.) |
+| `def` | `Integer` | Defense points |
+| `format` | `Array` | Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel) |
+| `konamiId` | `String` | Konami database ID |
+| `level` | `Integer` | Level of the monster card |
+| `linkRating` | `Integer` | Link rating for Link monsters |
+| `name` | `Hash` | Card name in multiple languages |
+| `password` | `String` | 8-digit card password/ID |
+| `rank` | `Integer` | Rank of XYZ monster |
+| `text` | `Hash` | Card text in multiple languages |
+| `type` | `String` | Monster type or spell/trap subtype |
 
 #### Example: List
 
@@ -423,8 +423,8 @@ Create an instance: `series = client.Series`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cards` | `Array` |  |
-| `name` | `Hash` |  |
+| `cards` | `Array` | List of card IDs belonging to this series/archetype |
+| `name` | `Hash` | Series/archetype name in multiple languages |
 
 #### Example: List
 
@@ -448,8 +448,8 @@ Create an instance: `series_and_archetype = client.SeriesAndArchetype`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cards` | `Array` |  |
-| `name` | `Hash` |  |
+| `cards` | `Array` | List of card IDs belonging to this series/archetype |
+| `name` | `Hash` | Series/archetype name in multiple languages |
 
 #### Example: Load
 
@@ -473,11 +473,11 @@ Create an instance: `skill = client.Skill`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cardType` | `String` |  |
-| `character` | `String` |  |
-| `name` | `Hash` |  |
-| `text` | `Hash` |  |
-| `yugipediaId` | `String` |  |
+| `cardType` | `String` | Type identifier for skill cards |
+| `character` | `String` | Character associated with the skill |
+| `name` | `Hash` | Skill card name in multiple languages |
+| `text` | `Hash` | Skill card text in multiple languages |
+| `yugipediaId` | `String` | Yugipedia page ID |
 
 #### Example: List
 
@@ -501,11 +501,11 @@ Create an instance: `skill_card = client.SkillCard`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cardType` | `String` |  |
-| `character` | `String` |  |
-| `name` | `Hash` |  |
-| `text` | `Hash` |  |
-| `yugipediaId` | `String` |  |
+| `cardType` | `String` | Type identifier for skill cards |
+| `character` | `String` | Character associated with the skill |
+| `name` | `Hash` | Skill card name in multiple languages |
+| `text` | `Hash` | Skill card text in multiple languages |
+| `yugipediaId` | `String` | Yugipedia page ID |
 
 #### Example: Load
 
