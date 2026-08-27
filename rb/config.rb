@@ -28,6 +28,7 @@ module YamlYugiConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
