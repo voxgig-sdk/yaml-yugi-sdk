@@ -111,10 +111,16 @@ main: kit: entity: card: {
           }
           method: "GET"
           orig: "/data/cards/{cardId}.json"
-          parts: [
-            "data"
-            "cards"
-            "{cardId}.json"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              lit: "{cardId}.json"
+            }
           ]
           select: {
             "$action": "card_id"
@@ -142,10 +148,16 @@ main: kit: entity: card: {
           }
           method: "GET"
           orig: "/data/rush/{konamiId}.json"
-          parts: [
-            "data"
-            "rush"
-            "{konamiId}.json"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "rush"
+            }
+            {
+              lit: "{konamiId}.json"
+            }
           ]
           select: {
             exist: [
@@ -160,8 +172,10 @@ main: kit: entity: card: {
         {
           method: "GET"
           orig: "/cards.json"
-          parts: [
-            "cards.json"
+          segments: [
+            {
+              lit: "cards.json"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -171,8 +185,10 @@ main: kit: entity: card: {
         {
           method: "GET"
           orig: "/master-duel-raw.json"
-          parts: [
-            "master-duel-raw.json"
+          segments: [
+            {
+              lit: "master-duel-raw.json"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -182,8 +198,10 @@ main: kit: entity: card: {
         {
           method: "GET"
           orig: "/rush.json"
-          parts: [
-            "rush.json"
+          segments: [
+            {
+              lit: "rush.json"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -192,17 +210,6 @@ main: kit: entity: card: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "card"
-      ]
-      [
-        "rush"
-      ]
-    ]
   }
 
 

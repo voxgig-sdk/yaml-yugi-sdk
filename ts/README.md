@@ -33,17 +33,14 @@ import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 const client = new YamlYugiSDK()
 ```
 
-### 3. Load an individualcard
+### 3. Load an aggregation
 
-IndividualCard is nested under card, so provide the `card_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const individualcard = await client.IndividualCard().load({
-    card_id: 'example_card_id',
-  })
-  console.log(individualcard)
+  const aggregation = await client.Aggregation().load()
+  console.log(aggregation)
 } catch (err) {
   console.error('load failed:', err)
 }

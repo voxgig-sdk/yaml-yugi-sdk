@@ -44,8 +44,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/cards.yaml",
-                  "parts": [
-                    "cards.yaml"
+                  "segments": [
+                    {
+                      "lit": "cards.yaml"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -59,8 +61,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/rush.yaml",
-                  "parts": [
-                    "rush.yaml"
+                  "segments": [
+                    {
+                      "lit": "rush.yaml"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -204,10 +208,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/cards/{cardId}.json",
-                  "parts": [
-                    "data",
-                    "cards",
-                    "{cardId}.json"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "cards"
+                    },
+                    {
+                      "lit": "{cardId}.json"
+                    }
                   ],
                   "select": {
                     "$action": "card_id",
@@ -238,10 +248,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/rush/{konamiId}.json",
-                  "parts": [
-                    "data",
-                    "rush",
-                    "{konamiId}.json"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "rush"
+                    },
+                    {
+                      "lit": "{konamiId}.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -259,8 +275,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/cards.json",
-                  "parts": [
-                    "cards.json"
+                  "segments": [
+                    {
+                      "lit": "cards.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -274,8 +292,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/master-duel-raw.json",
-                  "parts": [
-                    "master-duel-raw.json"
+                  "segments": [
+                    {
+                      "lit": "master-duel-raw.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -289,8 +309,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/rush.json",
-                  "parts": [
-                    "rush.json"
+                  "segments": [
+                    {
+                      "lit": "rush.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -302,14 +324,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "card"
-              ],
-              [
-                "rush"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "individual_card": {
@@ -342,10 +357,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/cards/{cardId}.yaml",
-                  "parts": [
-                    "data",
-                    "cards",
-                    "{cardId}.yaml"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "cards"
+                    },
+                    {
+                      "lit": "{cardId}.yaml"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -375,10 +396,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/rush/{konamiId}.yaml",
-                  "parts": [
-                    "data",
-                    "rush",
-                    "{konamiId}.yaml"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "rush"
+                    },
+                    {
+                      "lit": "{konamiId}.yaml"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -408,10 +435,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
-                  "parts": [
-                    "data",
-                    "tcg-speed-skill",
-                    "{yugipediaId}.yaml"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "tcg-speed-skill"
+                    },
+                    {
+                      "lit": "{yugipediaId}.yaml"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -427,17 +460,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "card"
-              ],
-              [
-                "rush"
-              ],
-              [
-                "tcg_speed_skill"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "series": {
@@ -473,10 +496,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/list.json",
-                  "parts": [
-                    "data",
-                    "series",
-                    "list.json"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "series"
+                    },
+                    {
+                      "lit": "list.json"
+                    }
                   ],
                   "select": {
                     "$action": "list"
@@ -526,10 +555,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/list.yaml",
-                  "parts": [
-                    "data",
-                    "series",
-                    "list.yaml"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "series"
+                    },
+                    {
+                      "lit": "list.yaml"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -543,10 +578,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/map.json",
-                  "parts": [
-                    "data",
-                    "series",
-                    "map.json"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "series"
+                    },
+                    {
+                      "lit": "map.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -560,10 +601,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/series/map.yaml",
-                  "parts": [
-                    "data",
-                    "series",
-                    "map.yaml"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "series"
+                    },
+                    {
+                      "lit": "map.yaml"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -632,8 +679,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/skill.json",
-                  "parts": [
-                    "skill.json"
+                  "segments": [
+                    {
+                      "lit": "skill.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -714,10 +763,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/data/tcg-speed-skill/{yugipediaId}.json",
-                  "parts": [
-                    "data",
-                    "tcg-speed-skill",
-                    "{yugipediaId}.json"
+                  "segments": [
+                    {
+                      "lit": "data"
+                    },
+                    {
+                      "lit": "tcg-speed-skill"
+                    },
+                    {
+                      "lit": "{yugipediaId}.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -733,11 +788,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "tcg_speed_skill"
-              ]
-            ]
+            "ancestors": []
           }
         }
       },
@@ -805,8 +856,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1116,6 +1170,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1141,6 +1198,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1192,6 +1253,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1216,6 +1278,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1267,6 +1330,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1291,6 +1355,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1331,6 +1396,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1356,6 +1424,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1390,6 +1461,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1415,6 +1489,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1455,6 +1532,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1480,6 +1560,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1525,6 +1608,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1550,6 +1636,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1567,11 +1656,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1600,6 +1684,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1624,6 +1711,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

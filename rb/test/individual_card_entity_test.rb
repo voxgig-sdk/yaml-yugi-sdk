@@ -62,7 +62,7 @@ def individual_card_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["individual_card01", "individual_card02", "individual_card03", "card01", "card02", "card03", "rush01", "rush02", "rush03", "tcg_speed_skill01", "tcg_speed_skill02", "tcg_speed_skill03", "yugipedia01"],
+    ["individual_card01", "individual_card02", "individual_card03", "yugipedia01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -91,6 +91,9 @@ def individual_card_basic_setup(extra)
 
   if env["YAML_YUGI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
       },
       extra || {},

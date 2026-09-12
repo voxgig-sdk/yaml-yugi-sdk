@@ -27,10 +27,16 @@ main: kit: entity: series_and_archetype: {
         {
           method: "GET"
           orig: "/data/series/list.yaml"
-          parts: [
-            "data"
-            "series"
-            "list.yaml"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "list.yaml"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -40,10 +46,16 @@ main: kit: entity: series_and_archetype: {
         {
           method: "GET"
           orig: "/data/series/map.json"
-          parts: [
-            "data"
-            "series"
-            "map.json"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "map.json"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -53,10 +65,16 @@ main: kit: entity: series_and_archetype: {
         {
           method: "GET"
           orig: "/data/series/map.yaml"
-          parts: [
-            "data"
-            "series"
-            "map.yaml"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "map.yaml"
+            }
           ]
           transform: {
             req: "`reqdata`"

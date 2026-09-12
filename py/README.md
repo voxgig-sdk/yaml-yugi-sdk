@@ -36,15 +36,14 @@ from yamlyugi_sdk import YamlYugiSDK
 client = YamlYugiSDK()
 ```
 
-### 3. Load an individualcard
+### 3. Load an aggregation
 
-IndividualCard is nested under card, so provide the `card_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    individualcard = client.IndividualCard().load({"card_id": "example_card_id"})
-    print(individualcard)
+    aggregation = client.Aggregation().load()
+    print(aggregation)
 except Exception as err:
     print(f"load failed: {err}")
 ```

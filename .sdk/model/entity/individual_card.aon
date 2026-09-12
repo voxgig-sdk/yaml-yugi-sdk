@@ -24,10 +24,16 @@ main: kit: entity: individual_card: {
           }
           method: "GET"
           orig: "/data/cards/{cardId}.yaml"
-          parts: [
-            "data"
-            "cards"
-            "{cardId}.yaml"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              lit: "{cardId}.yaml"
+            }
           ]
           select: {
             exist: [
@@ -54,10 +60,16 @@ main: kit: entity: individual_card: {
           }
           method: "GET"
           orig: "/data/rush/{konamiId}.yaml"
-          parts: [
-            "data"
-            "rush"
-            "{konamiId}.yaml"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "rush"
+            }
+            {
+              lit: "{konamiId}.yaml"
+            }
           ]
           select: {
             exist: [
@@ -84,10 +96,16 @@ main: kit: entity: individual_card: {
           }
           method: "GET"
           orig: "/data/tcg-speed-skill/{yugipediaId}.yaml"
-          parts: [
-            "data"
-            "tcg-speed-skill"
-            "{yugipediaId}.yaml"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "tcg-speed-skill"
+            }
+            {
+              lit: "{yugipediaId}.yaml"
+            }
           ]
           select: {
             exist: [
@@ -101,20 +119,6 @@ main: kit: entity: individual_card: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "card"
-      ]
-      [
-        "rush"
-      ]
-      [
-        "tcg_speed_skill"
-      ]
-    ]
   }
 
 

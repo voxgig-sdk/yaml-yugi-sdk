@@ -33,14 +33,12 @@ local sdk = require("yaml-yugi_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load an individualcard
-
-IndividualCard is nested under card, so provide the `card_id`.
+### 3. Load an aggregation
 
 ```lua
-local individualcard, err = client:IndividualCard():load({ card_id = "example_card_id" })
+local aggregation, err = client:Aggregation():load()
 if err then error(err) end
-print(individualcard)
+print(aggregation)
 ```
 
 

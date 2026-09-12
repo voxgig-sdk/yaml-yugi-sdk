@@ -30,15 +30,13 @@ require_relative "YamlYugi_sdk"
 client = YamlYugiSDK.new
 ```
 
-### 3. Load an individualcard
-
-IndividualCard is nested under card, so provide the `card_id`.
+### 3. Load an aggregation
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the IndividualCard record (raises on error).
-  individualcard = client.IndividualCard.load({ "card_id" => "example_card_id" })
-  puts individualcard
+  # load returns the ENTITY — call data_get for the Aggregation record (raises on error).
+  aggregation = client.Aggregation.load()
+  puts aggregation
 rescue => err
   warn "load failed: #{err}"
 end

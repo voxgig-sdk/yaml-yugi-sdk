@@ -27,10 +27,16 @@ main: kit: entity: series: {
         {
           method: "GET"
           orig: "/data/series/list.json"
-          parts: [
-            "data"
-            "series"
-            "list.json"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "list.json"
+            }
           ]
           select: {
             "$action": "list"

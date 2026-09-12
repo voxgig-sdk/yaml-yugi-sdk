@@ -50,7 +50,7 @@ func TestSeriesAndArchetypeEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		seriesAndArchetypeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.series_and_archetype", setup.data)))
+		seriesAndArchetypeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.series_and_archetype")))
 		var seriesAndArchetypeRef01Data map[string]any
 		if len(seriesAndArchetypeRef01DataRaw) > 0 {
 			seriesAndArchetypeRef01Data = core.ToMapAny(seriesAndArchetypeRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func series_and_archetypeBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"series_and_archetype01", "series_and_archetype02", "series_and_archetype03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -125,10 +125,22 @@ func series_and_archetypeBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["YAML_YUGI_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewYamlYugiSDK(core.ToMapAny(mergedOpts))
 	}

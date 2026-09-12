@@ -57,10 +57,16 @@ main: kit: entity: skill_card: {
           }
           method: "GET"
           orig: "/data/tcg-speed-skill/{yugipediaId}.json"
-          parts: [
-            "data"
-            "tcg-speed-skill"
-            "{yugipediaId}.json"
+          segments: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "tcg-speed-skill"
+            }
+            {
+              lit: "{yugipediaId}.json"
+            }
           ]
           select: {
             exist: [
@@ -74,14 +80,6 @@ main: kit: entity: skill_card: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "tcg_speed_skill"
-      ]
-    ]
   }
 
 

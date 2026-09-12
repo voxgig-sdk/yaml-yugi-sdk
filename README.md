@@ -123,12 +123,9 @@ import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
 
 const client = new YamlYugiSDK()
 
-
-// Load a specific individualcard (returns a IndividualCard)
-const individualcard = await client.IndividualCard().load({
-  card_id: 'example_card_id',
-})
-console.log(individualcard)
+// Load aggregation data (returns a Aggregation)
+const aggregation = await client.Aggregation().load()
+console.log(aggregation)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -216,15 +213,12 @@ import sdk "github.com/voxgig-sdk/yaml-yugi-sdk/go"
 
 client := sdk.New()
 
-
-// Load a specific individualcard
-individualCard, err := client.IndividualCard(nil).Load(
-    map[string]any{"card_id": "example_card_id"}, nil,
-)
+// Load aggregation data
+aggregation, err := client.Aggregation(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(individualCard)
+fmt.Println(aggregation)
 ```
 
 ### Ruby
@@ -363,7 +357,7 @@ customizable without forking any upstream tool:
 
 - **The model** (`.sdk/model/`) declares everything this project owns:
   package names, versions, active features, per-target settings. It is
-  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  written in [aontu](https://aontu.dev), a JSON-based
   specification language designed for building ontologies: easy to edit
   by hand, and files unify rather than override, so small declarations
   compose into one model. Regeneration re-reads it every time.

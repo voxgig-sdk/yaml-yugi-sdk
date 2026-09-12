@@ -12,8 +12,10 @@ main: kit: entity: aggregation: {
         {
           method: "GET"
           orig: "/cards.yaml"
-          parts: [
-            "cards.yaml"
+          segments: [
+            {
+              lit: "cards.yaml"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -23,8 +25,10 @@ main: kit: entity: aggregation: {
         {
           method: "GET"
           orig: "/rush.yaml"
-          parts: [
-            "rush.yaml"
+          segments: [
+            {
+              lit: "rush.yaml"
+            }
           ]
           transform: {
             req: "`reqdata`"

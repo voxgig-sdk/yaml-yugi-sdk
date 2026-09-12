@@ -110,7 +110,7 @@ function card_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["card01", "card02", "card03", "rush01", "rush02", "rush03"] as $k) {
+    foreach (["card01", "card02", "card03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
@@ -134,9 +134,16 @@ function card_basic_setup($extra)
 
     if ($env["YAML_YUGI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
         $client = new YamlYugiSDK(Helpers::to_map($merged_opts));
     }

@@ -48,13 +48,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cards.yaml",
-                ["parts"] = {
-                  "cards.yaml",
+                ["segments"] = {
+                  {
+                    ["lit"] = "cards.yaml",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "cards.yaml",
                 },
               },
               {
@@ -62,13 +67,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/rush.yaml",
-                ["parts"] = {
-                  "rush.yaml",
+                ["segments"] = {
+                  {
+                    ["lit"] = "rush.yaml",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "rush.yaml",
                 },
               },
             },
@@ -173,10 +183,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/cards/{cardId}.json",
-                ["parts"] = {
-                  "data",
-                  "cards",
-                  "{cardId}.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "cards",
+                  },
+                  {
+                    ["lit"] = "{cardId}.json",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "card_id",
@@ -187,6 +203,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "data",
+                  "cards",
+                  "{cardId}.json",
                 },
               },
               {
@@ -205,10 +226,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/rush/{konamiId}.json",
-                ["parts"] = {
-                  "data",
-                  "rush",
-                  "{konamiId}.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "rush",
+                  },
+                  {
+                    ["lit"] = "{konamiId}.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -219,19 +246,29 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "data",
+                  "rush",
+                  "{konamiId}.json",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/cards.json",
-                ["parts"] = {
-                  "cards.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "cards.json",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "cards.json",
                 },
               },
               {
@@ -239,13 +276,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/master-duel-raw.json",
-                ["parts"] = {
-                  "master-duel-raw.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "master-duel-raw.json",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "master-duel-raw.json",
                 },
               },
               {
@@ -253,27 +295,25 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/rush.json",
-                ["parts"] = {
-                  "rush.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "rush.json",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "rush.json",
+                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "card",
-            },
-            {
-              "rush",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
       ["individual_card"] = {
@@ -300,10 +340,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/cards/{cardId}.yaml",
-                ["parts"] = {
-                  "data",
-                  "cards",
-                  "{cardId}.yaml",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "cards",
+                  },
+                  {
+                    ["lit"] = "{cardId}.yaml",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -313,6 +359,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "data",
+                  "cards",
+                  "{cardId}.yaml",
                 },
               },
               {
@@ -331,10 +382,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/rush/{konamiId}.yaml",
-                ["parts"] = {
-                  "data",
-                  "rush",
-                  "{konamiId}.yaml",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "rush",
+                  },
+                  {
+                    ["lit"] = "{konamiId}.yaml",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -344,6 +401,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "data",
+                  "rush",
+                  "{konamiId}.yaml",
                 },
               },
               {
@@ -362,10 +424,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/tcg-speed-skill/{yugipediaId}.yaml",
-                ["parts"] = {
-                  "data",
-                  "tcg-speed-skill",
-                  "{yugipediaId}.yaml",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "tcg-speed-skill",
+                  },
+                  {
+                    ["lit"] = "{yugipediaId}.yaml",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -376,22 +444,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "data",
+                  "tcg-speed-skill",
+                  "{yugipediaId}.yaml",
+                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "card",
-            },
-            {
-              "rush",
-            },
-            {
-              "tcg_speed_skill",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
       ["series"] = {
@@ -418,10 +481,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/list.json",
-                ["parts"] = {
-                  "data",
-                  "series",
-                  "list.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "series",
+                  },
+                  {
+                    ["lit"] = "list.json",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "list",
@@ -429,6 +498,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "data",
+                  "series",
+                  "list.json",
                 },
               },
             },
@@ -462,15 +536,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/list.yaml",
-                ["parts"] = {
-                  "data",
-                  "series",
-                  "list.yaml",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "series",
+                  },
+                  {
+                    ["lit"] = "list.yaml",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "data",
+                  "series",
+                  "list.yaml",
                 },
               },
               {
@@ -478,15 +563,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/map.json",
-                ["parts"] = {
-                  "data",
-                  "series",
-                  "map.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "series",
+                  },
+                  {
+                    ["lit"] = "map.json",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "data",
+                  "series",
+                  "map.json",
                 },
               },
               {
@@ -494,15 +590,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/series/map.yaml",
-                ["parts"] = {
-                  "data",
-                  "series",
-                  "map.yaml",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "series",
+                  },
+                  {
+                    ["lit"] = "map.yaml",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "data",
+                  "series",
+                  "map.yaml",
                 },
               },
             },
@@ -551,13 +658,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/skill.json",
-                ["parts"] = {
-                  "skill.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "skill.json",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "skill.json",
                 },
               },
             },
@@ -617,10 +729,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data/tcg-speed-skill/{yugipediaId}.json",
-                ["parts"] = {
-                  "data",
-                  "tcg-speed-skill",
-                  "{yugipediaId}.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "data",
+                  },
+                  {
+                    ["lit"] = "tcg-speed-skill",
+                  },
+                  {
+                    ["lit"] = "{yugipediaId}.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -631,16 +749,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "data",
+                  "tcg-speed-skill",
+                  "{yugipediaId}.json",
+                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "tcg_speed_skill",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
     },

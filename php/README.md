@@ -31,15 +31,13 @@ require_once 'yamlyugi_sdk.php';
 $client = new YamlYugiSDK();
 ```
 
-### 3. Load an individualcard
-
-IndividualCard is nested under card, so provide the `card_id`.
+### 3. Load an aggregation
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the IndividualCard record (throws on error).
-    $individualcard = $client->IndividualCard()->load(["card_id" => "example_card_id"]);
-    print_r($individualcard);
+    // load() returns the ENTITY — call data_get() for the Aggregation record (throws on error).
+    $aggregation = $client->Aggregation()->load();
+    print_r($aggregation);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }

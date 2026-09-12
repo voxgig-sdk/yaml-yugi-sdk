@@ -52,13 +52,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cards.yaml",
-								"parts": []any{
-									"cards.yaml",
+								"segments": []any{
+									map[string]any{
+										"lit": "cards.yaml",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"cards.yaml",
 								},
 							},
 							map[string]any{
@@ -66,13 +71,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/rush.yaml",
-								"parts": []any{
-									"rush.yaml",
+								"segments": []any{
+									map[string]any{
+										"lit": "rush.yaml",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"rush.yaml",
 								},
 							},
 						},
@@ -177,10 +187,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/cards/{cardId}.json",
-								"parts": []any{
-									"data",
-									"cards",
-									"{cardId}.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "cards",
+									},
+									map[string]any{
+										"lit": "{cardId}.json",
+									},
 								},
 								"select": map[string]any{
 									"$action": "card_id",
@@ -191,6 +207,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"data",
+									"cards",
+									"{cardId}.json",
 								},
 							},
 							map[string]any{
@@ -209,10 +230,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/rush/{konamiId}.json",
-								"parts": []any{
-									"data",
-									"rush",
-									"{konamiId}.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "rush",
+									},
+									map[string]any{
+										"lit": "{konamiId}.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -223,19 +250,29 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"data",
+									"rush",
+									"{konamiId}.json",
+								},
 							},
 							map[string]any{
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cards.json",
-								"parts": []any{
-									"cards.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "cards.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"cards.json",
 								},
 							},
 							map[string]any{
@@ -243,13 +280,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/master-duel-raw.json",
-								"parts": []any{
-									"master-duel-raw.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "master-duel-raw.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"master-duel-raw.json",
 								},
 							},
 							map[string]any{
@@ -257,27 +299,25 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/rush.json",
-								"parts": []any{
-									"rush.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "rush.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"rush.json",
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"card",
-						},
-						[]any{
-							"rush",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"individual_card": map[string]any{
@@ -304,10 +344,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/cards/{cardId}.yaml",
-								"parts": []any{
-									"data",
-									"cards",
-									"{cardId}.yaml",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "cards",
+									},
+									map[string]any{
+										"lit": "{cardId}.yaml",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -317,6 +363,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"data",
+									"cards",
+									"{cardId}.yaml",
 								},
 							},
 							map[string]any{
@@ -335,10 +386,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/rush/{konamiId}.yaml",
-								"parts": []any{
-									"data",
-									"rush",
-									"{konamiId}.yaml",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "rush",
+									},
+									map[string]any{
+										"lit": "{konamiId}.yaml",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -348,6 +405,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"data",
+									"rush",
+									"{konamiId}.yaml",
 								},
 							},
 							map[string]any{
@@ -366,10 +428,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
-								"parts": []any{
-									"data",
-									"tcg-speed-skill",
-									"{yugipediaId}.yaml",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "tcg-speed-skill",
+									},
+									map[string]any{
+										"lit": "{yugipediaId}.yaml",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -380,22 +448,17 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"data",
+									"tcg-speed-skill",
+									"{yugipediaId}.yaml",
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"card",
-						},
-						[]any{
-							"rush",
-						},
-						[]any{
-							"tcg_speed_skill",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"series": map[string]any{
@@ -422,10 +485,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/list.json",
-								"parts": []any{
-									"data",
-									"series",
-									"list.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "series",
+									},
+									map[string]any{
+										"lit": "list.json",
+									},
 								},
 								"select": map[string]any{
 									"$action": "list",
@@ -433,6 +502,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"data",
+									"series",
+									"list.json",
 								},
 							},
 						},
@@ -466,15 +540,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/list.yaml",
-								"parts": []any{
-									"data",
-									"series",
-									"list.yaml",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "series",
+									},
+									map[string]any{
+										"lit": "list.yaml",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"data",
+									"series",
+									"list.yaml",
 								},
 							},
 							map[string]any{
@@ -482,15 +567,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/map.json",
-								"parts": []any{
-									"data",
-									"series",
-									"map.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "series",
+									},
+									map[string]any{
+										"lit": "map.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"data",
+									"series",
+									"map.json",
 								},
 							},
 							map[string]any{
@@ -498,15 +594,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/map.yaml",
-								"parts": []any{
-									"data",
-									"series",
-									"map.yaml",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "series",
+									},
+									map[string]any{
+										"lit": "map.yaml",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"data",
+									"series",
+									"map.yaml",
 								},
 							},
 						},
@@ -555,13 +662,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/skill.json",
-								"parts": []any{
-									"skill.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "skill.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"skill.json",
 								},
 							},
 						},
@@ -621,10 +733,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/tcg-speed-skill/{yugipediaId}.json",
-								"parts": []any{
-									"data",
-									"tcg-speed-skill",
-									"{yugipediaId}.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "data",
+									},
+									map[string]any{
+										"lit": "tcg-speed-skill",
+									},
+									map[string]any{
+										"lit": "{yugipediaId}.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -635,20 +753,32 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"data",
+									"tcg-speed-skill",
+									"{yugipediaId}.json",
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"tcg_speed_skill",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

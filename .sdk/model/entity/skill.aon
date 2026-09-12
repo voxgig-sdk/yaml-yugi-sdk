@@ -45,8 +45,10 @@ main: kit: entity: skill: {
         {
           method: "GET"
           orig: "/skill.json"
-          parts: [
-            "skill.json"
+          segments: [
+            {
+              lit: "skill.json"
+            }
           ]
           transform: {
             req: "`reqdata`"

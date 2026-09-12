@@ -72,7 +72,7 @@ function skill_card_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "skill_card01", "skill_card02", "skill_card03", "tcg_speed_skill01", "tcg_speed_skill02", "tcg_speed_skill03", "yugipedia01" },
+    { "skill_card01", "skill_card02", "skill_card03", "yugipedia01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",
@@ -101,6 +101,9 @@ function skill_card_basic_setup(extra)
 
   if env["YAML_YUGI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
       },
       extra or {},
