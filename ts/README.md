@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
+import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi-sdk'
 
 const client = new YamlYugiSDK()
 ```
@@ -640,7 +640,7 @@ yaml-yugi/
 Import the SDK from the package root:
 
 ```ts
-import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
+import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi-sdk'
 ```
 
 ### Entity state

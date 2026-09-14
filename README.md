@@ -105,7 +105,7 @@ local results, err = client:Series():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/yaml-yugi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/yaml-yugi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/yaml-yugi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/yaml-yugi-sdk/releases) |
 | Python | `voxgig-sdk-yaml-yugi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/yaml-yugi-sdk/releases) |
 | PHP | `voxgig-sdk/yaml-yugi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/yaml-yugi-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/yaml-yugi-sdk/go` | `go get github.com/voxgig-sdk/yaml-yugi-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Series():list()
 ### TypeScript
 
 ```ts
-import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi'
+import { YamlYugiSDK } from '@voxgig-sdk/yaml-yugi-sdk'
 
 const client = new YamlYugiSDK()
 
