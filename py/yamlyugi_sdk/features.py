@@ -1,12 +1,18 @@
 # YamlYugi SDK feature factory
 
 from yamlyugi_sdk.feature.base_feature import YamlYugiBaseFeature
+from yamlyugi_sdk.feature.ratelimit_feature import YamlYugiRatelimitFeature
+from yamlyugi_sdk.feature.retry_feature import YamlYugiRetryFeature
 from yamlyugi_sdk.feature.test_feature import YamlYugiTestFeature
+from yamlyugi_sdk.feature.timeout_feature import YamlYugiTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: YamlYugiBaseFeature(),
+    "ratelimit": lambda: YamlYugiRatelimitFeature(),
+    "retry": lambda: YamlYugiRetryFeature(),
     "test": lambda: YamlYugiTestFeature(),
+    "timeout": lambda: YamlYugiTimeoutFeature(),
 }
 
 

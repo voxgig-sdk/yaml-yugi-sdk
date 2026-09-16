@@ -25,5 +25,114 @@
     "individual_card": {
       "individual_card_ref01": {}
     }
+  },
+  "requests": {
+    "GET /data/cards/{cardId}.yaml": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOcgTcgCardByIdYaml",
+        "parameters": [
+          {
+            "description": "Card password (e.g., '00010000') or Konami ID (e.g., 'kdb5000') or Yugipedia page ID (e.g., 'yugipedia123456')",
+            "example": "00010000",
+            "in": "path",
+            "name": "cardId",
+            "required": true,
+            "schema": {
+              "pattern": "^(\\d{8}|kdb\\d+|yugipedia\\d+)$",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response containing the card data in YAML format"
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /data/rush/{konamiId}.yaml": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRushDuelCardByIdYaml",
+        "parameters": [
+          {
+            "description": "Konami ID for the Rush Duel card",
+            "example": "15150",
+            "in": "path",
+            "name": "konamiId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response containing the Rush Duel card data in YAML format"
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /data/tcg-speed-skill/{yugipediaId}.yaml": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSpeedDuelSkillCardByIdYaml",
+        "parameters": [
+          {
+            "description": "Yugipedia page ID for the Speed Duel Skill Card (e.g., 'yugipedia585581')",
+            "example": "yugipedia585581",
+            "in": "path",
+            "name": "yugipediaId",
+            "required": true,
+            "schema": {
+              "pattern": "^yugipedia\\d+$",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response containing the Speed Duel Skill Card data in YAML format"
+          },
+          "404": {
+            "description": "Card not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

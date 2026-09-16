@@ -4,7 +4,10 @@ declare(strict_types=1);
 // YamlYugi SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class YamlYugiFeatures
@@ -14,8 +17,14 @@ class YamlYugiFeatures
         switch ($name) {
             case "base":
                 return new YamlYugiBaseFeature();
+            case "ratelimit":
+                return new YamlYugiRatelimitFeature();
+            case "retry":
+                return new YamlYugiRetryFeature();
             case "test":
                 return new YamlYugiTestFeature();
+            case "timeout":
+                return new YamlYugiTimeoutFeature();
             default:
                 return new YamlYugiBaseFeature();
         }
@@ -31,7 +40,10 @@ class YamlYugiFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

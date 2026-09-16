@@ -25,6 +25,12 @@ main: kit: entity: series: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /data/series/list.json"
+            json: "{\"operationId\":\"getSeriesList\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"description\":\"Represents a card series or archetype.\",\"properties\":{\"cards\":{\"description\":\"List of card IDs belonging to this series/archetype\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Series/archetype name in multiple languages\",\"properties\":{\"de\":{\"description\":\"German name\",\"type\":\"string\"},\"en\":{\"description\":\"English name\",\"type\":\"string\"},\"es\":{\"description\":\"Spanish name\",\"type\":\"string\"},\"fr\":{\"description\":\"French name\",\"type\":\"string\"},\"it\":{\"description\":\"Italian name\",\"type\":\"string\"},\"ja\":{\"description\":\"Japanese name\",\"type\":\"string\"},\"ko\":{\"description\":\"Korean name\",\"type\":\"string\"},\"pt\":{\"description\":\"Portuguese name\",\"type\":\"string\"},\"zh\":{\"description\":\"Chinese name\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response containing series and archetypes as a list\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/data/series/list.json"
           segments: [

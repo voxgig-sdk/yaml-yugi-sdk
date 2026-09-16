@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { YamlYugiSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('SkillEntity', async () => {
 
     const live = 'TRUE' === process.env.YAML_YUGI_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'skill.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'skill.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set YAML_YUGI_TEST_SKILL_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"cardType","req":false,"short":"Type identifier for skill cards","type":"`$STRING`","index$":0},{"active":true,"name":"character","req":false,"short":"Character associated with the skill","type":"`$STRING`","index$":1},{"active":true,"name":"name","req":false,"short":"Skill card name in multiple languages","type":"`$OBJECT`","index$":2},{"active":true,"name":"text","req":false,"short":"Skill card text in multiple languages","type":"`$OBJECT`","index$":3},{"active":true,"name":"yugipediaId","req":false,"short":"Yugipedia page ID","type":"`$STRING`","index$":4}],"name":"skill","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /skill.json","json":"{\"operationId\":\"getAllSpeedDuelSkillCards\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"description\":\"Represents a TCG Speed Duel Skill Card.\",\"properties\":{\"cardType\":{\"description\":\"Type identifier for skill cards\",\"enum\":[\"Skill\"],\"type\":\"string\"},\"character\":{\"description\":\"Character associated with the skill\",\"type\":\"string\"},\"name\":{\"description\":\"Skill card name in multiple languages\",\"properties\":{\"en\":{\"description\":\"English name\",\"type\":\"string\"}},\"type\":\"object\"},\"text\":{\"description\":\"Skill card text in multiple languages\",\"properties\":{\"en\":{\"description\":\"English skill text\",\"type\":\"string\"}},\"type\":\"object\"},\"yugipediaId\":{\"description\":\"Yugipedia page ID\",\"example\":\"yugipedia585581\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response containing all TCG Speed Duel Skill Cards\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/skill.json","segments":[{"lit":"skill.json"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"skill","name__orig":"skill","Name":"Skill","name_":"skill","name-":"skill","NAME":"SKILL","index$":5}, {"active":true,"entity":"skill","key$":"BasicSkillFlow","kind":"basic","name":"BasicSkillFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"skill_ref01"}}],"index$":0}]}, 'Skill')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['YAML_YUGI_TEST_SKILL_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'YAML_YUGI_TEST_SKILL_ENTID': idmap,
     'YAML_YUGI_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.YAML_YUGI_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['YAML_YUGI_TEST_SKILL_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new YamlYugiSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.YAML_YUGI_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

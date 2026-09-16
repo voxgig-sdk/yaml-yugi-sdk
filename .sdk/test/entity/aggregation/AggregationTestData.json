@@ -16,5 +16,49 @@
     "aggregation": {
       "aggregation_ref01": {}
     }
+  },
+  "requests": {
+    "GET /cards.yaml": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllOcgTcgCardsYaml",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response containing all OCG/TCG cards in YAML format"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /rush.yaml": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllRushDuelCardsYaml",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response containing all Rush Duel cards in YAML format"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
