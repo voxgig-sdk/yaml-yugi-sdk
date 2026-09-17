@@ -127,27 +127,27 @@ class Config {
 
     entity: {
       
-      aggregation: {
-      },
-
-      card: {
-      },
-
-      individual_card: {
-      },
-
-      series: {
-      },
-
-      series_and_archetype: {
-      },
-
-      skill: {
-      },
-
-      skill_card: {
-      },
-
+        aggregation: {
+        },
+  
+        card: {
+        },
+  
+        individual_card: {
+        },
+  
+        series: {
+        },
+  
+        series_and_archetype: {
+        },
+  
+        skill: {
+        },
+  
+        skill_card: {
+        },
+  
     }
   }
 
