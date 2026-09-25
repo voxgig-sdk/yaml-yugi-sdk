@@ -120,9 +120,9 @@ Create a new `Skill` entity instance.
 
 **Returns:** `SkillEntity` instance.
 
-#### `SkillCard(data?: object)`
+#### `YugipediaId(data?: object)`
 
-Create a new `SkillCard` entity instance.
+Create a new `YugipediaId` entity instance.
 
 **Parameters:**
 
@@ -130,7 +130,7 @@ Create a new `SkillCard` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `SkillCardEntity` instance.
+**Returns:** `YugipediaIdEntity` instance.
 
 #### `options()`
 
@@ -525,10 +525,10 @@ Return a copy of the entity options.
 
 ---
 
-## SkillCardEntity
+## YugipediaIdEntity
 
 ```ts
-const skill_card = client.SkillCard()
+const yugipedia_id = client.YugipediaId()
 ```
 
 ### Fields
@@ -548,7 +548,7 @@ const skill_card = client.SkillCard()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.SkillCard().load({ yugipedia_id: 'yugipedia_id' })
+const result = await client.YugipediaId().load({ yugipedia_id: 'yugipedia_id' })
 ```
 
 ### Common Methods
@@ -565,7 +565,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `SkillCardEntity` instance with the same client and
+Create a new `YugipediaIdEntity` instance with the same client and
 options.
 
 #### `client()`

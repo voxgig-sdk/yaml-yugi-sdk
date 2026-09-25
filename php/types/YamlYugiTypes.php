@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 // Typed models for the YamlYugi SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
@@ -106,8 +106,8 @@ class SkillListMatch
     public ?string $yugipediaId = null;
 }
 
-/** SkillCard entity data model. */
-class SkillCard
+/** YugipediaId entity data model. */
+class YugipediaId
 {
     public ?string $cardType = null;
     public ?string $character = null;
@@ -116,8 +116,8 @@ class SkillCard
     public ?string $yugipediaId = null;
 }
 
-/** Request payload for SkillCard#load. */
-class SkillCardLoadMatch
+/** Request payload for YugipediaId#load. */
+class YugipediaIdLoadMatch
 {
     public string $yugipedia_id;
 }

@@ -211,7 +211,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Series` | `($data): SeriesEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype` | `($data): SeriesAndArchetypeEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill` | `($data): SkillEntity` | Create a Skill entity instance. |
-| `SkillCard` | `($data): SkillCardEntity` | Create a SkillCard entity instance. |
+| `YugipediaId` | `($data): YugipediaIdEntity` | Create a YugipediaId entity instance. |
 
 ### Entity interface
 
@@ -325,7 +325,7 @@ Operations: List.
 
 API path: `/skill.json`
 
-#### SkillCard
+#### YugipediaId
 
 | Field | Description |
 | --- | --- |
@@ -495,9 +495,9 @@ $skills = $client->Skill()->list();
 ```
 
 
-### SkillCard
+### YugipediaId
 
-Create an instance: `$skill_card = $client->SkillCard();`
+Create an instance: `$yugipedia_id = $client->YugipediaId();`
 
 #### Operations
 
@@ -518,8 +518,8 @@ Create an instance: `$skill_card = $client->SkillCard();`
 #### Example: Load
 
 ```php
-// load() returns the ENTITY — call data_get() for the SkillCard record (throws on error).
-$skill_card = $client->SkillCard()->load(["yugipedia_id" => "yugipedia_id"]);
+// load() returns the ENTITY — call data_get() for the YugipediaId record (throws on error).
+$yugipedia_id = $client->YugipediaId()->load(["yugipedia_id" => "yugipedia_id"]);
 ```
 
 ## Features

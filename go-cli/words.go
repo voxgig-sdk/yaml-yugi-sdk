@@ -9,18 +9,6 @@ import (
 	sdk "github.com/voxgig-sdk/yaml-yugi-sdk/go"
 )
 
-// registerSDKWords installs three native boru words bound to the SDK:
-// list / load / update. Each is declared with two overloads matching
-// the signature  [query?:(Node or Scalar) entity:atom]:
-//
-//   [entity:Atom]            — no query (e.g. `list book`)
-//   [query:Any entity:Atom]  — query is any Node or Scalar (e.g.
-//                              `load {id:1} book`, `load 1 book`)
-//
-// The entity slot is /q-quoted so a bareword `book` parses as the
-// Atom "book" rather than dispatching as an undefined word. Both
-// overloads are all-forward (BarrierAllForward), so args are collected
-// from the tokens following the word.
 func registerSDKWords(r *eng.Registry, client *sdk.YamlYugiSDK) {
 	for _, op := range []string{"list", "load", "update"} {
 		op := op
@@ -101,8 +89,8 @@ func entityFor(client *sdk.YamlYugiSDK, name string) (sdk.YamlYugiEntity, error)
 		return client.SeriesAndArchetype(nil), nil
 	case "skill":
 		return client.Skill(nil), nil
-	case "skill_card":
-		return client.SkillCard(nil), nil
+	case "yugipedia_id":
+		return client.YugipediaId(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

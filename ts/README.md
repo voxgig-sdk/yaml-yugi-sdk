@@ -227,7 +227,7 @@ new YamlYugiSDK(options?: {
 | `Series(data?)` | `SeriesEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype(data?)` | `SeriesAndArchetypeEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill(data?)` | `SkillEntity` | Create a Skill entity instance. |
-| `SkillCard(data?)` | `SkillCardEntity` | Create a SkillCard entity instance. |
+| `YugipediaId(data?)` | `YugipediaIdEntity` | Create a YugipediaId entity instance. |
 | `tester(testopts?, sdkopts?)` | `YamlYugiSDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -372,7 +372,7 @@ Operations: list.
 
 API path: `/skill.json`
 
-#### SkillCard
+#### YugipediaId
 
 | Field | Description |
 | --- | --- |
@@ -536,9 +536,9 @@ const skills = await client.Skill().list()
 ```
 
 
-### SkillCard
+### YugipediaId
 
-Create an instance: `const skill_card = client.SkillCard()`
+Create an instance: `const yugipedia_id = client.YugipediaId()`
 
 #### Operations
 
@@ -559,7 +559,7 @@ Create an instance: `const skill_card = client.SkillCard()`
 #### Example: Load
 
 ```ts
-const skill_card = await client.SkillCard().load({ yugipedia_id: 'yugipedia_id' })
+const yugipedia_id = await client.YugipediaId().load({ yugipedia_id: 'yugipedia_id' })
 ```
 
 ## Features

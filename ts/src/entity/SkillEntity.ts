@@ -19,7 +19,6 @@ import type {
   SkillListMatch,
 } from '../YamlYugiTypes'
 
-// TODO: needs Entity superclass
 class SkillEntity extends YamlYugiEntityBase<Skill> {
 
   constructor(client: YamlYugiSDK, entopts: any) {

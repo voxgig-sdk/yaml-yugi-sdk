@@ -343,10 +343,10 @@ class YamlYugiSDK:
         return SkillEntity(self, data)
 
 
-    def SkillCard(self, data=None) -> "SkillCardEntity":
-        """Entity factory: client.SkillCard().list() / client.SkillCard().load({"id": ...})."""
-        from yamlyugi_sdk.entity.skill_card_entity import SkillCardEntity
-        return SkillCardEntity(self, data)
+    def YugipediaId(self, data=None) -> "YugipediaIdEntity":
+        """Entity factory: client.YugipediaId().list() / client.YugipediaId().load({"id": ...})."""
+        from yamlyugi_sdk.entity.yugipedia_id_entity import YugipediaIdEntity
+        return YugipediaIdEntity(self, data)
 
 
 
@@ -382,4 +382,4 @@ if TYPE_CHECKING:
     from yamlyugi_sdk.entity.series_entity import SeriesEntity
     from yamlyugi_sdk.entity.series_and_archetype_entity import SeriesAndArchetypeEntity
     from yamlyugi_sdk.entity.skill_entity import SkillEntity
-    from yamlyugi_sdk.entity.skill_card_entity import SkillCardEntity
+    from yamlyugi_sdk.entity.yugipedia_id_entity import YugipediaIdEntity

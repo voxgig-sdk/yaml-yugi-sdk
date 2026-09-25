@@ -1,0 +1,256 @@
+# Entity: card
+
+main: kit: entity: card: {
+
+  alias: field: {}
+
+  fields: {
+    archetype: {
+      h: "Archetype"
+      n: "archetype"
+      r: false
+      sh: "Archetypes the card belongs to"
+      t: "`$ARRAY`"
+    }
+    atk: {
+      h: "Atk"
+      n: "atk"
+      r: false
+      sh: "Attack points"
+      t: "`$INTEGER`"
+    }
+    attribute: {
+      h: "Attribute"
+      n: "attribute"
+      r: false
+      sh: "Card attribute (for monsters)"
+      t: "`$STRING`"
+    }
+    cardType: {
+      h: "Card Type"
+      n: "cardType"
+      r: false
+      sh: "Type of card (Monster, Spell, Trap, etc.)"
+      t: "`$STRING`"
+    }
+    def: {
+      h: "Def"
+      n: "def"
+      r: false
+      sh: "Defense points"
+      t: "`$INTEGER`"
+    }
+    format: {
+      h: "Format"
+      n: "format"
+      r: false
+      sh: "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)"
+      t: "`$ARRAY`"
+    }
+    konamiId: {
+      h: "Konami Id"
+      n: "konamiId"
+      r: false
+      sh: "Konami database ID"
+      t: "`$STRING`"
+    }
+    level: {
+      h: "Level"
+      n: "level"
+      r: false
+      sh: "Level of the monster card"
+      t: "`$INTEGER`"
+    }
+    linkRating: {
+      h: "Link Rating"
+      n: "linkRating"
+      r: false
+      sh: "Link rating for Link monsters"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Card name in multiple languages"
+      t: "`$OBJECT`"
+    }
+    password: {
+      h: "Password"
+      n: "password"
+      r: false
+      sh: "8-digit card password/ID"
+      t: "`$STRING`"
+    }
+    rank: {
+      h: "Rank"
+      n: "rank"
+      r: false
+      sh: "Rank of XYZ monster"
+      t: "`$INTEGER`"
+    }
+    text: {
+      h: "Text"
+      n: "text"
+      r: false
+      sh: "Card text in multiple languages"
+      t: "`$OBJECT`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Monster type or spell/trap subtype"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "card"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /data/cards/{cardId}.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "00010000"
+                k: "param"
+                n: "card_id"
+                or: "card_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/data/cards/{cardId}.json"
+          q: {
+            "$action": "card_id"
+            exist: [
+              "card_id"
+            ]
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              lit: "{cardId}.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /data/rush/{konamiId}.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "15150"
+                k: "param"
+                n: "konami_id"
+                or: "konami_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/data/rush/{konamiId}.json"
+          q: {
+            exist: [
+              "konami_id"
+            ]
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "rush"
+            }
+            {
+              lit: "{konamiId}.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /cards.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/cards.json"
+          s: [
+            {
+              lit: "cards.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /master-duel-raw.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/master-duel-raw.json"
+          s: [
+            {
+              lit: "master-duel-raw.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /rush.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/rush.json"
+          s: [
+            {
+              lit: "rush.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

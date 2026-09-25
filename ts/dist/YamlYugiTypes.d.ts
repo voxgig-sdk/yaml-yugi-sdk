@@ -60,13 +60,13 @@ export interface SkillListMatch {
     text?: Record<string, any>;
     yugipediaId?: string;
 }
-export interface SkillCard {
+export interface YugipediaId {
     cardType?: string;
     character?: string;
     name?: Record<string, any>;
     text?: Record<string, any>;
     yugipediaId?: string;
 }
-export interface SkillCardLoadMatch {
+export interface YugipediaIdLoadMatch {
     yugipedia_id: string;
 }

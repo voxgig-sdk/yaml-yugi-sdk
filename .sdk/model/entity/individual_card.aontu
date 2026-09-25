@@ -1,0 +1,144 @@
+# Entity: individual_card
+
+main: kit: entity: individual_card: {
+
+  alias: field: {}
+
+  name: "individual_card"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /data/cards/{cardId}.yaml"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "00010000"
+                k: "param"
+                n: "card_id"
+                or: "card_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/data/cards/{cardId}.yaml"
+          q: {
+            exist: [
+              "card_id"
+            ]
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              lit: "{cardId}.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /data/rush/{konamiId}.yaml"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "15150"
+                k: "param"
+                n: "konami_id"
+                or: "konami_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/data/rush/{konamiId}.yaml"
+          q: {
+            exist: [
+              "konami_id"
+            ]
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "rush"
+            }
+            {
+              lit: "{konamiId}.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /data/tcg-speed-skill/{yugipediaId}.yaml"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "yugipedia585581"
+                k: "param"
+                n: "yugipedia_id"
+                or: "yugipedia_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/data/tcg-speed-skill/{yugipediaId}.yaml"
+          q: {
+            exist: [
+              "yugipedia_id"
+            ]
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "tcg-speed-skill"
+            }
+            {
+              lit: "{yugipediaId}.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

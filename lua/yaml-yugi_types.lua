@@ -1,7 +1,7 @@
 -- Typed models for the YamlYugi SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
@@ -64,14 +64,14 @@
 ---@field text? table
 ---@field yugipediaId? string
 
----@class SkillCard
+---@class YugipediaId
 ---@field cardType? string
 ---@field character? string
 ---@field name? table
 ---@field text? table
 ---@field yugipediaId? string
 
----@class SkillCardLoadMatch
+---@class YugipediaIdLoadMatch
 ---@field yugipedia_id string
 
 local M = {}

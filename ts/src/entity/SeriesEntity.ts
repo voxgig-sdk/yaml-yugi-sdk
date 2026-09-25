@@ -19,7 +19,6 @@ import type {
   SeriesListMatch,
 } from '../YamlYugiTypes'
 
-// TODO: needs Entity superclass
 class SeriesEntity extends YamlYugiEntityBase<Series> {
 
   constructor(client: YamlYugiSDK, entopts: any) {

@@ -2,8 +2,8 @@
 
 # Typed models for the YamlYugi SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
@@ -201,7 +201,7 @@ SkillListMatch = Struct.new(
   keyword_init: true
 )
 
-# SkillCard entity data model.
+# YugipediaId entity data model.
 #
 # @!attribute [rw] cardType
 #   @return [String, nil]
@@ -217,7 +217,7 @@ SkillListMatch = Struct.new(
 #
 # @!attribute [rw] yugipediaId
 #   @return [String, nil]
-SkillCard = Struct.new(
+YugipediaId = Struct.new(
   :cardType,
   :character,
   :name,
@@ -226,11 +226,11 @@ SkillCard = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SkillCard#load.
+# Request payload for YugipediaId#load.
 #
 # @!attribute [rw] yugipedia_id
 #   @return [String]
-SkillCardLoadMatch = Struct.new(
+YugipediaIdLoadMatch = Struct.new(
   :yugipedia_id,
   keyword_init: true
 )

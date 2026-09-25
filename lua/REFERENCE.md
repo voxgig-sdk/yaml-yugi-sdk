@@ -64,9 +64,9 @@ Create a new `SeriesAndArchetype` entity instance. Pass `nil` for no initial dat
 
 Create a new `Skill` entity instance. Pass `nil` for no initial data.
 
-#### `SkillCard(data)`
+#### `YugipediaId(data)`
 
-Create a new `SkillCard` entity instance. Pass `nil` for no initial data.
+Create a new `YugipediaId` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -423,10 +423,10 @@ Return the entity name.
 
 ---
 
-## SkillCardEntity
+## YugipediaIdEntity
 
 ```lua
-local skill_card = client:SkillCard(nil)
+local yugipedia_id = client:YugipediaId(nil)
 ```
 
 ### Fields
@@ -446,7 +446,7 @@ local skill_card = client:SkillCard(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:SkillCard():load({ yugipedia_id = "yugipedia_id" })
+local result, err = client:YugipediaId():load({ yugipedia_id = "yugipedia_id" })
 ```
 
 ### Common Methods
@@ -469,7 +469,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `SkillCardEntity` instance with the same client and
+Create a new `YugipediaIdEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

@@ -1,7 +1,7 @@
 # Typed models for the YamlYugi SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -88,7 +88,7 @@ class SkillListMatch(TypedDict, total=False):
     yugipediaId: str
 
 
-class SkillCard(TypedDict, total=False):
+class YugipediaId(TypedDict, total=False):
     cardType: str
     character: str
     name: dict
@@ -96,5 +96,5 @@ class SkillCard(TypedDict, total=False):
     yugipediaId: str
 
 
-class SkillCardLoadMatch(TypedDict):
+class YugipediaIdLoadMatch(TypedDict):
     yugipedia_id: str

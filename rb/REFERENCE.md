@@ -65,9 +65,9 @@ Create a new `SeriesAndArchetype` entity instance. Pass `nil` for no initial dat
 
 Create a new `Skill` entity instance. Pass `nil` for no initial data.
 
-#### `SkillCard(data = nil)`
+#### `YugipediaId(data = nil)`
 
-Create a new `SkillCard` entity instance. Pass `nil` for no initial data.
+Create a new `YugipediaId` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -426,10 +426,10 @@ Return the entity name.
 
 ---
 
-## SkillCardEntity
+## YugipediaIdEntity
 
 ```ruby
-skill_card = client.SkillCard
+yugipedia_id = client.YugipediaId
 ```
 
 ### Fields
@@ -449,7 +449,7 @@ skill_card = client.SkillCard
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.SkillCard.load({ "yugipedia_id" => "yugipedia_id" })
+result = client.YugipediaId.load({ "yugipedia_id" => "yugipedia_id" })
 ```
 
 ### Common Methods
@@ -472,7 +472,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `SkillCardEntity` instance with the same client and
+Create a new `YugipediaIdEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

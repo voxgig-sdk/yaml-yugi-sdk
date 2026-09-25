@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "yugipedia_id": {
+      "YUGIPEDIA_ID00": {
+        "cardType": "s32",
+        "character": "s33",
+        "name": {},
+        "text": {},
+        "yugipediaId": "s36",
+        "yugipedia_id": "YUGIPEDIA01",
+        "id": "YUGIPEDIA_ID00"
+      },
+      "YUGIPEDIA_ID01": {
+        "cardType": "s64",
+        "character": "s65",
+        "name": {},
+        "text": {},
+        "yugipediaId": "s68",
+        "yugipedia_id": "YUGIPEDIA01",
+        "id": "YUGIPEDIA_ID01"
+      },
+      "YUGIPEDIA_ID02": {
+        "cardType": "s96",
+        "character": "s97",
+        "name": {},
+        "text": {},
+        "yugipediaId": "s9a",
+        "yugipedia_id": "YUGIPEDIA01",
+        "id": "YUGIPEDIA_ID02"
+      }
+    }
+  },
+  "new": {
+    "yugipedia_id": {
+      "yugipedia_id_ref01": {
+        "cardType": "sc8",
+        "character": "sc9",
+        "name": {},
+        "text": {},
+        "yugipediaId": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /data/tcg-speed-skill/{yugipediaId}.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

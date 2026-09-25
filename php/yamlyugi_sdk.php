@@ -449,21 +449,21 @@ class YamlYugiSDK
     }
 
 
-    private $_skill_card = null;
+    private $_yugipedia_id = null;
 
-    // Canonical facade: $client->SkillCard()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->skill_card()
+    // Canonical facade: $client->YugipediaId()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->yugipedia_id()
     // resolves here too.
-    public function SkillCard($data = null)
+    public function YugipediaId($data = null)
     {
-        require_once __DIR__ . '/entity/skill_card_entity.php';
+        require_once __DIR__ . '/entity/yugipedia_id_entity.php';
         if ($data === null) {
-            if ($this->_skill_card === null) {
-                $this->_skill_card = new SkillCardEntity($this, null);
+            if ($this->_yugipedia_id === null) {
+                $this->_yugipedia_id = new YugipediaIdEntity($this, null);
             }
-            return $this->_skill_card;
+            return $this->_yugipedia_id;
         }
-        return new SkillCardEntity($this, $data);
+        return new YugipediaIdEntity($this, $data);
     }
 
 

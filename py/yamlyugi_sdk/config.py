@@ -114,7 +114,7 @@ def make_config():
                 "series": {},
                 "series_and_archetype": {},
                 "skill": {},
-                "skill_card": {},
+                "yugipedia_id": {},
             },
         },
         "entity": {
@@ -127,7 +127,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cards.yaml",
@@ -136,17 +135,18 @@ def make_config():
                     "lit": "cards.yaml",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "cards.yaml",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "cards.yaml",
-                ],
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/rush.yaml",
@@ -155,14 +155,16 @@ def make_config():
                     "lit": "rush.yaml",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "rush.yaml",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "rush.yaml",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -175,73 +177,87 @@ def make_config():
         "fields": [
           {
             "name": "archetype",
-            "short": "Archetypes the card belongs to",
+            "title": "Archetype",
             "type": "`$ARRAY`",
+            "short": "Archetypes the card belongs to",
           },
           {
             "name": "atk",
-            "short": "Attack points",
+            "title": "Atk",
             "type": "`$INTEGER`",
+            "short": "Attack points",
           },
           {
             "name": "attribute",
-            "short": "Card attribute (for monsters)",
+            "title": "Attribute",
             "type": "`$STRING`",
+            "short": "Card attribute (for monsters)",
           },
           {
             "name": "cardType",
-            "short": "Type of card (Monster, Spell, Trap, etc.)",
+            "title": "Card Type",
             "type": "`$STRING`",
+            "short": "Type of card (Monster, Spell, Trap, etc.)",
           },
           {
             "name": "def",
-            "short": "Defense points",
+            "title": "Def",
             "type": "`$INTEGER`",
+            "short": "Defense points",
           },
           {
             "name": "format",
-            "short": "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
+            "title": "Format",
             "type": "`$ARRAY`",
+            "short": "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
           },
           {
             "name": "konamiId",
-            "short": "Konami database ID",
+            "title": "Konami Id",
             "type": "`$STRING`",
+            "short": "Konami database ID",
           },
           {
             "name": "level",
-            "short": "Level of the monster card",
+            "title": "Level",
             "type": "`$INTEGER`",
+            "short": "Level of the monster card",
           },
           {
             "name": "linkRating",
-            "short": "Link rating for Link monsters",
+            "title": "Link Rating",
             "type": "`$INTEGER`",
+            "short": "Link rating for Link monsters",
           },
           {
             "name": "name",
-            "short": "Card name in multiple languages",
+            "title": "Name",
             "type": "`$OBJECT`",
+            "short": "Card name in multiple languages",
           },
           {
             "name": "password",
-            "short": "8-digit card password/ID",
+            "title": "Password",
             "type": "`$STRING`",
+            "short": "8-digit card password/ID",
           },
           {
             "name": "rank",
-            "short": "Rank of XYZ monster",
+            "title": "Rank",
             "type": "`$INTEGER`",
+            "short": "Rank of XYZ monster",
           },
           {
             "name": "text",
-            "short": "Card text in multiple languages",
+            "title": "Text",
             "type": "`$OBJECT`",
+            "short": "Card text in multiple languages",
           },
           {
             "name": "type",
-            "short": "Monster type or spell/trap subtype",
+            "title": "Type",
             "type": "`$STRING`",
+            "short": "Monster type or spell/trap subtype",
           },
         ],
         "name": "card",
@@ -251,18 +267,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "00010000",
-                      "kind": "param",
-                      "name": "card_id",
-                      "orig": "card_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/cards/{cardId}.json",
@@ -277,35 +281,36 @@ def make_config():
                     "lit": "{cardId}.json",
                   },
                 ],
+                "parts": [
+                  "data",
+                  "cards",
+                  "{cardId}.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "card_id",
+                      "orig": "card_id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "00010000",
+                    },
+                  ],
+                },
                 "select": {
                   "$action": "card_id",
                   "exist": [
                     "card_id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "data",
-                  "cards",
-                  "{cardId}.json",
-                ],
               },
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "15150",
-                      "kind": "param",
-                      "name": "konami_id",
-                      "orig": "konami_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/rush/{konamiId}.json",
@@ -320,23 +325,35 @@ def make_config():
                     "lit": "{konamiId}.json",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "konami_id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "rush",
                   "{konamiId}.json",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "konami_id",
+                      "orig": "konami_id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "15150",
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "konami_id",
+                  ],
+                },
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cards.json",
@@ -345,17 +362,18 @@ def make_config():
                     "lit": "cards.json",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "cards.json",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "cards.json",
-                ],
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/master-duel-raw.json",
@@ -364,17 +382,18 @@ def make_config():
                     "lit": "master-duel-raw.json",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "master-duel-raw.json",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "master-duel-raw.json",
-                ],
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/rush.json",
@@ -383,14 +402,16 @@ def make_config():
                     "lit": "rush.json",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "rush.json",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "rush.json",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -408,18 +429,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "00010000",
-                      "kind": "param",
-                      "name": "card_id",
-                      "orig": "card_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/cards/{cardId}.yaml",
@@ -434,34 +443,35 @@ def make_config():
                     "lit": "{cardId}.yaml",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "card_id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "cards",
                   "{cardId}.yaml",
                 ],
-              },
-              {
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "args": {
                   "params": [
                     {
-                      "example": "15150",
-                      "kind": "param",
-                      "name": "konami_id",
-                      "orig": "konami_id",
-                      "reqd": True,
+                      "name": "card_id",
+                      "orig": "card_id",
                       "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "00010000",
                     },
                   ],
                 },
+                "select": {
+                  "exist": [
+                    "card_id",
+                  ],
+                },
+              },
+              {
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/rush/{konamiId}.yaml",
@@ -476,34 +486,35 @@ def make_config():
                     "lit": "{konamiId}.yaml",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "konami_id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "rush",
                   "{konamiId}.yaml",
                 ],
-              },
-              {
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "args": {
                   "params": [
                     {
-                      "example": "yugipedia585581",
-                      "kind": "param",
-                      "name": "yugipedia_id",
-                      "orig": "yugipedia_id",
-                      "reqd": True,
+                      "name": "konami_id",
+                      "orig": "konami_id",
                       "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "15150",
                     },
                   ],
                 },
+                "select": {
+                  "exist": [
+                    "konami_id",
+                  ],
+                },
+              },
+              {
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
@@ -518,20 +529,33 @@ def make_config():
                     "lit": "{yugipediaId}.yaml",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "yugipedia_id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "tcg-speed-skill",
                   "{yugipediaId}.yaml",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "yugipedia_id",
+                      "orig": "yugipedia_id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "yugipedia585581",
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "yugipedia_id",
+                  ],
+                },
               },
             ],
           },
@@ -544,13 +568,15 @@ def make_config():
         "fields": [
           {
             "name": "cards",
-            "short": "List of card IDs belonging to this series/archetype",
+            "title": "Cards",
             "type": "`$ARRAY`",
+            "short": "List of card IDs belonging to this series/archetype",
           },
           {
             "name": "name",
-            "short": "Series/archetype name in multiple languages",
+            "title": "Name",
             "type": "`$OBJECT`",
+            "short": "Series/archetype name in multiple languages",
           },
         ],
         "name": "series",
@@ -560,7 +586,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/series/list.json",
@@ -575,18 +600,20 @@ def make_config():
                     "lit": "list.json",
                   },
                 ],
-                "select": {
-                  "$action": "list",
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "series",
                   "list.json",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {
+                  "$action": "list",
+                },
               },
             ],
           },
@@ -599,13 +626,15 @@ def make_config():
         "fields": [
           {
             "name": "cards",
-            "short": "List of card IDs belonging to this series/archetype",
+            "title": "Cards",
             "type": "`$ARRAY`",
+            "short": "List of card IDs belonging to this series/archetype",
           },
           {
             "name": "name",
-            "short": "Series/archetype name in multiple languages",
+            "title": "Name",
             "type": "`$OBJECT`",
+            "short": "Series/archetype name in multiple languages",
           },
         ],
         "name": "series_and_archetype",
@@ -615,7 +644,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/series/list.yaml",
@@ -630,19 +658,20 @@ def make_config():
                     "lit": "list.yaml",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "series",
                   "list.yaml",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/series/map.json",
@@ -657,19 +686,20 @@ def make_config():
                     "lit": "map.json",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "series",
                   "map.json",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/series/map.yaml",
@@ -684,16 +714,18 @@ def make_config():
                     "lit": "map.yaml",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "series",
                   "map.yaml",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -706,28 +738,33 @@ def make_config():
         "fields": [
           {
             "name": "cardType",
-            "short": "Type identifier for skill cards",
+            "title": "Card Type",
             "type": "`$STRING`",
+            "short": "Type identifier for skill cards",
           },
           {
             "name": "character",
-            "short": "Character associated with the skill",
+            "title": "Character",
             "type": "`$STRING`",
+            "short": "Character associated with the skill",
           },
           {
             "name": "name",
-            "short": "Skill card name in multiple languages",
+            "title": "Name",
             "type": "`$OBJECT`",
+            "short": "Skill card name in multiple languages",
           },
           {
             "name": "text",
-            "short": "Skill card text in multiple languages",
+            "title": "Text",
             "type": "`$OBJECT`",
+            "short": "Skill card text in multiple languages",
           },
           {
             "name": "yugipediaId",
-            "short": "Yugipedia page ID",
+            "title": "Yugipedia Id",
             "type": "`$STRING`",
+            "short": "Yugipedia page ID",
           },
         ],
         "name": "skill",
@@ -737,7 +774,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/skill.json",
@@ -746,14 +782,16 @@ def make_config():
                     "lit": "skill.json",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "skill.json",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "skill.json",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -762,53 +800,46 @@ def make_config():
           "ancestors": [],
         },
       },
-      "skill_card": {
+      "yugipedia_id": {
         "fields": [
           {
             "name": "cardType",
-            "short": "Type identifier for skill cards",
+            "title": "Card Type",
             "type": "`$STRING`",
+            "short": "Type identifier for skill cards",
           },
           {
             "name": "character",
-            "short": "Character associated with the skill",
+            "title": "Character",
             "type": "`$STRING`",
+            "short": "Character associated with the skill",
           },
           {
             "name": "name",
-            "short": "Skill card name in multiple languages",
+            "title": "Name",
             "type": "`$OBJECT`",
+            "short": "Skill card name in multiple languages",
           },
           {
             "name": "text",
-            "short": "Skill card text in multiple languages",
+            "title": "Text",
             "type": "`$OBJECT`",
+            "short": "Skill card text in multiple languages",
           },
           {
             "name": "yugipediaId",
-            "short": "Yugipedia page ID",
+            "title": "Yugipedia Id",
             "type": "`$STRING`",
+            "short": "Yugipedia page ID",
           },
         ],
-        "name": "skill_card",
+        "name": "yugipedia_id",
         "op": {
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "yugipedia585581",
-                      "kind": "param",
-                      "name": "yugipedia_id",
-                      "orig": "yugipedia_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/data/tcg-speed-skill/{yugipediaId}.json",
@@ -823,20 +854,33 @@ def make_config():
                     "lit": "{yugipediaId}.json",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "yugipedia_id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "data",
                   "tcg-speed-skill",
                   "{yugipediaId}.json",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "yugipedia_id",
+                      "orig": "yugipedia_id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "yugipedia585581",
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "yugipedia_id",
+                  ],
+                },
               },
             ],
           },

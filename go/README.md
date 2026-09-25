@@ -224,7 +224,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Series` | `(data map[string]any) YamlYugiEntity` | Create a Series entity instance. |
 | `SeriesAndArchetype` | `(data map[string]any) YamlYugiEntity` | Create a SeriesAndArchetype entity instance. |
 | `Skill` | `(data map[string]any) YamlYugiEntity` | Create a Skill entity instance. |
-| `SkillCard` | `(data map[string]any) YamlYugiEntity` | Create a SkillCard entity instance. |
+| `YugipediaId` | `(data map[string]any) YamlYugiEntity` | Create a YugipediaId entity instance. |
 
 ### Entity interface (YamlYugiEntity)
 
@@ -339,7 +339,7 @@ Operations: List.
 
 API path: `/skill.json`
 
-#### SkillCard
+#### YugipediaId
 
 | Field | Description |
 | --- | --- |
@@ -527,9 +527,9 @@ fmt.Println(skills) // the array of records
 ```
 
 
-### SkillCard
+### YugipediaId
 
-Create an instance: `skillCard := client.SkillCard(nil)`
+Create an instance: `yugipediaId := client.YugipediaId(nil)`
 
 #### Operations
 
@@ -550,11 +550,11 @@ Create an instance: `skillCard := client.SkillCard(nil)`
 #### Example: Load
 
 ```go
-skillCard, err := client.SkillCard(nil).Load(map[string]any{"yugipedia_id": "yugipedia_id"}, nil)
+yugipediaId, err := client.YugipediaId(nil).Load(map[string]any{"yugipedia_id": "yugipedia_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(skillCard) // the loaded record
+fmt.Println(yugipediaId) // the loaded record
 ```
 
 ## Features

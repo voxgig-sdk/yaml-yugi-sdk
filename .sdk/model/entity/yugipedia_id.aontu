@@ -1,0 +1,97 @@
+# Entity: yugipedia_id
+
+main: kit: entity: yugipedia_id: {
+
+  alias: field: {}
+
+  fields: {
+    cardType: {
+      h: "Card Type"
+      n: "cardType"
+      r: false
+      sh: "Type identifier for skill cards"
+      t: "`$STRING`"
+    }
+    character: {
+      h: "Character"
+      n: "character"
+      r: false
+      sh: "Character associated with the skill"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Skill card name in multiple languages"
+      t: "`$OBJECT`"
+    }
+    text: {
+      h: "Text"
+      n: "text"
+      r: false
+      sh: "Skill card text in multiple languages"
+      t: "`$OBJECT`"
+    }
+    yugipediaId: {
+      h: "Yugipedia Id"
+      n: "yugipediaId"
+      r: false
+      sh: "Yugipedia page ID"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "yugipedia_id"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /data/tcg-speed-skill/{yugipediaId}.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "yugipedia585581"
+                k: "param"
+                n: "yugipedia_id"
+                or: "yugipedia_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/data/tcg-speed-skill/{yugipediaId}.json"
+          q: {
+            exist: [
+              "yugipedia_id"
+            ]
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "tcg-speed-skill"
+            }
+            {
+              lit: "{yugipediaId}.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

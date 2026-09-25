@@ -163,7 +163,7 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 The 7 entities this SDK exposes (any is valid as `<entity>`):
 
-aggregation card individual_card series series_and_archetype skill skill_card
+aggregation card individual_card series series_and_archetype skill yugipedia_id
 
 ## Explanation
 

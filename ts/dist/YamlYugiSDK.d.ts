@@ -4,7 +4,7 @@ import { IndividualCardEntity } from './entity/IndividualCardEntity';
 import { SeriesEntity } from './entity/SeriesEntity';
 import { SeriesAndArchetypeEntity } from './entity/SeriesAndArchetypeEntity';
 import { SkillEntity } from './entity/SkillEntity';
-import { SkillCardEntity } from './entity/SkillCardEntity';
+import { YugipediaIdEntity } from './entity/YugipediaIdEntity';
 export type * from './YamlYugiTypes';
 import { inspect } from 'node:util';
 import type { Context, Feature } from './types';
@@ -56,7 +56,7 @@ declare class YamlYugiSDK {
     Series(entopts?: Record<string, any>): SeriesEntity;
     SeriesAndArchetype(entopts?: Record<string, any>): SeriesAndArchetypeEntity;
     Skill(entopts?: Record<string, any>): SkillEntity;
-    SkillCard(entopts?: Record<string, any>): SkillCardEntity;
+    YugipediaId(entopts?: Record<string, any>): YugipediaIdEntity;
     static test(testoptsarg?: any, sdkoptsarg?: any): YamlYugiSDK;
     tester(testopts?: any, sdkopts?: any): YamlYugiSDK;
     toJSON(): {

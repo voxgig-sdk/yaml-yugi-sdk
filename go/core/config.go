@@ -89,7 +89,7 @@ func MakeConfig() map[string]any {
 				"series": map[string]any{},
 				"series_and_archetype": map[string]any{},
 				"skill": map[string]any{},
-				"skill_card": map[string]any{},
+				"yugipedia_id": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
@@ -102,7 +102,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cards.yaml",
@@ -111,17 +110,18 @@ func MakeConfig() map[string]any {
 										"lit": "cards.yaml",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"cards.yaml",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"cards.yaml",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/rush.yaml",
@@ -130,14 +130,16 @@ func MakeConfig() map[string]any {
 										"lit": "rush.yaml",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"rush.yaml",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"rush.yaml",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -150,73 +152,87 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archetype",
-						"short": "Archetypes the card belongs to",
+						"title": "Archetype",
 						"type": "`$ARRAY`",
+						"short": "Archetypes the card belongs to",
 					},
 					map[string]any{
 						"name": "atk",
-						"short": "Attack points",
+						"title": "Atk",
 						"type": "`$INTEGER`",
+						"short": "Attack points",
 					},
 					map[string]any{
 						"name": "attribute",
-						"short": "Card attribute (for monsters)",
+						"title": "Attribute",
 						"type": "`$STRING`",
+						"short": "Card attribute (for monsters)",
 					},
 					map[string]any{
 						"name": "cardType",
-						"short": "Type of card (Monster, Spell, Trap, etc.)",
+						"title": "Card Type",
 						"type": "`$STRING`",
+						"short": "Type of card (Monster, Spell, Trap, etc.)",
 					},
 					map[string]any{
 						"name": "def",
-						"short": "Defense points",
+						"title": "Def",
 						"type": "`$INTEGER`",
+						"short": "Defense points",
 					},
 					map[string]any{
 						"name": "format",
-						"short": "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
+						"title": "Format",
 						"type": "`$ARRAY`",
+						"short": "Formats where the card is available (OCG, TCG, Master Duel, Rush Duel, Speed Duel)",
 					},
 					map[string]any{
 						"name": "konamiId",
-						"short": "Konami database ID",
+						"title": "Konami Id",
 						"type": "`$STRING`",
+						"short": "Konami database ID",
 					},
 					map[string]any{
 						"name": "level",
-						"short": "Level of the monster card",
+						"title": "Level",
 						"type": "`$INTEGER`",
+						"short": "Level of the monster card",
 					},
 					map[string]any{
 						"name": "linkRating",
-						"short": "Link rating for Link monsters",
+						"title": "Link Rating",
 						"type": "`$INTEGER`",
+						"short": "Link rating for Link monsters",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Card name in multiple languages",
+						"title": "Name",
 						"type": "`$OBJECT`",
+						"short": "Card name in multiple languages",
 					},
 					map[string]any{
 						"name": "password",
-						"short": "8-digit card password/ID",
+						"title": "Password",
 						"type": "`$STRING`",
+						"short": "8-digit card password/ID",
 					},
 					map[string]any{
 						"name": "rank",
-						"short": "Rank of XYZ monster",
+						"title": "Rank",
 						"type": "`$INTEGER`",
+						"short": "Rank of XYZ monster",
 					},
 					map[string]any{
 						"name": "text",
-						"short": "Card text in multiple languages",
+						"title": "Text",
 						"type": "`$OBJECT`",
+						"short": "Card text in multiple languages",
 					},
 					map[string]any{
 						"name": "type",
-						"short": "Monster type or spell/trap subtype",
+						"title": "Type",
 						"type": "`$STRING`",
+						"short": "Monster type or spell/trap subtype",
 					},
 				},
 				"name": "card",
@@ -226,18 +242,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "00010000",
-											"kind": "param",
-											"name": "card_id",
-											"orig": "card_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/cards/{cardId}.json",
@@ -252,35 +256,36 @@ func MakeConfig() map[string]any {
 										"lit": "{cardId}.json",
 									},
 								},
+								"parts": []any{
+									"data",
+									"cards",
+									"{cardId}.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "card_id",
+											"orig": "card_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "00010000",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "card_id",
 									"exist": []any{
 										"card_id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"data",
-									"cards",
-									"{cardId}.json",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "15150",
-											"kind": "param",
-											"name": "konami_id",
-											"orig": "konami_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/rush/{konamiId}.json",
@@ -295,23 +300,35 @@ func MakeConfig() map[string]any {
 										"lit": "{konamiId}.json",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"konami_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"rush",
 									"{konamiId}.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "konami_id",
+											"orig": "konami_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "15150",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"konami_id",
+									},
+								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cards.json",
@@ -320,17 +337,18 @@ func MakeConfig() map[string]any {
 										"lit": "cards.json",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"cards.json",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"cards.json",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/master-duel-raw.json",
@@ -339,17 +357,18 @@ func MakeConfig() map[string]any {
 										"lit": "master-duel-raw.json",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"master-duel-raw.json",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"master-duel-raw.json",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/rush.json",
@@ -358,14 +377,16 @@ func MakeConfig() map[string]any {
 										"lit": "rush.json",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"rush.json",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"rush.json",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -383,18 +404,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "00010000",
-											"kind": "param",
-											"name": "card_id",
-											"orig": "card_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/cards/{cardId}.yaml",
@@ -409,34 +418,35 @@ func MakeConfig() map[string]any {
 										"lit": "{cardId}.yaml",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"card_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"cards",
 									"{cardId}.yaml",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"example": "15150",
-											"kind": "param",
-											"name": "konami_id",
-											"orig": "konami_id",
-											"reqd": true,
+											"name": "card_id",
+											"orig": "card_id",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "00010000",
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"card_id",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/rush/{konamiId}.yaml",
@@ -451,34 +461,35 @@ func MakeConfig() map[string]any {
 										"lit": "{konamiId}.yaml",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"konami_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"rush",
 									"{konamiId}.yaml",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"example": "yugipedia585581",
-											"kind": "param",
-											"name": "yugipedia_id",
-											"orig": "yugipedia_id",
-											"reqd": true,
+											"name": "konami_id",
+											"orig": "konami_id",
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "15150",
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"konami_id",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/tcg-speed-skill/{yugipediaId}.yaml",
@@ -493,19 +504,32 @@ func MakeConfig() map[string]any {
 										"lit": "{yugipediaId}.yaml",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"yugipedia_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"tcg-speed-skill",
 									"{yugipediaId}.yaml",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "yugipedia_id",
+											"orig": "yugipedia_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "yugipedia585581",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"yugipedia_id",
+									},
 								},
 							},
 						},
@@ -519,13 +543,15 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cards",
-						"short": "List of card IDs belonging to this series/archetype",
+						"title": "Cards",
 						"type": "`$ARRAY`",
+						"short": "List of card IDs belonging to this series/archetype",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Series/archetype name in multiple languages",
+						"title": "Name",
 						"type": "`$OBJECT`",
+						"short": "Series/archetype name in multiple languages",
 					},
 				},
 				"name": "series",
@@ -535,7 +561,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/list.json",
@@ -550,17 +575,19 @@ func MakeConfig() map[string]any {
 										"lit": "list.json",
 									},
 								},
-								"select": map[string]any{
-									"$action": "list",
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"series",
 									"list.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "list",
 								},
 							},
 						},
@@ -574,13 +601,15 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cards",
-						"short": "List of card IDs belonging to this series/archetype",
+						"title": "Cards",
 						"type": "`$ARRAY`",
+						"short": "List of card IDs belonging to this series/archetype",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Series/archetype name in multiple languages",
+						"title": "Name",
 						"type": "`$OBJECT`",
+						"short": "Series/archetype name in multiple languages",
 					},
 				},
 				"name": "series_and_archetype",
@@ -590,7 +619,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/list.yaml",
@@ -605,19 +633,20 @@ func MakeConfig() map[string]any {
 										"lit": "list.yaml",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"series",
 									"list.yaml",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/map.json",
@@ -632,19 +661,20 @@ func MakeConfig() map[string]any {
 										"lit": "map.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"series",
 									"map.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/series/map.yaml",
@@ -659,16 +689,18 @@ func MakeConfig() map[string]any {
 										"lit": "map.yaml",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"series",
 									"map.yaml",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -681,28 +713,33 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cardType",
-						"short": "Type identifier for skill cards",
+						"title": "Card Type",
 						"type": "`$STRING`",
+						"short": "Type identifier for skill cards",
 					},
 					map[string]any{
 						"name": "character",
-						"short": "Character associated with the skill",
+						"title": "Character",
 						"type": "`$STRING`",
+						"short": "Character associated with the skill",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Skill card name in multiple languages",
+						"title": "Name",
 						"type": "`$OBJECT`",
+						"short": "Skill card name in multiple languages",
 					},
 					map[string]any{
 						"name": "text",
-						"short": "Skill card text in multiple languages",
+						"title": "Text",
 						"type": "`$OBJECT`",
+						"short": "Skill card text in multiple languages",
 					},
 					map[string]any{
 						"name": "yugipediaId",
-						"short": "Yugipedia page ID",
+						"title": "Yugipedia Id",
 						"type": "`$STRING`",
+						"short": "Yugipedia page ID",
 					},
 				},
 				"name": "skill",
@@ -712,7 +749,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/skill.json",
@@ -721,14 +757,16 @@ func MakeConfig() map[string]any {
 										"lit": "skill.json",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"skill.json",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"skill.json",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -737,53 +775,46 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"skill_card": map[string]any{
+			"yugipedia_id": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "cardType",
-						"short": "Type identifier for skill cards",
+						"title": "Card Type",
 						"type": "`$STRING`",
+						"short": "Type identifier for skill cards",
 					},
 					map[string]any{
 						"name": "character",
-						"short": "Character associated with the skill",
+						"title": "Character",
 						"type": "`$STRING`",
+						"short": "Character associated with the skill",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Skill card name in multiple languages",
+						"title": "Name",
 						"type": "`$OBJECT`",
+						"short": "Skill card name in multiple languages",
 					},
 					map[string]any{
 						"name": "text",
-						"short": "Skill card text in multiple languages",
+						"title": "Text",
 						"type": "`$OBJECT`",
+						"short": "Skill card text in multiple languages",
 					},
 					map[string]any{
 						"name": "yugipediaId",
-						"short": "Yugipedia page ID",
+						"title": "Yugipedia Id",
 						"type": "`$STRING`",
+						"short": "Yugipedia page ID",
 					},
 				},
-				"name": "skill_card",
+				"name": "yugipedia_id",
 				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "yugipedia585581",
-											"kind": "param",
-											"name": "yugipedia_id",
-											"orig": "yugipedia_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data/tcg-speed-skill/{yugipediaId}.json",
@@ -798,19 +829,32 @@ func MakeConfig() map[string]any {
 										"lit": "{yugipediaId}.json",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"yugipedia_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"data",
 									"tcg-speed-skill",
 									"{yugipediaId}.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "yugipedia_id",
+											"orig": "yugipedia_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "yugipedia585581",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"yugipedia_id",
+									},
 								},
 							},
 						},

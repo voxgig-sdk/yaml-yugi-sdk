@@ -331,10 +331,10 @@ class YamlYugiSDK
   end
 
 
-  # Canonical facade: client.SkillCard.list / client.SkillCard.load({ "id" => ... })
-  def SkillCard(data = nil)
-    require_relative 'entity/skill_card_entity'
-    SkillCardEntity.new(self, data)
+  # Canonical facade: client.YugipediaId.list / client.YugipediaId.load({ "id" => ... })
+  def YugipediaId(data = nil)
+    require_relative 'entity/yugipedia_id_entity'
+    YugipediaIdEntity.new(self, data)
   end
 
 

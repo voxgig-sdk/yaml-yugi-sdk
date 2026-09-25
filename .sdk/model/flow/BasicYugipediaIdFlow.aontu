@@ -1,0 +1,32 @@
+# BasicYugipediaIdFlow
+
+main: kit: flow: BasicYugipediaIdFlow:
+{
+  entity: "yugipedia_id",
+  kind: "basic",
+  name: "BasicYugipediaIdFlow",
+  step: [
+    {
+      i: {
+        ref: "yugipedia_id_ref01",
+        srcdatavar: "yugipedia_id_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        yugipedia_id: "yugipedia01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-yugipedia_id_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicYugipediaIdFlow"
+}

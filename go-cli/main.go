@@ -20,7 +20,7 @@ import (
 const prompt = "yaml-yugi"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "aggregation card individual_card series series_and_archetype skill skill_card"
+const entitiesHelp = "aggregation card individual_card series series_and_archetype skill yugipedia_id"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

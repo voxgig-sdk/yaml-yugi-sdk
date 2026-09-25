@@ -1,7 +1,7 @@
 // Typed models for the YamlYugi SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -22,20 +22,6 @@ type AggregationLoadMatch struct {
 
 // Card is the typed data model for the card entity.
 type Card struct {
-	Archetype *[]any `json:"archetype,omitempty"`
-	Atk *int `json:"atk,omitempty"`
-	Attribute *string `json:"attribute,omitempty"`
-	CardType *string `json:"cardType,omitempty"`
-	Def *int `json:"def,omitempty"`
-	Format *[]any `json:"format,omitempty"`
-	KonamiId *string `json:"konamiId,omitempty"`
-	Level *int `json:"level,omitempty"`
-	LinkRating *int `json:"linkRating,omitempty"`
-	Name *map[string]any `json:"name,omitempty"`
-	Password *string `json:"password,omitempty"`
-	Rank *int `json:"rank,omitempty"`
-	Text *map[string]any `json:"text,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // CardListMatch is the typed request payload for Card.ListTyped.
@@ -54,8 +40,6 @@ type IndividualCardLoadMatch struct {
 
 // Series is the typed data model for the series entity.
 type Series struct {
-	Cards *[]any `json:"cards,omitempty"`
-	Name *map[string]any `json:"name,omitempty"`
 }
 
 // SeriesListMatch is the typed request payload for Series.ListTyped.
@@ -66,8 +50,6 @@ type SeriesListMatch struct {
 
 // SeriesAndArchetype is the typed data model for the series_and_archetype entity.
 type SeriesAndArchetype struct {
-	Cards *[]any `json:"cards,omitempty"`
-	Name *map[string]any `json:"name,omitempty"`
 }
 
 // SeriesAndArchetypeLoadMatch is the typed request payload for SeriesAndArchetype.LoadTyped.
@@ -78,11 +60,6 @@ type SeriesAndArchetypeLoadMatch struct {
 
 // Skill is the typed data model for the skill entity.
 type Skill struct {
-	CardType *string `json:"cardType,omitempty"`
-	Character *string `json:"character,omitempty"`
-	Name *map[string]any `json:"name,omitempty"`
-	Text *map[string]any `json:"text,omitempty"`
-	YugipediaId *string `json:"yugipediaId,omitempty"`
 }
 
 // SkillListMatch is the typed request payload for Skill.ListTyped.
@@ -94,17 +71,12 @@ type SkillListMatch struct {
 	YugipediaId *string `json:"yugipediaId,omitempty"`
 }
 
-// SkillCard is the typed data model for the skill_card entity.
-type SkillCard struct {
-	CardType *string `json:"cardType,omitempty"`
-	Character *string `json:"character,omitempty"`
-	Name *map[string]any `json:"name,omitempty"`
-	Text *map[string]any `json:"text,omitempty"`
-	YugipediaId *string `json:"yugipediaId,omitempty"`
+// YugipediaId is the typed data model for the yugipedia_id entity.
+type YugipediaId struct {
 }
 
-// SkillCardLoadMatch is the typed request payload for SkillCard.LoadTyped.
-type SkillCardLoadMatch struct {
+// YugipediaIdLoadMatch is the typed request payload for YugipediaId.LoadTyped.
+type YugipediaIdLoadMatch struct {
 	YugipediaId string `json:"yugipedia_id"`
 }
 

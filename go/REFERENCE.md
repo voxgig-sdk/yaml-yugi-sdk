@@ -71,9 +71,9 @@ Create a new `SeriesAndArchetype` entity instance. Pass `nil` for no initial dat
 
 Create a new `Skill` entity instance. Pass `nil` for no initial data.
 
-#### `SkillCard(data map[string]any) YamlYugiEntity`
+#### `YugipediaId(data map[string]any) YamlYugiEntity`
 
-Create a new `SkillCard` entity instance. Pass `nil` for no initial data.
+Create a new `YugipediaId` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -424,11 +424,11 @@ Return the entity name.
 
 ---
 
-## SkillCardEntity
+## YugipediaIdEntity
 
 ```go
-skillCard := client.SkillCard(nil)
-fmt.Println(skillCard.GetName()) // "skill_card"
+yugipediaId := client.YugipediaId(nil)
+fmt.Println(yugipediaId.GetName()) // "yugipedia_id"
 ```
 
 ### Fields
@@ -448,7 +448,7 @@ fmt.Println(skillCard.GetName()) // "skill_card"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.SkillCard(nil).Load(map[string]any{"yugipedia_id": "yugipedia_id"}, nil)
+result, err := client.YugipediaId(nil).Load(map[string]any{"yugipedia_id": "yugipedia_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -469,7 +469,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `SkillCardEntity` instance with the same client and
+Create a new `YugipediaIdEntity` instance with the same client and
 options.
 
 #### `GetName() string`

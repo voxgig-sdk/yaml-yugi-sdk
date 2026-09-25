@@ -1,0 +1,28 @@
+# BasicSeriesAndArchetypeFlow
+
+main: kit: flow: BasicSeriesAndArchetypeFlow:
+{
+  entity: "series_and_archetype",
+  kind: "basic",
+  name: "BasicSeriesAndArchetypeFlow",
+  step: [
+    {
+      i: {
+        ref: "series_and_archetype_ref01",
+        srcdatavar: "series_and_archetype_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-series_and_archetype_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSeriesAndArchetypeFlow"
+}

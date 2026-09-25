@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardEntity = void 0;
 const YamlYugiEntityBase_1 = require("../YamlYugiEntityBase");
-// TODO: needs Entity superclass
 class CardEntity extends YamlYugiEntityBase_1.YamlYugiEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

@@ -153,7 +153,7 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 
 The 7 entities valid as the `entity` argument:
 
-aggregation | card | individual_card | series | series_and_archetype | skill | skill_card
+aggregation | card | individual_card | series | series_and_archetype | skill | yugipedia_id
 
 ### Smoke test via HTTP (raw JSON-RPC)
 

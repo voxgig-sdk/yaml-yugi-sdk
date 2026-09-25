@@ -29,121 +29,18 @@
   "requests": {
     "GET /data/series/list.yaml": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getSeriesListYaml",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "text/yaml": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "Successful response containing series and archetypes as a list in YAML format"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     },
     "GET /data/series/map.json": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getSeriesMap",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": {
-                    "description": "Represents a card series or archetype.",
-                    "properties": {
-                      "cards": {
-                        "description": "List of card IDs belonging to this series/archetype",
-                        "items": {
-                          "type": "string"
-                        },
-                        "type": "array"
-                      },
-                      "name": {
-                        "description": "Series/archetype name in multiple languages",
-                        "properties": {
-                          "de": {
-                            "description": "German name",
-                            "type": "string"
-                          },
-                          "en": {
-                            "description": "English name",
-                            "type": "string"
-                          },
-                          "es": {
-                            "description": "Spanish name",
-                            "type": "string"
-                          },
-                          "fr": {
-                            "description": "French name",
-                            "type": "string"
-                          },
-                          "it": {
-                            "description": "Italian name",
-                            "type": "string"
-                          },
-                          "ja": {
-                            "description": "Japanese name",
-                            "type": "string"
-                          },
-                          "ko": {
-                            "description": "Korean name",
-                            "type": "string"
-                          },
-                          "pt": {
-                            "description": "Portuguese name",
-                            "type": "string"
-                          },
-                          "zh": {
-                            "description": "Chinese name",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response containing series and archetypes as a mapping"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     },
     "GET /data/series/map.yaml": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getSeriesMapYaml",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "text/yaml": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "description": "Successful response containing series and archetypes as a mapping in YAML format"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

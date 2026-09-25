@@ -82,7 +82,7 @@ _ENTITIES = {
     "Series": "series",
     "SeriesAndArchetype": "series_and_archetype",
     "Skill": "skill",
-    "SkillCard": "skill_card",
+    "YugipediaId": "yugipedia_id",
 }
 
 # The three documents held to the gate, tagged by human label.

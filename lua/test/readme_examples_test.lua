@@ -20,7 +20,7 @@ local SDK_MODULE = "yaml-yugi_sdk"
 -- A test-mode client seeded with a fixture for every entity. The constructor
 -- of each runnable snippet is rewritten to this form so the offline mock has
 -- data to return.
-local TEST_SEED = '{ entity = { ["aggregation"] = { ["test01"] = { id = "test01" } }, ["card"] = { ["test01"] = { id = "test01" } }, ["individual_card"] = { ["test01"] = { id = "test01" } }, ["series"] = { ["test01"] = { id = "test01" } }, ["series_and_archetype"] = { ["test01"] = { id = "test01" } }, ["skill"] = { ["test01"] = { id = "test01" } }, ["skill_card"] = { ["test01"] = { id = "test01" } } } }'
+local TEST_SEED = '{ entity = { ["aggregation"] = { ["test01"] = { id = "test01" } }, ["card"] = { ["test01"] = { id = "test01" } }, ["individual_card"] = { ["test01"] = { id = "test01" } }, ["series"] = { ["test01"] = { id = "test01" } }, ["series_and_archetype"] = { ["test01"] = { id = "test01" } }, ["skill"] = { ["test01"] = { id = "test01" } }, ["yugipedia_id"] = { ["test01"] = { id = "test01" } } } }'
 local TEST_CTOR = "sdk.test(" .. TEST_SEED .. ")"
 
 local function script_dir()

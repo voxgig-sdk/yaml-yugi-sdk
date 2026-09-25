@@ -1,0 +1,74 @@
+# Entity: skill
+
+main: kit: entity: skill: {
+
+  alias: field: {}
+
+  fields: {
+    cardType: {
+      h: "Card Type"
+      n: "cardType"
+      r: false
+      sh: "Type identifier for skill cards"
+      t: "`$STRING`"
+    }
+    character: {
+      h: "Character"
+      n: "character"
+      r: false
+      sh: "Character associated with the skill"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Skill card name in multiple languages"
+      t: "`$OBJECT`"
+    }
+    text: {
+      h: "Text"
+      n: "text"
+      r: false
+      sh: "Skill card text in multiple languages"
+      t: "`$OBJECT`"
+    }
+    yugipediaId: {
+      h: "Yugipedia Id"
+      n: "yugipediaId"
+      r: false
+      sh: "Yugipedia page ID"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "skill"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /skill.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/skill.json"
+          s: [
+            {
+              lit: "skill.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -59,8 +59,8 @@ func init() {
 	core.NewSkillEntityFunc = func(client *core.YamlYugiSDK, entopts map[string]any) core.YamlYugiEntity {
 		return entity.NewSkillEntity(client, entopts)
 	}
-	core.NewSkillCardEntityFunc = func(client *core.YamlYugiSDK, entopts map[string]any) core.YamlYugiEntity {
-		return entity.NewSkillCardEntity(client, entopts)
+	core.NewYugipediaIdEntityFunc = func(client *core.YamlYugiSDK, entopts map[string]any) core.YamlYugiEntity {
+		return entity.NewYugipediaIdEntity(client, entopts)
 	}
 }
 

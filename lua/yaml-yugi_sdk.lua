@@ -433,15 +433,15 @@ function YamlYugiSDK:Skill(data)
 end
 
 
--- Idiomatic facade: client:SkillCard():list() / client:SkillCard():load({ id = ... })
+-- Idiomatic facade: client:YugipediaId():list() / client:YugipediaId():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function YamlYugiSDK:SkillCard(data)
-  local EntityMod = require("entity.skill_card_entity")
+function YamlYugiSDK:YugipediaId(data)
+  local EntityMod = require("entity.yugipedia_id_entity")
   if data == nil then
-    if self._skill_card == nil then
-      self._skill_card = EntityMod.new(self, nil)
+    if self._yugipedia_id == nil then
+      self._yugipedia_id = EntityMod.new(self, nil)
     end
-    return self._skill_card
+    return self._yugipedia_id
   end
   return EntityMod.new(self, data)
 end

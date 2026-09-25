@@ -24,5 +24,5 @@ var NewSeriesAndArchetypeEntityFunc func(client *YamlYugiSDK, entopts map[string
 
 var NewSkillEntityFunc func(client *YamlYugiSDK, entopts map[string]any) YamlYugiEntity
 
-var NewSkillCardEntityFunc func(client *YamlYugiSDK, entopts map[string]any) YamlYugiEntity
+var NewYugipediaIdEntityFunc func(client *YamlYugiSDK, entopts map[string]any) YamlYugiEntity
 

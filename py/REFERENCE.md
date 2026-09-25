@@ -65,9 +65,9 @@ Create a new `SeriesAndArchetypeEntity` instance. Pass `None` for no initial dat
 
 Create a new `SkillEntity` instance. Pass `None` for no initial data.
 
-#### `SkillCard(data=None)`
+#### `YugipediaId(data=None)`
 
-Create a new `SkillCardEntity` instance. Pass `None` for no initial data.
+Create a new `YugipediaIdEntity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -420,10 +420,10 @@ Return the entity name.
 
 ---
 
-## SkillCardEntity
+## YugipediaIdEntity
 
 ```python
-skill_card = client.SkillCard()
+yugipedia_id = client.YugipediaId()
 ```
 
 ### Fields
@@ -443,7 +443,7 @@ skill_card = client.SkillCard()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.SkillCard().load({"yugipedia_id": "yugipedia_id"})
+result = client.YugipediaId().load({"yugipedia_id": "yugipedia_id"})
 ```
 
 ### Common Methods
@@ -466,7 +466,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `SkillCardEntity` instance with the same options.
+Create a new `YugipediaIdEntity` instance with the same options.
 
 #### `get_name() -> str`
 

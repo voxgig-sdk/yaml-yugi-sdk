@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -172,7 +172,7 @@ The API exposes 7 entities:
 | **Series** | The Series entity (list). | `/data/series/list.json` |
 | **SeriesAndArchetype** | The SeriesAndArchetype entity (load). | `/data/series/list.yaml` |
 | **Skill** | The Skill entity (list). | `/skill.json` |
-| **SkillCard** | The SkillCard entity (load). | `/data/tcg-speed-skill/{yugipediaId}.json` |
+| **YugipediaId** | The YugipediaId entity (load). | `/data/tcg-speed-skill/{yugipediaId}.json` |
 
 The operations available across these entities are **load**, **list** — see each entity's
 own list above for exactly which it supports.

@@ -65,9 +65,9 @@ Create a new `SeriesAndArchetypeEntity` instance. Pass `null` for no initial dat
 
 Create a new `SkillEntity` instance. Pass `null` for no initial data.
 
-#### `SkillCard($data = null)`
+#### `YugipediaId($data = null)`
 
-Create a new `SkillCardEntity` instance. Pass `null` for no initial data.
+Create a new `YugipediaIdEntity` instance. Pass `null` for no initial data.
 
 #### `options_map(): array`
 
@@ -425,10 +425,10 @@ Return the entity name.
 
 ---
 
-## SkillCardEntity
+## YugipediaIdEntity
 
 ```php
-$skill_card = $client->SkillCard();
+$yugipedia_id = $client->YugipediaId();
 ```
 
 ### Fields
@@ -448,7 +448,7 @@ $skill_card = $client->SkillCard();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->SkillCard()->load(["yugipedia_id" => "yugipedia_id"]);
+$result = $client->YugipediaId()->load(["yugipedia_id" => "yugipedia_id"]);
 ```
 
 ### Common Methods
@@ -469,9 +469,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): SkillCardEntity`
+#### `make(): YugipediaIdEntity`
 
-Create a new `SkillCardEntity` instance with the same client and
+Create a new `YugipediaIdEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

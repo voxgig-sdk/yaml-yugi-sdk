@@ -46,7 +46,7 @@ class ReadmeExamplesTest extends TestCase
         "Series" => "series",
         "SeriesAndArchetype" => "series_and_archetype",
         "Skill" => "skill",
-        "SkillCard" => "skill_card",
+        "YugipediaId" => "yugipedia_id",
     ];
 
     // Documented SDK method names — used only to recognise the NARROW

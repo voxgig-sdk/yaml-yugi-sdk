@@ -1,0 +1,62 @@
+# Entity: series
+
+main: kit: entity: series: {
+
+  alias: field: {}
+
+  fields: {
+    cards: {
+      h: "Cards"
+      n: "cards"
+      r: false
+      sh: "List of card IDs belonging to this series/archetype"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Series/archetype name in multiple languages"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "series"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /data/series/list.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/data/series/list.json"
+          q: {
+            "$action": "list"
+          }
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "list.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -19,7 +19,6 @@ import type {
   CardListMatch,
 } from '../YamlYugiTypes'
 
-// TODO: needs Entity superclass
 class CardEntity extends YamlYugiEntityBase<Card> {
 
   constructor(client: YamlYugiSDK, entopts: any) {

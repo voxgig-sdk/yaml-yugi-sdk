@@ -1,0 +1,57 @@
+# Entity: aggregation
+
+main: kit: entity: aggregation: {
+
+  alias: field: {}
+
+  name: "aggregation"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /cards.yaml"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/cards.yaml"
+          s: [
+            {
+              lit: "cards.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /rush.yaml"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/rush.yaml"
+          s: [
+            {
+              lit: "rush.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

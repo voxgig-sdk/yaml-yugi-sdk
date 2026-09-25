@@ -1,0 +1,107 @@
+# Entity: series_and_archetype
+
+main: kit: entity: series_and_archetype: {
+
+  alias: field: {}
+
+  fields: {
+    cards: {
+      h: "Cards"
+      n: "cards"
+      r: false
+      sh: "List of card IDs belonging to this series/archetype"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Series/archetype name in multiple languages"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "series_and_archetype"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /data/series/list.yaml"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/data/series/list.yaml"
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "list.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /data/series/map.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/data/series/map.json"
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "map.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /data/series/map.yaml"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/data/series/map.yaml"
+          s: [
+            {
+              lit: "data"
+            }
+            {
+              lit: "series"
+            }
+            {
+              lit: "map.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
